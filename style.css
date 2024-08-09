@@ -1193,6 +1193,7 @@ footer{
 #buscador {
     padding: 0.7rem;
     margin: 1rem;
+    margin-top: 2rem;
     opacity: calc(0.7);
     border: none;
     border-radius: 2rem;
@@ -1349,6 +1350,10 @@ footer{
 }
 
 .menuempresas {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
     background-color: #66a6e6;
 }
 
@@ -1368,6 +1373,8 @@ footer{
     position: fixed;
     height: 100%;
     overflow-y: auto;
+    scrollbar-width: none; 
+    overflow: -moz-scrollbars-none;
 }
 
 #sidebar-container .logo {
@@ -1382,7 +1389,9 @@ footer{
     margin-left: 250px; 
     padding: 20px;
     width: calc(100% - 250px);
-    overflow-y: auto; 
+    overflow-y: auto;
+    scrollbar-width: none; 
+    overflow: -moz-scrollbars-none;
 }
 
 .lismenu {
@@ -1420,6 +1429,21 @@ footer{
 .card-img-top {
     height: 200px; 
     object-fit: cover;
+}
+
+.logodeopciones {
+    width: 2rem;
+    margin-right: 1rem;
+}
+
+#sidebar-container::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.divpadreempresas::-webkit-scrollbar {
+    width: 0;
+    height: 0;
 }
 
 @media (max-width: 768px) {
