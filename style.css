@@ -1241,13 +1241,13 @@ footer{
     color: black;
 }
 
-.abrirmenu, .cerrarmenu {
+.abrirmenuempresas, .cerrarmenuempresas {
     display: none;
 }
 
 
 
-@media (max-width: 830px) {
+@media (max-width: 950px) {
     .headermenuempresas {
         display: flex;
         align-items: center;
@@ -1261,7 +1261,7 @@ footer{
         opacity: 1;
     }
 
-    .abrirmenu {
+    .abrirmenuempresas {
         display: block;
         border: 0;
         font-size: 1.8rem;
@@ -1269,7 +1269,7 @@ footer{
         cursor: pointer;
     }
 
-    .cerrarmenu {
+    .cerrarmenuempresas {
         display: block;
         border: 0;
         font-size: 2rem;
@@ -1277,7 +1277,7 @@ footer{
         cursor: pointer;
     }
 
-    .abrirmenu, .cerrarmenu {
+    .abrirmenuempresas, .cerrarmenuempresas {
         color: black;
     }
 
@@ -1303,6 +1303,7 @@ footer{
         bottom: 0;
         background-color: white;
         padding: 2rem;
+        z-index: 1000;
         box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .5);
     }
 
@@ -1446,6 +1447,26 @@ footer{
     height: 0;
 }
 
+.botondescroll {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #66a6e6;
+    color: black;
+    z-index: 900;
+    border: none;
+    border-radius: 50%;
+    padding: 1rem 1.5rem;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.botondescroll:active {
+    transform: scale(0.95);
+}
+
 @media (max-width: 768px) {
     #sidebar-container {
         display: none;
@@ -1458,5 +1479,3 @@ footer{
 }
 
 /*----------------------------Fin de empresas--------------------------------*/
-
-
