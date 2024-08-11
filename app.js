@@ -43,7 +43,3 @@ var swiper = new Swiper('.swiper-container', {
 	  },
 	} 
 });
-
-function scrollToTop() {
-	window.scrollTo({ top: 0, behavior: 'smooth' });
-}
