@@ -1716,4 +1716,42 @@ footer{
     margin-bottom: 3rem;
 }
 
+.divdeFAQs {
+    width: 100%;
+    padding: 2rem;
+    border-bottom: 3px solid black;
+}
+
+.accordion-item {
+    box-shadow: 2px 2px 10px black;
+}
+
+.h21FAQs {
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 745px) {
+    .psparte1informacion {
+        text-align: center;
+        color: white;
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin-left: 4rem;
+        margin-right: 4rem;
+        margin-bottom: 3rem;
+    }
+}
+
+@media (max-width: 745px) {
+    .psparte1informacion {
+        text-align: center;
+        color: white;
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        margin-bottom: 3rem;
+    }
+}
+
 /*----------------------------Fin de Informacion--------------------------------*/
