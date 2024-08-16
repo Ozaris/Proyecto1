@@ -1680,7 +1680,9 @@ footer{
 .parte1infromacion {
     display: flex;
     flex-direction: column;
-    background-color: #66a6e6;
+    background-image: url(Imagenes/FondoInicio.png);
+    background-size: cover;
+    background-repeat: no-repeat;
     width: 100%;
     border-bottom: 3px solid black;
 }
@@ -1700,7 +1702,7 @@ footer{
 .h1parte1informacion {
     text-align: center;
     margin-top: 0.5rem;
-    color: black;
+    color: #66a6e6;
     margin-bottom: 1rem;
     margin-left: 2rem;
     margin-right: 2rem;
