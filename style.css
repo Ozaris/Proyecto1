@@ -194,11 +194,169 @@ body.no-scroll {
 
 /*----------------------------body de pagina principal--------------------------------*/
 
+/*----------------------------Register--------------------------------*/
+
+.divfondoiniciodesesion1 {
+    display: flex;
+    padding-top: 6rem;
+    padding-left: 15rem;
+    padding-right: 15rem;
+    width: 100%;
+    background-color: none;
+}
+
+.divfondoiniciodesesion2 {
+    display: flex;
+    background-color: rgb(44, 44, 44);
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 1rem 0 0 1rem;
+    align-items: center;
+    width: 50%;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.divfondoiniciodesesion3 {
+    display: flex;
+    background-color: white;
+    align-items: center;
+    width: 50%;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0 0 10px black;
+}
+
+.bienvenidodenuevoregistro {
+    color: white;
+    font-size: 2rem;
+    margin-top: 2rem;
+}
+
+.logosiniciodesesion {
+    width: 12rem;
+}
+
+.divgridpadreregistro {
+    display: grid;
+    grid-template-areas: "left left right rigth";
+}
+
+.botoniniciodesesion1 {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    margin-right: 1rem;
+    background-color: white;
+    color: rgb(0, 0, 0);
+    border-radius: 1.7rem;
+    padding: 10px;
+    box-shadow: 2px 2px 2px black;
+    border: none;
+    grid-area: left;
+}
+
+.botoniniciodesesion2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    background-color: #3b5998;
+    color: white;
+    border-radius: 1.7rem;
+    padding: 10px;
+    box-shadow: 2px 2px 2px black;
+    border: none;
+    grid-area: right;
+}
+
+.botoniniciodesesion3 {
+    display: inline-block;
+    border: 2px solid white;
+    padding: 15px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    color: white;
+    font-weight: 500;
+    text-decoration: none;
+    margin-top: 2rem;
+}
+
+.botoniniciodesesion3:hover {
+    transform: scale(1.1);
+}
+
+.crearcuentaregistro {
+    margin-top: 4rem;
+    font-size: 2.5rem;
+}
+
+.googlelogo {
+    width: 1.5rem;
+}
+
+.facebooklogo {
+    font-size: 1.5rem;
+}
+
+.input-container {
+    position: relative;
+    max-width: 420px;
+    margin-bottom: 1rem;
+}
+
+.input1iniciodesesion,
+.input2iniciodesesion,
+.input3iniciodesesion {
+    padding: 13px;
+    padding-left: 3rem; 
+    text-align: left; 
+    box-shadow: 2px 2px 5px black;
+    border-radius: 0.2rem;
+    border: none;
+    width: 100%;
+}
+
+.input-container input {
+    padding-left: 2.5rem; 
+}
+
+#icon {
+    position: absolute;
+    top: 50%;
+    left: 0.75rem; 
+    transform: translateY(-50%);
+    color: gray;
+    pointer-events: none; 
+}
+
+.botoniniciodesesion4 {
+    display: inline-block;
+    background-color: #66a6e6;
+    padding: 12px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    color: white;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 2rem;
+    margin-bottom: 2.5rem;
+    margin-top: 1rem;
+}
+
+.botoniniciodesesion4:hover {
+    transform: scale(1.1);
+}
+
+/*----------------------------Fin de Register--------------------------------*/
+
 .inicio1 {
     width: 100%;
     height: 38rem;
     padding-top: 1.5rem;
-    background-image: url(Imagenes/FOTOINICIO1.jpeg);
+    background-image: url(Imagenes/FONDOINICIO4.png);
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -211,6 +369,7 @@ body.no-scroll {
 }
 
 .h1parte1 {
+    width: 100%;
     color: #85bbf2;
     margin-bottom: 1rem;
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -325,6 +484,7 @@ body.no-scroll {
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
     padding: 8rem;
     padding-right: 20rem;
@@ -746,7 +906,7 @@ body.no-scroll {
         width: 100%;
         height: 65rem;
         padding-top: 1.5rem;
-        background-image: url(Imagenes/FOTOINICIO1.jpeg);
+        background-image: url(Imagenes/FONDOINICIO4.png);
         background-size: cover;
         background-repeat: no-repeat;
     }
@@ -1372,7 +1532,7 @@ footer{
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #e6e6e63a;
+    background-color: white;
 }
 
 .menuempresas {
@@ -1380,11 +1540,11 @@ footer{
     justify-content: center;
     flex-direction: column;
     flex-wrap: nowrap;
-    background-color: #66a6e6;
+    background-color: rgb(26, 26, 26);
 }
 
 .logoempresas {
-    background-color: #66a6e6;
+    background-color: rgb(26, 26, 26);
 }
 
 #content-wrapper {
