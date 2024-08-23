@@ -5,7 +5,7 @@
 function conectar_bd(){
 
 $servidor = "localhost";
-$bd = "publicaciones";
+$bd = "ozaris";
 $usuario = "root";
 $pass = "Mysql1234";
 

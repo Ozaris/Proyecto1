@@ -8,7 +8,6 @@ $con = conectar_bd();
 if (isset($_POST["envio"])) {
 
     $nombre =  $_POST["nombre"];
-    $apellido = $_POST["apellido"];
     $email = $_POST["email"];
     $contrasenia = $_POST["pass"];
    
@@ -23,7 +22,7 @@ if (isset($_POST["envio"])) {
 function consultar_existe_usr($con, $email) {
 
     $email = mysqli_real_escape_string($con, $email); // Escapar los campos para evitar inyección SQL
-    $consulta_existe_usr = "SELECT email FROM usuarios WHERE email = '$email'";
+    $consulta_existe_usr = "SELECT email FROM persona WHERE email = '$email'";
     $resultado_existe_usr = mysqli_query($con, $consulta_existe_usr);
 
     if (mysqli_num_rows($resultado_existe_usr) > 0) {
@@ -33,16 +32,16 @@ function consultar_existe_usr($con, $email) {
     }
 }
 
-function insertar_datos($con, $nombre, $apellido, $email, $contrasenia, $existe_usr) {
+function insertar_datos($con, $nombre_p,$email, $contrasenia, $existe_usr) {
 
     if ($existe_usr == false) {
-        $nombreCompleto = $nombre . ' ' . $apellido;
+        
         $email = mysqli_real_escape_string($con, $email);
 
         // Encripto la controaseña usando la función password_hash
         $contrasenia = password_hash($contrasenia, PASSWORD_DEFAULT);
 
-        $consulta_insertar = "INSERT INTO usuarios (nombrecompleto, email, pass) VALUES ('$nombreCompleto', '$email', '$contrasenia')";
+        $consulta_insertar = "INSERT INTO persona (nombre_p, email, contrasenia) VALUES ('$nombreCompleto', '$email', '$contrasenia')";
 
         if (mysqli_query($con, $consulta_insertar)) {
             $salida = consultar_datos($con);
