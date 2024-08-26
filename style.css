@@ -199,39 +199,58 @@ body.no-scroll {
 
 /*----------------------------Register--------------------------------*/
 
+body {
+    margin: 0;
+    overflow: hidden; 
+}
+
+.bodyregister {
+    background-image: url(Imagenes/FONDOREGISTER.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+}
+
 .divfondoiniciodesesion1 {
     display: flex;
-    padding-top: 6rem;
-    padding-left: 15rem;
-    padding-right: 15rem;
     width: 100%;
+    max-width: 1200px; 
     background-color: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.divfondoiniciodesesion2, .divfondoiniciodesesion3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px; 
+    border-radius: 1rem;
+    box-shadow: 0 0 10px black;
 }
 
 .divfondoiniciodesesion2 {
-    display: flex;
     background-color: rgb(44, 44, 44);
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    border-radius: 1rem 0 0 1rem;
-    align-items: center;
-    width: 50%;
-    justify-content: center;
-    flex-direction: column;
+    color: white;
+    margin-bottom: 1rem;
+    padding: 1rem;
 }
 
 .divfondoiniciodesesion3 {
     display: flex;
-    background-color: white;
-    align-items: center;
-    width: 50%;
-    justify-content: center;
     flex-direction: column;
-    box-shadow: 0 0 10px black;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 2rem;
 }
 
 .bienvenidodenuevoregistro {
-    color: white;
     font-size: 2rem;
     margin-top: 2rem;
 }
@@ -242,37 +261,26 @@ body.no-scroll {
 
 .divgridpadreregistro {
     display: grid;
-    grid-template-areas: "left left right rigth";
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    width: 100%;
 }
 
-.botoniniciodesesion1 {
+.botoniniciodesesion1, .botoniniciodesesion2 {
     display: flex;
     align-items: center;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-    margin-right: 1rem;
+    justify-content: center;
     background-color: white;
     color: rgb(0, 0, 0);
     border-radius: 1.7rem;
     padding: 10px;
     box-shadow: 2px 2px 2px black;
     border: none;
-    grid-area: left;
 }
 
 .botoniniciodesesion2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
     background-color: #3b5998;
     color: white;
-    border-radius: 1.7rem;
-    padding: 10px;
-    box-shadow: 2px 2px 2px black;
-    border: none;
-    grid-area: right;
 }
 
 .botoniniciodesesion3 {
@@ -296,26 +304,19 @@ body.no-scroll {
     font-size: 2.5rem;
 }
 
-.googlelogo {
+.googlelogo, .facebooklogo {
     width: 1.5rem;
-}
-
-.facebooklogo {
-    font-size: 1.5rem;
 }
 
 .input-container {
     position: relative;
-    max-width: 420px;
+    max-width: 100%;
     margin-bottom: 1rem;
 }
 
-.input1iniciodesesion,
-.input2iniciodesesion,
-.input3iniciodesesion {
+.input1iniciodesesion, .input2iniciodesesion, .input3iniciodesesion {
     padding: 13px;
-    padding-left: 3rem; 
-    text-align: left; 
+    padding-left: 3rem;
     box-shadow: 2px 2px 5px black;
     border-radius: 0.2rem;
     border: none;
@@ -323,16 +324,16 @@ body.no-scroll {
 }
 
 .input-container input {
-    padding-left: 2.5rem; 
+    padding-left: 2.5rem;
 }
 
 #icon {
     position: absolute;
     top: 50%;
-    left: 0.75rem; 
+    left: 0.75rem;
     transform: translateY(-50%);
     color: gray;
-    pointer-events: none; 
+    pointer-events: none;
 }
 
 .botoniniciodesesion4 {
@@ -347,10 +348,31 @@ body.no-scroll {
     border-radius: 2rem;
     margin-bottom: 2.5rem;
     margin-top: 1rem;
+    border: none;
 }
 
 .botoniniciodesesion4:hover {
     transform: scale(1.1);
+}
+
+.fromregister {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .divfondoiniciodesesion1 {
+        padding: 3rem 1rem;
+    }
+
+    .divfondoiniciodesesion2, .divfondoiniciodesesion3 {
+        width: 100%;
+    }
+
+    .divgridpadreregistro {
+        grid-template-columns: 1fr; 
+    }
 }
 
 /*----------------------------Fin de Register--------------------------------*/
@@ -375,14 +397,12 @@ body.no-scroll {
     width: 100%;
     color: #85bbf2;
     margin-bottom: 1rem;
-    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .h3parte1 {
     color: white;
     font-size: 1rem;
     font-weight: 2px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .botondeparte1body {
@@ -457,7 +477,6 @@ body.no-scroll {
 }
 
 .tituloparte2body{
-    font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 1.5rem;
     margin-top: 2rem;
     font-weight: 600;
@@ -507,7 +526,6 @@ body.no-scroll {
     margin-top: 1rem;
     margin-bottom: 1rem;
     font-weight: 600;
-    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .p1parte3 {
@@ -515,7 +533,6 @@ body.no-scroll {
     color: rgb(28, 28, 28);
     padding: 0;
     font-size: 1.5rem;
-    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .p2parte3 {
@@ -524,7 +541,6 @@ body.no-scroll {
     font-size: 1.5rem;
     padding: 0;
     margin-bottom: 3rem;
-    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .swiper{
@@ -548,7 +564,6 @@ body.no-scroll {
 
 .h1parte4body {
     font-weight: 500;
-    font-family: Georgia, 'Times New Roman', Times, serif;
     margin-top: 1rem;
     margin-bottom: 2rem;
 }
@@ -714,13 +729,11 @@ body.no-scroll {
 
 .h1parte5body {
     font-weight: 600;
-    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .pparte5body {
     margin-top: 3rem;
     font-size: 1.5rem;
-    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .icono-tick {
@@ -754,13 +767,11 @@ body.no-scroll {
 
 .h1parte6body {
     font-weight: 600;
-    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .pparte6body {
     margin-top: 3rem;
     font-size: 1.5rem;
-    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .logosparte6body {
@@ -811,7 +822,6 @@ body.no-scroll {
         margin-left: 1rem;
         text-align: start;
         height: 36rem;
-
         box-shadow: 1px 2px 3px rgb(34, 34, 34);
     }
 }
@@ -994,14 +1004,12 @@ body.no-scroll {
         color: #66a6e6;
         font-size: 2rem;
         margin-bottom: 2rem;
-        font-family: Georgia, 'Times New Roman', Times, serif;
     }
     
     .h3parte1 {
         color: white;
         font-size: 1.4rem;
         font-weight: 2px;
-        font-family: Georgia, 'Times New Roman', Times, serif;
     }
 
     .preguntaparte5body {
