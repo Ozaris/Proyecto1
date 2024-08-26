@@ -14,9 +14,10 @@ if (isset($_POST["envio"])) {
    
     // Consultar si el usuario ya existe
     $existe_usr = consultar_existe_usr($con, $email);
+    $existe_nom = consultar_existe_usr($con, $nombre_p);
 
     // Insertar datos si el usuario no existe
-    insertar_datos($con, $nombre, $apellido, $email, $contrasenia, $existe_usr);
+    insertar_datos($con, $nombre, $apellido, $email, $contrasenia, $existe_usr,$existe_nom);
 
 }
 
@@ -33,9 +34,25 @@ function consultar_existe_usr($con, $email) {
     }
 }
 
-function insertar_datos($con, $nombre_p,$email, $contrasenia, $existe_usr) {
 
-    if ($existe_usr == false) {
+function consultar_existe_nom($con, $nombre_p) {
+
+    $email = mysqli_real_escape_string($con, $email); // Escapar los campos para evitar inyección SQL
+    $consulta_existe_nom = "SELECT nombre_p FROM persona WHERE nombre_p = '$nombre_p'";
+    $resultado_existe_nom = mysqli_query($con, $consulta_existe_nom);
+
+    if (mysqli_num_rows($resultado_existe_nom) > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
+
+function insertar_datos($con, $nombre_p,$email, $contrasenia, $existe_usr,$existe_nom) {
+
+    if ($existe_usr == false && $existe_nom==false) {
         
         $email = mysqli_real_escape_string($con, $email);
 
@@ -43,6 +60,7 @@ function insertar_datos($con, $nombre_p,$email, $contrasenia, $existe_usr) {
         $contrasenia = password_hash($contrasenia, PASSWORD_DEFAULT);
 
         $consulta_insertar = "INSERT INTO usuario (nombre_p, email, contrasenia) VALUES ('$nombre_p', '$email', '$contrasenia')";
+        $consulta_insertar2 = "INSERT INTO persona (nombre_p, email, contrasenia) VALUES ('$nombre_p', '$email', '$contrasenia')";
 
         if (mysqli_query($con, $consulta_insertar)) {
             $salida = consultar_datos($con);
