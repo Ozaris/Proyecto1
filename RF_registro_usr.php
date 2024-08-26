@@ -1,6 +1,7 @@
 <?php
 
-require("conexion.php");
+require_once("conexion.php");
+
 
 $con = conectar_bd();
 
@@ -22,7 +23,7 @@ if (isset($_POST["envio"])) {
 function consultar_existe_usr($con, $email) {
 
     $email = mysqli_real_escape_string($con, $email); // Escapar los campos para evitar inyección SQL
-    $consulta_existe_usr = "SELECT email FROM persona WHERE email = '$email'";
+    $consulta_existe_usr = "SELECT email FROM usuario WHERE email = '$email'";
     $resultado_existe_usr = mysqli_query($con, $consulta_existe_usr);
 
     if (mysqli_num_rows($resultado_existe_usr) > 0) {
@@ -41,7 +42,7 @@ function insertar_datos($con, $nombre_p,$email, $contrasenia, $existe_usr) {
         // Encripto la controaseña usando la función password_hash
         $contrasenia = password_hash($contrasenia, PASSWORD_DEFAULT);
 
-        $consulta_insertar = "INSERT INTO persona (nombre_p, email, contrasenia) VALUES ('$nombreCompleto', '$email', '$contrasenia')";
+        $consulta_insertar = "INSERT INTO usuario (nombre_p, email, contrasenia) VALUES ('$nombre_p', '$email', '$contrasenia')";
 
         if (mysqli_query($con, $consulta_insertar)) {
             $salida = consultar_datos($con);
@@ -55,7 +56,7 @@ function insertar_datos($con, $nombre_p,$email, $contrasenia, $existe_usr) {
 }
 
 function consultar_datos($con) {
-    $consulta = "SELECT * FROM usuarios";
+    $consulta = "SELECT * FROM usuario";
     $resultado = mysqli_query($con, $consulta);
 
     // Inicializo una variable para guardar los resultados
@@ -65,7 +66,7 @@ function consultar_datos($con) {
     if (mysqli_num_rows($resultado) > 0) {
         // Mientras haya registros
         while ($fila = mysqli_fetch_assoc($resultado)) {
-            $salida .= "id: " . $fila["id_user"] . " - Nombre: " . $fila["nombrecompleto"] . " - Email: " . $fila["email"] . "<br> <hr>";
+            $salida .= "id: " . $fila["id_per"] . " - Nombre: " . $fila["nombre_p"] . " - Email: " . $fila["email"] . "<br> <hr>";
         }
     } else {
         $salida = "Sin datos";
@@ -75,3 +76,4 @@ function consultar_datos($con) {
 }
 
 mysqli_close($con);
+?>

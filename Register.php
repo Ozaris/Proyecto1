@@ -12,7 +12,7 @@
         <div class="divfondoiniciodesesion2">
             <img class="logosiniciodesesion" src="Imagenes/Logosblanco.png" alt="img">
             <p class="bienvenidodenuevoregistro">¡Bienvenido de nuevo!</p>
-            <a class="botoniniciodesesion3" href="">Empresa</a>
+            <a class="botoniniciodesesion3" href="#">Empresa</a>
         </div>
         <div class="divfondoiniciodesesion3">
             <p class="crearcuentaregistro">Crear cuenta</p>
@@ -22,24 +22,24 @@
             </div>
             <form action="RF_registro_usr.php" method="POST">
             <div class="input-container">
-                            <input class="input1iniciodesesion" type="text" placeholder="Nombre" name="nombre"/>
+                            <input class="input1iniciodesesion" type="text" placeholder="Nombre" name="nombre_p" id="nombre_p"/>
                 <span id="icon">
                     <i class="fa-regular fa-user"></i>
                 </span>
             </div>
             <div class="input-container">
-                <input class="input2iniciodesesion" type="text" placeholder="Email" name="email"/>
+                <input class="input2iniciodesesion" type="text" placeholder="Email" name="email" id="email"/>
                 <span id="icon">
                     <i class="fa-regular fa-envelope"></i>
                 </span>
             </div>
             <div class="input-container">
-                <input class="input3iniciodesesion" type="text" placeholder="Contraseña" name="pass"/>
+                <input class="input3iniciodesesion" type="password" placeholder="Contraseña" name="pass" id="pass"/>
                 <span id="icon">
                     <i class="fa-solid fa-lock"></i>
                 </span>
             </div>
-            <a class="botoniniciodesesion4" href="">Inicio de sesión</a>
+            <input class="botoniniciodesesion4"  type="submit" value="envio" name="Inicio de sesión">
         </form>
         </div>
     </div>
