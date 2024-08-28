@@ -15,7 +15,7 @@ function logear($con, $email, $pass) {
 
     session_start();
 
-    $consulta_login = "SELECT * FROM usuarios WHERE email= '$email'";
+    $consulta_login = "SELECT * FROM usuario WHERE email= '$email'";
     $resultado_login = mysqli_query($con, $consulta_login);
 
     if (mysqli_num_rows($resultado_login) > 0) {

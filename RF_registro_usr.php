@@ -1,22 +1,23 @@
 <?php
 
 require_once("conexion.php");
-
+require_once("Register.html");
 
 $con = conectar_bd();
 
 // Comprobar que se envió un formulario por POST desde carga_datos
 if (isset($_POST["envio"])) {
 
-    $nombre =  $_POST["nombre"];
+    $nombre_p =  $_POST["nombre_p"];
     $email = $_POST["email"];
     $contrasenia = $_POST["pass"];
    
     // Consultar si el usuario ya existe
     $existe_usr = consultar_existe_usr($con, $email);
+    $existe_nom = consultar_existe_nom($con, $nombre_p);
 
     // Insertar datos si el usuario no existe
-    insertar_datos($con, $nombre, $apellido, $email, $contrasenia, $existe_usr);
+    insertar_datos($con, $nombre_p,$email, $contrasenia, $existe_usr,$existe_nom);
 
 }
 
@@ -33,27 +34,54 @@ function consultar_existe_usr($con, $email) {
     }
 }
 
-function insertar_datos($con, $nombre_p,$email, $contrasenia, $existe_usr) {
 
-    if ($existe_usr == false) {
-        
-        $email = mysqli_real_escape_string($con, $email);
+function consultar_existe_nom($con, $nombre_p) {
 
-        // Encripto la controaseña usando la función password_hash
-        $contrasenia = password_hash($contrasenia, PASSWORD_DEFAULT);
+    $nombre_p = mysqli_real_escape_string($con, $nombre_p); // Escapar los campos para evitar inyección SQL
+    $consulta_existe_nom = "SELECT nombre_p FROM usuario WHERE nombre_p = '$nombre_p'";
+    $resultado_existe_nom = mysqli_query($con, $consulta_existe_nom);
 
-        $consulta_insertar = "INSERT INTO usuario (nombre_p, email, contrasenia) VALUES ('$nombre_p', '$email', '$contrasenia')";
+    if (mysqli_num_rows($resultado_existe_nom) > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
-        if (mysqli_query($con, $consulta_insertar)) {
+
+
+function insertar_datos($con, $nombre_p, $email, $contrasenia,$existe_nom,$existe_usr) {
+    // Encripto la contraseña usando la función password_hash
+
+    if ($existe_usr == false && $existe_nom == false){
+        $email=mysqli_real_escape_string($con,$email);
+       
+    $contrasenia = password_hash($contrasenia, PASSWORD_DEFAULT);
+
+    // Inserta en la tabla persona
+    $consulta_insertar_persona = "INSERT INTO persona (nombre_p, email, contrasenia) VALUES ('$nombre_p', '$email', '$contrasenia')";
+    
+    if (mysqli_query($con, $consulta_insertar_persona)) {
+        // Obtén el ID de la persona recién insertada
+        $id_per = mysqli_insert_id($con);
+
+        // Inserta en la tabla usuario usando el ID de la persona
+        $consulta_insertar_usuario = "INSERT INTO usuario (Id_per, nombre_p, email, contrasenia) VALUES ($id_per, '$nombre_p', '$email', '$contrasenia')";
+
+        if (mysqli_query($con, $consulta_insertar_usuario)) {
             $salida = consultar_datos($con);
             echo $salida;
         } else {
-            echo "Error: " . $consulta_insertar . "<br>" . mysqli_error($con);
+            echo "Error al insertar en usuario: " . mysqli_error($con);
         }
     } else {
-        echo "El usuario ya existe.";
+        echo "Error al insertar en persona: " . mysqli_error($con);
+    }
+}else{
+        echo "Usuario ya existe: " . mysqli_error($con);
     }
 }
+
 
 function consultar_datos($con) {
     $consulta = "SELECT * FROM usuario";
@@ -66,7 +94,7 @@ function consultar_datos($con) {
     if (mysqli_num_rows($resultado) > 0) {
         // Mientras haya registros
         while ($fila = mysqli_fetch_assoc($resultado)) {
-            $salida .= "id: " . $fila["id_per"] . " - Nombre: " . $fila["nombre_p"] . " - Email: " . $fila["email"] . "<br> <hr>";
+            $salida .= "id: " . $fila["Id_per"] . " - Nombre: " . $fila["nombre_p"] . " - Email: " . $fila["email"] . "<br> <hr>";
         }
     } else {
         $salida = "Sin datos";
