@@ -373,6 +373,183 @@ body.no-scroll {
 
 /*----------------------------Fin de Register--------------------------------*/
 
+/*----------------------------Inicio de sesion--------------------------------*/
+
+.bodyiniciodesesion {
+    margin: 0;
+    overflow: hidden; 
+    background-image: url(Imagenes/FONDOREGISTER.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+}
+
+.divfondoiniciodesesion1 {
+    display: flex;
+    width: 100%;
+    max-width: 900px; 
+    background-color: none;
+}
+
+.divfondoiniciodesesion2, .divfondoiniciodesesion3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px; 
+    box-shadow: 0 0 10px black;
+    background-color: white;
+}
+
+.divfondoiniciodesesion2 {
+    justify-content: center;
+    background-color: rgb(44, 44, 44);
+    color: white;
+    margin-bottom: 13px;
+    margin-top: 13px;
+    padding: 1rem;
+    border-radius: 1rem 0 0 1rem;
+}
+
+.bienvenidodenuevoiniciodesesion {
+    font-size: 2rem;
+    margin-top: 2rem;
+}
+
+.logosiniciodesesion {
+    width: 12rem;
+}
+
+.divgridpadreiniciodesesion {
+    display: grid;
+    grid-template-columns: repeat(2, 3rem); 
+    gap: 1rem;
+    justify-content: center; 
+    margin: 1rem 0;
+}
+
+.botoniniciodesesion1, .botoniniciodesesion2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: rgb(0, 0, 0);
+    border-radius: 50%; 
+    width: 3rem; 
+    height: 3rem; 
+    box-shadow: 2px 2px 2px black;
+    border: none;
+    text-align: center; 
+    line-height: 3rem; 
+    font-size: 1.5rem; 
+}
+
+.botoniniciodesesion2 {
+    background-color: #3b5998;
+    color: white;
+}
+
+.botoniniciodesesion3 {
+    display: inline-block;
+    border: 2px solid white;
+    padding: 10px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    color: white;
+    font-weight: 500;
+    text-decoration: none;
+    margin-top: 2rem;
+}
+
+.botoniniciodesesion3:hover {
+    transform: scale(1.1);
+}
+
+.crearcuentainiciodesesion {
+    margin-top: 4rem;
+    font-size: 2.5rem;
+}
+
+.googlelogo, .facebooklogo {
+    width: 1.5rem;
+}
+
+.input-container {
+    position: relative;
+    max-width: 100%;
+    margin-bottom: 1rem;
+}
+
+.input1iniciodesesion, .input2iniciodesesion, .input3iniciodesesion {
+    padding: 13px;
+    padding-left: 3rem;
+    box-shadow: 2px 2px 5px black;
+    border-radius: 0.2rem;
+    border: none;
+    width: 100%;
+}
+
+.input-container input {
+    padding-left: 2.5rem;
+}
+
+#icon {
+    position: absolute;
+    top: 50%;
+    left: 0.75rem;
+    transform: translateY(-50%);
+    color: gray;
+    pointer-events: none;
+}
+
+.botoniniciodesesion4 {
+    display: inline-block;
+    background-color: #66a6e6;
+    padding: 12px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    color: white;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 2rem;
+    margin-bottom: 2.5rem;
+    margin-top: 1rem;
+    border: none;
+}
+
+.botoniniciodesesion4:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.frominiciodesesion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .divfondoiniciodesesion1 {
+        padding: 3rem 1rem;
+    }
+
+    .divfondoiniciodesesion2, .divfondoiniciodesesion3 {
+        width: 100%;
+    }
+
+    .divgridpadreiniciodesesion {
+        grid-template-columns: 1fr; 
+        gap: 1rem;
+    }
+}
+
+
+/*----------------------------Fin inicio de sesion--------------------------------*/
+
 .inicio1 {
     width: 100%;
     height: 38rem;
