@@ -199,12 +199,9 @@ body.no-scroll {
 
 /*----------------------------Register--------------------------------*/
 
-body {
+.bodyregister {
     margin: 0;
     overflow: hidden; 
-}
-
-.bodyregister {
     background-image: url(Imagenes/FONDOREGISTER.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -218,7 +215,7 @@ body {
 .divfondoiniciodesesion1 {
     display: flex;
     width: 100%;
-    max-width: 1200px; 
+    max-width: 900px; 
     background-color: none;
 }
 
@@ -229,27 +226,17 @@ body {
     width: 100%;
     max-width: 600px; 
     box-shadow: 0 0 10px black;
+    background-color: white;
 }
 
 .divfondoiniciodesesion2 {
-    display: flex;
     justify-content: center;
-    align-items: center;
     background-color: rgb(44, 44, 44);
     color: white;
-    margin-bottom: 10px;
-    margin-top: 10px;
+    margin-bottom: 13px;
+    margin-top: 13px;
     padding: 1rem;
     border-radius: 1rem 0 0 1rem;
-}
-
-.divfondoiniciodesesion3 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    padding: 2rem;
 }
 
 .bienvenidodenuevoregistro {
@@ -263,9 +250,10 @@ body {
 
 .divgridpadreregistro {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 3rem); 
     gap: 1rem;
-    width: 100%;
+    justify-content: center; 
+    margin: 1rem 0;
 }
 
 .botoniniciodesesion1, .botoniniciodesesion2 {
@@ -274,10 +262,14 @@ body {
     justify-content: center;
     background-color: white;
     color: rgb(0, 0, 0);
-    border-radius: 1.7rem;
-    padding: 10px;
+    border-radius: 50%; 
+    width: 3rem; 
+    height: 3rem; 
     box-shadow: 2px 2px 2px black;
     border: none;
+    text-align: center; 
+    line-height: 3rem; 
+    font-size: 1.5rem; 
 }
 
 .botoniniciodesesion2 {
@@ -288,7 +280,7 @@ body {
 .botoniniciodesesion3 {
     display: inline-block;
     border: 2px solid white;
-    padding: 15px;
+    padding: 10px;
     padding-left: 2rem;
     padding-right: 2rem;
     color: white;
@@ -355,6 +347,7 @@ body {
 
 .botoniniciodesesion4:hover {
     transform: scale(1.1);
+    cursor: pointer;
 }
 
 .fromregister {
@@ -374,6 +367,7 @@ body {
 
     .divgridpadreregistro {
         grid-template-columns: 1fr; 
+        gap: 1rem;
     }
 }
 
