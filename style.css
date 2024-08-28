@@ -212,14 +212,14 @@ body.no-scroll {
     height: 100vh; 
 }
 
-.divfondoiniciodesesion1 {
+.divfondoregister1 {
     display: flex;
     width: 100%;
     max-width: 900px; 
     background-color: none;
 }
 
-.divfondoiniciodesesion2, .divfondoiniciodesesion3 {
+.divfondoregister2, .divfondoregister3 {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -229,7 +229,7 @@ body.no-scroll {
     background-color: white;
 }
 
-.divfondoiniciodesesion2 {
+.divfondoregister2 {
     justify-content: center;
     background-color: rgb(44, 44, 44);
     color: white;
@@ -244,7 +244,7 @@ body.no-scroll {
     margin-top: 2rem;
 }
 
-.logosiniciodesesion {
+.logosregister {
     width: 12rem;
 }
 
@@ -256,7 +256,7 @@ body.no-scroll {
     margin: 1rem 0;
 }
 
-.botoniniciodesesion1, .botoniniciodesesion2 {
+.botonregister1, .botonregister2 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -272,12 +272,12 @@ body.no-scroll {
     font-size: 1.5rem; 
 }
 
-.botoniniciodesesion2 {
+.botonregister2 {
     background-color: #3b5998;
     color: white;
 }
 
-.botoniniciodesesion3 {
+.botonregister3 {
     display: inline-block;
     border: 2px solid white;
     padding: 10px;
@@ -289,7 +289,7 @@ body.no-scroll {
     margin-top: 2rem;
 }
 
-.botoniniciodesesion3:hover {
+.botonregister3:hover {
     transform: scale(1.1);
 }
 
@@ -308,7 +308,7 @@ body.no-scroll {
     margin-bottom: 1rem;
 }
 
-.input1iniciodesesion, .input2iniciodesesion, .input3iniciodesesion {
+.input1register, .input2register, .input3register {
     padding: 13px;
     padding-left: 3rem;
     box-shadow: 2px 2px 5px black;
@@ -330,7 +330,7 @@ body.no-scroll {
     pointer-events: none;
 }
 
-.botoniniciodesesion4 {
+.botonregister4 {
     display: inline-block;
     background-color: #66a6e6;
     padding: 12px;
@@ -345,7 +345,7 @@ body.no-scroll {
     border: none;
 }
 
-.botoniniciodesesion4:hover {
+.botonregister4:hover {
     transform: scale(1.1);
     cursor: pointer;
 }
@@ -357,11 +357,11 @@ body.no-scroll {
 }
 
 @media (max-width: 768px) {
-    .divfondoiniciodesesion1 {
+    .divfondoregister1 {
         padding: 3rem 1rem;
     }
 
-    .divfondoiniciodesesion2, .divfondoiniciodesesion3 {
+    .divfondoregister2, .divfondoregister3 {
         width: 100%;
     }
 
