@@ -446,31 +446,45 @@ body.no-scroll {
     width: 100%;
     max-width: 600px; 
     box-shadow: 0 0 10px black;
-    background-color: white;
+    background-color: rgb(44, 44, 44);
 }
 
 .divfondoiniciodesesion2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px; 
+    box-shadow: 0 0 10px black;
+    background-color: white;
+}
+
+.divfondoiniciodesesion3 {
     justify-content: center;
     background-color: rgb(44, 44, 44);
     color: white;
     margin-bottom: 13px;
     margin-top: 13px;
     padding: 1rem;
-    border-radius: 1rem 0 0 1rem;
+    border-radius: 0 1rem 1rem 0;
 }
 
 .bienvenidodenuevoiniciodesesion {
     font-size: 2rem;
     margin-top: 2rem;
+    color: white;
 }
-
+.textoiniciarsesion {
+    color: black;
+    font-size: 2.5rem;
+    margin-top: 4rem;
+}
 .logosiniciodesesion {
     width: 12rem;
 }
 
 .divgridpadreiniciodesesion {
-    display: grid;
-    grid-template-columns: repeat(2, 3rem); 
+    display: flex;
     gap: 1rem;
     justify-content: center; 
     margin: 1rem 0;
