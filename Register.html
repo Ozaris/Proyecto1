@@ -223,23 +223,24 @@
                     <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
                     <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
                 </div>
-                <input type="text" placeholder="Nombre de empresa">
+                <input type="text" placeholder="Nombre">
                 <input type="email" placeholder="Email">
                 <input type="password" placeholder="Password">
                 <button>Registrarme</button>
             </form>
         </div>
         <div class="formulario-container register-in">
-            <form>
+            <form action="RF_registro_usr.php" method="post">
                 <h1>Crea tu cuenta</h1>
                 <h1>como cliente</h1>
                 <div class="redes">
                     <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
                     <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
                 </div>
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Password">
-                <button>Registrarme</button>
+                <input type="text" placeholder="Nombre" id="nombre_p" name="nombre_p">
+                <input type="email" placeholder="Email" id="email" name="email">
+                <input type="password" placeholder="Password" id="pass" name="pass">
+                <button value="envio" name ="envio">Registrarme</button>
             </form>
         </div>
         <div class="desplazamiento-container">
