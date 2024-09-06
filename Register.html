@@ -90,31 +90,31 @@
             outline: none;
         }
         
-        .form-container{
+        .formulario-con{
             position: absolute;
             top: 0;
             height: 100%;
             transition: all 0.6s ease-in-out;
         }
         
-        .sign-in{
+        .register-in{
             left: 0;
             width: 50%;
             z-index: 2;
         }
         
-        .container.active .sign-in{
+        .container.active .register-in{
             transform: translateX(100%);
         }
         
-        .sign-up{
+        .register-up{
             left: 0;
             width: 50%;
             opacity: 0;
             z-index: 1;
         }
         
-        .container.active .sign-up{
+        .container.active .register-up{
             transform: translateX(100%);
             opacity: 1;
             z-index: 5;
@@ -132,11 +132,11 @@
             }
         }
         
-        .social-icons{
+        .iconosregister{
             margin: 20px 0;
         }
         
-        .social-icons a{
+        .iconosregister a{
             border: 1px solid #ccc;
             border-radius: 20%;
             display: inline-flex;
@@ -147,7 +147,7 @@
             height: 40px;
         }
         
-        .toggle-container{
+        .container-derecha{
             position: absolute;
             top: 0;
             left: 50%;
@@ -159,11 +159,11 @@
             z-index: 1000;
         }
         
-        .container.active .toggle-container{
+        .container.active .container-derecha{
             transform: translateX(-100%);
         }
         
-        .toggle{
+        .divderecha{
             background-color: #512da8;
             height: 100%;
             background: linear-gradient(to right, #5c6bc0, #512da8);
@@ -176,11 +176,11 @@
             transition: all 0.6s ease-in-out;
         }
         
-        .container.active .toggle{
+        .container.active .divderecha{
             transform: translateX(50%);
         }
         
-        .toggle-panel{
+        .divderecha-panel{
             position: absolute;
             width: 50%;
             height: 100%;
@@ -195,20 +195,20 @@
             transition: all 0.6s ease-in-out;
         }
         
-        .toggle-left{
+        .container-izquierda{
             transform: translateX(-200%);
         }
         
-        .container.active .toggle-left{
+        .container.active .container-izquierda{
             transform: translateX(0);
         }
         
-        .toggle-right{
+        .container-derecha{
             right: 0;
             transform: translateX(0);
         }
         
-        .container.active .toggle-right{
+        .container.active .container-izquierda{
             transform: translateX(200%);
         }</style>
     <title>Modern Login Page | AsmrProg</title>
@@ -217,10 +217,10 @@
 <body>
 
     <div class="container" id="container">
-        <div class="form-container sign-up">
+        <div class="formulario-con register-up">
             <form>
                 <h1>Create Account</h1>
-                <div class="social-icons">
+                <div class="iconosregister">
                     <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
                     <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
                     <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
@@ -233,10 +233,10 @@
                 <button>Sign Up</button>
             </form>
         </div>
-        <div class="form-container sign-in">
+        <div class="formulario-con register-in">
             <form>
                 <h1>Sign In</h1>
-                <div class="social-icons">
+                <div class="iconosregister">
                     <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
                     <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
                     <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
@@ -249,14 +249,14 @@
                 <button>Sign In</button>
             </form>
         </div>
-        <div class="toggle-container">
-            <div class="toggle">
-                <div class="toggle-panel toggle-left">
+        <div class="container-derecha">
+            <div class="divderecha">
+                <div class="divderecha-panel container-izquierda">
                     <h1>Welcome Back!</h1>
                     <p>Enter your personal details to use all of site features</p>
                     <button class="hidden" id="login">Sign In</button>
                 </div>
-                <div class="toggle-panel toggle-right">
+                <div class="divderecha-panel container-derecha">
                     <h1>Hello, Friend!</h1>
                     <p>Register with your personal details to use all of site features</p>
                     <button class="hidden" id="register">Sign Up</button>
