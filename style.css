@@ -2291,7 +2291,7 @@ footer{
 
 .redes a{
     border: 1px solid #ccc;
-    border-radius: 20%;
+    border-radius: 50%;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -2362,6 +2362,19 @@ footer{
 
 .container.active .desplazamiento-derecha{
     transform: translateX(200%);
+}
+
+.botonatrasregister {
+    position: fixed;
+    top: 40px;
+    left: 40px;
+    background-color: transparent;
+    color: #303030;
+    z-index: 30;
+    border: none;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 /*----------------------------Fin de Register--------------------------------*/

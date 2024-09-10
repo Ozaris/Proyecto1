@@ -1,15 +1,8 @@
 const nav = document.querySelector("#nav");
 const abrir = document.querySelector("#abrir");
 const cerrar = document.querySelector("#cerrar");
-const body = document.querySelector("Body")
+const body = document.querySelector("Body");
 
-registrarempresa.addEventListener('click', () => {
-    container.classList.add("active");
-});
-
-registrarcliente.addEventListener('click', () => {
-    container.classList.remove("active");
-});
 
 abrir.addEventListener("click", () => {
     nav.classList.add("visible");
