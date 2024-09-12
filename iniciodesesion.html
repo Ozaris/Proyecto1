@@ -3,46 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio - Ozaris</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <title>Register</title>
 </head>
-<body class="bodyiniciodesesion">
-    <div class="divfondoiniciodesesion1">
-        <div class="divfondoiniciodesesion2">
-            <p class="textoiniciarsesion">Iniciar sesion</p>
-            <div class="divgridpadreregistro">
-                <a class="botoniniciodesesion1" href="#"><img class="googlelogo" src="Imagenes/Google.png" alt=""></a>
-                <a class="botoniniciodesesion2" href="#"><i class="fa-brands facebooklogo fa-facebook"></i></a>
-            </div>
-            <form class="fromregister" action="RF_registro_usr.php" method="POST">
-                <div class="input-container">
-                    <input class="input1iniciodesesion" type="text" placeholder="Nombre" name="nombre_p" id="nombre_p"/>
-                    <span id="icon">
-                        <i class="fa-regular fa-user"></i>
-                    </span>
-                </div>
-                <div class="input-container">
-                    <input class="input2iniciodesesion" type="text" placeholder="Email" name="email" id="email"/>
-                    <span id="icon">
-                        <i class="fa-regular fa-envelope"></i>
-                    </span>
-                </div>
-                <div class="input-container">
-                    <input class="input3iniciodesesion" type="password" placeholder="Contraseña" name="pass" id="pass"/>
-                    <span id="icon">
-                        <i class="fa-solid fa-lock"></i>
-                    </span>
-                </div>
-                <input class="botoniniciodesesion4" type="submit" value="Iniciar sesion" name="envio">
-            </form>
+<body class="bodyiniciosesion">
+    
+    <div class="containeriniciosesion">
+
+        <div class="containerleftiniciosesion">
+                <form class="frominiciosesion">
+                    <h1>Inicio de Sesion</h1>
+                    <div class="redesiniciosesion">
+                        <a href="#" class="redesainiciosesion"><i class="fa-brands fa-google-plus-g"></i></a>
+                        <a href="#" class="redesainiciosesion"><i class="fa-brands fa-facebook-f"></i></a>
+                    </div>
+                    <input class="inputiniciosesion" type="email" placeholder="Email">
+                    <input class="inputiniciosesion" type="password" placeholder="Password">
+                    <button class="botoniniciosesion" value="envio" name ="envio">Iniciar Sesion</button>
+                </form>
+                <a href="index.html" class="botonatrasiniciosesion"> <i class="fa-solid fa-1x fa-arrow-left"></i> </a>
         </div>
-        <div class="divfondoiniciodesesion3">
-            <img class="logosiniciodesesion" src="Imagenes/Logosblanco.png" alt="img">
-            <p class="bienvenidodenuevoiniciodesesion">¡Bienvenido de nuevo!</p>
-            <a class="botoniniciodesesion3" href="#">Empresa</a>
-            
+        <div class="containerrightiniciosesion">
+            <img class="logosderegister" src="Imagenes/Logosblanco.png" alt="img">
+                    <h1 class="h1iniciosesion">Hola de nuevo</h1>
+                    <h1 class="h1iniciosesion">OZARIS te espera</h1>
+                    <p class="piniciosesion">¿No tienes una cuenta? Da click en el boton</p>
+                    <a href="Register.html"><button class="botonregistrarmeiniciosesion">Registrarme</button></a>
         </div>
+
     </div>
+
+    <script src="appregister.js"></script>
 </body>
 </html>

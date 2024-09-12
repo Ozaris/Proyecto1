@@ -218,7 +218,7 @@ body.no-scroll {
     overflow: hidden;
     width: 768px;
     max-width: 100%;
-    min-height: 500px;
+    min-height: 520px;
 }
 
 .logosderegister {
@@ -285,6 +285,8 @@ body.no-scroll {
     top: 0;
     height: 100%;
     transition: all 0.6s ease-in-out;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
 }
 
 .register-cli{
@@ -416,192 +418,131 @@ body.no-scroll {
 
 /*----------------------------Inicio de sesion--------------------------------*/
 
-.bodyiniciodesesion {
-    margin: 0;
-    overflow: hidden; 
+.bodyiniciosesion{
     background-image: url(Imagenes/FONDOREGISTER.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    background-attachment: fixed; 
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 100vh; 
-}
-
-.divfondoiniciodesesion1 {
-    display: flex;
-    width: 100%;
-    max-width: 900px; 
-    background-color: none;
-}
-
-.divfondoiniciodesesion2, .divfondoiniciodesesion3 {
-    display: flex;
+    justify-content: center;
     flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 600px; 
-    box-shadow: 0 0 10px black;
-    background-color: rgb(44, 44, 44);
+    height: 100vh;
 }
 
-.divfondoiniciodesesion2 {
+.containeriniciosesion {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35)
+}
+
+.containerleftiniciosesion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 600px; 
-    box-shadow: 0 0 10px black;
     background-color: white;
+    padding: 3rem;
 }
 
-.divfondoiniciodesesion3 {
+.containerrightiniciosesion {
+    display: flex;
     justify-content: center;
-    background-color: rgb(44, 44, 44);
-    color: white;
-    margin-bottom: 13px;
-    margin-top: 13px;
-    padding: 1rem;
-    border-radius: 0 1rem 1rem 0;
-}
-
-.bienvenidodenuevoiniciodesesion {
-    font-size: 2rem;
-    margin-top: 2rem;
-    color: white;
-}
-.textoiniciarsesion {
-    color: black;
-    font-size: 2.5rem;
-    margin-top: 4rem;
-}
-.logosiniciodesesion {
-    width: 12rem;
-}
-
-.divgridpadreiniciodesesion {
-    display: flex;
-    gap: 1rem;
-    justify-content: center; 
-    margin: 1rem 0;
-}
-
-.botoniniciodesesion1, .botoniniciodesesion2 {
-    display: flex;
     align-items: center;
+    flex-direction: column;
+    background-color: #333;
+    padding: 2rem;
+    height: 100%;
+}
+
+.frominiciosesion {
+    display: flex;
     justify-content: center;
-    background-color: white;
-    color: rgb(0, 0, 0);
-    border-radius: 50%; 
-    width: 3rem; 
-    height: 3rem; 
-    box-shadow: 2px 2px 2px black;
-    border: none;
-    text-align: center; 
-    line-height: 3rem; 
-    font-size: 1.5rem; 
+    align-items: center;
+    flex-direction: column;
 }
 
-.botoniniciodesesion2 {
-    background-color: #3b5998;
-    color: white;
+.redesiniciosesion{
+    margin: 20px 0;
 }
 
-.botoniniciodesesion3 {
-    display: inline-block;
-    border: 2px solid white;
-    padding: 10px;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    color: white;
-    font-weight: 500;
+.redesainiciosesion{
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 3px;
+    width: 40px;
+    height: 40px;
     text-decoration: none;
-    margin-top: 2rem;
+    color: #333;
 }
 
-.botoniniciodesesion3:hover {
-    transform: scale(1.1);
+.inputiniciosesion {
+    background-color: #eee;
+    border: none;
+    margin: 8px 0;
+    padding: 10px 15px;
+    font-size: 13px;
+    border-radius: 8px;
+    width: 100%;
+    outline: none;
 }
 
-.crearcuentainiciodesesion {
-    margin-top: 4rem;
-    font-size: 2.5rem;
-}
-
-.googlelogo, .facebooklogo {
-    width: 1.5rem;
-}
-
-.input-container {
-    position: relative;
-    max-width: 100%;
+.botoniniciosesion {
+    background-color: #303030;
+    color: #fff;
+    font-size: 12px;
+    padding: 10px 45px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    cursor: pointer;
     margin-bottom: 1rem;
 }
 
-.input1iniciodesesion, .input2iniciodesesion, .input3iniciodesesion {
-    padding: 13px;
-    padding-left: 3rem;
-    box-shadow: 2px 2px 5px black;
-    border-radius: 0.2rem;
-    border: none;
-    width: 100%;
-}
-
-.input-container input {
-    padding-left: 2.5rem;
-}
-
-#icon {
-    position: absolute;
-    top: 50%;
-    left: 0.75rem;
-    transform: translateY(-50%);
-    color: gray;
-    pointer-events: none;
-}
-
-.botoniniciodesesion4 {
-    display: inline-block;
-    background-color: #66a6e6;
-    padding: 12px;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    color: white;
-    font-weight: 500;
-    text-decoration: none;
-    border-radius: 2rem;
-    margin-bottom: 2.5rem;
-    margin-top: 1rem;
-    border: none;
-}
-
-.botoniniciodesesion4:hover {
-    transform: scale(1.1);
-    cursor: pointer;
-}
-
-.frominiciodesesion {
-    display: flex;
-    flex-direction: column;
+.botonatrasiniciosesion {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    display: inline-flex;
+    justify-content: center;
     align-items: center;
+    margin: 0 3px;
+    width: 40px;
+    height: 40px;
+    text-decoration: none;
+    color: #333;
 }
 
-@media (max-width: 768px) {
-    .divfondoiniciodesesion1 {
-        padding: 3rem 1rem;
-    }
-
-    .divfondoiniciodesesion2, .divfondoiniciodesesion3 {
-        width: 100%;
-    }
-
-    .divgridpadreiniciodesesion {
-        grid-template-columns: 1fr; 
-        gap: 1rem;
-    }
+.botonregistrarmeiniciosesion {
+    background-color: transparent;
+    color: white;
+    font-size: 12px;
+    padding: 10px 45px;
+    border: 2px solid white;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    cursor: pointer;
+    margin-bottom: 1rem;
 }
 
+.h1iniciosesion {
+    color: white;
+}
+
+.piniciosesion {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: white;
+}
 
 /*----------------------------Fin inicio de sesion--------------------------------*/
 
