@@ -3,7 +3,6 @@ const abrir = document.querySelector("#abrir");
 const cerrar = document.querySelector("#cerrar");
 const body = document.querySelector("Body");
 
-
 abrir.addEventListener("click", () => {
     nav.classList.add("visible");
     body.classList.add("no-scroll");
