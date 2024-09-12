@@ -200,220 +200,216 @@ body.no-scroll {
 
 /*----------------------------Register--------------------------------*/
 
-.bodyregister {
-    margin: 0;
-    overflow: hidden; 
+.bodyregister{
     background-image: url(Imagenes/FONDOREGISTER.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    background-attachment: fixed; 
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 100vh; 
-}
-
-.divfondoregister1 {
-    display: flex;
-    width: 100%;
-    max-width: 900px; 
-    background-color: none;
-}
-
-.divfondoregister2, .divfondoregister3 {
-    display: flex;
+    justify-content: center;
     flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 600px; 
-    box-shadow: 0 0 10px black;
-    background-color: white;
+    height: 100vh;
 }
 
-.divfondoregister2 {
-    justify-content: center;
-    background-color: rgb(44, 44, 44);
-    color: white;
-    margin-bottom: 13px;
-    margin-top: 13px;
-    padding: 1rem;
-    border-radius: 1rem 0 0 1rem;
-}
-
-.bienvenidodenuevoregistro {
-    font-size: 2rem;
-    margin-top: 2rem;
-}
-
-.logosregister {
-    width: 12rem;
-}
-
-.divgridpadreregistro {
-    display: flex;
-    gap: 1rem;
-    justify-content: center; 
-    margin: 1rem 0;
-}
-
-.botonregister1, .botonregister2 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    color: rgb(0, 0, 0);
-    border-radius: 50%; 
-    width: 3rem; 
-    height: 3rem; 
-    box-shadow: 2px 2px 2px black;
-    border: none;
-    text-align: center; 
-    line-height: 3rem; 
-    font-size: 1.5rem; 
-}
-
-.botonregister2 {
-    background-color: #3b5998;
-    color: white;
-}
-
-.botonregister3 {
-    display: inline-block;
-    border: 2px solid white;
-    padding: 10px;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    color: white;
-    font-weight: 500;
-    text-decoration: none;
-    margin-top: 2rem;
-}
-
-.botonregister3:hover {
-    transform: scale(1.1);
-}
-
-.crearcuentaregistro {
-    margin-top: 4rem;
-    font-size: 2.5rem;
-}
-
-.googlelogo, .facebooklogo {
-    width: 1.5rem;
-}
-
-.input-container {
+.container{
+    background-color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
     position: relative;
+    overflow: hidden;
+    width: 768px;
     max-width: 100%;
-    margin-bottom: 1rem;
+    min-height: 500px;
 }
 
-.input1register, .input2register, .input3register {
-    padding: 13px;
-    padding-left: 3rem;
-    box-shadow: 2px 2px 5px black;
-    border-radius: 0.2rem;
-    border: none;
-    width: 100%;
+.logosderegister {
+    margin-bottom: 10px;
+    max-width: 10rem;
 }
 
-.input-container input {
-    padding-left: 2.5rem;
+.container p{
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+    margin: 20px 0;
 }
 
-#icon {
-    position: absolute;
-    top: 50%;
-    left: 0.75rem;
-    transform: translateY(-50%);
-    color: gray;
-    pointer-events: none;
-}
-
-.botonregister4 {
-    display: inline-block;
-    background-color: #66a6e6;
-    padding: 12px;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    color: white;
-    font-weight: 500;
+.container a{
+    color: #333;
+    font-size: 13px;
     text-decoration: none;
-    border-radius: 2rem;
-    margin-bottom: 2.5rem;
-    margin-top: 1rem;
-    border: none;
+    margin: 15px 0 10px;
 }
 
-.botonregister4:hover {
-    transform: scale(1.1);
+.container button{
+    background-color: #303030;
+    color: #fff;
+    font-size: 12px;
+    padding: 10px 45px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 10px;
     cursor: pointer;
 }
 
-.fromregister {
+.container button.hidden{
+    background-color: transparent;
+    border-color: #fff;
+}
+
+.container form{
+    background-color: #fff;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    height: 100%;
 }
 
-@media (max-width: 768px) {
-    .divfondoregister1 {
-        padding: 3rem 1rem;
-    }
+.container input{
+    background-color: #eee;
+    border: none;
+    margin: 8px 0;
+    padding: 10px 15px;
+    font-size: 13px;
+    border-radius: 8px;
+    width: 100%;
+    outline: none;
+}
 
-    .divfondoregister2, .divfondoregister3 {
-        width: 100%;
-    }
+.formulario-container{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+}
 
-    .divgridpadreregistro {
-        grid-template-columns: 1fr; 
-        gap: 1rem;
+.register-cli{
+    left: 0;
+    width: 50%;
+    z-index: 2;
+}
+
+.container.active .register-cli{
+    transform: translateX(100%);
+}
+
+.register-em{
+    left: 0;
+    width: 50%;
+    opacity: 0;
+    z-index: 1;
+}
+
+.container.active .register-em .register-cli{
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    animation: move 0.6s;
+}
+
+@keyframes move{
+    0%, 49.99%{
+        opacity: 0;
+        z-index: 1;
+    }
+    50%, 100%{
+        opacity: 1;
+        z-index: 5;
     }
 }
-@media (max-height: 480px) {
-    .bodyregister {
-        margin: 0;
-        overflow: hidden; 
-        background-image: url(Imagenes/FONDOREGISTER.jpg);
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed; 
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh; 
-    }
+
+.redes{
+    margin: 20px 0;
 }
-@media (max-width: 960px) {
-    .divfondoregister1 {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: none;
-        padding-top: 4rem;
-        padding-bottom: 4rem;
-    }
 
-    .divfondoregister2 {
-        display: none;
-        justify-content: center;
-        background-color: rgb(44, 44, 44);
-        color: white;
-        
-        padding: 1rem;
-        border-radius: 1rem 0 0 1rem;
-    }
-    
+.redes a{
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 3px;
+    width: 40px;
+    height: 40px;
+}
 
-    .divfondoregister3 {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        max-width: 600px; 
-        box-shadow: 0 0 10px black;
-        background-color: white;
-    }
+.desplazamiento-container{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.6s ease-in-out;
+    z-index: 1000;
+}
+
+.container.active .desplazamiento-container{
+    transform: translateX(-100%);
+}
+
+.desplazamiento1{
+    background-color: #303030;
+    height: 100%;
+    background: linear-gradient(to right, #303030, #303030);
+    color: #fff;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+}
+
+.container.active .desplazamiento1{
+    transform: translateX(50%);
+}
+
+.desplazamiento{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 30px;
+    text-align: center;
+    top: 0;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+}
+
+.desplazamiento-izquierda{
+    transform: translateX(-200%);
+}
+
+.container.active .desplazamiento-izquierda{
+    transform: translateX(0);
+}
+
+.desplazamiento-derecha{
+    right: 0;
+    transform: translateX(0);
+}
+
+.container.active .desplazamiento-derecha{
+    transform: translateX(200%);
+}
+
+.botonatrasregister {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 3px;
+    width: 40px;
+    height: 40px;
 }
 
 /*----------------------------Fin de Register--------------------------------*/
@@ -2071,221 +2067,3 @@ footer{
 }
 
 /*----------------------------Fin de Informacion--------------------------------*/
-
-/*----------------------------Register--------------------------------*/
-
-.bodyregister{
-    background-image: url(Imagenes/FONDOREGISTER.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 100vh;
-}
-
-.container{
-    background-color: #fff;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
-    position: relative;
-    overflow: hidden;
-    width: 768px;
-    max-width: 100%;
-    min-height: 480px;
-}
-
-.logosderegister {
-    margin-bottom: 10px;
-    max-width: 10rem;
-}
-
-.container p{
-    font-size: 14px;
-    line-height: 20px;
-    letter-spacing: 0.3px;
-    margin: 20px 0;
-}
-
-.container a{
-    color: #333;
-    font-size: 13px;
-    text-decoration: none;
-    margin: 15px 0 10px;
-}
-
-.container button{
-    background-color: #303030;
-    color: #fff;
-    font-size: 12px;
-    padding: 10px 45px;
-    border: 1px solid transparent;
-    border-radius: 8px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    margin-top: 10px;
-    cursor: pointer;
-}
-
-.container button.hidden{
-    background-color: transparent;
-    border-color: #fff;
-}
-
-.container form{
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 0 40px;
-    height: 100%;
-}
-
-.container input{
-    background-color: #eee;
-    border: none;
-    margin: 8px 0;
-    padding: 10px 15px;
-    font-size: 13px;
-    border-radius: 8px;
-    width: 100%;
-    outline: none;
-}
-
-.formulario-container{
-    position: absolute;
-    top: 0;
-    height: 100%;
-    transition: all 0.6s ease-in-out;
-}
-
-.register-cli{
-    left: 0;
-    width: 50%;
-    z-index: 2;
-}
-
-.container.active .register-cli{
-    transform: translateX(100%);
-}
-
-.register-em{
-    left: 0;
-    width: 50%;
-    opacity: 0;
-    z-index: 1;
-}
-
-.container.active .register-em{
-    transform: translateX(100%);
-    opacity: 1;
-    z-index: 5;
-    animation: move 0.6s;
-}
-
-@keyframes move{
-    0%, 49.99%{
-        opacity: 0;
-        z-index: 1;
-    }
-    50%, 100%{
-        opacity: 1;
-        z-index: 5;
-    }
-}
-
-.redes{
-    margin: 20px 0;
-}
-
-.redes a{
-    border: 1px solid #ccc;
-    border-radius: 50%;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 3px;
-    width: 40px;
-    height: 40px;
-}
-
-.desplazamiento-container{
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 50%;
-    height: 100%;
-    overflow: hidden;
-    transition: all 0.6s ease-in-out;
-    z-index: 1000;
-}
-
-.container.active .desplazamiento-container{
-    transform: translateX(-100%);
-}
-
-.desplazamiento1{
-    background-color: #303030;
-    height: 100%;
-    background: linear-gradient(to right, #303030, #303030);
-    color: #fff;
-    position: relative;
-    left: -100%;
-    height: 100%;
-    width: 200%;
-    transform: translateX(0);
-    transition: all 0.6s ease-in-out;
-}
-
-.container.active .desplazamiento1{
-    transform: translateX(50%);
-}
-
-.desplazamiento{
-    position: absolute;
-    width: 50%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 0 30px;
-    text-align: center;
-    top: 0;
-    transform: translateX(0);
-    transition: all 0.6s ease-in-out;
-}
-
-.desplazamiento-izquierda{
-    transform: translateX(-200%);
-}
-
-.container.active .desplazamiento-izquierda{
-    transform: translateX(0);
-}
-
-.desplazamiento-derecha{
-    right: 0;
-    transform: translateX(0);
-}
-
-.container.active .desplazamiento-derecha{
-    transform: translateX(200%);
-}
-
-.botonatrasregister {
-    position: fixed;
-    top: 40px;
-    left: 40px;
-    background-color: transparent;
-    color: #303030;
-    z-index: 30;
-    border: none;
-    border-radius: 50%;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-/*----------------------------Fin de Register--------------------------------*/
