@@ -24,7 +24,7 @@ function logear($con, $email, $pass) {
         $fila = mysqli_fetch_assoc($resultado_login);
 
         //asigno en una variable el campo pass de la BD...
-        $password_bd = $fila["pass"];
+        $password_bd = $fila["contrasenia"];
 
         //uso la funcion password_verify para comparar lo que ingresa el usuario con lo que tengo en la BD.
         if (password_verify($pass, $password_bd)) {
