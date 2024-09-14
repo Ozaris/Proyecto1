@@ -2127,7 +2127,7 @@ footer{
     transition: opacity 0.3s ease;
 }
 
-.imagenperfil-container {
+.imagenperfilcontainer {
     position: relative;
     display: inline-block;
 }
@@ -2148,7 +2148,7 @@ footer{
     pointer-events: none; 
 }
 
-.imagenperfil-container:hover .editaricono {
+.imagenperfilcontainer:hover .editaricono {
     display: block;
 }
 
