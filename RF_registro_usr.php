@@ -93,6 +93,7 @@ function consultar_datos($con) {
     // Si se encuentra algún registro de la consulta
     if (mysqli_num_rows($resultado) > 0) {
         // Mientras haya registros
+        header("Location: iniciodesesion.html");
         while ($fila = mysqli_fetch_assoc($resultado)) {
             $salida .= "id: " . $fila["Id_per"] . " - Nombre: " . $fila["nombre_p"] . " - Email: " . $fila["email"] . "<br> <hr>";
         }
@@ -101,6 +102,7 @@ function consultar_datos($con) {
     }
 
     return $salida;
+    header("Location: index.html");
 }
 
 mysqli_close($con);

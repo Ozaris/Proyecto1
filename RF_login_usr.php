@@ -1,5 +1,5 @@
 <?php require("conexion.php");
-
+include "iniciodesesion.html";
 $con = conectar_bd();
 
 if (isset($_POST["envio-in"])) {
@@ -11,11 +11,11 @@ if (isset($_POST["envio-in"])) {
     logear($con, $email, $contrasenia);
 }
 
-function logear($con, $email, $contrasenia) {
+function logear($con, $email, $contrasenia  ) {
 
     session_start();
 
-    $consulta_login = "SELECT * FROM persona WHERE email= '$email'";
+    $consulta_login = "SELECT * FROM usuario WHERE email= '$email'";
     $resultado_login = mysqli_query($con, $consulta_login);
 
     if (mysqli_num_rows($resultado_login) > 0) {
@@ -28,16 +28,14 @@ function logear($con, $email, $contrasenia) {
 
         //uso la funcion password_verify para comparar lo que ingresa el usuario con lo que tengo en la BD.
         if (password_verify($contrasenia, $password_bd)) {
-            
+      
             //si todo es correcto inicio la sesion y redirijo a la pagina del usuario logueado
             $_SESSION["email"] = $email;
             header("Location: index.html");
             exit();
-        } }else {
+        } else {
+
             echo "Contraseña incorrecta";
         }
     }
-
-
-
-?>
+}
