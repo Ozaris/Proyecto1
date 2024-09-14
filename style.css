@@ -2008,3 +2008,148 @@ footer{
 }
 
 /*----------------------------Fin de Informacion--------------------------------*/
+
+/*----------------------------Perfil--------------------------------*/
+
+.divcolorperfil {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background: linear-gradient(#333, transparent);
+}
+
+.divcolorperfil2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 80%;
+    height: 17rem;
+    background-color: #333;
+    border-radius: 0 0 1rem 1rem;
+}
+
+.iconoatrasperfil {
+    position: absolute;
+    bottom: 14rem;
+    left: 2rem;
+    color: white;
+    cursor: pointer;
+}
+
+.iconoeditar1perfil {
+    position: absolute;
+    color: white;
+    bottom: 1rem;
+    left: 1rem;
+}
+
+.iconoeditar2perfil {
+    border: none;
+    color: #333;
+    background-color: transparent;
+}
+
+.iconoeditar3perfil {
+    border: none;
+    color: #333;
+    background-color: transparent;
+}
+
+.divnombreperfil {
+    display: flex;
+    gap: 10px;
+}
+
+.divdescripperfil {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+}
+
+.p1perfil {
+    margin: 0;
+}
+
+.cerrarsesionperfil {
+    text-decoration: none;
+    color: white;
+    position: absolute;
+    bottom: 14rem;
+    right: 2rem;
+    cursor: pointer;
+}
+
+.divfotoperfil {
+    display: flex;
+    width: 180px;
+    height: 180px;
+    justify-content: center;
+    align-items: center;
+    border: 10px solid white;
+    background-color: #ccc;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -40px;
+    box-shadow: 0 0 13px #333;
+    overflow: hidden;
+}
+
+.bodydelperfil {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.divinformacionperfil {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 1rem;
+    padding: 1rem;
+    padding-top: 2rem;
+    width: 75%;
+    border-radius: 1rem;
+    box-shadow: 0 0 13px #333;
+    text-align: center;
+}
+
+.imagenperfil {
+    width: 100%;
+    position: relative;
+    border-radius: 50%;
+    transition: opacity 0.3s ease;
+}
+
+.imagenperfil-container {
+    position: relative;
+    display: inline-block;
+}
+
+.imagenperfil:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.editaricono {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: #fff;
+    display: none;
+    pointer-events: none; 
+}
+
+.imagenperfil-container:hover .editaricono {
+    display: block;
+}
+
+/*----------------------------Fin de Perfil--------------------------------*/
