@@ -7,11 +7,6 @@ if(!isset($_SESSION['email'])){
 ?>
 
 
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,7 +50,7 @@ if(!isset($_SESSION['email'])){
 
         <div class="divinformacionperfil">
 
-            <div class="divnombreperfil"><h1>Nombre</h1>
+            <div class="divnombreperfil">
                 <div class="btn-group">
                     <button type="button" class="iconoeditar2perfil" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                         <i class="fa-solid fa-1x fa-pen-to-square"></i>
@@ -74,10 +69,10 @@ if(!isset($_SESSION['email'])){
                         </div>
                     </ul>
                 </div>
+                <h1>Nombre</h1>
             </div>
 
             <div class="divdescripperfil">
-                <p class="p1perfil">Descripción </p>
                 <div class="btn-group">
                     <button type="button" class="iconoeditar3perfil" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                         <i class="fa-solid fa-1x fa-pen-to-square"></i>
@@ -96,18 +91,31 @@ if(!isset($_SESSION['email'])){
                         </div>
                     </ul>
                 </div>
+                <p class="p1perfil">Descripción </p>
                 
             </div>
         </div>
 
         <div class="divinformacion2perfil">
-            <h2>Privado</h2>
-            <div class="divmailperfil"><i class="fa-regular fa-2x fa-envelope"></i><h3 class="p2perfil">nombre@gmail.com </h3><button class="iconoeditar3perfil"><i class="fa-solid fa-pen-to-square"></i></button></div>
-            <div class="divcontraperfil"><i class="fa-solid fa-2x fa-lock"></i><p class="p2perfil">************** </p><button class="iconoeditar3perfil"><i class="fa-solid fa-pen-to-square"></i></button></div>
+            <h2>Privado <i class="fa-solid fa-1x fa-lock"></i></h2> 
+            <div class="divmailperfil"><button class="iconoeditar3perfil"><i class="fa-solid fa-pen-to-square"></i></button><h3 class="p2perfil">nombre@gmail.com </h3></div>
+            <div class="divcontraperfil"><button class="iconoeditar3perfil"><i class="fa-solid fa-pen-to-square"></i></button><p class="p2perfil">************** </p></div>
 
 
         </div>
     </div>
+
+
+
+        <div class="divcolorperfil22">
+
+            <div class="divcolorperfil23">
+                <img class="logosperfil" src="Imagenes/Logosblanco.png" alt="img">
+                <a class="h3perfil" href="contacto.html">Soporte <i class="fa-solid fa-headset"></i></a>
+                <p class="pfooterperfil">Recuerda que todos tus datos están protegidos.</p>
+            </div>
+
+        </div>
 
 </body>
 </html>
