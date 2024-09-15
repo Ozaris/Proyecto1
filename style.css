@@ -2208,6 +2208,9 @@ footer{
     flex-direction: column;
     margin-top: 1rem;
     padding-top: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 1rem;
     width: 75%;
     border-radius: 1rem;
     box-shadow: 0 0 13px #333;
@@ -2314,7 +2317,9 @@ footer{
         align-items: center;
         flex-direction: column;
         margin-top: 1rem;
-        padding: 1rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        padding-bottom: 1rem;
         padding-top: 2rem;
         width: 100%;
         background-color: #ccc;
@@ -2329,7 +2334,8 @@ footer{
         align-items: center;
         flex-direction: column;
         margin-top: 1rem;
-        padding: 1rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
         width: 100%;
         background-color: #ccc;
         border-radius: 0;

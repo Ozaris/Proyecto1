@@ -63,7 +63,7 @@ if(!isset($_SESSION['email'])){
                                 </div>
                                 <div class="col-auto">
                                   <input type="nombre" id="inputPassword6" class="form-control form-control2" aria-describedby="passwordHelpInline">
-                                  <button class="BotonPublicarPerfil" value="envio">Publicar</button>
+                                  <button class="BotonPublicarPerfil" value="envio">Modificar</button>
                                 </div>
                               </div>
                         </div>
@@ -85,7 +85,7 @@ if(!isset($_SESSION['email'])){
                                 </div>
                                 <div class="col-auto">
                                   <input type="nombre" id="inputPassword6" class="form-control form-control2" aria-describedby="passwordHelpInline">
-                                  <button class="BotonPublicarPerfil" value="envio">Publicar</button>
+                                  <button class="BotonPublicarPerfil" value="envio">Modificar</button>
                                 </div>
                               </div>
                         </div>
@@ -98,8 +98,50 @@ if(!isset($_SESSION['email'])){
 
         <div class="divinformacion2perfil">
             <h2>Privado <i class="fa-solid fa-1x fa-lock"></i></h2> 
-            <div class="divmailperfil"><button class="iconoeditar3perfil"><i class="fa-solid fa-pen-to-square"></i></button><h3 class="p2perfil">nombre@gmail.com </h3></div>
-            <div class="divcontraperfil"><button class="iconoeditar3perfil"><i class="fa-solid fa-pen-to-square"></i></button><p class="p2perfil">************** </p></div>
+            <div class="divmailperfil">
+                <div class="btn-group">
+                    <button type="button" class="iconoeditar3perfil" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                        <i class="fa-solid fa-1x fa-pen-to-square"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <div class="mb-3">
+                            <div class="row g-3 align-items-center">
+                                <div class="col-auto">
+                                  <label for="inputPassword6" class="col-form-label">Editar Email</label>
+                                </div>
+                                <div class="col-auto">
+                                  <input type="nombre" id="inputPassword6" class="form-control form-control2" aria-describedby="passwordHelpInline">
+                                  <button class="BotonPublicarPerfil" value="envio">Modificar</button>
+                                </div>
+                              </div>
+                        </div>
+                    </ul>
+                </div>
+                <h3 class="p2perfil">nombre@gmail.com </h3>
+            </div>
+
+            <div class="divcontraperfil">
+                <div class="btn-group">
+                    <button type="button" class="iconoeditar3perfil" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                        <i class="fa-solid fa-1x fa-pen-to-square"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <div class="mb-3">
+                            <div class="row g-3 align-items-center">
+                                <div class="col-auto">
+                                  <label for="inputPassword6" class="col-form-label">Editar Contraseña</label>
+                                </div>
+                                <div class="col-auto">
+                                  <input type="nombre" id="inputPassword6" class="form-control form-control2" aria-describedby="passwordHelpInline">
+                                  <p>Importante: La contraseña debe tener menos de 8 caracteres</p>
+                                  <button class="BotonPublicarPerfil" value="envio">Modificar</button>
+                                </div>
+                              </div>
+                        </div>
+                    </ul>
+                </div>
+                <p class="p2perfil">************** </p>
+            </div>
 
 
         </div>
