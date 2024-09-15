@@ -42,7 +42,7 @@
                 <li class="lismenu"><a class="psmenuinicio">|</a></li>
                 <li class="lismenu"><a class="asmenuinicio" href="iniciodesesion.html">Inicio de sesion</a></li>
                 <li class="lismenu"><a class="psmenuinicio">|</a></li>
-                <li class="lismenu"><a class="asmenuinicio" href="Perfil.html">Perfil</a></li>
+                <li class="lismenu"><a class="asmenuinicio" href="Perfil.php">Perfil</a></li>
             </ul>
         </nav>
     </header>

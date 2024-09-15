@@ -1,3 +1,17 @@
+<?php
+
+session_start();
+if(!isset($_SESSION['email'])){
+    header("Location: Perfil.php");
+}
+?>
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +28,7 @@
 
         <div class="divcolorperfil2">
             <a href="index.html"><i class="fa-solid fa-2x fa-arrow-left-long iconoatrasperfil"></i></a>
-            <a class="cerrarsesionperfil">Cerrar sesión</a>
+            <a class="cerrarsesionperfil" href="logout.php">Cerrar sesión</a>
             <button><i class="fa-solid fa-1x fa-pen-to-square iconoeditar1perfil"></i></button>
             <div class="divfotoperfil">
                 <div class="imagenperfilcontainer">

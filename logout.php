@@ -1,7 +1,8 @@
 <?php
 
 
+
 session_start();
 session_unset();
 session_destroy();
-header('Location: ingreso_login.php');
+header('Location: iniciodesesion.html');
