@@ -2049,6 +2049,59 @@ footer{
     left: 1rem;
 }
 
+.iconoeditarfotoperfil {
+    z-index: 2;
+    background-color: transparent;
+    border: none;
+    color: #333;
+    background-color: white;
+    border-radius: 50%;
+    padding: 10px;
+    padding-left: 14px;
+    padding-right: 14px;
+}
+
+.BotonPublicarPerfil {
+    background-color: #333;
+    color: #fff;
+    font-size: 12px;
+    padding: 10px 30px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    text-align: center;
+    background-color: rgb(255, 255, 255, 0.7);
+}
+
+.form-label {
+    margin-top: 1rem;
+}
+
+.iconomas {
+    cursor: pointer;
+}
+
+.form-control1 {
+    display: none;
+}
+
+.form-control2 {
+    display: flex;
+    border: 1px solid #333;
+}
+
+.col-auto {
+    width: 100%;
+    text-align: center;
+}
+
 .iconoeditar2perfil {
     border: none;
     color: #333;
@@ -2068,12 +2121,12 @@ footer{
 
 .divdescripperfil {
     display: flex;
-    width: 100%;
     justify-content: center;
     align-items: center;
+    width: 100%;
     text-align: center;
     padding: 1rem;
-
+    gap: 10px;
 }
 
 .p1perfil {
@@ -2118,7 +2171,6 @@ footer{
     align-items: center;
     flex-direction: column;
     margin-top: 1rem;
-    padding: 1rem;
     padding-top: 2rem;
     width: 75%;
     border-radius: 1rem;
@@ -2131,31 +2183,6 @@ footer{
     position: relative;
     border-radius: 50%;
     transition: opacity 0.3s ease;
-}
-
-.imagenperfilcontainer {
-    position: relative;
-    display: inline-block;
-}
-
-.imagenperfil:hover {
-    opacity: 0.5;
-    cursor: pointer;
-}
-
-.editaricono {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 24px;
-    color: #fff;
-    display: none;
-    pointer-events: none; 
-}
-
-.imagenperfilcontainer:hover .editaricono {
-    display: block;
 }
 
 .divinformacion2perfil {
