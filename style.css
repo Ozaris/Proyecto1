@@ -1931,7 +1931,7 @@ footer{
 .parte1infromacion {
     display: flex;
     flex-direction: column;
-    background-image: url(Imagenes/FondoInicio.png);
+    background-image: url(Imagenes/FONDOINFORMACION.jpeg);
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
@@ -1969,13 +1969,64 @@ footer{
     margin-bottom: 3rem;
 }
 
-.divdeFAQs {
-    width: 100%;
-    padding: 2rem;
-    border-bottom: 3px solid black;
+.imageninformacion {
+    width: 12rem;
 }
 
-.accordion-item {
+.TituloParte1 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    width: 25%;
+    height: 5rem;
+    background-color: #66a6e6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.h2TituloParte1 {
+    color: white;
+    text-align: center;
+    margin-bottom: 0;
+}
+.divinfologoproyecto {
+    display: flex;
+    width: 4rem;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+}
+.divinfologoempresa {
+    display: flex;
+    width: 3rem;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+}
+
+.divinformacion {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 2rem;
+}
+
+.divtextoinfo {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.divtextoinfonegrita {
+    font-weight: 600;
+}
+
+.divdeFAQs {
+    width: 100%;
+    padding: 3rem;
+    margin-bottom: 2rem;
+}
+
+.divpreguntas {
     box-shadow: 2px 2px 10px black;
 }
 
@@ -2005,6 +2056,25 @@ footer{
         margin-right: 1rem;
         margin-bottom: 3rem;
     }
+}
+@media (max-width: 1060px) { 
+    .TituloParte1 {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        width: 100%;
+        background-color: #66a6e6;
+    }
+
+    .p1Parte1 {
+        text-align: center;
+    }
+    
+    .p2Parte1 {
+        text-align: center;
+        font-weight: 700;
+    }
+
 }
 
 /*----------------------------Fin de Informacion--------------------------------*/
