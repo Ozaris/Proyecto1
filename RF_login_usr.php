@@ -31,6 +31,7 @@ function logear($con, $email, $contrasenia  ) {
       
             //si todo es correcto inicio la sesion y redirijo a la pagina del usuario logueado
             $_SESSION["email"] = $email;
+     
             header("Location: index.php");
             exit();
         } else {
