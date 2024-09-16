@@ -82,7 +82,11 @@ function consultar_existe_nom($con, $edit_nom_usr) {
     $consulta_existe_nom = "SELECT nombre_p FROM persona WHERE nombre_p = '$edit_nom_usr'";
     $resultado_existe_nom = mysqli_query($con, $consulta_existe_nom);
 
-    return mysqli_num_rows($resultado_existe_nom) > 0;
+    if (mysqli_num_rows($resultado_existe_nom) > 0) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 function actualizar($con, $edit_nom_usr, $nombre_p, $existe_nom) {
@@ -90,7 +94,7 @@ function actualizar($con, $edit_nom_usr, $nombre_p, $existe_nom) {
     $edit_nom_usr = mysqli_real_escape_string($con, $edit_nom_usr);
     $nombre_p = mysqli_real_escape_string($con, $nombre_p);
 
-    if (!$existe_nom) {
+    if ($existe_nom=false) {
         // Actualizar en la tabla persona
         $consulta_actualizar_persona = "UPDATE persona SET nombre_p = '$edit_nom_usr' WHERE nombre_p = '$nombre_p'";
         if (mysqli_query($con, $consulta_actualizar_persona)) {
