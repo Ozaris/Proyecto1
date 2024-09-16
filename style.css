@@ -1931,16 +1931,17 @@ footer{
 .parte1infromacion {
     display: flex;
     flex-direction: column;
-    background-image: url(Imagenes/FONDOINFORMACION.jpeg);
+    background-image: url(Imagenes/FONDOINFORMACION.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
+    height: 100vh;
     border-bottom: 3px solid black;
 }
 
 .logos2informacion {
     max-width: 12rem;
-    margin-top: 1rem;
+    margin-top: 5rem;
 }
 
 .logos2informaciondiv {
@@ -2009,15 +2010,18 @@ footer{
     width: 100%;
     padding-left: 15px;
     padding-right: 15px;
-    margin-top: 2rem;
 }
 
 .divtextoinfo {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 2rem;
+    padding-bottom: 10px;
 }
 
 .divtextoinfonegrita {
     font-weight: 600;
+    padding: 2rem;
+    padding-top: 0px;
 }
 
 .divdeFAQs {
