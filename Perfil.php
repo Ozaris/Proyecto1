@@ -136,7 +136,7 @@ function actualizar($con, $edit_nom_usr, $nombre_p, $existe_nom) {
     <div class="divcolorperfil">
 
         <div class="divcolorperfil2">
-            <a href="index.html"><i class="fa-solid fa-2x fa-arrow-left-long iconoatrasperfil"></i></a>
+            <a href="index.php"><i class="fa-solid fa-2x fa-arrow-left-long iconoatrasperfil"></i></a>
             <a class="cerrarsesionperfil" href="logout.php">Cerrar sesión</a>
             <button><i class="fa-solid fa-1x fa-pen-to-square iconoeditar1perfil"></i></button>
 

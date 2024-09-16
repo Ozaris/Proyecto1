@@ -18,13 +18,13 @@
 <!-- +++++++++++++++++++++++++++HEADER+++++++++++++++++++++++++++ --> 
 <div class="inicio1">
     <header class="headerinicio">
-        <a href="index.html"> <img class="logoinicio" src="Imagenes/logoproyecto.png" alt="Logo"></a>
+        <a href="index.php"> <img class="logoinicio" src="Imagenes/logoproyecto.png" alt="Logo"></a>
         <button id="abrir" class="abrirmenuinicio"><i class="fa-solid fa-bars"></i></button>
         <nav class="navheaderinicio" id="nav">
             <img class="logosheaderinicio" src="Imagenes/Logos.png" alt="img">
             <button class="cerrarmenuinicio" id="cerrar"><i class="fa-solid fa-x"></i></button>
             <ul class="navlistainicio">
-                <li class="lismenu"><a class="asmenuinicio" href="empresas.html">Empresas</a></li>
+                <li class="lismenu"><a class="asmenuinicio" href="empresas.php">Empresas</a></li>
                 <li class="lismenu"><a class="psmenuinicio">|</a></li>
                 <li class="lismenu"><a class="asmenuinicio" href="#">Servicios</a></li>
                 <li class="lismenu"><a class="psmenuinicio">|</a></li>
@@ -307,7 +307,7 @@
         <div class="divfooter">
             <nav class="navsfooter">
                 <p class="pfooter">General</p>
-                <a class="afooter aslinkcarta" href="empresas.html">Empresas</a>
+                <a class="afooter aslinkcarta" href="empresas.php">Empresas</a>
                 <a class="afooter aslinkcarta" href="#">Servicios</a>
                 <a class="afooter aslinkcarta" href="">Proximamente</a>
                 <a class="afooter aslinkcarta" href="">Proximamente</a>

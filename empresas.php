@@ -15,7 +15,7 @@
         <div id="sidebar-container" class="bg-primary">
             <div class="logoempresas">
                 
-                <form action="#" method="get">
+                <form action="#" method="post">
                     <input type="text" name="buscador" id="buscador" placeholder="Buscar">
                 </form>
 
@@ -41,18 +41,18 @@
             <div class="divparabotondesubir" id="headerempresas"></div>
 
             <div class="headermenuempresas">
-                <a href="index.html"> <img class="logo" src="Imagenes/logoproyecto.png" alt="Logo"></a>
+                <a href="index.php"> <img class="logo" src="Imagenes/logoproyecto.png" alt="Logo"></a>
                 <button class="abrirmenuempresas" id="abrir"><i class="fa-solid fa-bars"></i></button>
                 <nav class="navheader" id="nav">
                     <img class="logosheader" src="Imagenes/Logos.png" alt="img">
                     <button class="cerrarmenuempresas" id="cerrar"><i class="fa-solid fa-x"></i></button>
                     <ul class="navlista">
                         
-                        <li class="lismenu"><a class="asmenu" href="index.html">Inicio</a></li>
+                        <li class="lismenu"><a class="asmenu" href="index.php">Inicio</a></li>
                         <li class="lismenu"><a class="psmenu">|</a></li>
                         <li class="lismenu"><a class="asmenu" href="#">Servicios</a></li>
                         <li class="lismenu"><a class="psmenu">|</a></li>
-                        <li class="lismenu"><a class="asmenu" href="index.html#map">Ubicación</a></li>
+                        <li class="lismenu"><a class="asmenu" href="index.php#map">Ubicación</a></li>
                         <li class="lismenu"><a class="psmenu">|</a></li>
                         <li class="lismenu"><a class="asmenu" href="#">Contacto</a></li>
 

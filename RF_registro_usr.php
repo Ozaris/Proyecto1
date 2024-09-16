@@ -102,7 +102,7 @@ function consultar_datos($con) {
     }
 
     return $salida;
-    header("Location: index.html");
+    header("Location: index.php");
 }
 
 mysqli_close($con);
