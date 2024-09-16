@@ -35,9 +35,67 @@ if (isset($_POST["envio-edit-ft-usr"])) {
             $nombre_temporal = $archivo["tmp_name"];
             $nombre_archivo = basename($archivo["name"]); // Usa basename para evitar problemas con rutas
 
-            // Mueve el archivo a una carpeta específica en el servidor
+            // Define la ruta donde se moverá el archivo
             $ruta_destino = "img_usr/$nombre_archivo";
+            
+            // Mueve el archivo a la carpeta específica en el servidor
             if (move_uploaded_file($nombre_temporal, $ruta_destino)) {
+                
+                // Redimensionar la imagen a 800x800 píxeles
+                list($width, $height, $type) = getimagesize($ruta_destino);
+
+                // Definir el nuevo tamaño
+                $max_width = 800;
+                $max_height = 800;
+
+                // Calcular el nuevo tamaño manteniendo la relación de aspecto
+                $ratio = $width / $height;
+                if ($width > $height) {
+                    $new_width = $max_width;
+                    $new_height = $max_width / $ratio;
+                } else {
+                    $new_height = $max_height;
+                    $new_width = $max_height * $ratio;
+                }
+
+                // Crear una imagen en blanco para el redimensionamiento
+                $image_p = imagecreatetruecolor($new_width, $new_height);
+
+                // Crear la imagen a partir del archivo movido
+                switch ($type) {
+                    case IMAGETYPE_JPEG:
+                        $image = imagecreatefromjpeg($ruta_destino);
+                        break;
+                    case IMAGETYPE_PNG:
+                        $image = imagecreatefrompng($ruta_destino);
+                        break;
+                    case IMAGETYPE_GIF:
+                        $image = imagecreatefromgif($ruta_destino);
+                        break;
+                    default:
+                        throw new Exception("Tipo de imagen no soportado.");
+                }
+
+                // Redimensionar la imagen
+                imagecopyresampled($image_p, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
+
+                // Guardar la imagen redimensionada en la misma ubicación
+                switch ($type) {
+                    case IMAGETYPE_JPEG:
+                        imagejpeg($image_p, $ruta_destino);
+                        break;
+                    case IMAGETYPE_PNG:
+                        imagepng($image_p, $ruta_destino);
+                        break;
+                    case IMAGETYPE_GIF:
+                        imagegif($image_p, $ruta_destino);
+                        break;
+                }
+
+                // Limpiar
+                imagedestroy($image);
+                imagedestroy($image_p);
+
                 // Actualiza el nombre de la foto en la base de datos
                 $sql = "UPDATE usuario SET foto = ? WHERE email = ?";
                 $stmt = $con->prepare($sql);
@@ -61,6 +119,7 @@ if (isset($_POST["envio-edit-ft-usr"])) {
     }
 }
 
+// Muestra la foto en la página del perfil, o una imagen por defecto si no hay foto
 $picture_to_show = "img_usr/" . ($foto ?: 'default.png');
 
 /* ACTUALIZA EL NOMBRE DE USUARIO EN LA TABLA PERSONA Y USUARIO*/
