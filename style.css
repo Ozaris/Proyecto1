@@ -1927,6 +1927,14 @@ footer{
 }
 
 /*----------------------------Fin de Header Informacion--------------------------------*/
+.divinformacionprincipal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
 
 .parte1infromacion {
     display: flex;
@@ -1941,7 +1949,6 @@ footer{
 
 .logos2informacion {
     max-width: 12rem;
-    margin-top: 5rem;
 }
 
 .logos2informaciondiv {
@@ -2060,6 +2067,28 @@ footer{
         margin-right: 1rem;
         margin-bottom: 3rem;
     }
+}
+@media (max-width: 450px) {
+    .psparte1informacion {
+        text-align: center;
+        color: white;
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin-left: 4rem;
+        margin-right: 4rem;
+        margin-bottom: 5rem;
+    }
+    
+.parte1infromacion {
+    display: flex;
+    flex-direction: column;
+    background-image: url(Imagenes/FONDOINFORMACION.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: auto;
+    border-bottom: 3px solid black;
+}
 }
 @media (max-width: 1060px) { 
     .TituloParte1 {
