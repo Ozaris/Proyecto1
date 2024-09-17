@@ -45,8 +45,8 @@ if (isset($_POST["envio-edit-ft-usr"])) {
                 list($width, $height, $type) = getimagesize($ruta_destino);
 
                 // Definir el nuevo tamaño
-                $max_width = 800;
-                $max_height = 800;
+                $max_width = 1000;
+                $max_height = 1000;
 
                 // Calcular el nuevo tamaño manteniendo la relación de aspecto
                 $ratio = $width / $height;
@@ -153,7 +153,7 @@ function actualizar($con, $edit_nom_usr, $nombre_p, $existe_nom) {
     $edit_nom_usr = mysqli_real_escape_string($con, $edit_nom_usr);
     $nombre_p = mysqli_real_escape_string($con, $nombre_p);
 
-    if ($existe_nom=false) {
+    if ($existe_nom==false) {
         // Actualizar en la tabla persona
         $consulta_actualizar_persona = "UPDATE persona SET nombre_p = '$edit_nom_usr' WHERE nombre_p = '$nombre_p'";
         if (mysqli_query($con, $consulta_actualizar_persona)) {
