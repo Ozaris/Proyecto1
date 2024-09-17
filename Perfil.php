@@ -276,10 +276,21 @@ function actualizar($con, $edit_nom_usr, $nombre_p, $existe_nom) {
         </div>
         
         <div class="divinformacion2perfil">
-            <h2>Privado</h2>
-            <div class="divmailperfil"><i class="fa-regular fa-2x fa-envelope"></i><?php echo $email; ?><button class="iconoeditar3perfil"><i class="fa-solid fa-pen-to-square"></i></button></div>
-            <div class="divcontraperfil"><i class="fa-solid fa-2x fa-lock"></i><p class="p2perfil">************** </p><button class="iconoeditar3perfil"><i class="fa-solid fa-pen-to-square"></i></button></div>
+            <h2>Privado <i class="fa-solid fa-1x fa-lock"></i></h2>
+            <div class="divmailperfil"><?php echo $email; ?><button class="iconoeditar3perfil"><i class="fa-solid fa-pen-to-square"></i></button></div>
+            <div class="divcontraperfil"><p class="p2perfil">************** </p><button class="iconoeditar3perfil"><i class="fa-solid fa-pen-to-square"></i></button></div>
+            <button class="Boton2PublicarPerfil" type="submit" name="envio-edit-nom-usr">Eliminar cuenta</button>
         </div>
+    </div>
+
+    <div class="divcolorperfil22">
+
+        <div class="divcolorperfil23">
+            <img class="logosperfil" src="Imagenes/Logosblanco.png" alt="img">
+            <a class="h3perfil" href="contacto.html">Soporte <i class="fa-solid fa-headset"></i></a>
+            <p class="pfooterperfil">Recuerda que todos tus datos están protegidos.</p>
+        </div>
+
     </div>
 
 </body>

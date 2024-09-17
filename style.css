@@ -2185,6 +2185,25 @@ footer{
     cursor: pointer;
 }
 
+.Boton2PublicarPerfil {
+    background-color: #333;
+    color: #fff;
+    font-size: 12px;
+    padding: 10px 30px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 2rem;
+    cursor: pointer;
+}
+
+.Boton2PublicarPerfil:hover {
+    color: rgb(255, 88, 88);
+    transform: scale(1.1);
+}
+
 .dropdown-menu {
     text-align: center;
     background-color: rgb(255, 255, 255, 0.7);
@@ -2248,6 +2267,15 @@ footer{
     color: white;
     position: absolute;
     bottom: 14rem;
+    right: 2rem;
+    cursor: pointer;
+}
+
+.eliminarsesionperfil {
+    text-decoration: none;
+    color: white;
+    position: absolute;
+    bottom: 1rem;
     right: 2rem;
     cursor: pointer;
 }
