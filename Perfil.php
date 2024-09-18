@@ -174,6 +174,14 @@ function actualizar($con, $edit_nom_usr, $nombre_p, $existe_nom) {
 
 
 
+//ELIMINAR CUENTA
+
+if (isset($_POST["envio-elim-usr"])) {
+
+  
+ 
+
+}
 
 ?>
 
@@ -279,7 +287,9 @@ function actualizar($con, $edit_nom_usr, $nombre_p, $existe_nom) {
             <h2>Privado <i class="fa-solid fa-1x fa-lock"></i></h2>
             <div class="divmailperfil"><?php echo $email; ?><button class="iconoeditar3perfil"><i class="fa-solid fa-pen-to-square"></i></button></div>
             <div class="divcontraperfil"><p class="p2perfil">************** </p><button class="iconoeditar3perfil"><i class="fa-solid fa-pen-to-square"></i></button></div>
-            <button class="Boton2PublicarPerfil" type="submit" name="envio-edit-nom-usr">Eliminar cuenta</button>
+           <form action="Perfil.php" method="post">
+            <button class="Boton2PublicarPerfil" type="submit" name="envio-elim-usr">Eliminar cuenta</button>
+</form>
         </div>
     </div>
 
