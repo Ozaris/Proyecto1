@@ -591,12 +591,13 @@ body.no-scroll {
     transform: scale(1.1);
 }
 
-.parte2body{
+.parte2body {
     display: flex;
     justify-content: center;
     width: 100%;
     background-color: rgb(22, 22, 22);
     border-bottom: 5px solid #66a6e6;
+    min-height: 100px;
 }
 
 .parte2body2 {
