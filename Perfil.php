@@ -8,6 +8,8 @@ if (!isset($_SESSION['email'])) {
     exit(); 
 }
 
+//Convierte los datos en variables para posteriormente usarlos
+
 $email = $_SESSION['email'];
 $sql = "SELECT * FROM usuario WHERE email='$email'";
 $resultado = $con->query($sql);
@@ -28,8 +30,8 @@ if ($data = $resultado->fetch_assoc()) {
 
 if (isset($_POST["envio-edit-ft-usr"])) {
     try {
-        // Archivo subido
-        $archivo = $_FILES["foto_usr"];
+        
+        $archivo = $_FILES["foto_usr"]; // Toma el archivo subido
         
         if ($archivo["error"] === UPLOAD_ERR_OK) {
             $nombre_temporal = $archivo["tmp_name"];
@@ -44,7 +46,7 @@ if (isset($_POST["envio-edit-ft-usr"])) {
                 // Redimensionar la imagen a 800x800 píxeles
                 list($width, $height, $type) = getimagesize($ruta_destino);
 
-                // Definir el nuevo tamaño
+                // Definie un tamaño en específico
                 $max_width = 1000;
                 $max_height = 1000;
 
@@ -79,7 +81,7 @@ if (isset($_POST["envio-edit-ft-usr"])) {
                 // Redimensionar la imagen
                 imagecopyresampled($image_p, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
 
-                // Guardar la imagen redimensionada en la misma ubicación
+                // Guarda la imagen redimensionada en la misma ubicación
                 switch ($type) {
                     case IMAGETYPE_JPEG:
                         imagejpeg($image_p, $ruta_destino);
@@ -125,14 +127,10 @@ $picture_to_show = "img_usr/" . ($foto ?: 'default.png');
 /* ACTUALIZA EL NOMBRE DE USUARIO EN LA TABLA PERSONA Y USUARIO*/
 
 if (isset($_POST["envio-edit-nom-usr"])) {
-    // Obtener valores del formulario
     $edit_nom_usr = $_POST["edit_nom_usr"];
-    // Asegúrate de obtener el valor de $nombre_p
     $nombre_p = $data['nombre_p'];
-    // Consultar si el nombre ya existe
     $existe_nom = consultar_existe_nom($con, $edit_nom_usr);
 
-    // Actualizar la base de datos
     actualizar($con, $edit_nom_usr, $nombre_p, $existe_nom);
 }
 
@@ -149,15 +147,16 @@ function consultar_existe_nom($con, $edit_nom_usr) {
 }
 
 function actualizar($con, $edit_nom_usr, $nombre_p, $existe_nom) {
-    // Escapar los campos para evitar inyección SQL
+
     $edit_nom_usr = mysqli_real_escape_string($con, $edit_nom_usr);
     $nombre_p = mysqli_real_escape_string($con, $nombre_p);
 
     if ($existe_nom==false) {
-        // Actualizar en la tabla persona
+
         $consulta_actualizar_persona = "UPDATE persona SET nombre_p = '$edit_nom_usr' WHERE nombre_p = '$nombre_p'";
+
         if (mysqli_query($con, $consulta_actualizar_persona)) {
-            // Actualizar en la tabla usuario
+            
             $consulta_actualizar_usuario = "UPDATE usuario SET nombre_p = '$edit_nom_usr' WHERE nombre_p = '$nombre_p'";
             if (mysqli_query($con, $consulta_actualizar_usuario)) {
                
@@ -173,6 +172,47 @@ function actualizar($con, $edit_nom_usr, $nombre_p, $existe_nom) {
 }
 
 
+
+//ELIMINAR CUENTA
+
+if (isset($_POST["envio-elim-usr"])) {
+
+  
+    $envio_elim_usr = $_POST["envio-elim-usr"];
+    $nombre_p = $data['nombre_p'];
+
+    if ($envio_elim_usr == 'envio-elim-usr') {
+        elim($con, $nombre_p);
+    } else {
+        echo "No se puede eliminar el usuario";
+    }
+}
+
+function elim($con,$nombre_p) {
+    // Escapar los campos para evitar inyección SQL
+    
+
+        $nombre_p = mysqli_real_escape_string($con, $nombre_p);
+
+        $consulta_actualizar_persona = "DELETE FROM usuario WHERE nombre_p = '$nombre_p'";
+
+        if (mysqli_query($con, $consulta_actualizar_persona)) {
+            
+            $consulta_actualizar_usuario = "DELETE FROM persona WHERE nombre_p='$nombre_p'";
+            if (mysqli_query($con, $consulta_actualizar_usuario)) {
+                header("Location: iniciodesesion.html");
+                exit();
+            } else {
+                echo "Error al actualizar en usuario: " . mysqli_error($con);
+            }
+        } else {
+            echo "Error al actualizar en persona: " . mysqli_error($con);
+        }
+    }
+    
+    
+
+  
 
 
 ?>
@@ -257,16 +297,18 @@ function actualizar($con, $edit_nom_usr, $nombre_p, $existe_nom) {
                     <button type="button" class="iconoeditar3perfil" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                         <i class="fa-solid fa-1x fa-pen-to-square"></i>
                     </button>
-                    <form action="funciones_edit_usr.php" method="POST">
+                    
                     <ul class="dropdown-menu">
                         <div class="mb-3">
                             <div class="row g-3 align-items-center">
                                 <div class="col-auto">
+                                <form action="#" method="POST">
                                   <label for="inputPassword6" class="col-form-label">Editar Descripción</label>
                                 </div>
                                 <div class="col-auto">
                                   <input type="text" name="edit_desc" id="inputPassword6" class="form-control form-control2" aria-describedby="passwordHelpInline">
                                   <button class="BotonPublicarPerfil" type="submit" name="envio-edit-desc-usr">Publicar</button>
+                                  </form>
                                 </div>
                               </div>
                         </div>
@@ -279,7 +321,9 @@ function actualizar($con, $edit_nom_usr, $nombre_p, $existe_nom) {
             <h2>Privado <i class="fa-solid fa-1x fa-lock"></i></h2>
             <div class="divmailperfil"><?php echo $email; ?><button class="iconoeditar3perfil"><i class="fa-solid fa-pen-to-square"></i></button></div>
             <div class="divcontraperfil"><p class="p2perfil">************** </p><button class="iconoeditar3perfil"><i class="fa-solid fa-pen-to-square"></i></button></div>
-            <button class="Boton2PublicarPerfil" type="submit" name="envio-edit-nom-usr">Eliminar cuenta</button>
+           <form action="Perfil.php" method="post">
+            <button class="Boton2PublicarPerfil" type="submit" name="envio-elim-usr" value="envio-elim-usr">Eliminar cuenta</button>
+</form>
         </div>
     </div>
 

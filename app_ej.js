@@ -9,11 +9,11 @@ function consultar_en_tiempo_real(evento) {
     evento.preventDefault();
 
     // Obtener el ultimo valor del input
-    const nombre_usuario = document.getElementById("usuario").value;
+    const nombre_usuario = document.getElementById("busca").value;
 
     //se crea un objeto para tomar los valores del formulario
     const formData = new FormData();
-    formData.append('usuario', nombre_usuario);
+    formData.append('busca', nombre_usuario);
     formData.append('envio', true);
 
     // se le pasa al fetch el endpoint que genera la consulta de busqueda
