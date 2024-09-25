@@ -200,47 +200,79 @@ body.no-scroll {
 
 /*----------------------------Register--------------------------------*/
 
-.bodyregister{
+.bodyregister {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     background-image: url(Imagenes/FONDOREGISTER.jpg);
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+.divprinregister {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    border-radius: 3rem;
+    background-color: white;
+    box-shadow: 0 0 7px black;
+}
+
+.div1register {
+    display: flex;
+}
+
+.div1register2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
-    height: 100vh;
+    padding: 2rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
 }
 
-.container{
-    background-color: #fff;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
-    position: relative;
-    overflow: hidden;
-    width: 768px;
-    max-width: 100%;
-    min-height: 520px;
+.logosregister {
+    width: 7rem;
 }
 
-.logosderegister {
-    margin-bottom: 10px;
-    max-width: 10rem;
+.frominiciosesion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-.container p{
-    font-size: 14px;
-    line-height: 20px;
-    letter-spacing: 0.3px;
+.redesiniciosesion{
     margin: 20px 0;
 }
 
-.container a{
-    color: #333;
-    font-size: 13px;
+.redesainiciosesion{
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 3px;
+    width: 40px;
+    height: 40px;
     text-decoration: none;
-    margin: 15px 0 10px;
+    color: #333;
 }
 
-.container button{
+.inputiniciosesion {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    margin: 8px 0;
+    padding: 10px 15px;
+    font-size: 13px;
+    width: 100%;
+    outline: none;
+}
+
+.botoniniciosesion {
     background-color: #303030;
     color: #fff;
     font-size: 12px;
@@ -252,158 +284,10 @@ body.no-scroll {
     text-transform: uppercase;
     margin-top: 10px;
     cursor: pointer;
+    margin-bottom: 1rem;
 }
 
-.container button.hidden{
-    background-color: transparent;
-    border-color: #fff;
-}
-
-.container form{
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 0 40px;
-    height: 100%;
-}
-
-.container input{
-    background-color: #eee;
-    border: none;
-    margin: 8px 0;
-    padding: 10px 15px;
-    font-size: 13px;
-    border-radius: 8px;
-    width: 100%;
-    outline: none;
-}
-
-.formulario-container{
-    position: absolute;
-    top: 0;
-    height: 100%;
-    transition: all 0.6s ease-in-out;
-    padding-top: 2rem;
-    padding-bottom: 1rem;
-}
-
-.register-cli{
-    left: 0;
-    width: 50%;
-    z-index: 2;
-}
-
-.container.active .register-cli{
-    transform: translateX(100%);
-}
-
-.register-em{
-    left: 0;
-    width: 50%;
-    opacity: 0;
-    z-index: 1;
-}
-
-.container.active .register-em .register-cli{
-    transform: translateX(100%);
-    opacity: 1;
-    z-index: 5;
-    animation: move 0.6s;
-}
-
-@keyframes move{
-    0%, 49.99%{
-        opacity: 0;
-        z-index: 1;
-    }
-    50%, 100%{
-        opacity: 1;
-        z-index: 5;
-    }
-}
-
-.redes{
-    margin: 20px 0;
-}
-
-.redes a{
-    border: 1px solid #ccc;
-    border-radius: 50%;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 3px;
-    width: 40px;
-    height: 40px;
-}
-
-.desplazamiento-container{
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 50%;
-    height: 100%;
-    overflow: hidden;
-    transition: all 0.6s ease-in-out;
-    z-index: 1000;
-}
-
-.container.active .desplazamiento-container{
-    transform: translateX(-100%);
-}
-
-.desplazamiento1{
-    background-color: #303030;
-    height: 100%;
-    background: linear-gradient(to right, #303030, #303030);
-    color: #fff;
-    position: relative;
-    left: -100%;
-    height: 100%;
-    width: 200%;
-    transform: translateX(0);
-    transition: all 0.6s ease-in-out;
-}
-
-.container.active .desplazamiento1{
-    transform: translateX(50%);
-}
-
-.desplazamiento{
-    position: absolute;
-    width: 50%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 0 30px;
-    text-align: center;
-    top: 0;
-    transform: translateX(0);
-    transition: all 0.6s ease-in-out;
-}
-
-.desplazamiento-izquierda{
-    transform: translateX(-200%);
-}
-
-.container.active .desplazamiento-izquierda{
-    transform: translateX(0);
-}
-
-.desplazamiento-derecha{
-    right: 0;
-    transform: translateX(0);
-}
-
-.container.active .desplazamiento-derecha{
-    transform: translateX(200%);
-}
-
-.botonatrasregister {
+.botonatrasiniciosesion {
     border: 2px solid #ccc;
     border-radius: 10px;
     display: inline-flex;
@@ -412,6 +296,59 @@ body.no-scroll {
     margin: 0 3px;
     width: 40px;
     height: 40px;
+    text-decoration: none;
+    color: #333;
+}
+
+.botonregistrarmeiniciosesion {
+    background-color: transparent;
+    color: white;
+    font-size: 12px;
+    padding: 10px 45px;
+    border: 2px solid white;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+.h1iniciosesion {
+    color: white;
+}
+
+.piniciosesion {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.div2register2 {
+    border-radius: 1.5rem;
+    margin-right: 2rem;
+}
+
+.caruselregister {
+    width: 26rem;
+    height: 26rem;
+}
+
+.imagenregister {
+    height: 26rem;
+    border-radius: 1.5rem;
+}
+
+.carousel-inner {
+    border-radius: 1.5rem;
+}
+
+.aRecuperarcontraseña {
+    margin-top: 7px;
+    margin-bottom: 7px;
+    text-decoration: none;
+    color: #333;
 }
 
 /*----------------------------Fin de Register--------------------------------*/
