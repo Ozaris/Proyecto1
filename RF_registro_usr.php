@@ -11,13 +11,14 @@ if (isset($_POST["envio"])) {
     $nombre_p =  $_POST["nombre_p"];
     $email = $_POST["email"];
     $contrasenia = $_POST["pass"];
+    $rol=$_POST["usuario"];
    
     // Consultar si el usuario ya existe
     $existe_usr = consultar_existe_usr($con, $email);
     $existe_nom = consultar_existe_nom($con, $nombre_p);
 
     // Insertar datos si el usuario no existe
-    insertar_datos($con, $nombre_p,$email, $contrasenia, $existe_usr,$existe_nom);
+    insertar_datos($con, $nombre_p,$email, $contrasenia, $rol,$existe_usr,$existe_nom);
 
 }
 
@@ -50,7 +51,7 @@ function consultar_existe_nom($con, $nombre_p) {
 
 
 
-function insertar_datos($con, $nombre_p, $email, $contrasenia,$existe_nom,$existe_usr) {
+function insertar_datos($con, $nombre_p, $email, $contrasenia,$rol,$existe_nom,$existe_usr) {
     // Encripto la contraseña usando la función password_hash
 
     if ($existe_usr == false && $existe_nom == false){
@@ -59,7 +60,7 @@ function insertar_datos($con, $nombre_p, $email, $contrasenia,$existe_nom,$exist
     $contrasenia = password_hash($contrasenia, PASSWORD_DEFAULT);
 
     // Inserta en la tabla persona
-    $consulta_insertar_persona = "INSERT INTO persona (nombre_p, email, contrasenia) VALUES ('$nombre_p', '$email', '$contrasenia')";
+    $consulta_insertar_persona = "INSERT INTO persona (nombre_p, email, contrasenia,rol) VALUES ('$nombre_p', '$email', '$contrasenia','$rol')";
     
     if (mysqli_query($con, $consulta_insertar_persona)) {
         // Obtén el ID de la persona recién insertada
