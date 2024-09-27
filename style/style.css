@@ -370,7 +370,6 @@ body.no-scroll {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: red;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35)
 }
 
@@ -479,6 +478,10 @@ body.no-scroll {
     margin-top: 1rem;
     margin-bottom: 1rem;
     color: white;
+}
+
+.logosiniciodesesion {
+    width: 10rem;
 }
 
 /*----------------------------Fin inicio de sesion--------------------------------*/
