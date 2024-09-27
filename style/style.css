@@ -1553,12 +1553,18 @@ footer{
 
 /*----------------------------Body de empresas--------------------------------*/
 
+/*---------------------------- + Publicacion--------------------------------*/
+
+
+
+/*----------------------------Fin de + Publicacion--------------------------------*/
+
 .htmlempresas {
     height: 100%;
     margin: 0;
     padding: 0;
     overflow: hidden;
-} 
+}
 
 .bodyempresas {
     height: 100%;
