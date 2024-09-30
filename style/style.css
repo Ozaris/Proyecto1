@@ -1593,6 +1593,22 @@ footer{
     padding-left: 3rem;
 }
 
+.botonpublicar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    right: 1rem;
+    top: 13rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    gap: 5px;
+}
+
 /*----------------------------Fin de + Publicacion--------------------------------*/
 
 .htmlempresas {
@@ -1607,7 +1623,9 @@ footer{
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: white;
+    background-image: url(Imagenes/FONDOREGISTER.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .menuempresas {
@@ -1726,6 +1744,41 @@ footer{
     transform: scale(0.95);
 }
 
+.divrecomendacionesempresas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    margin-top: 3.3rem;
+}
+
+.div1recomendaciones {
+    display: flex;
+    margin-bottom: 6px;
+}
+
+.div2recomendaciones {
+    display: flex;
+}
+
+.cartaderecomendados {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    padding-bottom: 0;
+    border: 1px solid #333;
+    border-radius: 10px;
+    margin-left: 10xpx;
+    margin-right: 10px;
+}
+
+.logorecomendados {
+    width: 5rem;
+}
+
 @media (max-width: 768px) {
     #sidebar-container {
         display: none;
@@ -1737,7 +1790,7 @@ footer{
     }
 }
 
-/*----------------------------Body de empresas--------------------------------*/
+/*----------------------------Fin deBody de empresas--------------------------------*/
 
 /*----------------------------Fin de empresas--------------------------------*/
 
