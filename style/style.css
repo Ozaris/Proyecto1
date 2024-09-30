@@ -1560,14 +1560,14 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid #333;
 }
 .divsubirimagen {
     width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #333;
-    border-radius: 5px;
+    border-right: 1px solid #333;
     background-color: #cccccc4b;
 }
 .divsubirinformacion {
@@ -1576,13 +1576,21 @@ footer{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    border-top: 2px solid #333;
 }
 .iconomaspublicacion {
     margin-top: 12rem;
     margin-bottom: 12rem;
 }
 .textopublicacion {
+    margin: 1rem;
     
+}
+.btn-lgbotonpublicacion {
+    margin-top: 3rem;
+    padding: 10px;
+    padding-right: 3rem;
+    padding-left: 3rem;
 }
 
 /*----------------------------Fin de + Publicacion--------------------------------*/
