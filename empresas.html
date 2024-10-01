@@ -100,14 +100,16 @@ include "conexion.php";
 
                 <!-- +++++++++++++++++++++++++++BOTON PUBLICAR+++++++++++++++++++++++++++ -->
                 
-                <button type="button" class="botonpublicar" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    PUBLICAR <i class="fa-solid fa-1x fa-plus iconomasbotonpublicar"></i>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Launch demo modal
                 </button>
+                <!-- Modal -->
                  <div class="modal modal-xl fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Vista previa</h1>
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Publicar</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
@@ -117,13 +119,23 @@ include "conexion.php";
                                         <i class="fa-solid fa-2x fa-plus iconomaspublicacion"></i>
                                     </div>
                                     <div class="divsubirinformacion">
+                                        <div class="divdatosinformacion">
                                         <h3 class="textopublicacion">Titulo</h3>
                                         <h5 class="textopublicacion">Precio</h5>
                                         <h5 class="textopublicacion">Descripcion</h4>
-                                            <button type="button" class="btn btn-primary btn-lgbotonpublicacion">Large button</button>
-                                    </div>
-                                    
+                                        </div>
+                                        
+                                        <div class="divinformacionempresa">
+                                            <h4>Informacion de la empresa</h4>
+                                            <div class="divnombrempresapublicacion">
+                                                <img class="divfotopublicacion" src="Imagenes/GatoFotoPruebaPerfil.png" alt="img">
+                                                <h5 class="nombrempresapublicacion">Nombre de la empresa</h5>
+                                            </div>
+                                        </div>
+
+                                    <div class="divbotonpublicar"><button class="botonsubirpublicacion">Subir publicación</button></div>
                                 </div>
+                            </div>
                             </div>
                         </div>
                     </div>

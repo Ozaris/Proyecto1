@@ -1555,6 +1555,7 @@ footer{
 
 /*---------------------------- + Publicacion--------------------------------*/
 
+
 .divprincipalpublicacion {
     width: 100%;
     display: flex;
@@ -1576,37 +1577,97 @@ footer{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border-top: 2px solid #333;
+    text-align: left;
 }
 .iconomaspublicacion {
     margin-top: 12rem;
     margin-bottom: 12rem;
 }
 .textopublicacion {
-    margin: 1rem;
-    
+    margin-left: 1rem;
 }
-.btn-lgbotonpublicacion {
+.botonsubirpublicacion {
     margin-top: 3rem;
     padding: 10px;
     padding-right: 3rem;
     padding-left: 3rem;
+    width: 80%;
 }
 
-.botonpublicar {
+.divdatosinformacion {
+    width: 100%;
+   
+}
+.divinformacionempresa {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    flex-direction: column;
+    padding: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+}
+.divbotonpublicar {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.botonsubirpublicacion {
+    border-radius: 10px;
+    padding: 1rem;
     background-color: #333;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
     border: none;
-    right: 1rem;
-    top: 13rem;
-    margin-bottom: 1rem;
-    text-align: center;
-    gap: 5px;
+    color: white;
+}
+.divfotopublicacion {
+    width: 3rem;
+    border-radius: 3rem;
+    margin-right: 1rem;
+}
+.divnombrempresapublicacion {
+    display: flex;
+    align-items: center;
+}
+.nombrempresapublicacion {
+    opacity: 0.6;
+}
+@media (max-width: 580px) {
+    .divprincipalpublicacion {
+        flex-direction: column; 
+    }
+
+    .divsubirimagen, .divsubirinformacion {
+        width: 100%; 
+        border-right: none; 
+    }
+
+    .iconomaspublicacion {
+        margin-top: 2rem; 
+        margin-bottom: 2rem;
+    }
+
+    .divinformacionempresa {
+        padding-top: 1rem; 
+        padding-bottom: 1rem;
+    }
+
+    .botonsubirpublicacion {
+        width: 90%; 
+        margin-bottom: 1rem;
+    }
+    
+    .divsubirimagen {
+        border-bottom: 1px solid #333;
+        height: 10rem;
+    }
+
+    .divsubirinformacion, .divinformacionempresa {
+        margin: 1rem;
+    }
 }
 
 /*----------------------------Fin de + Publicacion--------------------------------*/
