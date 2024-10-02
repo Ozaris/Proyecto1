@@ -1564,7 +1564,7 @@ footer{
     border: 1px solid #333;
 }
 .divsubirimagen {
-    width: 50%;
+    width: 60%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1572,7 +1572,7 @@ footer{
     background-color: #cccccc4b;
 }
 .divsubirinformacion {
-    width: 50%;
+    width: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1582,6 +1582,7 @@ footer{
 .iconomaspublicacion {
     margin-top: 12rem;
     margin-bottom: 12rem;
+    cursor: pointer;
 }
 .textopublicacion {
     margin-left: 1rem;
@@ -1596,7 +1597,6 @@ footer{
 
 .divdatosinformacion {
     width: 100%;
-   
 }
 .divinformacionempresa {
     width: 100%;
@@ -1605,8 +1605,6 @@ footer{
     align-items: left;
     flex-direction: column;
     padding: 1rem;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
     border-top: 1px solid #333;
     border-bottom: 1px solid #333;
 }
@@ -1615,6 +1613,7 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 1rem;
 }
 .botonsubirpublicacion {
     border-radius: 10px;
@@ -1622,6 +1621,7 @@ footer{
     background-color: #333;
     border: none;
     color: white;
+    margin: 0;
 }
 .divfotopublicacion {
     width: 3rem;
@@ -1635,7 +1635,31 @@ footer{
 .nombrempresapublicacion {
     opacity: 0.6;
 }
-@media (max-width: 580px) {
+.inputpublicacion1 {
+    width: 70%;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #333;
+    margin-left: 1rem;
+}
+.inputpublicacion2 {
+    width: 70%;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #333;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+.inputpublicacion3 {
+    width: 70%;
+    background-color: transparent;
+    border: 1px solid #333;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+@media (max-width: 1000px) {
     .divprincipalpublicacion {
         flex-direction: column; 
     }
@@ -1667,6 +1691,13 @@ footer{
 
     .divsubirinformacion, .divinformacionempresa {
         margin: 1rem;
+    }
+
+    .divdatosinformacion, .divinformacionempresa {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
     }
 }
 

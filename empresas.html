@@ -105,8 +105,10 @@ include "conexion.php";
                     Launch demo modal
                 </button>
                 <!-- Modal -->
+                 
                  <div class="modal modal-xl fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
+                        <form>
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Publicar</h1>
@@ -116,17 +118,18 @@ include "conexion.php";
                                 
                                 <div class="divprincipalpublicacion">
                                     <div class="divsubirimagen">
-                                        <i class="fa-solid fa-2x fa-plus iconomaspublicacion"></i>
+                                        <label for="formFile" class="form-label"><i class="fa-solid fa-2x fa-plus iconomaspublicacion"></i></label>
+                        <input class="form-control form-control1" type="file" id="formFile" name="foto_usr">
                                     </div>
                                     <div class="divsubirinformacion">
                                         <div class="divdatosinformacion">
-                                        <h3 class="textopublicacion">Titulo</h3>
-                                        <h5 class="textopublicacion">Precio</h5>
-                                        <h5 class="textopublicacion">Descripcion</h4>
+                                        <input type="email" class="form-control inputpublicacion1" id="floatingInput" placeholder="Titulo">
+                                        <input type="email" class="form-control inputpublicacion2" id="floatingInput" placeholder="dsdsds">
+                                        <textarea class="form-control inputpublicacion3" placeholder="Descripcion" id="floatingTextarea2" style="height: 100px"></textarea>
                                         </div>
                                         
                                         <div class="divinformacionempresa">
-                                            <h4>Informacion de la empresa</h4>
+                                            <h6>Informacion de la empresa</h6>
                                             <div class="divnombrempresapublicacion">
                                                 <img class="divfotopublicacion" src="Imagenes/GatoFotoPruebaPerfil.png" alt="img">
                                                 <h5 class="nombrempresapublicacion">Nombre de la empresa</h5>
@@ -138,9 +141,10 @@ include "conexion.php";
                             </div>
                             </div>
                         </div>
+                    </form>
                     </div>
                 </div>
-                  
+            
                 <!-- +++++++++++++++++++++++++++BOTON PUBLICAR+++++++++++++++++++++++++++ -->
 
                 <div class="row">
