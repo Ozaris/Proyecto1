@@ -11,7 +11,7 @@ if (!isset($_SESSION['email'])) {
 //Convierte los datos en variables para posteriormente usarlos
 
 $email = $_SESSION['email'];
-$sql = "SELECT * FROM usuario WHERE email='$email'";
+$sql = "SELECT * FROM persona WHERE email='$email'";
 $resultado = $con->query($sql);
 
 if ($data = $resultado->fetch_assoc()) {
@@ -100,7 +100,7 @@ if (isset($_POST["envio-edit-ft-usr"])) {
                 imagedestroy($image_p);
 
                 // Actualiza el nombre de la foto en la base de datos
-                $sql = "UPDATE usuario SET foto = ? WHERE email = ?";
+                $sql = "UPDATE persona SET foto = ? WHERE email = ?";
                 $stmt = $con->prepare($sql);
                 $stmt->bind_param('ss', $nombre_archivo, $email);
                 $stmt->execute();
@@ -165,6 +165,7 @@ function actualizar($con, $edit_nom_usr, $nombre_p, $existe_nom) {
         if (mysqli_query($con, $consulta_actualizar_persona)) {
             
             $consulta_actualizar_usuario = "UPDATE usuario SET nombre_p = '$edit_nom_usr' WHERE nombre_p = '$nombre_p'";
+            $consulta_actualizar_usuario = "UPDATE empresa SET nombre_p = '$edit_nom_usr' WHERE nombre_p = '$nombre_p'";
             if (mysqli_query($con, $consulta_actualizar_usuario)) {
                
             } else {
@@ -201,6 +202,7 @@ function elim($con,$nombre_p) {
 
         $nombre_p = mysqli_real_escape_string($con, $nombre_p);
 
+        $consulta_actualizar_persona = "DELETE FROM usuario WHERE nombre_p = '$nombre_p'";
         $consulta_actualizar_persona = "DELETE FROM usuario WHERE nombre_p = '$nombre_p'";
 
         if (mysqli_query($con, $consulta_actualizar_persona)) {

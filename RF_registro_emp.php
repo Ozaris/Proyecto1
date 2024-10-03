@@ -1,7 +1,7 @@
 <?php
-
+ob_start();
 require_once("conexion.php");
-require_once("Register.html");
+require_once("registerempresas.html");
 
 $con = conectar_bd();
 
@@ -12,13 +12,14 @@ if (isset($_POST["envio-emp"])) {
     $email = $_POST["email"];
     $contrasenia = $_POST["pass"];
     $rol=$_POST["empresa"];
+    $foto=$_POST["default.png"];
    
     // Consultar si el usuario ya existe
     $existe_usr = consultar_existe_usr($con, $email);
     $existe_nom = consultar_existe_nom($con, $nombre_p);
 
     // Insertar datos si el usuario no existe
-    insertar_datos($con, $nombre_p,$email, $contrasenia,$rol, $existe_usr,$existe_nom);
+    insertar_datos($con, $nombre_p,$email, $contrasenia,$rol, $existe_usr,$existe_nom,$foto);
 
 }
 
@@ -51,7 +52,7 @@ function consultar_existe_nom($con, $nombre_p) {
 
 
 
-function insertar_datos($con, $nombre_p, $email, $contrasenia,$rol,$existe_nom,$existe_usr) {
+function insertar_datos($con, $nombre_p, $email, $contrasenia,$rol,$existe_nom,$existe_usr,$foto) {
     // Encripto la contraseña usando la función password_hash
 
     if ($existe_usr == false && $existe_nom == false){
@@ -60,7 +61,7 @@ function insertar_datos($con, $nombre_p, $email, $contrasenia,$rol,$existe_nom,$
     $contrasenia = password_hash($contrasenia, PASSWORD_DEFAULT);
 
     // Inserta en la tabla persona
-    $consulta_insertar_persona = "INSERT INTO persona (nombre_p, email, contrasenia,rol) VALUES ('$nombre_p', '$email', '$contrasenia','$rol')";
+    $consulta_insertar_persona = "INSERT INTO persona (nombre_p, email, contrasenia,rol,foto) VALUES ('$nombre_p', '$email', '$contrasenia','$rol','$foto')";
     
     if (mysqli_query($con, $consulta_insertar_persona)) {
         // Obtén el ID de la persona recién insertada

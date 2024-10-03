@@ -4,7 +4,7 @@ include_once "conexion.php";
 $con = conectar_bd();
 
 $nom = $_COOKIE['nombre'] ?? null;
-$foto = $_COOKIE['user_picture'] ?? '/img_usr/perfil.jpg';
+$foto = $_COOKIE['user_picture'] ?? $_COOKIE['foto'];
 ?>
 
 
