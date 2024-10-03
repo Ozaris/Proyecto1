@@ -128,8 +128,8 @@ $foto = $_COOKIE['user_picture'] ?? $_COOKIE['foto'];
                                     </div>
                                     <div class="divsubirinformacion">
                                         <div class="divdatosinformacion">
-                                        <input type="email" class="form-control inputpublicacion1" id="floatingInput" placeholder="Titulo" name="titulo">
-                                        <input type="email" class="form-control inputpublicacion2" id="floatingInput" placeholder="Categoria" name="categoria">
+                                        <input type="text" class="form-control inputpublicacion1" id="floatingInput" placeholder="Titulo" name="titulo">
+                                        <input type="text" class="form-control inputpublicacion2" id="floatingInput" placeholder="Categoria" name="categoria">
                                         <textarea class="form-control inputpublicacion3" placeholder="Descripcion" id="floatingTextarea2" name="descripcion" style="height: 100px"></textarea>
                                         </div>
                                         

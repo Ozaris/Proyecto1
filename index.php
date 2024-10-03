@@ -12,7 +12,8 @@ if ($data = $resultado->fetch_assoc()) {
     $foto = $data['foto'];
 
     setcookie("nombre", $nombre_p, time() + 4200, "/");
-    setcookie("foto", $foto, time() + (86400 * 30), "/"); // Cookie válida por 30 días
+    setcookie("foto", $foto, time() + (86400 * 30), "/");
+    setcookie("email_emp", $email, time() + (86400 * 30), "/");  // Cookie válida por 30 días
 } else {
     $nombre_p = 'Nombre no disponible';
     $email = 'Email no disponible';

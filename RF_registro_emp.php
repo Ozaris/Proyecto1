@@ -69,7 +69,7 @@ function insertar_datos($con, $nombre_p, $email, $contrasenia,$rol,$existe_nom,$
 
         // Inserta en la tabla usuario usando el ID de la persona
         $consulta_insertar_usuario = "INSERT INTO empresa (Id_per, nombre_p, email, contrasenia) VALUES ($id_per, '$nombre_p', '$email', '$contrasenia')";
-
+      
         if (mysqli_query($con, $consulta_insertar_usuario)) {
             $salida = consultar_datos($con);
             echo $salida;
