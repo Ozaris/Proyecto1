@@ -18,6 +18,8 @@ if ($data = $resultado->fetch_assoc()) {
     $nombre_p = $data['nombre_p'];
     $email = $data['email'];
     $foto = $data['foto'];
+
+ 
 } else {
     $nombre_p = 'Nombre no disponible';
     $email = 'Email no disponible';
@@ -30,7 +32,6 @@ if ($data = $resultado->fetch_assoc()) {
 
 if (isset($_POST["envio-edit-ft-usr"])) {
     try {
-        
         $archivo = $_FILES["foto_usr"]; // Toma el archivo subido
         
         if ($archivo["error"] === UPLOAD_ERR_OK) {
@@ -123,6 +124,12 @@ if (isset($_POST["envio-edit-ft-usr"])) {
 
 // Muestra la foto en la página del perfil, o una imagen por defecto si no hay foto
 $picture_to_show = "img_usr/" . ($foto ?: 'default.png');
+
+// Establecer la cookie para el path de la imagen
+setcookie("user_picture", $picture_to_show, time() + (86400 * 30), "/"); // Cookie válida por 30 días
+setcookie("default", $foto, time() + (86400 * 30), "/"); 
+// Puedes acceder a la cookie más tarde con $_COOKIE['user_picture']
+
 
 /* ACTUALIZA EL NOMBRE DE USUARIO EN LA TABLA PERSONA Y USUARIO*/
 

@@ -1,4 +1,27 @@
+<?php
+include "conexion.php";
+$con = conectar_bd();
+session_start();
+$email = $_SESSION['email'];
+$sql = "SELECT * FROM usuario WHERE email='$email'";
+$resultado = $con->query($sql);
 
+if ($data = $resultado->fetch_assoc()) {
+    $nombre_p = $data['nombre_p'];
+    $email = $data['email'];
+    $foto = $data['foto'];
+
+    setcookie("nombre", $nombre_p, time() + 4200, "/");
+    setcookie("foto", $foto, time() + (86400 * 30), "/"); // Cookie válida por 30 días
+} else {
+    $nombre_p = 'Nombre no disponible';
+    $email = 'Email no disponible';
+    $foto = 'default.png'; // Imagen predeterminada
+}
+
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="es">

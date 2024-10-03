@@ -1,5 +1,10 @@
 <?php
-include "conexion.php";
+include_once "conexion.php";
+
+$con = conectar_bd();
+
+$nom = $_COOKIE['nombre'] ?? null;
+$foto = $_COOKIE['user_picture'] ?? '/img_usr/perfil.jpg';
 ?>
 
 
@@ -108,7 +113,7 @@ include "conexion.php";
                  
                  <div class="modal modal-xl fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
-                        <form>
+                        <form action="crear_pub.php" method="POST">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Publicar</h1>
@@ -119,24 +124,24 @@ include "conexion.php";
                                 <div class="divprincipalpublicacion">
                                     <div class="divsubirimagen">
                                         <label for="formFile" class="form-label"><i class="fa-solid fa-2x fa-plus iconomaspublicacion"></i></label>
-                        <input class="form-control form-control1" type="file" id="formFile" name="foto_usr">
+                        <input class="form-control form-control1" type="file" id="formFile" name="imagen_prod">
                                     </div>
                                     <div class="divsubirinformacion">
                                         <div class="divdatosinformacion">
-                                        <input type="email" class="form-control inputpublicacion1" id="floatingInput" placeholder="Titulo">
-                                        <input type="email" class="form-control inputpublicacion2" id="floatingInput" placeholder="dsdsds">
-                                        <textarea class="form-control inputpublicacion3" placeholder="Descripcion" id="floatingTextarea2" style="height: 100px"></textarea>
+                                        <input type="email" class="form-control inputpublicacion1" id="floatingInput" placeholder="Titulo" name="titulo">
+                                        <input type="email" class="form-control inputpublicacion2" id="floatingInput" placeholder="Categoria" name="categoria">
+                                        <textarea class="form-control inputpublicacion3" placeholder="Descripcion" id="floatingTextarea2" name="descripcion" style="height: 100px"></textarea>
                                         </div>
                                         
                                         <div class="divinformacionempresa">
                                             <h6>Informacion de la empresa</h6>
                                             <div class="divnombrempresapublicacion">
-                                                <img class="divfotopublicacion" src="Imagenes/GatoFotoPruebaPerfil.png" alt="img">
-                                                <h5 class="nombrempresapublicacion">Nombre de la empresa</h5>
+                                                <img class="divfotopublicacion" src="<?php echo htmlspecialchars($foto); ?>" alt="img">
+                                                <h5 class="nombrempresapublicacion"><?php echo htmlspecialchars($nom); ?></h5>
                                             </div>
                                         </div>
 
-                                    <div class="divbotonpublicar"><button class="botonsubirpublicacion">Subir publicación</button></div>
+                                    <div class="divbotonpublicar"><button class="botonsubirpublicacion" value="envio-pub" name="envio-pub">Subir publicación</button></div>
                                 </div>
                             </div>
                             </div>
