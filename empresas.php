@@ -113,268 +113,78 @@ $foto = $_COOKIE['user_picture'] ?? $_COOKIE['foto'];
                  
                  <div class="modal modal-xl fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
-                        <form action="crear_pub.php" method="POST">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Publicar</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                
-                                <div class="divprincipalpublicacion">
-                                    <div class="divsubirimagen">
-                                        <label for="formFile" class="form-label"><i class="fa-solid fa-2x fa-plus iconomaspublicacion"></i></label>
-                        <input class="form-control form-control1" type="file" id="formFile" name="imagen_prod">
-                                    </div>
-                                    <div class="divsubirinformacion">
-                                        <div class="divdatosinformacion">
-                                        <input type="text" class="form-control inputpublicacion1" id="floatingInput" placeholder="Titulo" name="titulo">
-                                        <input type="text" class="form-control inputpublicacion2" id="floatingInput" placeholder="Categoria" name="categoria">
-                                        <textarea class="form-control inputpublicacion3" placeholder="Descripcion" id="floatingTextarea2" name="descripcion" style="height: 100px"></textarea>
-                                        </div>
-                                        
-                                        <div class="divinformacionempresa">
-                                            <h6>Informacion de la empresa</h6>
-                                            <div class="divnombrempresapublicacion">
-                                                <img class="divfotopublicacion" src="<?php echo htmlspecialchars($foto); ?>" alt="img">
-                                                <h5 class="nombrempresapublicacion"><?php echo htmlspecialchars($nom); ?></h5>
-                                            </div>
-                                        </div>
-
-                                    <div class="divbotonpublicar"><button class="botonsubirpublicacion" value="envio-pub" name="envio-pub">Subir publicación</button></div>
-                                </div>
-                            </div>
-                            </div>
+                    <form action="crear_pub.php" method="POST" enctype="multipart/form-data">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Publicar</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="divprincipalpublicacion">
+                <div class="divsubirimagen">
+                    <label for="formFile" class="form-label">
+                        <i class="fa-solid fa-2x fa-plus iconomaspublicacion"></i>
+                    </label>
+                    <input class="form-control form-control1" type="file" id="formFile" name="imagen_prod">
+                </div>
+                <div class="divsubirinformacion">
+                    <div class="divdatosinformacion">
+                        <input type="text" class="form-control inputpublicacion1" id="floatingInput" placeholder="Titulo" name="titulo">
+                        <input type="text" class="form-control inputpublicacion2" id="floatingInput" placeholder="Categoria" name="categoria">
+                        <textarea class="form-control inputpublicacion3" placeholder="Descripcion" id="floatingTextarea2" name="descripcion" style="height: 100px"></textarea>
+                    </div>
+                    <div class="divinformacionempresa">
+                        <h6>Informacion de la empresa</h6>
+                        <div class="divnombrempresapublicacion">
+                            <img class="divfotopublicacion" src="<?php echo htmlspecialchars($foto); ?>" alt="img">
+                            <h5 class="nombrempresapublicacion"><?php echo htmlspecialchars($nom); ?></h5>
                         </div>
-                    </form>
+                    </div>
+                    <div class="divbotonpublicar">
+                        <button class="botonsubirpublicacion" value="envio-pub" name="envio-pub">Subir publicación</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
                     </div>
                 </div>
             
-                <!-- +++++++++++++++++++++++++++BOTON PUBLICAR+++++++++++++++++++++++++++ -->
+             
+                <div class="publicaciones">
+    <h2>Publicaciones</h2>
+    <div class="row">
+        <?php
+        // Obtener las publicaciones de la base de datos
+        $consulta_publicaciones = "SELECT p.*, pe.nombre_p AS nombre_p FROM publicacion_prod p JOIN persona pe ON p.Id_per = pe.Id_per ORDER BY p.created_at DESC";
+        $resultado_publicaciones = mysqli_query($con, $consulta_publicaciones);
 
-                <div class="row">
-                    <div class="col-md-3 mb-4">
-                        <div class="card" style="width: 100%;" id="cardempresas">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-4">
-                        <div class="card" style="width: 100%;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-4">
-                        <div class="card" style="width: 100%;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-4">
-                        <div class="card" style="width: 100%;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
+        if ($resultado_publicaciones && mysqli_num_rows($resultado_publicaciones) > 0) {
+            while ($publicacion = mysqli_fetch_assoc($resultado_publicaciones)) {
+                // Crear tarjeta para cada publicación
+                ?>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="<?php echo htmlspecialchars($publicacion['imagen_prod']); ?>" class="card-img-top" alt="Imagen de publicación">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo htmlspecialchars($publicacion['titulo']); ?></h5>
+                            <p class="card-text"><?php echo htmlspecialchars($publicacion['descripcion']); ?></p>
+                            <p class="card-text"><small class="text-muted">Categoría: <?php echo htmlspecialchars($publicacion['categoria']); ?></small></p>
+                            <p class="card-text"><small class="text-muted">Publicado por: <?php echo htmlspecialchars($publicacion['nombre_p']); ?></small></p>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="containerempresas">
-                <div class="row">
-                    <div class="col-md-3 mb-4">
-                        <div class="card" style="width: 100%;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-4">
-                        <div class="card" style="width: 100%;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-4">
-                        <div class="card" style="width: 100%;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-4">
-                        <div class="card" style="width: 100%;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="containerempresas">
-                <div class="row">
-                    <div class="col-md-3 mb-4">
-                        <div class="card" style="width: 100%;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-4">
-                        <div class="card" style="width: 100%;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-4">
-                        <div class="card" style="width: 100%;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-4">
-                        <div class="card" style="width: 100%;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="containerempresas">
-                <div class="row">
-                    <div class="col-md-3 mb-4">
-                        <div class="card" style="width: 100%;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-4">
-                        <div class="card" style="width: 100%;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-4">
-                        <div class="card" style="width: 100%;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-4">
-                        <div class="card" style="width: 100%;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="containerempresas">
-                <div class="row">
-                    <div class="col-md-3 mb-4">
-                        <div class="card" style="width: 100%;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-4">
-                        <div class="card" style="width: 100%;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-4">
-                        <div class="card" style="width: 100%;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-4">
-                        <div class="card" style="width: 100%;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content adas dadadadadadasdasd as.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+                <?php
+            }
+        } else {
+            echo "<p>No hay publicaciones disponibles.</p>";
+        }
+        ?>
+    </div>
+</div>
             <a href="#headerempresas" class="botondescroll"><i class="fa-solid fa-arrow-up"></i></a>
             <script src="app.js"></script>
         </div>

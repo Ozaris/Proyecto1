@@ -1,33 +1,42 @@
 <?php
 
 require "conexion.php";
-
+require "empresas.php";
 $con = conectar_bd();
 
 if (isset($_POST["envio-pub"])) {
     $titulo = $_POST["titulo"];
     $categoria = $_POST["categoria"];
     $descripcion = $_POST["descripcion"];
-    $img = $_POST['imagen_prod'];
+    $email_emp = $_COOKIE['email_emp'] ?? null;
 
-    $email_emp = $_COOKIE['email_emp'] ?? null; // Obtener el email de la sesión
+    // Verifica si se ha subido un archivo
+    if (isset($_FILES['imagen_prod']) && $_FILES['imagen_prod']['error'] == 0) {
+        // Obtiene la información del archivo
+        $imagen = $_FILES['imagen_prod'];
+        $rutaDestino = 'uploads/' . basename($imagen['name']);
 
-    // Llamada a la función para crear la publicación
-    crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img);
+        // Mueve el archivo a la carpeta deseada
+        if (move_uploaded_file($imagen['tmp_name'], $rutaDestino)) {
+            // Llamada a la función para crear la publicación
+            crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $rutaDestino);
+        } else {
+            echo "Error al subir la imagen.";
+        }
+    } else {
+        echo "No se ha seleccionado ninguna imagen o ha ocurrido un error.";
+    }
 }
 
 function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img) {
-    // Preparar la consulta para obtener el ID de la persona
     $consulta_login = "SELECT * FROM persona WHERE email = '$email_emp'";
     $resultado_login = mysqli_query($con, $consulta_login);
 
-    // Verificar si se encontró un registro
     if ($resultado_login && mysqli_num_rows($resultado_login) > 0) {
-        // Obtener la fila como un array asociativo
         $fila = mysqli_fetch_assoc($resultado_login);
-        $id_per = $fila['Id_per']; // Almacena el ID
+        $id_per = $fila['Id_per'];
 
-        // Consulta para insertar en la tabla publicacion_prod
+        // Inserta en la base de datos
         $consulta_insertar_persona = "INSERT INTO publicacion_prod (titulo, categoria, descripcion, imagen_prod, Id_per) VALUES ('$titulo', '$categoria', '$descripcion', '$img', '$id_per')";
         
         if (mysqli_query($con, $consulta_insertar_persona)) {

@@ -2,7 +2,9 @@
 include "conexion.php";
 $con = conectar_bd();
 session_start();
-$email = $_SESSION['email'];
+
+if (isset($_SESSION['email'])){
+$email=$_SESSION['email'];
 $sql = "SELECT * FROM persona WHERE email='$email'";
 $resultado = $con->query($sql);
 
@@ -20,7 +22,7 @@ if ($data = $resultado->fetch_assoc()) {
     $foto = 'default.png'; // Imagen predeterminada
 }
 
-
+}
 
 ?>
 
