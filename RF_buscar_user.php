@@ -5,7 +5,7 @@ $con= conectar_bd();
 $input = isset($_POST['input']) ? $con->real_escape_string($_POST['input']) : ''; //La variable input toma el valor enviado por el POST y lo pasa a string
 
 
-$sql = "SELECT * FROM usuario WHERE nombre_p LIKE '$input%' "; // Consulta a la base de datos
+$sql = "SELECT * FROM persona WHERE nombre_p LIKE '$input%' "; // Consulta a la base de datos
 $result = $con->query($sql);
 
 
