@@ -2604,3 +2604,140 @@ footer{
 }
 
 /*----------------------------Fin de Perfil--------------------------------*/
+
+/*----------------------------Inicio Dentro de publicacion--------------------------------*/
+
+.bodypublicacionD {
+    background-image: url(Imagenes/FondoEmpresasbody.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: auto;
+}
+.divprincipalpublicacionD1 {
+    width: 100%;
+    display: flex;
+    height: 80vh;
+    margin-top: 2rem;
+}
+.divimagenpublicacionD {
+    width: 50%;
+    padding-top: 2rem;
+    padding-left: 6rem;
+    height: 80vh;
+}
+.divinfopublicacionD {
+    width: 50%;
+    padding-top: 2rem;
+    padding-right: 6rem;
+    padding-left: 2rem;
+}
+.imagenpublicacionD {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+.carousel-inner {
+    border-radius: 10px;
+    height: 30rem; 
+}
+.carousel {
+    height: 100%;
+}
+.carousel-item {
+    height: 30rem; 
+}
+.carousel-control-next,
+.carousel-control-prev {
+    height: 30rem;
+}
+.parrafopublicacionD {
+    font-size: 1.5rem;
+}
+.divprincipalpublicacionD2 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 3rem; /* Ajuste */
+}
+.comentarios {
+    width: 100%;
+    display: flex;
+    margin-top: 3rem; /* Ajuste */
+}
+
+/*----------------------------Fin de Publicacion------------------------------------------*/
+
+/*----------------------------Inicio de Contacto--------------------------------*/
+
+.divheadercontacto {
+
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+.container {
+    width: 90%; 
+    max-width: 600px; 
+    background-image: url(Imagenes/FONDOINICIO4.png);
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    color: #555;
+}
+
+input,textarea,select {
+    width: 100%; 
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px; 
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #66a6e6;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px; 
+}
+
+button:hover {
+    background-color: #333;
+}
+
+.selectcontacto {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 600px) {
+.container {
+    margin: 20px; 
+    padding: 15px; 
+}
+
+h1 {
+    font-size: 1.5em; 
+}
+
+button {
+    font-size: 14px; 
+}
+}
+
+/*----------------------------Fin de Contacto--------------------------------*/
