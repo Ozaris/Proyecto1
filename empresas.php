@@ -5,6 +5,7 @@ $con = conectar_bd();
 
 $nom = $_COOKIE['nombre'] ?? null;
 $foto = $_COOKIE['user_picture'] ?? $_COOKIE['foto'];
+$rol = $_COOKIE['rol'];
 ?>
 
 
@@ -106,9 +107,17 @@ $foto = $_COOKIE['user_picture'] ?? $_COOKIE['foto'];
                 <!-- +++++++++++++++++++++++++++BOTON PUBLICAR+++++++++++++++++++++++++++ -->
                 
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                 <?php
+                if ($rol === 'empresa') {
+
+    echo ' <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Launch demo modal
-                </button>
+                </button>';
+} else {
+    // Si es 'usuario' o no está definido, no mostramos el botón
+}
+                ?>
+               
                 <!-- Modal -->
                  
                  <div class="modal modal-xl fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
