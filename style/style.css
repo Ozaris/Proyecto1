@@ -1491,17 +1491,25 @@ footer{
 }
 
 #buscador {
-    padding: 0.7rem;
+    padding: 0.9rem;
     margin: 1rem;
     margin-top: 2rem;
-    opacity: calc(0.7);
-    border: none;
-    border-radius: 2rem;
-    background-color:  white;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color:  transparent;
+    width: 70%;
 }
 
 #buscador:hover {
     opacity: calc(0.9);
+}
+
+.divprincipalbuscador {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .logo {
@@ -1703,18 +1711,9 @@ footer{
 
 /*----------------------------Fin de + Publicacion--------------------------------*/
 
-.htmlempresas {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
 .bodyempresas {
-    height: 100%;
     margin: 0;
     padding: 0;
-    overflow: hidden;
     background-image: url(Imagenes/FONDOREGISTER.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -1756,12 +1755,7 @@ footer{
 }
 
 .divpadreempresas {
-    margin-left: 250px; 
-    padding: 20px;
-    width: calc(100% - 250px);
-    overflow-y: auto;
-    scrollbar-width: none; 
-    overflow: -moz-scrollbars-none;
+    width: 100%;
 }
 
 .lismenu {
@@ -1806,43 +1800,13 @@ footer{
     margin-right: 1rem;
 }
 
-#sidebar-container::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-}
-
-.divpadreempresas::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-}
-
-.botondescroll {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #66a6e6;
-    color: black;
-    z-index: 900;
-    border: none;
-    border-radius: 50%;
-    padding: 1rem 1.5rem;
-    font-size: 16px;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.botondescroll:active {
-    transform: scale(0.95);
-}
-
 .divrecomendacionesempresas {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     margin-bottom: 1rem;
-    margin-top: 3.3rem;
+    margin-top: 1rem;
 }
 
 .div1recomendaciones {
@@ -1852,6 +1816,9 @@ footer{
 
 .div2recomendaciones {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .cartaderecomendados {
@@ -1865,21 +1832,20 @@ footer{
     border-radius: 10px;
     margin-left: 10xpx;
     margin-right: 10px;
+    width: 7rem;
+    height: 9rem;
 }
 
 .logorecomendados {
     width: 5rem;
 }
 
-@media (max-width: 768px) {
-    #sidebar-container {
-        display: none;
-    }
-
-    .divpadreempresas {
-        margin-left: 0;
-        width: 100%;
-    }
+.publicaciones {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 /*----------------------------Fin deBody de empresas--------------------------------*/

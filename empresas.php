@@ -24,32 +24,6 @@ $rol = $_COOKIE['rol'] ?? null;
     <title>Empresas - Ozaris</title>
 </head>
 <body class="bodyempresas">
-    
-    <div id="content-wrapper">
-        <div id="sidebar-container" class="bg-primary">
-            <div class="logoempresas">
-                
-     
-            <input  type="text" name="buscador" id="buscador" placeholder="Buscar">
-<div id="resultado_busqueda"></div>
-                   
-            </div>
-            <div class="menuempresas">
- 
-                <a href="#" class="d-block text-light p-3 border-0 asempresas"><i class="icon ion-md-apps lead mr-2"></i> <img class="logodeopciones" src="Imagenes/casa.png" alt="img"> Hogar</a>
-                <a href="#" class="d-block text-light p-3 border-0 asempresas"><i class="icon ion-md-people lead mr-2"></i> <img class="logodeopciones" src="Imagenes/Deporte.png" alt="img"> Deporte</a>
-                <a href="#" class="d-block text-light p-3 border-0 asempresas"><i class="icon ion-md-stats lead mr-2"></i>  <img class="logodeopciones" src="Imagenes/Electronica.png" alt="img"> Electronica</a>
-                <a href="#" class="d-block text-light p-3 border-0 asempresas"><i class="icon ion-md-person lead mr-2"></i> <img class="logodeopciones" src="Imagenes/Entretenimiento.png" alt="img"> Gaming</a>
-                <a href="#" class="d-block text-light p-3 border-0 asempresas"><i class="icon ion-md-settings lead mr-2"></i> <img class="logodeopciones" src="Imagenes/familia.png" alt="img"> Familia</a>
-                
-                <a href="#" class="d-block text-light p-3 border-0 asempresas"><i class="icon ion-md-apps lead mr-2"></i> <img class="logodeopciones" src="Imagenes/mascotas.png" alt="img"> Mascotas</a>
-                <a href="#" class="d-block text-light p-3 border-0 asempresas"><i class="icon ion-md-people lead mr-2"></i> <img class="logodeopciones" src="Imagenes/musica.png" alt="img"> Musica</a>
-                <a href="#" class="d-block text-light p-3 border-0 asempresas"><i class="icon ion-md-stats lead mr-2"></i> <img class="logodeopciones" src="Imagenes/propiedad.png" alt="img"> Propiedades</a>
-                <a href="#" class="d-block text-light p-3 border-0 asempresas"><i class="icon ion-md-person lead mr-2"></i> <img class="logodeopciones" src="Imagenes/Ropa.png" alt="img"> Ropa</a>
-                <a href="#" class="d-block text-light p-3 border-0 asempresas"><i class="icon ion-md-person lead mr-2"></i> <img class="logodeopciones" src="Imagenes/Vehiculos.png" alt="img"> Vehiculos</a>
-                
-            </div>
-        </div>
 
         <div class="divpadreempresas">
             <div class="divparabotondesubir" id="headerempresas"></div>
@@ -74,12 +48,17 @@ $rol = $_COOKIE['rol'] ?? null;
                 </nav>
             </div>
 
+            <div class="divprincipalbuscador">
+                <input  type="text" name="buscador" id="buscador" placeholder="Buscar">
+<div id="resultado_busqueda"></div>
+            </div>
+
             <div class="containerempresas">
 
                 <!-- +++++++++++++++++++++++++++RECOMENDACIONES+++++++++++++++++++++++++++ -->
 
                 <div class="divrecomendacionesempresas">
-                    <div class="div1recomendaciones"><h5>Recomendaciones</h5></div>
+                    <div class="div1recomendaciones"><h3>Filtros</h3></div>
                     <div class="div2recomendaciones">
 
                         <div class="cartaderecomendados">
@@ -97,6 +76,26 @@ $rol = $_COOKIE['rol'] ?? null;
                         <div class="cartaderecomendados">
                             <img class="logorecomendados" src="Imagenes/Deporte.png" alt="img">
                             <p>Deporte</p>
+                        </div>
+                        <div class="cartaderecomendados">
+                            <img class="logorecomendados" src="Imagenes/familia.png" alt="img">
+                            <p>Familia</p>
+                        </div>
+                        <div class="cartaderecomendados">
+                            <img class="logorecomendados" src="Imagenes/mascotas.png" alt="img">
+                            <p>Mascotas</p>
+                        </div>
+                        <div class="cartaderecomendados">
+                            <img class="logorecomendados" src="Imagenes/musica.png" alt="img">
+                            <p>Musica</p>
+                        </div>
+                        <div class="cartaderecomendados">
+                            <img class="logorecomendados" src="Imagenes/propiedad.png" alt="img">
+                            <p>Propiedades</p>
+                        </div>
+                        <div class="cartaderecomendados">
+                            <img class="logorecomendados" src="Imagenes/Vehiculos.png" alt="img">
+                            <p>Vehiculos</p>
                         </div>
 
                     </div>
@@ -164,7 +163,7 @@ $rol = $_COOKIE['rol'] ?? null;
             
              
                 <div class="publicaciones">
-    <h2>Publicaciones</h2>
+    <h3>Publicaciones</h3>
     <div class="row">
         <?php
         // Obtener las publicaciones de la base de datos
