@@ -2686,18 +2686,18 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+.container>h1 {
     text-align: center;
-    color: #333;
+    color: #ffffff;
 }
 
-label {
+.formcontact>label {
     display: block;
     margin: 10px 0 5px;
-    color: #555;
+    color: #ffffff;
 }
 
-input,textarea,select {
+.formcontact>input,textarea,select {
     width: 100%; 
     padding: 10px;
     border: 1px solid #ccc;
@@ -2705,7 +2705,7 @@ input,textarea,select {
     margin-bottom: 10px; 
 }
 
-button {
+.formcontact>button {
     width: 100%;
     padding: 10px;
     background-color: #66a6e6;
@@ -2716,7 +2716,7 @@ button {
     font-size: 16px; 
 }
 
-button:hover {
+.formcontact>button:hover {
     background-color: #333;
 }
 
@@ -2731,11 +2731,11 @@ button:hover {
     padding: 15px; 
 }
 
-h1 {
+.formcontact>h1 {
     font-size: 1.5em; 
 }
 
-button {
+.formcontact>button {
     font-size: 14px; 
 }
 }
