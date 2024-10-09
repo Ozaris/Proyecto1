@@ -29,7 +29,7 @@ $rol = $_COOKIE['rol'] ?? null;
             <div class="divparabotondesubir" id="headerempresas"></div>
 
             <div class="headermenuempresas">
-                <a href="index.php"> <img class="logo" src="Imagenes/logoproyecto.png" alt="Logo"></a>
+                <a href="index.php"> <img class="logo" src="style/Imagenes/logoproyecto.png" alt="Logo"></a>
                 <button class="abrirmenuempresas" id="abrir"><i class="fa-solid fa-bars"></i></button>
                 <nav class="navheader" id="nav">
                     <img class="logosheader" src="Imagenes/Logos.png" alt="img">
@@ -62,39 +62,39 @@ $rol = $_COOKIE['rol'] ?? null;
                     <div class="div2recomendaciones">
 
                         <div class="cartaderecomendados">
-                            <img class="logorecomendados" src="Imagenes/Electronica.png" alt="img">
+                            <img class="logorecomendados" src="style/Imagenes/Electronica.png" alt="img">
                             <p>Electronica</p>
                         </div>
                         <div class="cartaderecomendados">
-                            <img class="logorecomendados" src="Imagenes/Entretenimiento.png" alt="img">
+                            <img class="logorecomendados" src="style/Imagenes/Entretenimiento.png" alt="img">
                             <p>Gaming</p>
                         </div>
                         <div class="cartaderecomendados">
-                            <img class="logorecomendados" src="Imagenes/Ropa.png" alt="img">
+                            <img class="logorecomendados" src="style/Imagenes/Ropa.png" alt="img">
                             <p>Ropa</p>
                         </div>
                         <div class="cartaderecomendados">
-                            <img class="logorecomendados" src="Imagenes/Deporte.png" alt="img">
+                            <img class="logorecomendados" src="style/Imagenes/Deporte.png" alt="img">
                             <p>Deporte</p>
                         </div>
                         <div class="cartaderecomendados">
-                            <img class="logorecomendados" src="Imagenes/familia.png" alt="img">
+                            <img class="logorecomendados" src="style/Imagenes/familia.png" alt="img">
                             <p>Familia</p>
                         </div>
                         <div class="cartaderecomendados">
-                            <img class="logorecomendados" src="Imagenes/mascotas.png" alt="img">
+                            <img class="logorecomendados" src="style/Imagenes/mascotas.png" alt="img">
                             <p>Mascotas</p>
                         </div>
                         <div class="cartaderecomendados">
-                            <img class="logorecomendados" src="Imagenes/musica.png" alt="img">
+                            <img class="logorecomendados" src="style/Imagenes/musica.png" alt="img">
                             <p>Musica</p>
                         </div>
                         <div class="cartaderecomendados">
-                            <img class="logorecomendados" src="Imagenes/propiedad.png" alt="img">
+                            <img class="logorecomendados" src="style/Imagenes/propiedad.png" alt="img">
                             <p>Propiedades</p>
                         </div>
                         <div class="cartaderecomendados">
-                            <img class="logorecomendados" src="Imagenes/Vehiculos.png" alt="img">
+                            <img class="logorecomendados" src="style/Imagenes/Vehiculos.png" alt="img">
                             <p>Vehiculos</p>
                         </div>
 
@@ -110,7 +110,7 @@ $rol = $_COOKIE['rol'] ?? null;
                 if ($rol === 'empresa') {
 
     echo ' <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Launch demo modal
+                    Subir publicacion
                 </button>';
 } else {
     // Si es 'usuario' o no está definido, no mostramos el botón

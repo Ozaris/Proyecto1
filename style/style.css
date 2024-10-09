@@ -59,6 +59,7 @@ body.no-scroll {
 }
 
 .navheaderinicio {
+    padding-top: 10px;
     margin-right: 1rem;
 }
 
@@ -67,6 +68,11 @@ body.no-scroll {
     font-weight: 300;
     text-decoration: none;
     color: black;
+}
+
+.asmenuinicio>img{
+    height: 40px;
+    padding-bottom: 10px;
 }
 
 .asmenuinicio:hover {
@@ -1711,7 +1717,9 @@ footer{
 
 /*----------------------------Fin de + Publicacion--------------------------------*/
 
+
 .bodyempresas {
+    overflow-x: hidden;
     margin: 0;
     padding: 0;
     background-image: url(Imagenes/FondoEmpresasbody.jpg);
@@ -1846,6 +1854,10 @@ footer{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.btn-primary{
+   margin-left: 1rem;
 }
 
 /*----------------------------Fin deBody de empresas--------------------------------*/
@@ -2635,17 +2647,13 @@ footer{
 
 /*----------------------------Inicio de Contacto--------------------------------*/
 
-.divheadercontacto {
-
-}
 .bodycontacto {
     margin: 0;
     font-family: Arial, sans-serif;
 }
 .container {
-    width: 90%; 
     max-width: 600px; 
-    background-image: url(Imagenes/FONDOINICIO4.png);
+    background-image: url(Imagenes/FondoContacto.jpg);
     margin: 50px auto;
     padding: 20px;
     border-radius: 5px;

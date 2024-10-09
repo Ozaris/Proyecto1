@@ -46,7 +46,7 @@ if ($data = $resultado->fetch_assoc()) {
 <!-- +++++++++++++++++++++++++++HEADER+++++++++++++++++++++++++++ --> 
 <div class="inicio1">
     <header class="headerinicio">
-        <a href="index.php"> <img class="logoinicio" src="Imagenes/logoproyecto.png" alt="Logo"></a>
+        <a href="index.php"> <img class="logoinicio" src="style/Imagenes/logoproyecto.png" alt="Logo"></a>
         <button id="abrir" class="abrirmenuinicio"><i class="fa-solid fa-bars"></i></button>
         <nav class="navheaderinicio" id="nav">
             <img class="logosheaderinicio" src="Imagenes/Logos.png" alt="img">
@@ -56,15 +56,15 @@ if ($data = $resultado->fetch_assoc()) {
                 <li class="lismenu"><a class="psmenuinicio">|</a></li>
                 <li class="lismenu"><a class="asmenuinicio" href="#">Servicios</a></li>
                 <li class="lismenu"><a class="psmenuinicio">|</a></li>
-                <li class="lismenu"><a class="asmenuinicio" href="#map">Ubicacion</a></li>
+                <li class="lismenu"><a class="asmenuinicio" href="#map"><img src="style/Imagenes/logousuario2.png" alt="img"></a></li>
                 <li class="lismenu"><a class="psmenuinicio">|</a></li>
-                <li class="lismenu"><a class="asmenuinicio" href="#">Contacto</a></li>
+                <li class="lismenu"><a class="asmenuinicio" href="#"><img src="style/Imagenes/logousuario2.png" alt="img"></a></li>
                 <li class="lismenu"><a class="psmenuinicio">|</a></li>
                 <li class="lismenu"><a class="asmenuinicio" href="registerclientes.html">Registrarse</a></li>
                 <li class="lismenu"><a class="psmenuinicio">|</a></li>
-                <li class="lismenu"><a class="asmenuinicio" href="iniciodesesion.html">Inicio de sesion</a></li>
+                <li class="lismenu"><a class="asmenuinicio" href="iniciodesesion.html">Iniciar</a></li>
                 <li class="lismenu"><a class="psmenuinicio">|</a></li>
-                <li class="lismenu"><a class="asmenuinicio" href="Perfil.php">Perfil</a></li>
+                <li class="lismenu"><a class="asmenuinicio" href="Perfil.php"><img src="style/Imagenes/logousuario2.png" alt="img"></a></li>
             </ul>
         </nav>
     </header>
@@ -93,17 +93,17 @@ if ($data = $resultado->fetch_assoc()) {
 <div class="parte2body">
     <div class="parte2body2">
     <div class="parte2bodydiv2" >
-        <img class="imgparte2body" src="Imagenes/personas.png" alt="img">
+        <img class="imgparte2body" src="style/Imagenes/personas.png" alt="img">
         <p class="tituloparte2body">Servicio de marketing</p>
         <p class="parrafoparte2body">Nuestra empresa KORF se encargará de distribuir publicidad empresarial eficazmente para mejorar la visibilidad de tu empresa.</p>
     </div>
     <div class="parte2bodydiv1" >
-        <img class="imgparte2body" src="Imagenes/flecha.png" alt="img">
+        <img class="imgparte2body" src="style/Imagenes/flecha.png" alt="img">
         <p class="tituloparte2body">Estrategia de expansión</p>
         <p class="parrafoparte2body">Nuestro equipo especializado te proporcionará la orientación necesaria para desarrollar una estrategia de alcance publicitaria efectiva para tu empresa.</p>
     </div>
     <div class="parte2bodydiv3" >
-        <img class="imgparte2body" src="Imagenes/manos.png" alt="img">
+        <img class="imgparte2body" src="style/Imagenes/manos.png" alt="img">
         <p class="tituloparte2body">Con el usuario</p>
         <p class="parrafoparte2body">Ayudamos a los visitantes a encontrar empresas o precios de manera más sencilla y rápida usando etiquetas y catálogos.</p>
     </div>
@@ -120,7 +120,7 @@ if ($data = $resultado->fetch_assoc()) {
          
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <img src="Imagenes/FondoInicio.png" alt="img">
+                    <img src="style/Imagenes/FondoInicio.png" alt="img">
                     <div class="descripcioncarta">
                         <div class="titulocarta">
                             <h4>Nombre de empresa</h4>
@@ -134,7 +134,7 @@ if ($data = $resultado->fetch_assoc()) {
                     </div>
                 </div>
                 <div class="swiper-slide">
-                    <img src="Imagenes/FondoInicio.png" alt="img">
+                    <img src="style/Imagenes/FondoInicio.png" alt="img">
                     <div class="descripcioncarta">
                         <div class="titulocarta">
                             <h4>Nombre de empresa</h4>
@@ -148,7 +148,7 @@ if ($data = $resultado->fetch_assoc()) {
                 </div>
             </div>
                 <div class="swiper-slide">
-                    <img src="Imagenes/FondoInicio.png" alt="img">
+                    <img src="style/Imagenes/FondoInicio.png" alt="img">
                 <div class="descripcioncarta">
                     <div class="titulocarta">
                         <h4>Nombre de empresa</h4>
@@ -162,7 +162,7 @@ if ($data = $resultado->fetch_assoc()) {
                 </div>
             </div>
                 <div class="swiper-slide">
-                    <img src="Imagenes/FondoInicio.png" alt="img">
+                    <img src="style/Imagenes/FondoInicio.png" alt="img">
                 <div class="descripcioncarta">
                     <div class="titulocarta">
                         <h4>Nombre de empresa</h4>
@@ -176,7 +176,7 @@ if ($data = $resultado->fetch_assoc()) {
                 </div>
             </div>
                 <div class="swiper-slide">
-                    <img src="Imagenes/FondoInicio.png" alt="img">
+                    <img src="style/Imagenes/FondoInicio.png" alt="img">
                 <div class="descripcioncarta">
                     <div class="titulocarta">
                         <h4>Nombre de empresa</h4>
@@ -191,7 +191,7 @@ if ($data = $resultado->fetch_assoc()) {
             </div>
                
                 <div class="swiper-slide">
-                    <img src="Imagenes/FondoInicio.png" alt="img">
+                    <img src="style/Imagenes/FondoInicio.png" alt="img">
                 <div class="descripcioncarta">
                     <div class="titulocarta">
                         <h4>Nombre de empresa</h4>
@@ -205,7 +205,7 @@ if ($data = $resultado->fetch_assoc()) {
                 </div>
             </div>
             <div class="swiper-slide">
-                <img src="Imagenes/FondoInicio.png" alt="img">
+                <img src="style/Imagenes/FondoInicio.png" alt="img">
                 <div class="descripcioncarta">
                     <div class="titulocarta">
                         <h4>Nombre de empresa</h4>
@@ -219,7 +219,7 @@ if ($data = $resultado->fetch_assoc()) {
             </div>
         </div>
         <div class="swiper-slide">
-            <img src="Imagenes/FondoInicio.png" alt="img">
+            <img src="style/Imagenes/FondoInicio.png" alt="img">
             <div class="descripcioncarta">
                 <div class="titulocarta">
                     <h4>Nombre de empresa</h4>
@@ -233,7 +233,7 @@ if ($data = $resultado->fetch_assoc()) {
         </div>
     </div>
     <div class="swiper-slide">
-        <img src="Imagenes/FondoInicio.png" alt="img">
+        <img src="style/Imagenes/FondoInicio.png" alt="img">
         <div class="descripcioncarta">
             <div class="titulocarta">
                 <h4>Nombre de empresa</h4>
@@ -247,7 +247,7 @@ if ($data = $resultado->fetch_assoc()) {
     </div>
 </div>
 <div class="swiper-slide">
-    <img src="Imagenes/FondoInicio.png" alt="img">
+    <img src="style/Imagenes/FondoInicio.png" alt="img">
     <div class="descripcioncarta">
         <div class="titulocarta">
             <h4>Nombre de empresa</h4>
@@ -275,7 +275,7 @@ if ($data = $resultado->fetch_assoc()) {
     </div>
 
         <div class="cartasplanes">
-            <img src="Imagenes/logousuario2.png" alt="img">
+            <img src="style/Imagenes/logousuario2.png" alt="img">
             <div class="descripcioncartaplanes">
                 <div class="titulocartaplanes">
                     <h4>BASICO</h4>
@@ -293,7 +293,7 @@ if ($data = $resultado->fetch_assoc()) {
         </div>
 
             <div class="cartasplanes">
-                <img src="Imagenes/logopremium.png" alt="img">
+                <img src="style/Imagenes/logopremium.png" alt="img">
                 <div class="descripcioncartaplanes">
                     <div class="titulocartaplanes">
                         <h4>PREMIUM</h4>
@@ -318,7 +318,7 @@ if ($data = $resultado->fetch_assoc()) {
     <h1 class="h1parte6body">Nuestro local:</h1>
     <p class="pparte6body">Nos encontramos en 19 de Abril, entre Sarandí y Leandro Gomez. Nuestro personal especializado estará para atenderte en caso de que se te presente alguna duda o queja. </p>
     <p class="pparte6body">El horario de atención al cliente es de 13:15 a 19:05 de la tarde. </p>
-    <img class="logosparte6body" src="Imagenes/Logos.png" alt="img">
+    <img class="logosparte6body" src="style/Imagenes/Logos.png" alt="img">
 </div>
     <iframe class="mapaubi" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d421.46950100782357!2d-58.08446172949984!3d-32.3184081663352!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95afc95860544a23%3A0x2def9fadc88a46fb!2s19%20De%20Abril%2C%2060000%20Paysand%C3%BA%2C%20Departamento%20de%20Paysand%C3%BA!5e0!3m2!1ses!2suy!4v1722467891182!5m2!1ses!2suy" ></iframe>
 </div>
