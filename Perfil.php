@@ -339,7 +339,7 @@ function elim($con,$nombre_p) {
     <div class="divcolorperfil22">
 
         <div class="divcolorperfil23">
-            <img class="logosperfil" src="Imagenes/Logosblanco.png" alt="img">
+            <img class="logosperfil" src="style/Imagenes/Logosblanco.png" alt="img">
             <a class="h3perfil" href="contacto.html">Soporte <i class="fa-solid fa-headset"></i></a>
             <p class="pfooterperfil">Recuerda que todos tus datos están protegidos.</p>
         </div>
