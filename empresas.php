@@ -133,26 +133,27 @@ $rol = $_COOKIE['rol'] ?? null;
                     <label for="formFile" class="form-label">
                         <i class="fa-solid fa-2x fa-plus iconomaspublicacion"></i>
                     </label>
-                    <input class="form-control form-control1" type="file" id="formFile" name="imagen_prod">
+                    <input class="form-control form-control1" type="file" id="formFile" name="imagen_prod" accept="image/*">
+                    <div id="imagePreview" class="image-preview"></div> <!-- Vista previa -->
                 </div>
                 <div class="divsubirinformacion">
                     <div class="divdatosinformacion">
-                        <input type="text" class="form-control inputpublicacion1" id="floatingInput" placeholder="Titulo" name="titulo">
+                        <input type="text" class="form-control inputpublicacion1" id="floatingInput" placeholder="Título" name="titulo">
                         <select id="categoriaSelect" name="categoria">
-                         <option>Elije una opción</option>
-                         <option value="Electrónica">Electrónica</option>
-                         <option value="Gaming">Gaming</option>
-                         <option value="Ropa">Ropa</option>
-                         <option value="Deporte">Deporte</option>
-                         <option value="Familia">Familia</option>
-                         <option value="Mascotas">Mascotas</option>
-                         <option value="Propiedades">Propiedades</option>
-                         <option value="Vehiculos">Vehiculos</option>
+                            <option>Elige una opción</option>
+                            <option value="Electrónica">Electrónica</option>
+                            <option value="Gaming">Gaming</option>
+                            <option value="Ropa">Ropa</option>
+                            <option value="Deporte">Deporte</option>
+                            <option value="Familia">Familia</option>
+                            <option value="Mascotas">Mascotas</option>
+                            <option value="Propiedades">Propiedades</option>
+                            <option value="Vehículos">Vehículos</option>
                         </select>
-                        <textarea class="form-control inputpublicacion3" placeholder="Descripcion" id="floatingTextarea2" name="descripcion" style="height: 100px"></textarea>
+                        <textarea class="form-control inputpublicacion3" placeholder="Descripción" id="floatingTextarea2" name="descripcion" style="height: 100px"></textarea>
                     </div>
                     <div class="divinformacionempresa">
-                        <h6>Informacion de la empresa</h6>
+                        <h6>Información de la empresa</h6>
                         <div class="divnombrempresapublicacion">
                             <img class="divfotopublicacion" src="<?php echo htmlspecialchars($foto); ?>" alt="img">
                             <h5 class="nombrempresapublicacion"><?php echo htmlspecialchars($nom); ?></h5>
@@ -166,6 +167,7 @@ $rol = $_COOKIE['rol'] ?? null;
         </div>
     </div>
 </form>
+
 
 
                     </div>
@@ -250,6 +252,23 @@ $(document).ready(function() {
         });
     });
 });
+document.getElementById('formFile').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+        const imagePreview = document.getElementById('imagePreview');
+        imagePreview.innerHTML = `<img src="${e.target.result}" alt="Imagen Previa" style="max-width: 100%; height: auto;">`;
+    };
+
+    if (file) {
+        reader.readAsDataURL(file);
+    } else {
+        // Limpiar la vista previa si no hay archivo
+        document.getElementById('imagePreview').innerHTML = '';
+    }
+});
+
 </script>
 
 </body>
