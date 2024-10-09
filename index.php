@@ -49,7 +49,7 @@ if ($data = $resultado->fetch_assoc()) {
         <a href="index.php"> <img class="logoinicio" src="style/Imagenes/logoproyecto.png" alt="Logo"></a>
         <button id="abrir" class="abrirmenuinicio"><i class="fa-solid fa-bars"></i></button>
         <nav class="navheaderinicio" id="nav">
-            <img class="logosheaderinicio" src="Imagenes/Logos.png" alt="img">
+            <img class="logosheaderinicio" src="style/Imagenes/Logos.png" alt="img">
             <button class="cerrarmenuinicio" id="cerrar"><i class="fa-solid fa-x"></i></button>
             <ul class="navlistainicio">
                 <li class="lismenu"><a class="asmenuinicio" href="empresas.php">Empresas</a></li>
