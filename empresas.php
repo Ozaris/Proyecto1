@@ -138,7 +138,17 @@ $rol = $_COOKIE['rol'] ?? null;
                 <div class="divsubirinformacion">
                     <div class="divdatosinformacion">
                         <input type="text" class="form-control inputpublicacion1" id="floatingInput" placeholder="Titulo" name="titulo">
-                        <input type="text" class="form-control inputpublicacion2" id="floatingInput" placeholder="Categoria" name="categoria">
+                        <select id="categoriaSelect" name="categoria">
+                         <option>Elije una opción</option>
+                         <option value="Electrónica">Electrónica</option>
+                         <option value="Gaming">Gaming</option>
+                         <option value="Ropa">Ropa</option>
+                         <option value="Deporte">Deporte</option>
+                         <option value="Familia">Familia</option>
+                         <option value="Mascotas">Mascotas</option>
+                         <option value="Propiedades">Propiedades</option>
+                         <option value="Vehiculos">Vehiculos</option>
+                        </select>
                         <textarea class="form-control inputpublicacion3" placeholder="Descripcion" id="floatingTextarea2" name="descripcion" style="height: 100px"></textarea>
                     </div>
                     <div class="divinformacionempresa">
@@ -227,6 +237,17 @@ $(document).ready(function() {
                 $("#resultado_busqueda").css("display", "none");
             }
         }, 300); // Esperar 300ms
+    });
+
+    $("#categoriaSelect").change(function() {
+        var categoriaSeleccionada = $(this).val();
+        // Aquí puedes hacer lo que desees con la categoría seleccionada,
+        // como agregarla a un card o actualizar el contenido en la página.
+
+        // Ejemplo de cómo actualizar un card:
+        $(".card-text .text-muted").each(function() {
+            $(this).text("Categoría: " + categoriaSeleccionada);
+        });
     });
 });
 </script>
