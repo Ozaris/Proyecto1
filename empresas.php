@@ -6,6 +6,51 @@ $con = conectar_bd();
 $nom = $_COOKIE['nombre'] ?? null;
 $foto = $_COOKIE['user_picture'] ?? $_COOKIE['foto'] ?? null;
 $rol = $_COOKIE['rol'] ?? null;
+
+if (isset($_POST["envio-pub"])) {
+    $titulo = $_POST["titulo"];
+    $categoria = $_POST["categoria"];
+    $descripcion = $_POST["descripcion"];
+    $email_emp = $_COOKIE['email_emp'] ?? null;
+
+    // Verifica si se ha subido un archivo
+    if (isset($_FILES['imagen_prod']) && $_FILES['imagen_prod']['error'] == 0) {
+        // Obtiene la información del archivo
+        $imagen = $_FILES['imagen_prod'];
+        $rutaDestino = 'uploads/' . basename($imagen['name']);
+
+        // Mueve el archivo a la carpeta deseada
+        if (move_uploaded_file($imagen['tmp_name'], $rutaDestino)) {
+            // Llamada a la función para crear la publicación
+            crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $rutaDestino);
+        } else {
+            echo "Error al subir la imagen.";
+        }
+    } else {
+        echo "No se ha seleccionado ninguna imagen o ha ocurrido un error.";
+    }
+}
+
+function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img) {
+    $consulta_login = "SELECT * FROM persona WHERE email = '$email_emp'";
+    $resultado_login = mysqli_query($con, $consulta_login);
+
+    if ($resultado_login && mysqli_num_rows($resultado_login) > 0) {
+        $fila = mysqli_fetch_assoc($resultado_login);
+        $id_per = $fila['Id_per'];
+
+        // Inserta en la base de datos
+        $consulta_insertar_persona = "INSERT INTO publicacion_prod (titulo, categoria, descripcion, imagen_prod, Id_per) VALUES ('$titulo', '$categoria', '$descripcion', '$img', '$id_per')";
+        
+        if (mysqli_query($con, $consulta_insertar_persona)) {
+            echo "Publicación creada exitosamente.";
+        } else {
+            echo "Error al insertar en publicacion_prod: " . mysqli_error($con);
+        }
+    } else {
+        echo "No se encontró ningún usuario con ese email.";
+    }
+}
 ?>
 
 
@@ -121,7 +166,7 @@ $rol = $_COOKIE['rol'] ?? null;
                  
                  <div class="modal modal-xl fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
-                    <form action="crear_pub.php" method="POST" enctype="multipart/form-data">
+                    <form action="empresas.php" method="POST" enctype="multipart/form-data">
     <div class="modal-content">
         <div class="modal-header">
             <h1 class="modal-title fs-5" id="exampleModalLabel">Publicar</h1>
