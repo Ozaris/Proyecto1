@@ -164,7 +164,7 @@ $rol = $_COOKIE['rol'] ?? null;
              
                 <div class="publicaciones">
     <h3>Publicaciones</h3>
-    <div class="row">
+    <div class="divprincipalpublisem">
         <?php
         // Obtener las publicaciones de la base de datos
         $consulta_publicaciones = "SELECT p.*, pe.nombre_p AS nombre_p FROM publicacion_prod p JOIN persona pe ON p.Id_per = pe.Id_per ORDER BY p.created_at DESC";

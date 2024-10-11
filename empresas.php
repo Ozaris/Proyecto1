@@ -218,10 +218,8 @@ function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img) {
                     </div>
                 </div>
             
-             
-                <div class="publicaciones">
-    <h3>Publicaciones</h3>
-    <div class="row">
+                <h3 class="h3publiem">Publicaciones</h3>
+                <div class="divprincipalpublisem">
         <?php
         // Obtener las publicaciones de la base de datos
         $consulta_publicaciones = "SELECT p.*, pe.nombre_p AS nombre_p FROM publicacion_prod p JOIN persona pe ON p.Id_per = pe.Id_per ORDER BY p.created_at DESC";
@@ -231,24 +229,24 @@ function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img) {
             while ($publicacion = mysqli_fetch_assoc($resultado_publicaciones)) {
                 // Crear tarjeta para cada publicación
                 ?>
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <img src="<?php echo htmlspecialchars($publicacion['imagen_prod']); ?>" class="card-img-top" alt="Imagen de publicación">
-                        <div class="card-body">
+                <from class="containerpublis">
+                    <div class="cardempresas">
+                        <img src="<?php echo htmlspecialchars($publicacion['imagen_prod']); ?>" class="imgcardpubliem" alt="Imagen de publicación">
+                        <div class="cardempresasbody">
                             <h5 class="card-title"><?php echo htmlspecialchars($publicacion['titulo']); ?></h5>
                             <p class="card-text"><?php echo htmlspecialchars($publicacion['descripcion']); ?></p>
                             <p class="card-text"><small class="text-muted">Categoría: <?php echo htmlspecialchars($publicacion['categoria']); ?></small></p>
                             <p class="card-text"><small class="text-muted">Publicado por: <?php echo htmlspecialchars($publicacion['nombre_p']); ?></small></p>
                         </div>
+                        <input class="botonverpubliem" type="button" value="Ver mas">
                     </div>
-                </div>
+            </from>
                 <?php
             }
         } else {
             echo "<p>No hay publicaciones disponibles.</p>";
         }
         ?>
-    </div>
 </div>
             <a href="#headerempresas" class="botondescroll"><i class="fa-solid fa-arrow-up"></i></a>
             <script src="app.js"></script>
