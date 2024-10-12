@@ -1,6 +1,6 @@
 <?php
 include_once "conexion.php";
-
+session_start();
 $con = conectar_bd();
 
 $nom = $_COOKIE['nombre'] ?? null;
@@ -223,30 +223,32 @@ function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img) {
         <?php
         // Obtener las publicaciones de la base de datos
         $consulta_publicaciones = "SELECT p.*, pe.nombre_p AS nombre_p FROM publicacion_prod p JOIN persona pe ON p.Id_per = pe.Id_per ORDER BY p.created_at DESC";
-        $resultado_publicaciones = mysqli_query($con, $consulta_publicaciones);
+$resultado_publicaciones = mysqli_query($con, $consulta_publicaciones);
 
-        if ($resultado_publicaciones && mysqli_num_rows($resultado_publicaciones) > 0) {
-            while ($publicacion = mysqli_fetch_assoc($resultado_publicaciones)) {
-                // Crear tarjeta para cada publicación
-                ?>
-                <from class="containerpublis">
-                    <div class="cardempresas">
-                        <img src="<?php echo htmlspecialchars($publicacion['imagen_prod']); ?>" class="imgcardpubliem" alt="Imagen de publicación">
-                        <div class="cardempresasbody">
-                            <h5 class="card-title"><?php echo htmlspecialchars($publicacion['titulo']); ?></h5>
-                            <p class="card-text"><?php echo htmlspecialchars($publicacion['descripcion']); ?></p>
-                            <p class="card-text"><small class="text-muted">Categoría: <?php echo htmlspecialchars($publicacion['categoria']); ?></small></p>
-                            <p class="card-text"><small class="text-muted">Publicado por: <?php echo htmlspecialchars($publicacion['nombre_p']); ?></small></p>
-                        </div>
-                        <input class="botonverpubliem" type="button" value="Ver mas">
-                    </div>
-            </from>
-                <?php
-            }
-        } else {
-            echo "<p>No hay publicaciones disponibles.</p>";
-        }
+if ($resultado_publicaciones && mysqli_num_rows($resultado_publicaciones) > 0) {
+    while ($publicacion = mysqli_fetch_assoc($resultado_publicaciones)) {
+        // Crear tarjeta para cada publicación
+        $id_prod = $publicacion['id_prod'];
         ?>
+        <form class="containerpublis" action="PublicacionD.php" method="POST">
+            <div class="cardempresas">
+                <img src="<?php echo htmlspecialchars($publicacion['imagen_prod']); ?>" class="imgcardpubliem" alt="Imagen de publicación">
+                <div class="cardempresasbody">
+                    <input type="hidden" name="id_prod" value="<?php echo htmlspecialchars($id_prod); ?>">
+                    <h5 class="card-title"><?php echo htmlspecialchars($publicacion['titulo']); ?></h5>
+                    <p class="card-text"><?php echo htmlspecialchars($publicacion['descripcion']); ?></p>
+                    <p class="card-text"><small class="text-muted">Categoría: <?php echo htmlspecialchars($publicacion['categoria']); ?></small></p>
+                    <p class="card-text"><small class="text-muted">Publicado por: <?php echo htmlspecialchars($publicacion['nombre_p']); ?></small></p>
+                </div>
+                <input class="botonverpubliem" type="submit" value="Ver más" name="pub">
+            </div>
+        </form>
+        <?php
+    }
+} else {
+    echo "<p>No hay publicaciones disponibles.</p>";
+}
+?>
 </div>
             <a href="#headerempresas" class="botondescroll"><i class="fa-solid fa-arrow-up"></i></a>
             <script src="app.js"></script>

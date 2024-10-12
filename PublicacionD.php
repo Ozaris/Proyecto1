@@ -1,3 +1,36 @@
+<?php
+include "conexion.php";
+session_start();
+$con= conectar_bd();
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_prod'])) {
+    $id_prod = $_POST['id_prod'];
+
+    $sql = "SELECT * FROM publicacion_prod WHERE id_prod='$id_prod'";
+    $resultado = $con->query($sql);
+
+    $sql2 = "SELECT e.nombre_p FROM empresa e JOIN publicacion_prod p ON e.Id_per=p.id_per WHERE id_prod='$id_prod'";
+    $resultado2 = $con->query($sql2);
+
+    if ($data = $resultado->fetch_assoc()) {
+        $titulo_emp = $data['titulo'];
+        $cat_emp = $data['categoria'];
+        $foto_pub = $data['imagen_prod'];
+        $desc_emp = $data['descripcion'];
+    }
+
+    if ($resultado2 && $data2 = $resultado2->fetch_assoc()) {
+        $nom_pub = $data2['nombre_p'];
+    } else {
+        $nombre_p = 'Nombre no disponible';
+        $email = 'Email no disponible';
+        $foto = 'default.png'; // Imagen predeterminada
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html class="htmlpubliD" lang="en">
 <head>
@@ -12,20 +45,20 @@
     <div class="divprincipalD">
 
         <div class="divsec1publiD">
-            <img class="imagenprincipalcomentarios" src="style/Imagenes/GatoFotoPruebaPerfil.png" alt="img">
+            <img class="imagenprincipalcomentarios" src="<?php echo $foto_pub?>" alt="img">
         </div>
 
         <div class="divsec2publiD">
             <h2 class="titulopubliD">Informacion</h2>
             <div class="divinfopubliD">
-                <h3 class="letraspubliD">Nombre</h3>
-                <h3 class="letraspubliD">Descripcion</h3>
+                <h3 class="letraspubliD"><?php echo $nom_pub;?></h3>
+                <h3 class="letraspubliD"><?php echo $desc_emp;?></h3>
                 <h3 class="letraspubliD">Telefono</h3>
             </div>
 
             <div class="divinfopubliD">
                 <h3 class="letraspubliD">Ubicacion</h3>
-                <h3 class="letraspubliD">Categoria</h3>
+                <h3 class="letraspubliD"><?php echo $cat_emp;?></h3>
                 <h3 class="letraspubliD">Valoracion</h3>
             </div>
         </div>
