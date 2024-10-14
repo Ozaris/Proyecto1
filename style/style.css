@@ -589,19 +589,24 @@ body.no-scroll {
 /*----------------------------Fin inicio de sesion--------------------------------*/
 
 .inicio1 {
-    width: 100%;
-    height: 38rem;
-    padding-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
     background-image: url(Imagenes/FONDOINICIO4.png);
     background-size: cover;
     background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
+    border-bottom: 3px solid black;
 }
 
 .parte1body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
     width: 100%;
-    padding: 4rem;
-    margin-top: 6rem;
-    max-width: 1768px;
+    padding-left: 3rem;
 }
 
 .h1parte1 {
@@ -614,6 +619,14 @@ body.no-scroll {
     color: white;
     font-size: 1rem;
     font-weight: 2px;
+    width: 100%;
+}
+
+.divbotondeparte1body {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
 }
 
 .botondeparte1body {

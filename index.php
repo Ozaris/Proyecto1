@@ -77,9 +77,9 @@ if (isset($_SESSION['email'])){
     <h1 class="h1parte1">Bienvenido/a, es un gusto tenerte aquí</h1>
     <h3 class="h3parte1">Te damos la bienvenida a una página con un sinfín de empresas esperándote. De la mano de KORF Company, esperamos ayudarte.</h3>
 
-
-    
+  <div class="divbotondeparte1body">
     <a class="botondeparte1body" class="aslinkcarta" href="Informacion.html">Saber más</a>
+  </div>
 </div>
 
 </div>
