@@ -4,28 +4,28 @@ $con = conectar_bd();
 session_start();
 
 if (isset($_SESSION['email'])){
-$email=$_SESSION['email'];
-$sql = "SELECT * FROM persona WHERE email='$email'";
-$resultado = $con->query($sql);
+    $email = $_SESSION['email'];
+    $sql = "SELECT * FROM persona WHERE email='$email'";
+    $resultado = $con->query($sql);
 
-if ($data = $resultado->fetch_assoc()) {
-    $nombre_p = $data['nombre_p'];
-    $email = $data['email'];
-    $foto = $data['foto'] ?? $_COOKIE['user_picture'] ?? null;
-    $rol = $data['rol'];
+    if ($data = $resultado->fetch_assoc()) {
+        $nombre_p = $data['nombre_p'];
+        $email = $data['email'];
+        $foto = $data['foto'];
+        $rol = $data['rol'];
 
-    setcookie("nombre", $nombre_p, time() + 4200, "/");
-    setcookie("foto", $foto, time() + (86400 * 30), "/");
-    setcookie("email_emp", $email, time() + (86400 * 30), "/");  // Cookie válida por 30 días
-    setcookie("rol", $rol, time() + 4200, "/");
+        setcookie("nombre", $nombre_p, time() + 4200, "/");
+        setcookie("foto", $foto, time() + (86400 * 30), "/");
+        setcookie("email_emp", $email, time() + (86400 * 30), "/");  // Cookie válida por 30 días
+        setcookie("rol", $rol, time() + 4200, "/");
+    } else {
+        $nombre_p = 'Nombre no disponible';
+        $email = 'Email no disponible';
+        $foto = 'img_usr/default1.png';
+    }
 } else {
-    $nombre_p = 'Nombre no disponible';
-    $email = 'Email no disponible';
-    $foto = 'default.png'; // Imagen predeterminada
+    $foto = 'img_usr/default1.png';
 }
-
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -56,15 +56,15 @@ if ($data = $resultado->fetch_assoc()) {
                 <li class="lismenu"><a class="psmenuinicio">|</a></li>
                 <li class="lismenu"><a class="asmenuinicio" href="#">Servicios</a></li>
                 <li class="lismenu"><a class="psmenuinicio">|</a></li>
-                <li class="lismenu"><a class="asmenuinicio" href="#map"><img src="style/Imagenes/logousuario2.png" alt="img"></a></li>
+                <li class="lismenu"><a class="asmenuinicio" href="#map">Ubicación</a></li>
                 <li class="lismenu"><a class="psmenuinicio">|</a></li>
-                <li class="lismenu"><a class="asmenuinicio" href="#"><img src="style/Imagenes/logousuario2.png" alt="img"></a></li>
+                <li class="lismenu"><a class="asmenuinicio" href="#">Contacto</a></li>
                 <li class="lismenu"><a class="psmenuinicio">|</a></li>
-                <li class="lismenu"><a class="asmenuinicio" href="registerclientes.html">Registrarse</a></li>
-                <li class="lismenu"><a class="psmenuinicio">|</a></li>
-                <li class="lismenu"><a class="asmenuinicio" href="iniciodesesion.html">Iniciar</a></li>
-                <li class="lismenu"><a class="psmenuinicio">|</a></li>
-                <li class="lismenu"><a class="asmenuinicio" href="Perfil.php"><img src="style/Imagenes/logousuario2.png" alt="img"></a></li>
+                <li class="lismenu">
+                <a class="asmenuinicio" href="javascript:void(0);" onclick="redireccion()">
+                        <img src="img_usr/default.png" alt="img" style="cursor: pointer;">
+                    </a>
+                </li>
             </ul>
         </nav>
     </header>
@@ -77,6 +77,8 @@ if ($data = $resultado->fetch_assoc()) {
     <h1 class="h1parte1">Bienvenido/a, es un gusto tenerte aquí</h1>
     <h3 class="h3parte1">Te damos la bienvenida a una página con un sinfín de empresas esperándote. De la mano de KORF Company, esperamos ayudarte.</h3>
 
+
+    
     <a class="botondeparte1body" class="aslinkcarta" href="Informacion.html">Saber más</a>
 </div>
 
@@ -366,7 +368,17 @@ if ($data = $resultado->fetch_assoc()) {
         </div>
     </footer>
 <!-- +++++++++++++++++++++++++++FINAL DEL FOOTER+++++++++++++++++++++++++++ --> 
+<script>
 
+    function redireccion() {
+        <?php if (isset($_SESSION['email'])): ?>
+            window.location.href = 'Perfil.php';
+        <?php else: ?>
+            window.location.href = 'iniciodesesion.html';
+        <?php endif; ?>
+    }
+</script>
+
+</script>
         <script src="app.js"></script>
     </body>
-</html>
