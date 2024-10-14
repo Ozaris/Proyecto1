@@ -11,7 +11,7 @@ $resultado = $con->query($sql);
 if ($data = $resultado->fetch_assoc()) {
     $nombre_p = $data['nombre_p'];
     $email = $data['email'];
-    $foto = $data['foto'];
+    $foto = $data['foto'] ?? $_COOKIE['user_picture'] ?? null;
     $rol = $data['rol'];
 
     setcookie("nombre", $nombre_p, time() + 4200, "/");
