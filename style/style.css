@@ -577,9 +577,14 @@ body.no-scroll {
             text-align: center;
             font-size: 1.5rem;
         }
+        .piniciosesion {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            color: white;
+            text-align: center;
+            font-size: 14px;
+        }
     }
-
-
 
 /*----------------------------Fin inicio de sesion--------------------------------*/
 
