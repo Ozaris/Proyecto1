@@ -8,9 +8,9 @@ $email= $_COOKIE['email'] ?? null;
     $comentario= $_COOKIE['comentario'] ?? null;
     $foto= $_COOKIE['user_picture'] ?? null;
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_prod'])) {
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_prod'])) {
     $id_prod = $_POST['id_prod'];
-
+    setcookie("pub", $id_prod, time() + (86400 * 30), "/");
     $sql = "SELECT * FROM publicacion_prod WHERE id_prod='$id_prod'";
     $resultado = $con->query($sql);
 
@@ -83,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_prod'])) {
         <div id="commentsContainer">
         <?php
         // Obtener y mostrar los comentarios
-        $consulta_publicaciones = "SELECT p.*, pe.nombre_p AS nombre_p FROM comentario p JOIN persona pe ON p.id_per2 = pe.Id_per ORDER BY p.created_at DESC";
+        $consulta_publicaciones = "SELECT p.*, pe.nombre_p AS nombre_p FROM comentario p JOIN persona pe ON p.id_per2 = pe.Id_per WHERE p.id_prod='$id_prod' ORDER BY p.created_at DESC";
         $resultado_publicaciones = mysqli_query($con, $consulta_publicaciones);
 
         if ($resultado_publicaciones && mysqli_num_rows($resultado_publicaciones) > 0) {

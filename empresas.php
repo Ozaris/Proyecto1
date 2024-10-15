@@ -229,6 +229,7 @@ if ($resultado_publicaciones && mysqli_num_rows($resultado_publicaciones) > 0) {
     while ($publicacion = mysqli_fetch_assoc($resultado_publicaciones)) {
         // Crear tarjeta para cada publicación
         $id_prod = $publicacion['id_prod'];
+       
         ?>
         <form class="containerpublis" action="PublicacionD.php" method="POST">
             <div class="cardempresas">
@@ -245,6 +246,7 @@ if ($resultado_publicaciones && mysqli_num_rows($resultado_publicaciones) > 0) {
         </form>
         <?php
     }
+    
 } else {
     echo "<p>No hay publicaciones disponibles.</p>";
 }
