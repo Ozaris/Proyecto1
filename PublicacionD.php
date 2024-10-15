@@ -74,7 +74,7 @@ $email= $_COOKIE['email'] ?? null;
         <div class="divprincipalcomentarios">
             <img class="imagenperfilcomentarios" src="<?php echo $foto?>" alt="img">
             <input type="text" class="inputcomentarios" placeholder="Comentario" aria-label="Comentario" name="comentario">
-            <input type="submit" class="botoncomentar" name="envio-com" ><i class="fa-solid fa-arrow-right"></i></input>
+            <input type="submit" class="botoncomentar" name="envio-com" ></input>
         </div>
         </form>
         <div class="divinfocomentarios">
