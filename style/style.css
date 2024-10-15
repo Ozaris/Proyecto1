@@ -489,124 +489,23 @@ body.no-scroll {
 .logosiniciodesesion {
     width: 10rem;
 }
-@media (max-width: 780px) {
-    .containeriniciosesion {
-        flex-direction: column; /* Apilar columnas */
-        align-items: center; /* Centrar elementos */
-    
-    }
-
-    .containerleftiniciosesion,
-    .containerrightiniciosesion {
-        padding: 2rem; /* Reducir padding en móviles */
-        width: 100%; /* Ancho completo */
-        box-sizing: border-box; /* Incluir padding en el tamaño total */
-    }
-
-    .logosiniciodesesion {
-        width: 8rem; /* Reducir tamaño de la imagen */
-    }
-}
-
-@media (max-width: 480px) {
-    .inputiniciosesion {
-        padding: 8px; /* Reducir padding en inputs */
-    }
-
-    .botoniniciosesion, .botonregistrarmeiniciosesion {
-        padding: 10px 20px; /* Reducir padding en botones */
-    }
-
-    .h1iniciosesion, .piniciosesion {
-        font-size: 1rem; /* Ajustar tamaño de fuente */
-    }
-}
-
-@media (max-height: 600px) {
-    .containerleftiniciosesion {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        background-color: white;
-        padding: 0;
-        height: 70%;
-        margin-top: 10rem;
-    }
-    
-    .containerrightiniciosesion {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        background-color: #333;
-        padding: 2rem;
-        height: 30%;
-    }
-    .logosiniciodesesion {
-        width: 5rem;
-        margin-top: 8px;
-    }
-    .h1iniciosesion {
-        font-size: 15px;
-    }
-    .piniciosesion {
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-        color: white;
-        text-align: center;
-        font-size: 14px;
-    }
-    .botonregistrarmeiniciosesion {
-        background-color: transparent;
-        color: white;
-        font-size: 10px;
-        padding: 10px;
-        border: 2px solid white;
-        border-radius: 8px;
-        font-weight: 600;
-        letter-spacing: 0.5px;
-        text-transform: uppercase;
-        margin-top: 0;
-        cursor: pointer;
-        margin-bottom: 1rem;
-    }
-}
-    @media (max-width: 425px) {
-        .h1iniciosesion2 {
-            text-align: center;
-            font-size: 1.5rem;
-        }
-        .piniciosesion {
-            margin-top: 1rem;
-            margin-bottom: 1rem;
-            color: white;
-            text-align: center;
-            font-size: 14px;
-        }
-    }
 
 /*----------------------------Fin inicio de sesion--------------------------------*/
 
 .inicio1 {
-    display: flex;
-    flex-direction: column;
+    width: 100%;
+    height: 38rem;
+    padding-top: 1.5rem;
     background-image: url(Imagenes/FONDOINICIO4.png);
     background-size: cover;
     background-repeat: no-repeat;
-    width: 100%;
-    height: 100vh;
-    border-bottom: 3px solid black;
 }
 
 .parte1body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100%;
     width: 100%;
-    padding-left: 3rem;
+    padding: 4rem;
+    margin-top: 6rem;
+    max-width: 1768px;
 }
 
 .h1parte1 {
@@ -619,14 +518,6 @@ body.no-scroll {
     color: white;
     font-size: 1rem;
     font-weight: 2px;
-    width: 100%;
-}
-
-.divbotondeparte1body {
-    width: 100%;
-    display: flex;
-    justify-content: left;
-    align-items: center;
 }
 
 .botondeparte1body {
@@ -2726,7 +2617,7 @@ footer{
 .divprincipalD {
     display: flex;
     width: 100%;
-    padding-top: 1rem;
+    padding-top: 5rem;
 } 
 
 .divsec1publiD {
@@ -2923,71 +2814,74 @@ footer{
 
 /*----------------------------Inicio de Contacto--------------------------------*/
 
-.bodycontacto {
-    margin: 0;
-    font-family: Arial, sans-serif;
+body.bodycontacto {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
 }
-.container {
-    max-width: 600px; 
-    background-image: url(Imagenes/FondoContacto.jpg);
-    margin: 50px auto;
+
+.divheadercontacto {
     padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .container>h1 {
     text-align: center;
-    color: #ffffff;
+    color: #4a4a4a;
+    margin-bottom: 20px;
 }
 
-.formcontact>label {
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group>label {
     display: block;
-    margin: 10px 0 5px;
-    color: #ffffff;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 
-.formcontact>input,textarea,select {
-    width: 100%; 
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-bottom: 10px; 
-}
-
-.formcontact>button {
+.inputcontacto {
     width: 100%;
     padding: 10px;
-    background-color: #66a6e6;
-    color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+.inputcontacto:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.btnsubmit {
+    width: 100%;
+    padding: 10px;
+    background-color: #303030;
+    color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
+    font-size: 16px;
     cursor: pointer;
-    font-size: 16px; 
+    transition: background-color 0.3s;
 }
 
-.formcontact>button:hover {
-    background-color: #333;
+.btnsubmit:hover {
+    background-color: #505050; /* Cambia el color al pasar el mouse */
+    transform: translateY(-1px); /* Efecto de elevación */
 }
 
-.selectcontacto {
-    display: flex;
-    flex-direction: column;
+.btnsubmit:active {
+    transform: translateY(0); /* Regresa al estado normal al hacer clic */
 }
 
-@media (max-width: 600px) {
-.container {
-    margin: 20px; 
-    padding: 15px; 
-}
-
-.formcontact>h1 {
-    font-size: 1.5em; 
-}
-
-.formcontact>button {
-    font-size: 14px; 
-}
-}
 
 /*----------------------------Fin de Contacto--------------------------------*/

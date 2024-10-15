@@ -5,27 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto</title>
     <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body class="bodycontacto">
     <div class="divheadercontacto">
         <header class="headerinicio">
-            <a href="index.php"> <img class="logoinicio" src="style/Imagenes/logoproyecto.png" alt="Logo"></a>
-            <button id="abrir" class="abrirmenuinicio"><i class="fa-solid fa-bars"></i></button>
+            <a href="index.php"><img class="logoinicio" src="style/Imagenes/logoproyecto.png" alt="Logo"></a>
+            <button id="abrir" class="abrirmenuinicio"><i class="fas fa-bars"></i></button>
             <nav class="navheaderinicio" id="nav">
                 <img class="logosheaderinicio" src="Imagenes/Logos.png" alt="img">
-                <button class="cerrarmenuinicio" id="cerrar"><i class="fa-solid fa-x"></i></button>
+                <button class="cerrarmenuinicio" id="cerrar"><i class="fas fa-times"></i></button>
                 <ul class="navlistainicio">
                     <li class="lismenu"><a class="asmenuinicio" href="empresas.php">Empresas</a></li>
                     <li class="lismenu"><a class="psmenuinicio">|</a></li>
                     <li class="lismenu"><a class="asmenuinicio" href="#">Servicios</a></li>
                     <li class="lismenu"><a class="psmenuinicio">|</a></li>
-                    <li class="lismenu"><a class="asmenuinicio" href="#map">Ubicacion</a></li>
+                    <li class="lismenu"><a class="asmenuinicio" href="#map">Ubicación</a></li>
                     <li class="lismenu"><a class="psmenuinicio">|</a></li>
                     <li class="lismenu"><a class="asmenuinicio" href="#">Contacto</a></li>
                     <li class="lismenu"><a class="psmenuinicio">|</a></li>
                     <li class="lismenu"><a class="asmenuinicio" href="registerclientes.html">Registrarse</a></li>
                     <li class="lismenu"><a class="psmenuinicio">|</a></li>
-                    <li class="lismenu"><a class="asmenuinicio" href="iniciodesesion.html">Inicio de sesion</a></li>
+                    <li class="lismenu"><a class="asmenuinicio" href="iniciodesesion.html">Inicio de sesión</a></li>
                     <li class="lismenu"><a class="psmenuinicio">|</a></li>
                     <li class="lismenu"><a class="asmenuinicio" href="Perfil.php">Perfil</a></li>
                 </ul>
@@ -34,18 +35,21 @@
         <div class="container">
             <h1>Contacto</h1>
             <form action="#" method="post" class="formcontact">
-                <label for="nombre">Nombre:</label>
-                <input class="labelcontacto" type="text" id="nombre" name="nombre" required>
-    
-                <label for="email">Correo Electrónico:</label>
-                <input class="labelcontacto" type="email" id="email" name="email" required>
-    
-                <label for="mensaje">Mensaje:</label>
-                <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
-                <button type="submit">Enviar</button>
-                
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input class="inputcontacto" type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo Electrónico:</label>
+                    <input class="inputcontacto" type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea class="inputcontacto" id="mensaje" name="mensaje" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btnsubmit">Enviar</button>
             </form>
         </div>
-</div>
+    </div>
 </body>
 </html>
