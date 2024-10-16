@@ -2814,23 +2814,23 @@ footer{
 
 /*----------------------------Inicio de Contacto--------------------------------*/
 
-body.bodycontacto {
+.bodycontacto {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f9;
     color: #333;
-}
-
-.divheadercontacto {
-    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 .container {
-    max-width: 600px;
+    width: 40rem;
     margin: auto;
     padding: 20px;
     background: white;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px #303030;
 }
 
 .container>h1 {
@@ -2857,15 +2857,10 @@ body.bodycontacto {
     transition: border-color 0.3s;
 }
 
-.inputcontacto:focus {
-    border-color: #007bff;
-    outline: none;
-}
-
 .btnsubmit {
     width: 100%;
     padding: 10px;
-    background-color: #303030;
+    background-color: #333;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -2874,13 +2869,9 @@ body.bodycontacto {
     transition: background-color 0.3s;
 }
 
-.btnsubmit:hover {
-    background-color: #505050; /* Cambia el color al pasar el mouse */
-    transform: translateY(-1px); /* Efecto de elevación */
-}
-
-.btnsubmit:active {
-    transform: translateY(0); /* Regresa al estado normal al hacer clic */
+.atrasdecontacto {
+    text-decoration: none;
+    color: #333;
 }
 
 
