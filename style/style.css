@@ -490,6 +490,97 @@ body.no-scroll {
     width: 10rem;
 }
 
+@media (max-width: 780px) {
+    .containeriniciosesion {
+        flex-direction: column; /* Apilar columnas */
+        align-items: center; /* Centrar elementos */
+    
+    }
+
+    .containerleftiniciosesion,
+    .containerrightiniciosesion {
+        padding: 2rem; /* Reducir padding en móviles */
+        width: 100%; /* Ancho completo */
+        box-sizing: border-box; /* Incluir padding en el tamaño total */
+    }
+
+    .logosiniciodesesion {
+        width: 8rem; /* Reducir tamaño de la imagen */
+    }
+}
+
+@media (max-width: 480px) {
+    .inputiniciosesion {
+        padding: 8px; /* Reducir padding en inputs */
+    }
+
+    .botoniniciosesion, .botonregistrarmeiniciosesion {
+        padding: 10px 20px; /* Reducir padding en botones */
+    }
+
+    .h1iniciosesion, .piniciosesion {
+        font-size: 1rem; /* Ajustar tamaño de fuente */
+    }
+}
+
+@media (max-height: 600px) {
+    .containerleftiniciosesion {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: white;
+        padding: 0;
+        height: 70%;
+        margin-top: 10rem;
+    }
+    
+    .containerrightiniciosesion {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: #333;
+        padding: 2rem;
+        height: 30%;
+    }
+    .logosiniciodesesion {
+        width: 5rem;
+        margin-top: 8px;
+    }
+    .h1iniciosesion {
+        font-size: 15px;
+    }
+    .piniciosesion {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        color: white;
+        text-align: center;
+        font-size: 14px;
+    }
+    .botonregistrarmeiniciosesion {
+        background-color: transparent;
+        color: white;
+        font-size: 10px;
+        padding: 10px;
+        border: 2px solid white;
+        border-radius: 8px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        margin-top: 0;
+        cursor: pointer;
+        margin-bottom: 1rem;
+    }
+}
+    @media (max-width: 425px) {
+        .h1iniciosesion2 {
+            text-align: center;
+            font-size: 1.5rem;
+        }
+    }
+
+
 /*----------------------------Fin inicio de sesion--------------------------------*/
 
 .inicio1 {
