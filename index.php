@@ -40,12 +40,15 @@ if (isset($_SESSION['email'])){
     <link class="aslinkcarta" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" class="aslinkcarta" href="style/style.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js/dist/driver.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/driver.js/dist/driver.min.js"></script>
     <title>Inicio - Ozaris</title>
 </head>
     <body>
 <!-- +++++++++++++++++++++++++++HEADER+++++++++++++++++++++++++++ --> 
 <div class="inicio1">
-    <header class="headerinicio">
+    <header class="headerinicio" id="headerinicio">
         <a href="index.php"> <img class="logoinicio" src="style/Imagenes/logoproyecto.png" alt="Logo"></a>
         <button id="abrir" class="abrirmenuinicio"><i class="fa-solid fa-bars"></i></button>
         <nav class="navheaderinicio" id="nav">
@@ -73,7 +76,7 @@ if (isset($_SESSION['email'])){
 
 <!-- +++++++++++++++++++++++++++BODY+++++++++++++++++++++++++++ -->
 
-<div class="parte1body">
+<div class="parte1body" id="#welcomeSection">
     <h1 class="h1parte1">Bienvenido/a, es un gusto tenerte aquí</h1>
     <h3 class="h3parte1">Te damos la bienvenida a una página con un sinfín de empresas esperándote. De la mano de KORF Company, esperamos ayudarte.</h3>
 
@@ -112,7 +115,7 @@ if (isset($_SESSION['email'])){
   </div>
 </div>
 
-<div class="parte4body swiper">
+<div class="parte4body swiper" id="parte4">
 
     <h1 class="h1parte4body">10 empresas destacadas de la semana:</h1>
 
@@ -334,7 +337,7 @@ if (isset($_SESSION['email'])){
 
 <!-- +++++++++++++++++++++++++++FOOTER+++++++++++++++++++++++++++ --> 
     <footer>
-        <div class="divfooter">
+        <div class="divfooter" id="footer_">
             <nav class="navsfooter">
                 <p class="pfooter">General</p>
                 <a class="afooter aslinkcarta" href="empresas.php">Empresas</a>
@@ -380,5 +383,45 @@ if (isset($_SESSION['email'])){
 </script>
 
 </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.js.iife.js"></script>
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+    const tourCompleted = localStorage.getItem('tourCompleted');
+
+    // Solo iniciar el tour si no ha sido completado
+    if (!tourCompleted) {
+        const driver = window.driver.js.driver;
+
+        const tour = driver({
+            showProgress: true,
+            steps: [
+                { element: '#headerinicio', popover: { title: 'Header', description: 'Aqui puedes navegar a través de la aplicación web' } },
+                { element: '#welcomeSection', popover: { title: 'Welcome Section', description: 'Puedes visualizar distintos apartados importantes' } },
+                { element: '#parte4', popover: { title: 'Location', description: 'Próximamente en esta sección podrás visualizar las 10 mejores pubicaciones de la semana' } }
+            ],
+            onDestroyStarted: () => {
+                // Marcar el tour como cancelado si el usuario decide salir
+                localStorage.setItem('tourCompleted', 'true');
+                if (!tour.hasNextStep() || confirm("Are you sure?")) {
+                    tour.destroy();
+                }
+            },
+        });
+
+        // Iniciar el tour
+        tour.drive().then(() => {
+            // Marcar el tour como completado
+            localStorage.setItem('tourCompleted', 'true');
+        });
+    }
+});
+
+</script>
+
+
+
+
+
         <script src="app.js"></script>
     </body>
