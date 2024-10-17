@@ -18,6 +18,7 @@ if ($data = $resultado->fetch_assoc()) {
     $nombre_p = $data['nombre_p'];
     $email = $data['email'];
     $foto = $data['foto'];
+    $rol = $data['rol'];
 
  
 } else {
@@ -133,12 +134,46 @@ setcookie("default", $foto, time() + (86400 * 30), "/");
 
 /* ACTUALIZA EL NOMBRE DE USUARIO EN LA TABLA PERSONA Y USUARIO*/
 
+// Actualiza el nombre de usuario en la tabla persona y usuario
 if (isset($_POST["envio-edit-nom-usr"])) {
     $edit_nom_usr = $_POST["edit_nom_usr"];
     $nombre_p = $data['nombre_p'];
     $existe_nom = consultar_existe_nom($con, $edit_nom_usr);
+    $rol = $data['rol'];
+    if (!$existe_nom) {
+       
 
-    actualizar($con, $edit_nom_usr, $nombre_p, $existe_nom);
+        // Actualiza en persona
+        $consulta_actualizar_persona = "UPDATE persona SET nombre_p = '$edit_nom_usr' WHERE nombre_p = '$nombre_p'";
+        
+        if (mysqli_query($con, $consulta_actualizar_persona)) {
+            echo "Actualización exitosa en persona.<br>";
+
+            // Actualiza en usuario
+            if ($rol === 'usuario') {
+                $sql = "UPDATE usuario SET nombre_p = '$edit_nom_usr' WHERE nombre_p = '$nombre_p'";
+                echo "Consulta de actualización en usuario: " . $sql . "<br>"; // Para depuración
+                
+                if (mysqli_query($con, $sql)) {
+                    echo "Actualización exitosa en usuario.<br>";
+                } else {
+                    echo "Error en la consulta de usuario: " . mysqli_error($con) . "<br>";
+                }
+            } elseif ($rol === 'empresa') {
+                $consulta_actualizar_empresa = "UPDATE empresa SET nombre_p = '$edit_nom_usr' WHERE nombre_p = '$nombre_p'";
+                
+                if (mysqli_query($con, $consulta_actualizar_empresa)) {
+                    echo "Actualización exitosa en empresa.<br>";
+                } else {
+                    echo "Error al actualizar en empresa: " . mysqli_error($con) . "<br>";
+                }
+            }
+        } else {
+            echo "Error al actualizar en persona: " . mysqli_error($con) . "<br>";
+        }
+    } else {
+        echo "El usuario ya existe.<br>";
+    }
 }
 
 function consultar_existe_nom($con, $edit_nom_usr) {
@@ -146,38 +181,14 @@ function consultar_existe_nom($con, $edit_nom_usr) {
     $consulta_existe_nom = "SELECT nombre_p FROM persona WHERE nombre_p = '$edit_nom_usr'";
     $resultado_existe_nom = mysqli_query($con, $consulta_existe_nom);
 
-    if (mysqli_num_rows($resultado_existe_nom) > 0) {
-        return true;
+    if ($resultado_existe_nom) {
+        return mysqli_num_rows($resultado_existe_nom) > 0;
     } else {
-        return false;
+        echo "Error en la consulta de existencia de nombre: " . mysqli_error($con) . "<br>";
+        return false; // Para evitar problemas si hay un error
     }
 }
 
-function actualizar($con, $edit_nom_usr, $nombre_p, $existe_nom) {
-
-    $edit_nom_usr = mysqli_real_escape_string($con, $edit_nom_usr);
-    $nombre_p = mysqli_real_escape_string($con, $nombre_p);
-
-    if ($existe_nom==false) {
-
-        $consulta_actualizar_persona = "UPDATE persona SET nombre_p = '$edit_nom_usr' WHERE nombre_p = '$nombre_p'";
-
-        if (mysqli_query($con, $consulta_actualizar_persona)) {
-            
-            $consulta_actualizar_usuario = "UPDATE usuario SET nombre_p = '$edit_nom_usr' WHERE nombre_p = '$nombre_p'";
-            $consulta_actualizar_usuario = "UPDATE empresa SET nombre_p = '$edit_nom_usr' WHERE nombre_p = '$nombre_p'";
-            if (mysqli_query($con, $consulta_actualizar_usuario)) {
-               
-            } else {
-                echo "Error al actualizar en usuario: " . mysqli_error($con);
-            }
-        } else {
-            echo "Error al actualizar en persona: " . mysqli_error($con);
-        }
-    } else {
-        echo "El usuario ya existe.";
-    }
-}
 
 
 
