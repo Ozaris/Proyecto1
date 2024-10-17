@@ -3,15 +3,16 @@ include "conexion.php";
 $con = conectar_bd();
 session_start();
 
-if (isset($_SESSION['email'])){
+if (isset($_SESSION['email'])) {
     $email = $_SESSION['email'];
     $sql = "SELECT * FROM persona WHERE email='$email'";
     $resultado = $con->query($sql);
 
     if ($data = $resultado->fetch_assoc()) {
         $nombre_p = $data['nombre_p'];
+        $foto2="img_usr/default.png";
         $email = $data['email'];
-        $foto = $data['foto'];
+        $foto = $data['foto'] ?? $foto2;
         $rol = $data['rol'];
 
         setcookie("nombre", $nombre_p, time() + 4200, "/");
@@ -21,10 +22,12 @@ if (isset($_SESSION['email'])){
     } else {
         $nombre_p = 'Nombre no disponible';
         $email = 'Email no disponible';
-        $foto = 'img_usr/default1.png';
+        $foto = 'img_usr/default.png';
     }
 } else {
-    $foto = 'img_usr/default1.png';
+    $nombre_p = 'Nombre no disponible';
+    $email = 'Email no disponible';
+    $foto = 'default.png';
 }
 ?>
 
@@ -65,12 +68,14 @@ if (isset($_SESSION['email'])){
                 <li class="lismenu"><a class="psmenuinicio">|</a></li>
                 <li class="lismenu">
                 <a class="asmenuinicio" href="javascript:void(0);" onclick="redireccion()">
-                        <img src="img_usr/default.png" alt="img" style="cursor: pointer;">
+                <img src="<?php echo htmlspecialchars("img_usr/$foto") ?? htmlspecialchars("$foto2") ; ?>" alt="img" style="cursor: pointer;">
+
+
                     </a>
-                </li>
             </ul>
         </nav>
-    </header>
+        </li>
+        </header>
 
 <!-- +++++++++++++++++++++++++++FINAL DEL HEADER+++++++++++++++++++++++++++ --> 
 

@@ -93,7 +93,7 @@ function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img) {
                 </nav>
             </div>
 
-            <div class="divprincipalbuscador">
+            <div class="divprincipalbuscador" id="bus">
                 <input  type="text" name="buscador" id="buscador" placeholder="Buscar">
 <div id="resultado_busqueda"></div>
             </div>
@@ -102,7 +102,7 @@ function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img) {
 
                 <!-- +++++++++++++++++++++++++++RECOMENDACIONES+++++++++++++++++++++++++++ -->
 
-                <div class="divrecomendacionesempresas">
+                <div class="divrecomendacionesempresas" id="filtro">
                     <div class="div1recomendaciones"><h3>Filtros</h3></div>
                     <div class="div2recomendaciones">
 

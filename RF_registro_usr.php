@@ -7,26 +7,24 @@ $con = conectar_bd();
 
 // Comprobar que se envió un formulario por POST desde carga_datos
 if (isset($_POST["envio"])) {
-
-    $nombre_p =  $_POST["nombre_p"];
+    $nombre_p = $_POST["nombre_p"];
     $email = $_POST["email"];
     $contrasenia = $_POST["pass"];
-    $rol=$_POST["usuario"];
-    $foto=$_POST["default.png"];
-   
-    // Consultar si el usuario ya existe
+    $rol = $_POST["usuario"];
+    $foto = isset($_POST["default.png"]) ? $_POST["default.png"] : 'default.png'; // Asegúrate de que el índice está definido
+
     $existe_usr = consultar_existe_usr($con, $email);
     $existe_nom = consultar_existe_nom($con, $nombre_p);
 
     // Insertar datos si el usuario no existe
-    insertar_datos($con, $nombre_p,$email, $contrasenia, $rol,$existe_usr,$existe_nom,$foto);
-
+    insertar_datos($con, $nombre_p, $email, $contrasenia, $rol, $existe_usr, $existe_nom, $foto);
 }
+
 
 function consultar_existe_usr($con, $email) {
 
     $email = mysqli_real_escape_string($con, $email); // Escapar los campos para evitar inyección SQL
-    $consulta_existe_usr = "SELECT email FROM usuario WHERE email = '$email'";
+    $consulta_existe_usr = "SELECT email FROM persona WHERE email = '$email'";
     $resultado_existe_usr = mysqli_query($con, $consulta_existe_usr);
 
     if (mysqli_num_rows($resultado_existe_usr) > 0) {
@@ -40,7 +38,7 @@ function consultar_existe_usr($con, $email) {
 function consultar_existe_nom($con, $nombre_p) {
 
     $nombre_p = mysqli_real_escape_string($con, $nombre_p); // Escapar los campos para evitar inyección SQL
-    $consulta_existe_nom = "SELECT nombre_p FROM usuario WHERE nombre_p = '$nombre_p'";
+    $consulta_existe_nom = "SELECT nombre_p FROM persona WHERE nombre_p = '$nombre_p'";
     $resultado_existe_nom = mysqli_query($con, $consulta_existe_nom);
 
     if (mysqli_num_rows($resultado_existe_nom) > 0) {
