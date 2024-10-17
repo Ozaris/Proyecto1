@@ -1,16 +1,20 @@
 <?php
 ob_start();
+
 require_once("conexion.php");
 require_once("registerempresas.html");
+require 'vendor/autoload.php';
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 $con = conectar_bd();
 
 // Comprobar que se envió un formulario por POST desde carga_datos
-if (isset($_POST["envio"])) {
+if (isset($_POST["envio-emp"])) {
     $nombre_p = $_POST["nombre_p"];
     $email = $_POST["email"];
     $contrasenia = $_POST["pass"];
-    $rol = $_POST["usuario"];
+    $rol = $_POST["empresa"];
     $foto = isset($_POST["default.png"]) ? $_POST["default.png"] : 'default.png'; // Asegúrate de que el índice está definido
 
     $existe_usr = consultar_existe_usr($con, $email);
@@ -58,8 +62,11 @@ function insertar_datos($con, $nombre_p, $email, $contrasenia,$rol,$existe_nom,$
        
     $contrasenia = password_hash($contrasenia, PASSWORD_DEFAULT);
 
+    // Generar un código de verificación de 6 caracteres
+    $token = strtoupper(substr(bin2hex(random_bytes(3)), 0, 6));
+
     // Inserta en la tabla persona
-    $consulta_insertar_persona = "INSERT INTO persona (nombre_p, email, contrasenia,rol,foto) VALUES ('$nombre_p', '$email', '$contrasenia','$rol','$foto')";
+    $consulta_insertar_persona = "INSERT INTO persona (nombre_p, email, contrasenia, token, rol, foto) VALUES ('$nombre_p', '$email', '$contrasenia', '$token', '$rol', '$foto')";
     
     if (mysqli_query($con, $consulta_insertar_persona)) {
         // Obtén el ID de la persona recién insertada
@@ -69,18 +76,22 @@ function insertar_datos($con, $nombre_p, $email, $contrasenia,$rol,$existe_nom,$
         $consulta_insertar_usuario = "INSERT INTO empresa (Id_per, nombre_p, email, contrasenia) VALUES ($id_per, '$nombre_p', '$email', '$contrasenia')";
       
         if (mysqli_query($con, $consulta_insertar_usuario)) {
-            $salida = consultar_datos($con);
-            echo $salida;
-        } else {
-            echo "Error al insertar en usuario: " . mysqli_error($con);
-        }
-    } else {
-        echo "Error al insertar en persona: " . mysqli_error($con);
-    }
-}else{
-        echo "Usuario ya existe: " . mysqli_error($con);
-    }
-}
+                 // Enviar correo de verificación
+                 sendVerificationEmail($email, $token);
+                
+                 // Redirigir a la página de verificación
+                 header("Location: verify_code.php");
+                 exit();
+             } else {
+                 echo "Error al insertar en usuario: " . mysqli_error($con);
+             }
+         } else {
+             echo "Error al insertar en persona: " . mysqli_error($con);
+         }
+     } else {
+         echo "Usuario ya existe: " . mysqli_error($con);
+     }
+ }
 
 
 function consultar_datos($con) {
@@ -102,6 +113,31 @@ function consultar_datos($con) {
     }
 
     return $salida;
+}
+
+function sendVerificationEmail($email, $token) {
+    $mail = new PHPMailer(true);
+    try {
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com'; 
+        $mail->SMTPAuth = true; 
+        $mail->Username = 'ozaris08@gmail.com'; 
+        $mail->Password = 'ofdt opqi qchi wyvq'; 
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        $mail->Port = 465;
+
+        $mail->setFrom('ozaris08@gmail.com', 'Ozaris');
+        $mail->addAddress($email);
+        $mail->isHTML(true);
+        $mail->Subject = 'Tu Código de Verificación';
+        $mail->Body = "Tu código de verificación es: <b>$token</b>";
+        $mail->AltBody = "Tu código de verificación es: $token";
+
+        $mail->send();
+        echo "Correo enviado con éxito.";
+    } catch (Exception $e) {
+        echo "El mensaje no pudo ser enviado. Error: {$mail->ErrorInfo}";
+    }
 }
 
 mysqli_close($con);
