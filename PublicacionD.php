@@ -7,6 +7,7 @@ $email = $_COOKIE['email'] ?? null;
 $nombre_p = $_COOKIE['nombre'] ?? null;
 $comentario = $_COOKIE['comentario'] ?? null;
 $foto = $_COOKIE['user_picture'] ?? null;
+$rol = $_COOKIE['rol'] ?? null;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_prod'])) {
     $id_prod = $_POST['id_prod'];
@@ -103,22 +104,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_prod'])) {
         </div>
     </div>
 </div>
-
-<form action="crear_com.php" method="POST" id="commentForm">
-    <div class="divprincipalcomentarios">
-        <img class="imagenperfilcomentarios" src="<?php echo $foto ?>" alt="img">
-        <input type="text" class="inputcomentarios" placeholder="Comentario" aria-label="Comentario" name="comentario" required>
-        
-        <div class="estrellas">
-            <input type="radio" name="puntuacion" id="estrella5" value="5"><label for="estrella5">★</label>
-            <input type="radio" name="puntuacion" id="estrella4" value="4"><label for="estrella4">★</label>
-            <input type="radio" name="puntuacion" id="estrella3" value="3"><label for="estrella3">★</label>
-            <input type="radio" name="puntuacion" id="estrella2" value="2"><label for="estrella2">★</label>
-            <input type="radio" name="puntuacion" id="estrella1" value="1" required><label for="estrella1">★</label>
+<?php
+if ($rol =="usuario") {
+   
+?>
+    <form action="crear_com.php" method="POST" id="commentForm">
+        <div class="divprincipalcomentarios">
+            <img class="imagenperfilcomentarios" src="<?php echo $foto ?>" alt="img">
+            <input type="text" class="inputcomentarios" placeholder="Comentario" aria-label="Comentario" name="comentario" required>
+            
+            <div class="estrellas">
+                <input type="radio" name="puntuacion" id="estrella5" value="5"><label for="estrella5">★</label>
+                <input type="radio" name="puntuacion" id="estrella4" value="4"><label for="estrella4">★</label>
+                <input type="radio" name="puntuacion" id="estrella3" value="3"><label for="estrella3">★</label>
+                <input type="radio" name="puntuacion" id="estrella2" value="2"><label for="estrella2">★</label>
+                <input type="radio" name="puntuacion" id="estrella1" value="1" required><label for="estrella1">★</label>
+            </div>
+            <input type="submit" class="botoncomentar" name="envio-com">
         </div>
-        <input type="submit" class="botoncomentar" name="envio-com">
-    </div>
-</form>
+    </form>
+<?php
+} else {
+    echo "<p>Por favor, inicia sesión como usuario para enviar comentarios.</p>";
+}
+?>
 
 <div class="divinfocomentarios">
     <h2>Comentarios</h2><i class="fa-solid fa-arrow-right"></i>
