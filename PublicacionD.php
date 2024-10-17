@@ -45,6 +45,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_prod'])) {
         $foto = 'default.png'; // Imagen predeterminada
     }
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -138,12 +140,17 @@ if ($rol =="usuario") {
     $consulta_publicaciones = "SELECT p.*, pe.nombre_p AS nombre_p FROM comentario p JOIN persona pe ON p.id_per2 = pe.Id_per WHERE p.id_prod='$id_prod' ORDER BY p.created_at DESC";
     $resultado_publicaciones = mysqli_query($con, $consulta_publicaciones);
 
+    $con_ft="SELECT foto FROM persona p JOIN comentario c ON p.Id_per=c.id_per2 WHERE p.Id_per=c.id_per2";
+    $resultado3 = $con->query($con_ft);
+    if ($data = $resultado3->fetch_assoc()) {
+        $ft=$data['foto'];
+    }
     if ($resultado_publicaciones && mysqli_num_rows($resultado_publicaciones) > 0) {
         while ($publicacion = mysqli_fetch_assoc($resultado_publicaciones)) {
             ?>
             <div class="divprincipalcomentarios2">
                 <div class="divimagenperfilcomentarios2">
-                    <img class="imagenperfilcomentarios2" src="<?php echo $foto; ?>" alt="img">
+                    <img class="imagenperfilcomentarios2" src="<?php echo "img_usr/$ft"; ?>" alt="img">
                 </div>
                 <div class="divinformacioncomentarios">
                     <h2><?php echo htmlspecialchars($publicacion['nombre_p']); ?></h2>
