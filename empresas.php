@@ -194,55 +194,57 @@ function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img) {
                 ?>
                
                 <!-- Modal -->
-                 
-                 <div class="modal modal-xl fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                    <form action="empresas.php" method="POST" enctype="multipart/form-data">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Publicar</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <div class="divprincipalpublicacion">
-                <div class="divsubirimagen">
-                    <label for="formFile" class="form-label">
-                        <i class="fa-solid fa-2x fa-plus iconomaspublicacion"></i>
-                    </label>
-                    <input class="form-control form-control1" type="file" id="formFile" name="imagen_prod" accept="image/*">
-                    <div id="imagePreview" class="image-preview"></div> <!-- Vista previa -->
+                <div class="modal modal-xl fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form action="empresas.php" method="POST" enctype="multipart/form-data">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Publicar</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="divsubirinformacion">
-                    <div class="divdatosinformacion">
-                        <input type="text" class="form-control inputpublicacion1" id="floatingInput" placeholder="Título" name="titulo">
-                        <select id="categoriaSelect" name="categoria">
-                            <option>Elige una opción</option>
-                            <option value="Electrónica">Electrónica</option>
-                            <option value="Gaming">Gaming</option>
-                            <option value="Ropa">Ropa</option>
-                            <option value="Deporte">Deporte</option>
-                            <option value="Familia">Familia</option>
-                            <option value="Mascotas">Mascotas</option>
-                            <option value="Propiedades">Propiedades</option>
-                            <option value="Vehículos">Vehículos</option>
-                        </select>
-                        <textarea class="form-control inputpublicacion3" placeholder="Descripción" id="floatingTextarea2" name="descripcion" style="height: 100px"></textarea>
-                    </div>
-                    <div class="divinformacionempresa">
-                        <h6>Información de la empresa</h6>
-                        <div class="divnombrempresapublicacion">
-                            <img class="divfotopublicacion" src="<?php echo htmlspecialchars($foto); ?>" alt="img">
-                            <h5 class="nombrempresapublicacion"><?php echo htmlspecialchars($nom); ?></h5>
+                <div class="modal-body">
+                    <div class="divprincipalpublicacion">
+                        <div class="divsubirimagen">
+                            <label for="formFile" class="form-label">
+                                <i class="fa-solid fa-2x fa-plus iconomaspublicacion"></i>
+                            </label>
+                            <input class="form-control form-control1" type="file" id="formFile" name="imagen_prod" accept="image/*" required>
+                            <div id="imagePreview" class="image-preview"></div> <!-- Vista previa -->
                         </div>
-                    </div>
-                    <div class="divbotonpublicar">
-                        <button class="botonsubirpublicacion" value="envio-pub" name="envio-pub">Subir publicación</button>
+                        <div class="divsubirinformacion">
+                            <div class="divdatosinformacion">
+                                <input type="text" class="form-control inputpublicacion1" id="floatingInput" placeholder="Título" name="titulo" required>
+                                <select id="categoriaSelect" name="categoria" required>
+                                    <option>Elige una opción</option>
+                                    <option value="Electrónica">Electrónica</option>
+                                    <option value="Gaming">Gaming</option>
+                                    <option value="Ropa">Ropa</option>
+                                    <option value="Deporte">Deporte</option>
+                                    <option value="Familia">Familia</option>
+                                    <option value="Mascotas">Mascotas</option>
+                                    <option value="Propiedades">Propiedades</option>
+                                    <option value="Vehículos">Vehículos</option>
+                                </select>
+                                <textarea class="form-control inputpublicacion3" placeholder="Descripción" id="descripcion" name="descripcion" maxlength="100" style="height: 100px" required></textarea>
+                                <div id="charCount">100 caracteres restantes</div> <!-- Contador de caracteres -->
+                            </div>
+                            <div class="divinformacionempresa">
+                                <h6>Información de la empresa</h6>
+                                <div class="divnombrempresapublicacion">
+                                    <img class="divfotopublicacion" src="<?php echo htmlspecialchars("img_usr/$foto"); ?>" alt="img">
+                                    <h5 class="nombrempresapublicacion"><?php echo htmlspecialchars($nom); ?></h5>
+                                </div>
+                            </div>
+                            <div class="divbotonpublicar">
+                                <button class="botonsubirpublicacion" value="envio-pub" name="envio-pub">Subir publicación</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
-</form>
+</div>
 
 
 
@@ -271,7 +273,9 @@ if ($resultado_publicaciones && mysqli_num_rows($resultado_publicaciones) > 0) {
                     <p class="card-text"><?php echo htmlspecialchars($publicacion['descripcion']); ?></p>
                     <p class="card-text"><small class="text-muted">Categoría: <?php echo htmlspecialchars($publicacion['categoria']); ?></small></p>
                     <p class="card-text"><small class="text-muted">Publicado por: <?php echo htmlspecialchars($publicacion['nombre_p']); ?></small></p>
+                              
                 </div>
+                
                 <input class="botonverpubliem" type="submit" value="Ver más" name="pub">
             </div>
         </form>
@@ -356,5 +360,16 @@ function redireccion() {
     }
 </script>
 
+
+<script>
+    const textarea = document.getElementById('descripcion'); // Cambiar al ID del textarea
+    const charCount = document.getElementById('charCount');
+    const maxLength = textarea.getAttribute('maxlength');
+
+    textarea.addEventListener('input', () => {
+        const remaining = maxLength - textarea.value.length;
+        charCount.textContent = `${remaining} caracteres restantes`;
+    });
+</script>
 </body>
 </html>
