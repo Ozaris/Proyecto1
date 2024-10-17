@@ -1963,7 +1963,19 @@ footer{
 }
 
 .btn-primary{
-   margin-left: 1rem;
+   padding:10px;
+   margin-left: 2rem;
+   background-color: #333;
+   color: #fff;
+   border: none;
+   border-radius: 5px;
+   font-size: 16px;
+   cursor: pointer;
+   transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+   background-color: #555; /* Cambia el color de fondo al pasar el mouse */
 }
 
 /*----------------------------Fin deBody de empresas--------------------------------*/
@@ -2958,6 +2970,10 @@ footer{
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
+}
+
+.btnsubmit:hover {
+    background-color: #555; /* Cambia el color de fondo al pasar el mouse */
 }
 
 .atrasdecontacto {

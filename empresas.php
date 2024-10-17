@@ -30,6 +30,32 @@ if (isset($_POST["envio-pub"])) {
         echo "No se ha seleccionado ninguna imagen o ha ocurrido un error.";
     }
 }
+if (isset($_SESSION['email'])) {
+    $email = $_SESSION['email'];
+    $sql = "SELECT * FROM persona WHERE email='$email'";
+    $resultado = $con->query($sql);
+
+    if ($data = $resultado->fetch_assoc()) {
+        $nombre_p = $data['nombre_p'];
+        $foto2="img_usr/default.png";
+        $email = $data['email'];
+        $foto = $data['foto'] ?? $foto2;
+        $rol = $data['rol'];
+
+        setcookie("nombre", $nombre_p, time() + 4200, "/");
+        setcookie("foto", $foto, time() + (86400 * 30), "/");
+        setcookie("email_emp", $email, time() + (86400 * 30), "/");  // Cookie válida por 30 días
+        setcookie("rol", $rol, time() + 4200, "/");
+    } else {
+        $nombre_p = 'Nombre no disponible';
+        $email = 'Email no disponible';
+        $foto = 'img_usr/default.png';
+    }
+} else {
+    $nombre_p = 'Nombre no disponible';
+    $email = 'Email no disponible';
+    $foto = 'default.png';
+}
 
 function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img) {
     $consulta_login = "SELECT * FROM persona WHERE email = '$email_emp'";
@@ -76,21 +102,26 @@ function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img) {
             <div class="headermenuempresas">
                 <a href="index.php"> <img class="logo" src="style/Imagenes/logoproyecto.png" alt="Logo"></a>
                 <button class="abrirmenuempresas" id="abrir"><i class="fa-solid fa-bars"></i></button>
-                <nav class="navheader" id="nav">
-                    <img class="logosheader" src="Imagenes/Logos.png" alt="img">
-                    <button class="cerrarmenuempresas" id="cerrar"><i class="fa-solid fa-x"></i></button>
-                    <ul class="navlista">
-                        
-                        <li class="lismenu"><a class="asmenu" href="index.php">Inicio</a></li>
-                        <li class="lismenu"><a class="psmenu">|</a></li>
-                        <li class="lismenu"><a class="asmenu" href="#">Servicios</a></li>
-                        <li class="lismenu"><a class="psmenu">|</a></li>
-                        <li class="lismenu"><a class="asmenu" href="index.php#map">Ubicación</a></li>
-                        <li class="lismenu"><a class="psmenu">|</a></li>
-                        <li class="lismenu"><a class="asmenu" href="#">Contacto</a></li>
+                <nav class="navheaderinicio" id="nav">
+            <img class="logosheaderinicio" src="style/Imagenes/Logos.png" alt="img">
+            <button class="cerrarmenuinicio" id="cerrar"><i class="fa-solid fa-x"></i></button>
+            <ul class="navlistainicio">
+                <li class="lismenu"><a class="asmenuinicio" href="index.php">Inicio</a></li>
+                <li class="lismenu"><a class="psmenuinicio">|</a></li>
+                <li class="lismenu"><a class="asmenuinicio" href="#">Servicios</a></li>
+                <li class="lismenu"><a class="psmenuinicio">|</a></li>
+                <li class="lismenu"><a class="asmenuinicio" href="index.php#map">Ubicación</a></li>
+                <li class="lismenu"><a class="psmenuinicio">|</a></li>
+                <li class="lismenu"><a class="asmenuinicio" href="#">Contacto</a></li>
+                <li class="lismenu"><a class="psmenuinicio">|</a></li>
+                <li class="lismenu">
+                <a class="asmenuinicio" href="javascript:void(0);" onclick="redireccion()">
+                <img src="<?php echo htmlspecialchars("img_usr/$foto") ?? htmlspecialchars("$foto2") ; ?>" alt="img" style="cursor: pointer;">
 
-                    </ul>
-                </nav>
+
+                    </a>
+            </ul>
+        </nav>
             </div>
 
             <div class="divprincipalbuscador" id="bus">
@@ -154,7 +185,7 @@ function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img) {
                  <?php
                 if ($rol === 'empresa') {
 
-    echo ' <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    echo ' <button type="button" class="btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Subir publicacion
                 </button>';
 } else {
@@ -316,6 +347,13 @@ document.getElementById('formFile').addEventListener('change', function(event) {
     }
 });
 
+function redireccion() {
+        <?php if (isset($_SESSION['email'])): ?>
+            window.location.href = 'Perfil.php';
+        <?php else: ?>
+            window.location.href = 'iniciodesesion.html';
+        <?php endif; ?>
+    }
 </script>
 
 </body>

@@ -328,7 +328,7 @@ function elim($con,$nombre_p) {
         
         <div class="divinformacion2perfil">
             <h2>Privado <i class="fa-solid fa-1x fa-lock"></i></h2>
-            <div class="divmailperfil"><?php echo $email; ?><button class="iconoeditar3perfil"><i class="fa-solid fa-pen-to-square"></i></button></div>
+            <div class="divmailperfil"><?php echo $email; ?></div>
             <div class="divcontraperfil"><p class="p2perfil">************** </p><button class="iconoeditar3perfil"><i class="fa-solid fa-pen-to-square"></i></button></div>
            <form action="Perfil.php" method="post">
             <button class="Boton2PublicarPerfil" type="submit" name="envio-elim-usr" value="envio-elim-usr">Eliminar cuenta</button>
