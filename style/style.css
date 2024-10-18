@@ -109,6 +109,7 @@ body.no-scroll {
 
 .otondeperfil {
     border: none;
+    background-color: transparent;
 }
 
 @media (min-width: 1768px) {
