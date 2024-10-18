@@ -30,6 +30,7 @@ if (isset($_POST["envio-pub"])) {
         echo "No se ha seleccionado ninguna imagen o ha ocurrido un error.";
     }
 }
+
 if (isset($_SESSION['email'])) {
     $email = $_SESSION['email'];
     $sql = "SELECT * FROM persona WHERE email='$email'";
@@ -37,14 +38,14 @@ if (isset($_SESSION['email'])) {
 
     if ($data = $resultado->fetch_assoc()) {
         $nombre_p = $data['nombre_p'];
-        $foto2="img_usr/default.png";
+        $foto2 = "img_usr/default.png";
         $email = $data['email'];
         $foto = $data['foto'] ?? $foto2;
         $rol = $data['rol'];
 
         setcookie("nombre", $nombre_p, time() + 4200, "/");
         setcookie("foto", $foto, time() + (86400 * 30), "/");
-        setcookie("email_emp", $email, time() + (86400 * 30), "/");  // Cookie válida por 30 días
+        setcookie("email_emp", $email, time() + (86400 * 30), "/");
         setcookie("rol", $rol, time() + 4200, "/");
     } else {
         $nombre_p = 'Nombre no disponible';
@@ -77,9 +78,15 @@ function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img) {
         echo "No se encontró ningún usuario con ese email.";
     }
 }
+
+function truncateText($text, $maxWords) {
+    $words = explode(' ', $text);
+    if (count($words) > $maxWords) {
+        return implode(' ', array_slice($words, 0, $maxWords)) . '...';
+    }
+    return $text;
+}
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en" class="htmlempresas">
@@ -91,51 +98,52 @@ function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="lib/bootstrap.min.css">
- 
     <title>Empresas - Ozaris</title>
 </head>
 <body class="bodyempresas">
 
-        <div class="divpadreempresas">
-            <div class="divparabotondesubir" id="headerempresas"></div>
+    <div class="divpadreempresas">
+        <div class="divparabotondesubir" id="headerempresas"></div>
 
-            <div class="headermenuempresas">
-                <a href="index.php"> <img class="logo" src="style/Imagenes/logoproyecto.png" alt="Logo"></a>
-                <button class="abrirmenuempresas" id="abrir"><i class="fa-solid fa-bars"></i></button>
-                <nav class="navheaderinicio" id="nav">
-            <img class="logosheaderinicio" src="style/Imagenes/Logos.png" alt="img">
-            <button class="cerrarmenuinicio" id="cerrar"><i class="fa-solid fa-x"></i></button>
-            <ul class="navlistainicio">
-                <li class="lismenu"><a class="asmenuinicio" href="index.php">Inicio</a></li>
-                <li class="lismenu"><a class="psmenuinicio">|</a></li>
-                <li class="lismenu"><a class="asmenuinicio" href="servicios.php">Servicios</a></li>
-                <li class="lismenu"><a class="psmenuinicio">|</a></li>
-                <li class="lismenu"><a class="asmenuinicio" href="index.php#map">Ubicación</a></li>
-                <li class="lismenu"><a class="psmenuinicio">|</a></li>
-                <li class="lismenu"><a class="asmenuinicio" href="contacto.html">Contacto</a></li>
-                <li class="lismenu"><a class="psmenuinicio">|</a></li>
-                <li class="lismenu">
-                <a class="asmenuinicio" href="javascript:void(0);" onclick="redireccion()">
-                <img src="<?php echo htmlspecialchars("img_usr/$foto") ?? htmlspecialchars("$foto2") ; ?>" alt="img" style="cursor: pointer;">
-                    </a>
-            </ul>
-        </nav>
-            </div>
+        <div class="headermenuempresas">
+            <a href="index.php"><img class="logo" src="style/Imagenes/logoproyecto.png" alt="Logo"></a>
+            <button class="abrirmenuempresas" id="abrir"><i class="fa-solid fa-bars"></i></button>
+            <nav class="navheaderinicio" id="nav">
+                <img class="logosheaderinicio" src="style/Imagenes/Logos.png" alt="img">
+                <button class="cerrarmenuinicio" id="cerrar"><i class="fa-solid fa-x"></i></button>
+                <ul class="navlistainicio">
+                    <li class="lismenu"><a class="asmenuinicio" href="index.php">Inicio</a></li>
+                    <li class="lismenu"><a class="psmenuinicio">|</a></li>
+                    <li class="lismenu"><a class="asmenuinicio" href="servicios.php">Servicios</a></li>
+                    <li class="lismenu"><a class="psmenuinicio">|</a></li>
+                    <li class="lismenu"><a class="asmenuinicio" href="index.php#map">Ubicación</a></li>
+                    <li class="lismenu"><a class="psmenuinicio">|</a></li>
+                    <li class="lismenu"><a class="asmenuinicio" href="contacto.html">Contacto</a></li>
+                    <li class="lismenu"><a class="psmenuinicio">|</a></li>
+                    <li class="lismenu">
+                    <li class="lismenu"><div class="dropdown">
+  <button class="otondeperfil" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+  <img src="<?php echo htmlspecialchars("img_usr/$foto") ?? htmlspecialchars("$foto2") ; ?>" alt="img" class="imgpequeñoperfil">
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="javascript:void(0);" onclick="redireccion()">Perfil</a></li>
+    <li><a class="dropdown-item" href="#">Mis publicaciones</a></li>
+  </ul>
+</div>
+                </ul>
+            </nav>
+        </div>
 
-            <div class="divprincipalbuscador" id="bus">
-                <input type="text" name="buscador" id="buscador" placeholder="Buscar">
-<div id="resultado_busqueda"></div>
-            </div>
+        <div class="divprincipalbuscador" id="bus">
+            <input type="text" name="buscador" id="buscador" placeholder="Buscar">
+            <div id="resultado_busqueda"></div>
+        </div>
 
-            <div class="containerempresas">
-
-                <!-- +++++++++++++++++++++++++++RECOMENDACIONES+++++++++++++++++++++++++++ -->
-
-                <div class="containerempresas">
+        <div class="containerempresas">
             <div class="divrecomendacionesempresas" id="filtro">
                 <div class="div1recomendaciones"><h3>Filtros</h3></div>
                 <div class="div2recomendaciones">
-                    <div class="cartaderecomendados" onclick="filtrarPublicaciones('Electronica')">
+                <div class="cartaderecomendados" onclick="filtrarPublicaciones('Electronica')">
                         <img class="logorecomendados" src="style/Imagenes/Electronica.png" alt="img">
                         <p>Electronica</p>
                     </div>
@@ -171,16 +179,14 @@ function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img) {
                             <img class="logorecomendados" src="style/Imagenes/Vehiculos.png" alt="img">
                             <p>Vehiculos</p>
                         </div>
-
-                    </div>
                 </div>
-
-                <!-- +++++++++++++++++++++++++++RECOMENDACIONES+++++++++++++++++++++++++++ -->
+            </div>
+               <!-- +++++++++++++++++++++++++++RECOMENDACIONES+++++++++++++++++++++++++++ -->
 
                 <!-- +++++++++++++++++++++++++++BOTON PUBLICAR+++++++++++++++++++++++++++ -->
                 
                 <!-- Button trigger modal -->
-                 <?php
+                <?php
                 if ($rol === 'empresa') {
 
     echo ' <button type="button" class="btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -190,9 +196,8 @@ function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img) {
     // Si es 'usuario' o no está definido, no mostramos el botón
 }
                 ?>
-               
-                <!-- Modal -->
-                <div class="modal modal-xl fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- Modal -->
+  <div class="modal modal-xl fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <form action="empresas.php" method="POST" enctype="multipart/form-data">
             <div class="modal-content">
@@ -259,14 +264,16 @@ function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img) {
                 if ($resultado_publicaciones && mysqli_num_rows($resultado_publicaciones) > 0) {
                     while ($publicacion = mysqli_fetch_assoc($resultado_publicaciones)) {
                         $id_prod = $publicacion['id_prod'];
+                        $tituloTruncado = truncateText($publicacion['titulo'], 3);
+                        $descripcionTruncada = truncateText($publicacion['descripcion'], 3);
                         ?>
                         <form class="containerpublis" action="PublicacionD.php" method="POST">
                             <div class="cardempresas">
                                 <img src="<?php echo htmlspecialchars($publicacion['imagen_prod']); ?>" class="imgcardpubliem" alt="Imagen de publicación">
                                 <div class="cardempresasbody">
                                     <input type="hidden" name="id_prod" value="<?php echo htmlspecialchars($id_prod); ?>">
-                                    <h5 class="card-title"><?php echo htmlspecialchars($publicacion['titulo']); ?></h5>
-                                    <p class="card-text"><?php echo htmlspecialchars($publicacion['descripcion']); ?></p>
+                                    <h5 class="card-title"><?php echo htmlspecialchars($tituloTruncado); ?></h5>
+                                    <p class="card-text"><?php echo htmlspecialchars($descripcionTruncada); ?></p>
                                     <p class="card-text"><small class="text-muted">Categoría: <?php echo htmlspecialchars($publicacion['categoria']); ?></small></p>
                                     <p class="card-text"><small class="text-muted">Publicado por: <?php echo htmlspecialchars($publicacion['nombre_p']); ?></small></p>
                                 </div>
@@ -282,8 +289,7 @@ function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img) {
             </div>
         </div>
     </div>
-
-       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="lib/jquery.js"></script>
 <script type="text/javascript">
