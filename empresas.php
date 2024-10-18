@@ -389,5 +389,29 @@ function redireccion() {
         charCount.textContent = `${remaining} caracteres restantes`;
     });
 </script>
+<script>
+        document.getElementById('formFile').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+        const imagePreview = document.getElementById('imagePreview');
+        imagePreview.innerHTML = `<img src="${e.target.result}" alt="Imagen Previa" style="max-width: 100%; height: auto;">`;
+
+        // Hide the label when an image is previewed
+        document.querySelector('label[for="formFile"]').style.display = 'none';
+    };
+
+    if (file) {
+        reader.readAsDataURL(file);
+    } else {
+        // Clear the preview and show the label if no file is selected
+        document.getElementById('imagePreview').innerHTML = '';
+        document.querySelector('label[for="formFile"]').style.display = 'block'; // Show the label again
+    }
+});
+
+
+    </script>
 </body>
 </html>
