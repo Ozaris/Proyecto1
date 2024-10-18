@@ -108,7 +108,7 @@ function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img) {
             <ul class="navlistainicio">
                 <li class="lismenu"><a class="asmenuinicio" href="index.php">Inicio</a></li>
                 <li class="lismenu"><a class="psmenuinicio">|</a></li>
-                <li class="lismenu"><a class="asmenuinicio" href="servicios.php">Servicios</a></li>
+                <li class="lismenu"><a class="asmenuinicio" href="empresas.php">Empresas</a></li>
                 <li class="lismenu"><a class="psmenuinicio">|</a></li>
                 <li class="lismenu"><a class="asmenuinicio" href="index.php#map">Ubicación</a></li>
                 <li class="lismenu"><a class="psmenuinicio">|</a></li>

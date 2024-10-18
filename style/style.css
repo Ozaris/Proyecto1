@@ -1813,7 +1813,7 @@ footer{
     overflow-x: hidden;
     margin: 0;
     padding: 0;
-    background-image: url(Imagenes/FondoEmpresasbody.jpg);
+    background-color: rgb(235, 234, 234);
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -1890,7 +1890,7 @@ footer{
     flex-direction: column;
     box-shadow: 0 0 10px #333;
     background-color: white;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .cardempresasbody {
@@ -1943,7 +1943,9 @@ footer{
     align-items: center;
 }
 
+
 .cartaderecomendados {
+    background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1951,7 +1953,7 @@ footer{
     padding: 10px;
     padding-bottom: 0;
     border: 1px solid #333;
-    border-radius: 10px;
+    border-radius: 5px;
     margin-left: 10xpx;
     margin-right: 10px;
     width: 7rem;
@@ -1977,6 +1979,8 @@ footer{
 .btn-primary:hover {
    background-color: #555; /* Cambia el color de fondo al pasar el mouse */
 }
+
+
 
 /*----------------------------Fin deBody de empresas--------------------------------*/
 
