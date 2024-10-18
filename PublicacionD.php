@@ -57,37 +57,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_prod'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="style/style.css">
     <title>Publicacion</title>
-    <style>
-        .estrellas {
-            direction: rtl;
-            display: inline-block;
-        }
-        .estrellas > input {
-            display: none;
-        }
-        .estrellas > label {
-            font-size: 30px;
-            color: gray;
-            cursor: pointer;
-        }
-        .estrellas > input:checked ~ label {
-            color: gold;
-        }
-        .estrellas > label:hover,
-        .estrellas > label:hover ~ label {
-            color: gold;
-        }
-        .estrella {
-            height: 15px;
-        }
-        .estrella2 {
-            height: 20px;
-        }
-    </style>
+    
 </head>
 <body class="bodypubliD">
-<a href="empresas.php" class="botonatrasregister"> <i class="fa-solid fa-2x fa-arrow-left"></i> </a>
 <div class="divprincipalD">
+<a href="empresas.php" class="botonatrasregister"> <i class="fa-solid fa-2x fa-arrow-left"></i> </a>
     <div class="divsec1publiD">
         <img class="imagenprincipalcomentarios" src="<?php echo $foto_pub ?>" alt="img">
     </div>

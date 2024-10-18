@@ -513,34 +513,34 @@ body.no-scroll {
 
 @media (max-width: 780px) {
     .containeriniciosesion {
-        flex-direction: column; /* Apilar columnas */
-        align-items: center; /* Centrar elementos */
+        flex-direction: column; 
+        align-items: center; 
     
     }
 
     .containerleftiniciosesion,
     .containerrightiniciosesion {
-        padding: 2rem; /* Reducir padding en móviles */
-        width: 100%; /* Ancho completo */
-        box-sizing: border-box; /* Incluir padding en el tamaño total */
+        padding: 2rem; 
+        width: 100%; 
+        box-sizing: border-box; 
     }
 
     .logosiniciodesesion {
-        width: 8rem; /* Reducir tamaño de la imagen */
+        width: 8rem; 
     }
 }
 
 @media (max-width: 480px) {
     .inputiniciosesion {
-        padding: 8px; /* Reducir padding en inputs */
+        padding: 8px; 
     }
 
     .botoniniciosesion, .botonregistrarmeiniciosesion {
-        padding: 10px 20px; /* Reducir padding en botones */
+        padding: 10px 20px; 
     }
 
     .h1iniciosesion, .piniciosesion {
-        font-size: 1rem; /* Ajustar tamaño de fuente */
+        font-size: 1rem; 
     }
 }
 
@@ -2746,6 +2746,8 @@ footer{
     display: flex;
     width: 100%;
     padding-top: 5rem;
+    border-bottom: 1px solid #333;
+    border-top: none;
 } 
 
 .divsec1publiD {
@@ -2856,6 +2858,34 @@ footer{
     display: flex;
     align-items: center;
     gap: 10px;
+}
+.botonatrasregister {
+    margin-left: 1rem;
+}
+.estrellas {
+    direction: rtl;
+    display: inline-block;
+}
+.estrellas > input {
+    display: none;
+}
+.estrellas > label {
+    font-size: 30px;
+    color: gray;
+    cursor: pointer;
+}
+.estrellas > input:checked ~ label {
+    color: gold;
+}
+.estrellas > label:hover,
+.estrellas > label:hover ~ label {
+    color: gold;
+}
+.estrella {
+    height: 15px;
+}
+.estrella2 {
+    height: 20px;
 }
 
 @media (max-width: 1080px) { 
