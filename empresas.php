@@ -181,7 +181,80 @@ function truncateText($text, $maxWords) {
                         </div>
                 </div>
             </div>
+               <!-- +++++++++++++++++++++++++++RECOMENDACIONES+++++++++++++++++++++++++++ -->
 
+                <!-- +++++++++++++++++++++++++++BOTON PUBLICAR+++++++++++++++++++++++++++ -->
+                
+                <!-- Button trigger modal -->
+                <?php
+                if ($rol === 'empresa') {
+
+    echo ' <button type="button" class="btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Subir publicacion
+                </button>';
+} else {
+    // Si es 'usuario' o no está definido, no mostramos el botón
+}
+                ?>
+  <!-- Modal -->
+  <div class="modal modal-xl fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form action="empresas.php" method="POST" enctype="multipart/form-data">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Publicar</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="divprincipalpublicacion">
+                        <div class="divsubirimagen">
+                            <label for="formFile" class="form-label">
+                                <i class="fa-solid fa-2x fa-plus iconomaspublicacion"></i>
+                            </label>
+                            <input class="form-control form-control1" type="file" id="formFile" name="imagen_prod" accept="image/*" required>
+                            <div id="imagePreview" class="image-preview"></div> <!-- Vista previa -->
+                        </div>
+                        <div class="divsubirinformacion">
+                            <div class="divdatosinformacion">
+                                <input type="text" class="form-control inputpublicacion1" id="floatingInput" placeholder="Título" name="titulo" required>
+                                <select id="categoriaSelect" name="categoria" required>
+                                    <option>Elige una opción</option>
+                                    <option value="Electrónica">Electrónica</option>
+                                    <option value="Gaming">Gaming</option>
+                                    <option value="Ropa">Ropa</option>
+                                    <option value="Deporte">Deporte</option>
+                                    <option value="Familia">Familia</option>
+                                    <option value="Mascotas">Mascotas</option>
+                                    <option value="Propiedades">Propiedades</option>
+                                    <option value="Vehículos">Vehículos</option>
+                                </select>
+                                <textarea class="form-control inputpublicacion3" placeholder="Descripción" id="descripcion" name="descripcion" maxlength="100" style="height: 100px" required></textarea>
+                                <div id="charCount">100 caracteres restantes</div> <!-- Contador de caracteres -->
+                            </div>
+                            <div class="divinformacionempresa">
+                                <h6>Información de la empresa</h6>
+                                <div class="divnombrempresapublicacion">
+                                    <img class="divfotopublicacion" src="<?php echo htmlspecialchars("img_usr/$foto"); ?>" alt="img">
+                                    <h5 class="nombrempresapublicacion"><?php echo htmlspecialchars($nom); ?></h5>
+                                </div>
+                            </div>
+                            <div class="divbotonpublicar">
+                                <button class="botonsubirpublicacion" value="envio-pub" name="envio-pub">Subir publicación</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+                    </div>
+                </div>
+            
+                <h3 class="h3publiem">Publicaciones</h3>
             <div class="divprincipalpublisem" id="publicacionesContainer">
                 <?php
                 // Obtener las publicaciones de la base de datos
