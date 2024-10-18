@@ -199,36 +199,51 @@ if (isset($_POST["envio-elim-usr"])) {
   
     $envio_elim_usr = $_POST["envio-elim-usr"];
     $nombre_p = $data['nombre_p'];
-
+    $rol=$data['rol'];
     if ($envio_elim_usr == 'envio-elim-usr') {
-        elim($con, $nombre_p);
+        elim($con, $nombre_p,$rol);
     } else {
         echo "No se puede eliminar el usuario";
     }
 }
 
-function elim($con,$nombre_p) {
+function elim($con, $nombre_p, $rol) {
     // Escapar los campos para evitar inyección SQL
+    $nombre_p = mysqli_real_escape_string($con, $nombre_p);
     
-
-        $nombre_p = mysqli_real_escape_string($con, $nombre_p);
-
-        $consulta_actualizar_persona = "DELETE FROM usuario WHERE nombre_p = '$nombre_p'";
-        $consulta_actualizar_persona = "DELETE FROM usuario WHERE nombre_p = '$nombre_p'";
-
-        if (mysqli_query($con, $consulta_actualizar_persona)) {
-            
-            $consulta_actualizar_usuario = "DELETE FROM persona WHERE nombre_p='$nombre_p'";
-            if (mysqli_query($con, $consulta_actualizar_usuario)) {
-                header("Location: iniciodesesion.html");
-                exit();
-            } else {
-                echo "Error al actualizar en usuario: " . mysqli_error($con);
-            }
+    // Primero, eliminar de la tabla empresa si el rol es 'empresa'
+    if ($rol === 'empresa') {
+        $consulta_eliminar_empresa = "DELETE FROM empresa WHERE nombre_p='$nombre_p'";
+        if (mysqli_query($con, $consulta_eliminar_empresa)) {
+            echo "Eliminación exitosa en empresa.<br>";
+            header("Location: logout.php");
         } else {
-            echo "Error al actualizar en persona: " . mysqli_error($con);
+            echo "Error al eliminar en empresa: " . mysqli_error($con) . "<br>";
+            return; // Salimos de la función si hay un error
         }
     }
+    
+    // Luego, eliminar de la tabla persona
+    $consulta_eliminar_persona = "DELETE FROM persona WHERE nombre_p='$nombre_p'";
+    if (mysqli_query($con, $consulta_eliminar_persona)) {
+        echo "Eliminación exitosa en persona.<br>";
+        header("Location: logout.php");
+    } else {
+        echo "Error al eliminar en persona: " . mysqli_error($con) . "<br>";
+    }
+    
+    // Si el rol es 'usuario', también eliminar de la tabla usuario
+    if ($rol === 'usuario') {
+        $sql = "DELETE FROM usuario WHERE nombre_p='$nombre_p'";
+        if (mysqli_query($con, $sql)) {
+            echo "Eliminación exitosa en usuario.<br>";
+            header("Location: logout.php");
+        } else {
+            echo "Error en la consulta de usuario: " . mysqli_error($con) . "<br>";
+        }
+    }
+}
+
     
     
 
