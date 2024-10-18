@@ -66,15 +66,16 @@ if (isset($_SESSION['email'])) {
                 <li class="lismenu"><a class="psmenuinicio">|</a></li>
                 <li class="lismenu"><a class="asmenuinicio" href="contacto.html">Contacto</a></li>
                 <li class="lismenu"><a class="psmenuinicio">|</a></li>
-                <li class="lismenu">
-                <a class="asmenuinicio" href="javascript:void(0);" onclick="redireccion()">
-                <img src="<?php echo htmlspecialchars("img_usr/$foto") ?? htmlspecialchars("$foto2") ; ?>" alt="img" style="cursor: pointer;">
-
-
-                    </a>
-            </ul>
-        </nav>
-        </li>
+                <li class="lismenu"><div class="dropdown">
+  <button class="otondeperfil" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+  <img src="<?php echo htmlspecialchars("img_usr/$foto") ?? htmlspecialchars("$foto2") ; ?>" alt="img" class="imgpequeñoperfil">
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="javascript:void(0);" onclick="redireccion()">Perfil</a></li>
+    <li><a class="dropdown-item" href="#">Mis publicaciones</a></li>
+  </ul>
+</div></li>
+        
         </header>
 
 <!-- +++++++++++++++++++++++++++FINAL DEL HEADER+++++++++++++++++++++++++++ --> 
