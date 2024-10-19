@@ -1123,6 +1123,19 @@ body.no-scroll {
         margin: 5rem;
         margin-top: 0;
     }
+
+    .parte3body {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 8rem;
+        padding-right: 10rem;
+        padding-left: 10rem;
+        border-top: 5px solid #66a6e6;
+        border-bottom: 5px solid #66a6e6;
+    }
 }
 
 @media (max-width: 805px) {
@@ -1131,6 +1144,19 @@ body.no-scroll {
         height: 400px;
         margin: 2rem;
         margin-top: 0;
+    }
+
+    .parte3body {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 8rem;
+        padding-right: 3rem;
+        padding-left: 3rem;
+        border-top: 5px solid #66a6e6;
+        border-bottom: 5px solid #66a6e6;
     }
 }
 
@@ -1392,7 +1418,7 @@ footer{
     margin: 1.5rem;
     border-radius: 1.5rem;
     max-width: 1768px;
-    box-shadow: 1px 2px 3px rgb(34, 34, 34);
+    box-shadow: 0 0 10px #333;
     margin-top: 0;
 }
     
@@ -1606,7 +1632,7 @@ footer{
     border-radius: 3.5rem;
     margin: 1.5rem;
     opacity: none;
-    box-shadow: 1px 2px 3px rgb(34, 34, 34);
+    box-shadow: 0 0 10px #333;
 }
 
 #buscador {
@@ -1690,6 +1716,7 @@ footer{
     align-items: center;
     border: 1px solid #333;
 }
+
 .divsubirimagen {
     width: 60%;
     display: flex;
@@ -1698,6 +1725,7 @@ footer{
     border-right: 1px solid #333;
     background-color: #cccccc4b;
 }
+
 .divsubirinformacion {
     width: 40%;
     display: flex;
@@ -1706,14 +1734,17 @@ footer{
     flex-direction: column;
     text-align: left;
 }
+
 .iconomaspublicacion {
     margin-top: 12rem;
     margin-bottom: 12rem;
     cursor: pointer;
 }
+
 .textopublicacion {
     margin-left: 1rem;
 }
+
 .botonsubirpublicacion {
     margin-top: 3rem;
     padding: 10px;
@@ -1725,6 +1756,7 @@ footer{
 .divdatosinformacion {
     width: 100%;
 }
+
 .divinformacionempresa {
     width: 100%;
     display: flex;
@@ -1735,6 +1767,7 @@ footer{
     border-top: 1px solid #333;
     border-bottom: 1px solid #333;
 }
+
 .divbotonpublicar {
     width: 100%;
     display: flex;
@@ -1742,6 +1775,7 @@ footer{
     align-items: center;
     padding-top: 1rem;
 }
+
 .botonsubirpublicacion {
     border-radius: 10px;
     padding: 1rem;
@@ -1750,18 +1784,22 @@ footer{
     color: white;
     margin: 0;
 }
+
 .divfotopublicacion {
     width: 3rem;
     border-radius: 3rem;
     margin-right: 1rem;
 }
+
 .divnombrempresapublicacion {
     display: flex;
     align-items: center;
 }
+
 .nombrempresapublicacion {
     opacity: 0.6;
 }
+
 .inputpublicacion1 {
     width: 70%;
     background-color: transparent;
@@ -1770,6 +1808,7 @@ footer{
     border-bottom: 1px solid #333;
     margin-left: 1rem;
 }
+
 .inputpublicacion2 {
     width: 70%;
     background-color: transparent;
@@ -1779,6 +1818,7 @@ footer{
     margin-left: 1rem;
     margin-bottom: 1rem;
 }
+
 .inputpublicacion3 {
     width: 70%;
     background-color: transparent;
@@ -1786,6 +1826,16 @@ footer{
     margin-left: 1rem;
     margin-bottom: 1rem;
 }
+
+.selectpublicar{
+    border: none;
+    color: #333;
+    margin-left: 1rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
 @media (max-width: 1000px) {
     .divprincipalpublicacion {
         flex-direction: column; 
@@ -1852,29 +1902,6 @@ footer{
     background-color: rgb(26, 26, 26);
 }
 
-#content-wrapper {
-    display: flex;
-    height: 100vh;
-    overflow-x: hidden; 
-}
-
-#sidebar-container {
-    width: 250px;
-    height: 100%;
-    color: white;
-    position: fixed; 
-    overflow-y: auto; 
-    overflow-x: hidden; 
-}
-
-#sidebar-container .logo {
-    padding: 20px;
-}
-
-#sidebar-container .menuempresas {
-    padding: 20px;
-}
-
 .divpadreempresas {
     width: 100%;
 }
@@ -1905,6 +1932,7 @@ footer{
     flex-wrap: wrap;
     gap: 2rem;
     padding-top: 2rem;
+    padding-bottom: 2rem;
 }
 
 .cardempresas {
@@ -1963,8 +1991,8 @@ footer{
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    gap: 10px;
 }
-
 
 .cartaderecomendados {
     background-color: white;
@@ -1976,10 +2004,9 @@ footer{
     padding-bottom: 0;
     border: 1px solid #333;
     border-radius: 5px;
-    margin-left: 10xpx;
-    margin-right: 10px;
     width: 7rem;
     height: 9rem;
+    cursor: pointer;
 }
 
 .logorecomendados {
@@ -1988,7 +2015,7 @@ footer{
 
 .btn-primary{
    padding:10px;
-   margin-left: 2rem;
+   margin-top: 1rem;
    background-color: #333;
    color: #fff;
    border: none;
@@ -1998,11 +2025,29 @@ footer{
    transition: background-color 0.3s;
 }
 
-.btn-primary:hover {
-   background-color: #555; /* Cambia el color de fondo al pasar el mouse */
+.divbtn-primary {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-
+@media (max-width: 370px) { 
+    .cardempresas {
+        width: 20rem;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 0 10px #333;
+        background-color: white;
+        border-radius: 5px;
+    }
+    .imgcardpubliem {
+        height: 200px;
+        width: 290px; 
+        margin: 1rem;
+        border-radius: 10px;
+    }
+}
 
 /*----------------------------Fin deBody de empresas--------------------------------*/
 
@@ -2373,7 +2418,6 @@ footer{
     justify-content: center;
     align-items: center;
     width: 100%;
-    background: linear-gradient(#333, transparent);
 }
 
 .divcolorperfil2 {
@@ -2381,10 +2425,9 @@ footer{
     justify-content: center;
     align-items: center;
     position: relative;
-    width: 80%;
+    width: 100%;
     height: 17rem;
     background-color: #333;
-    border-radius: 0 0 1rem 1rem;
 }
 
 .divcolorperfil22 {
@@ -2393,7 +2436,6 @@ footer{
     align-items: center;
     width: 100%;
     margin-top: 1rem;
-    background: linear-gradient(transparent, #333);
 }
 
 .divcolorperfil23 {
@@ -2402,10 +2444,9 @@ footer{
     align-items: center;
     flex-direction: column;
     position: relative;
-    width: 80%;
+    width: 100%;
     height: 17rem;
     background-color: #333;
-    border-radius: 1rem 1rem 0 0;
 }
 
 .h3perfil {
@@ -2478,9 +2519,15 @@ footer{
     cursor: pointer;
 }
 
+.dropdowneditarfotoperfil {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .Boton2PublicarPerfil:hover {
     color: rgb(255, 88, 88);
-    transform: scale(1.1);
 }
 
 .dropdown-menu {

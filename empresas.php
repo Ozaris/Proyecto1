@@ -98,16 +98,16 @@ function truncateText($text, $maxWords) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="lib/bootstrap.min.css">
+    <link rel="icon" href="Imagenes/logoproyecto.png">
     <title>Empresas - Ozaris</title>
 </head>
 <body class="bodyempresas">
-
     <div class="divpadreempresas">
         <div class="divparabotondesubir" id="headerempresas"></div>
 
         <div class="headermenuempresas">
             <a href="index.php"><img class="logo" src="style/Imagenes/logoproyecto.png" alt="Logo"></a>
-            <button class="abrirmenuempresas" id="abrir"><i class="fa-solid fa-bars"></i></button>
+            <button id="abrir" class="abrirmenuinicio"><i class="fa-solid fa-bars"></i></button>
             <nav class="navheaderinicio" id="nav">
                 <img class="logosheaderinicio" src="style/Imagenes/Logos.png" alt="img">
                 <button class="cerrarmenuinicio" id="cerrar"><i class="fa-solid fa-x"></i></button>
@@ -184,19 +184,20 @@ function truncateText($text, $maxWords) {
                <!-- +++++++++++++++++++++++++++RECOMENDACIONES+++++++++++++++++++++++++++ -->
 
                 <!-- +++++++++++++++++++++++++++BOTON PUBLICAR+++++++++++++++++++++++++++ -->
-                
+                <h3 class="h3publiem">Publicaciones</h3>
                 <!-- Button trigger modal -->
                 <?php
                 if ($rol === 'empresa') {
 
-    echo ' <button type="button" class="btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    echo '<div class="divbtn-primary"> <button type="button" class="btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Subir publicacion
-                </button>';
+                </button></div>';
 } else {
     // Si es 'usuario' o no está definido, no mostramos el botón
 }
                 ?>
   <!-- Modal -->
+   
   <div class="modal modal-xl fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <form action="empresas.php" method="POST" enctype="multipart/form-data">
@@ -217,8 +218,7 @@ function truncateText($text, $maxWords) {
                         <div class="divsubirinformacion">
                             <div class="divdatosinformacion">
                                 <input type="text" class="form-control inputpublicacion1" id="floatingInput" placeholder="Título" name="titulo" required>
-                                <select id="categoriaSelect" name="categoria" required>
-                                    <option>Elige una opción</option>
+                                <select class="selectpublicar" id="categoriaSelect" name="categoria" required>
                                     <option value="Electrónica">Electrónica</option>
                                     <option value="Gaming">Gaming</option>
                                     <option value="Ropa">Ropa</option>
@@ -254,7 +254,6 @@ function truncateText($text, $maxWords) {
                     </div>
                 </div>
             
-                <h3 class="h3publiem">Publicaciones</h3>
             <div class="divprincipalpublisem" id="publicacionesContainer">
                 <?php
                 // Obtener las publicaciones de la base de datos
@@ -419,5 +418,7 @@ function redireccion() {
 
 
     </script>
+
+<script src="app.js"></script>
 </body>
 </html>

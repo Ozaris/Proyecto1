@@ -43,9 +43,9 @@ if (isset($_SESSION['email'])) {
     <link class="aslinkcarta" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" class="aslinkcarta" href="style/style.css">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js/dist/driver.min.css">
     <script src="https://cdn.jsdelivr.net/npm/driver.js/dist/driver.min.js"></script>
+    <link rel="icon" href="Imagenes/logoproyecto.png">
     <title>Inicio - Ozaris</title>
 </head>
     <body>
@@ -354,7 +354,7 @@ if (isset($_SESSION['email'])) {
             </nav>
             <nav class="navsfooter">
                 <p class="pfooter">Ayuda</p>
-                <a class="afooter aslinkcarta" href="">Proximamente</a>
+                <a class="afooter aslinkcarta" href="contacto.html">Contacto</a>
                 <a class="afooter aslinkcarta" href="Informacion.html#FAQs">FAQs</a>
                 <a class="afooter aslinkcarta" href="">Proximamente</a>
                 <a class="afooter aslinkcarta" href="">Proximamente</a>

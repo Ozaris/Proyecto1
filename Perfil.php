@@ -245,19 +245,7 @@ function elim($con, $nombre_p, $rol) {
   
 }
 
-    
-    
-
-  
-
-
 ?>
-
-
-
-
-
-
 
 
 <!DOCTYPE html>
@@ -269,6 +257,7 @@ function elim($con, $nombre_p, $rol) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="style/style.css">
+    <link rel="icon" href="Imagenes/logoproyecto.png">
     <title>Tu Perfil</title>
 </head>
 <body class="bodyperfil">
@@ -285,7 +274,7 @@ function elim($con, $nombre_p, $rol) {
                 </button>
                 <form action="Perfil.php" method="POST" enctype="multipart/form-data">
                 <ul class="dropdown-menu">
-                    <div class="mb-3">
+                    <div class="mb-3 dropdowneditarfotoperfil">
                         <label for="formFile" class="form-label"><i class="fa-solid fa-2x fa-plus iconomas"></i></label>
                         <input class="form-control form-control1" type="file" id="formFile" name="foto_usr">
                         <button class="BotonPublicarPerfil" type="submit" name="envio-edit-ft-usr">Publicar</button>
@@ -343,6 +332,7 @@ function elim($con, $nombre_p, $rol) {
                                 </div>
                                 <div class="col-auto">
                                   <input type="text" name="edit_desc" id="inputPassword6" class="form-control form-control2" aria-describedby="passwordHelpInline">
+                                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                   <button class="BotonPublicarPerfil" type="submit" name="envio-edit-desc-usr">Publicar</button>
                                   </form>
                                 </div>
