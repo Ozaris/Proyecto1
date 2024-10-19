@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_prod'])) {
 </head>
 <body class="bodypubliD">
 <div class="divprincipalD">
-<a href="empresas.php" class="botonatrasregister"> <i class="fa-solid fa-2x fa-arrow-left"></i> </a>
+<a href="empresas.php" class="botonatrasperfil"> <i class="fa-solid fa-2x fa-arrow-left"></i> </a>
     <div class="divsec1publiD">
         <img class="imagenprincipalcomentarios" src="<?php echo $foto_pub ?>" alt="img">
     </div>
