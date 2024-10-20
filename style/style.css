@@ -461,7 +461,7 @@ body.no-scroll {
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35)
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
 }
 
 .containerleftiniciosesion {
@@ -470,7 +470,7 @@ body.no-scroll {
     align-items: center;
     flex-direction: column;
     background-color: white;
-    padding: 3rem;
+    padding: 4rem;
 }
 
 .containerrightiniciosesion {
@@ -575,11 +575,18 @@ body.no-scroll {
     width: 10rem;
 }
 
+.h1iniciosesion2 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
 @media (max-width: 780px) {
     .containeriniciosesion {
         flex-direction: column; 
         align-items: center; 
-    
+        box-shadow: none;
     }
 
     .containerleftiniciosesion,
@@ -662,7 +669,10 @@ body.no-scroll {
         .h1iniciosesion2 {
             text-align: center;
             font-size: 1.5rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
         }
+
         .piniciosesion {
             text-align: center;
         }
@@ -2330,9 +2340,8 @@ footer{
     color: white;
     font-size: 1.2rem;
     font-weight: 500;
-    margin-left: 10rem;
-    margin-right: 10rem;
-    margin-bottom: 3rem;
+    margin-left: 2rem;
+    margin-left: 2rem;
 }
 
 .imageninformacion {
@@ -2404,50 +2413,33 @@ footer{
 }
 
 @media (max-width: 745px) {
-    .psparte1informacion {
-        text-align: center;
-        color: white;
-        font-size: 1.2rem;
-        font-weight: 500;
-        margin-left: 4rem;
-        margin-right: 4rem;
-        margin-bottom: 3rem;
+    .logos2informacion {
+        max-width: 7rem;
+        margin-top: 1rem;
     }
-}
 
-@media (max-width: 745px) {
-    .psparte1informacion {
+    .h1parte1informacion {
         text-align: center;
-        color: white;
-        font-size: 1.2rem;
-        font-weight: 500;
-        margin-left: 1rem;
-        margin-right: 1rem;
-        margin-bottom: 3rem;
+        margin-top: 0.5rem;
+        color: #66a6e6;
+        margin-bottom: 1rem;
+        margin-left: 2rem;
+        margin-right: 2rem;
+        font-size: 1.5rem;
     }
-}
-@media (max-width: 450px) {
+
     .psparte1informacion {
         text-align: center;
         color: white;
-        font-size: 1.2rem;
-        font-weight: 500;
-        margin-left: 4rem;
-        margin-right: 4rem;
-        margin-bottom: 5rem;
+        font-size: 11px;
+        font-weight: 0;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 3rem;
     }
     
-.parte1infromacion {
-    display: flex;
-    flex-direction: column;
-    background-image: url(Imagenes/FONDOINFORMACION.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: auto;
-    border-bottom: 3px solid black;
 }
-}
+
 @media (max-width: 1060px) { 
     .TituloParte1 {
         margin-top: 2rem;
