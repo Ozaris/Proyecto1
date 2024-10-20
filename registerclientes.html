@@ -17,15 +17,14 @@
         <div class="div1register">
             <div class="div1register2">
               <form class="frominiciosesion" action="RF_registro_usr.php" method="post">
-                <h1>Crea tu cuenta</h1>
-                <h1>como cliente</h1>
-                <div class="redesiniciosesion">
-                    <a href="#" class="redesainiciosesion"><i class="fa-brands fa-google-plus-g"></i></a>
-                    <a href="#" class="redesainiciosesion"><i class="fa-brands fa-facebook-f"></i></a>
-                </div>
+                <h1 class="h1register1">Crea tu cuenta</h1>
+                <h1 class="h12register1">como cliente</h1>
                 <input class="inputiniciosesion" type="text" placeholder="Nombre" id="nombre_p" name="nombre_p" required>
                 <input class="inputiniciosesion" type="email" placeholder="Email" id="email" name="email" required>
-                <input class="inputiniciosesion" minlength="8" type="password" placeholder="Password" id="pass" name="pass" required>
+                <div class="inputcontraseñaregister">
+                  <input class="inputiniciosesion" minlength="8" type="password" placeholder="Password" id="pass" name="pass" required>
+                  <span class="ocultarver-contraseña" id="ocultarver-contraseña"><i class="fa-solid fa-eye"></i></span>
+              </div>
                 <input class="inputiniciosesion" type="hidden" value="usuario" id="usuario" name="usuario">
                 <input class="inputiniciosesion" type="hidden" value="default.png" id="default.png" name="default.png">
                 <a href="registerempresas.html" class="aRecuperarcontraseña">Crear cuenta como empresa   <i class="fa-solid fa-suitcase"></i></a>
@@ -33,7 +32,7 @@
             </form>
             
            
-            <a href="index.php" class="botonatrasregister"> <i class="fa-solid fa-1x fa-arrow-left"></i> </a>
+            <a href="iniciodesesion.html" class="botonatrasiniciosesion"><i class="fa-solid fa-1x fa-arrow-left"></i></a>
         </div>
     </div>
 
@@ -43,7 +42,6 @@
                     <div class="carousel-indicators">
                       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                     </div>
                     <div class="carousel-inner">
                       <div class="carousel-item active">
@@ -84,5 +82,17 @@
       }
   });
 </script>
+
+<script>
+  const ocultarvercontraseña = document.getElementById('ocultarver-contraseña');
+  const passwordInput = document.getElementById('pass');
+
+  ocultarvercontraseña.addEventListener('click', () => {
+      const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+      passwordInput.setAttribute('type', type);
+      ocultarvercontraseña.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+  });
+</script>
+
 </body>
 </html>

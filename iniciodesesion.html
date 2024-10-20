@@ -20,7 +20,10 @@
                         <a href="#" class="redesainiciosesion"><i class="fa-brands fa-facebook-f"></i></a>
                     </div>
                     <input class="inputiniciosesion" type="email" placeholder="Email" id="email" name="email">
-                    <input class="inputiniciosesion" type="password" placeholder="Password" id="pass" name="pass">
+                    <div class="inputcontraseñaregister">
+                        <input class="inputiniciosesion" minlength="8" type="password" placeholder="Password" id="pass" name="pass" required>
+                        <span class="ocultarver-contraseña" id="ocultarver-contraseña"><i class="fa-solid fa-eye"></i></span>
+                    </div>
                     <button class="botoniniciosesion" value="envio-in" name ="envio-in">Iniciar Sesion</button>
                 </form>
                 <a href="index.php" class="botonatrasiniciosesion"> <i class="fa-solid fa-1x fa-arrow-left"></i> </a>
@@ -35,6 +38,17 @@
 
     </div>
 
-  
+
+    <script>
+        const ocultarvercontraseña = document.getElementById('ocultarver-contraseña');
+        const passwordInput = document.getElementById('pass');
+      
+        ocultarvercontraseña.addEventListener('click', () => {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            ocultarvercontraseña.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+        });
+      </script>
+
 </body>
 </html>

@@ -17,22 +17,21 @@
         <div class="div1register">
             <div class="div1register2">
             <form class="frominiciosesion" action="RF_registro_emp.php" method="POST">
-                <h2>Crea tu cuenta</h2>
-                <h2>como empresa</h2>
-                <div class="redesiniciosesion">
-                    <a href="#" class="redesainiciosesion"><i class="fa-brands fa-google-plus-g"></i></a>
-                    <a href="#" class="redesainiciosesion"><i class="fa-brands fa-facebook-f"></i></a>
-                </div>
+                <h2 class="h1register1">Crea tu cuenta</h2>
+                <h2 class="h12register1">como empresa</h2>
                 <input class="inputiniciosesion" type="nombreEmpresa" placeholder="Nombre" id="nombreEmpresa" name="nombre_p">
                 <input class="inputiniciosesion" type="email" placeholder="Email" id="email" name="email">
                 <input class="inputiniciosesion" type="hidden" placeholder="Nombre" name="default.png">
-                <input class="inputiniciosesion" type="password" placeholder="Password" id="pass" name="pass">
+                <div class="inputcontraseñaregister">
+                  <input class="inputiniciosesion" type="password" placeholder="Password" id="pass" name="pass">
+                  <span class="ocultarver-contraseña" id="ocultarver-contraseña"><i class="fa-solid fa-eye"></i></span>
+              </div>
                 <input type="hidden" placeholder="Password" value="empresa" id="empresa" name="empresa">
                 <input class="inputiniciosesion" type="hidden" value="default.png" id="default.png" name="default.png">
                 <a href="registerclientes.html" class="aRecuperarcontraseña">Crear cuenta como cliente  <i class="fa-solid fa-user"></i></a> 
                 <button class="botoniniciosesion" value="envio-emp" name ="envio-emp">Registrarme</button>
             </form>
-            <a href="index.php" class="botonatrasiniciosesion"> <i class="fa-solid fa-1x fa-arrow-left"></i> </a>
+            <a href="iniciodesesion.html" class="botonatrasiniciosesion"> <i class="fa-solid fa-1x fa-arrow-left"></i> </a>
         </div>
     </div>
 
@@ -74,5 +73,17 @@
                $("#nombreEmpresa").val(string.replace(/ /g, ""))
    })
          </script>
+
+<script>
+  const ocultarvercontraseña = document.getElementById('ocultarver-contraseña');
+  const passwordInput = document.getElementById('pass');
+
+  ocultarvercontraseña.addEventListener('click', () => {
+      const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+      passwordInput.setAttribute('type', type);
+      ocultarvercontraseña.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+  });
+</script>
+
 </body>
 </html>

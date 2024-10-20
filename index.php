@@ -42,6 +42,8 @@ if (isset($_SESSION['email'])) {
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <link class="aslinkcarta" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <link rel="stylesheet" class="aslinkcarta" href="style/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js/dist/driver.min.css">
     <script src="https://cdn.jsdelivr.net/npm/driver.js/dist/driver.min.js"></script>
@@ -50,7 +52,7 @@ if (isset($_SESSION['email'])) {
 </head>
     <body>
 <!-- +++++++++++++++++++++++++++HEADER+++++++++++++++++++++++++++ --> 
-<div class="inicio1">
+<div class="inicio1" >
     <header class="headerinicio" id="headerinicio">
         <a href="index.php"> <img class="logoinicio" src="style/Imagenes/logoproyecto.png" alt="Logo"></a>
         <button id="abrir" class="abrirmenuinicio"><i class="fa-solid fa-bars"></i></button>
@@ -82,7 +84,7 @@ if (isset($_SESSION['email'])) {
 
 <!-- +++++++++++++++++++++++++++BODY+++++++++++++++++++++++++++ -->
 
-<div class="parte1body" id="#welcomeSection">
+<div class="parte1body" id="#welcomeSection" data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-duration="2000">
     <h1 class="h1parte1">Bienvenido/a, es un gusto tenerte aquí</h1>
     <h3 class="h3parte1">Te damos la bienvenida a una página con un sinfín de empresas esperándote. De la mano de KORF Company, esperamos ayudarte.</h3>
 
@@ -95,25 +97,25 @@ if (isset($_SESSION['email'])) {
 
 <div class="parte3body">
     <div class="psparte3body">
-     <h1 class="h1parte3">OZARIS</h1>
-     <p class="p1parte3">La plataforma OZARIS es referencia en soluciones publicitarias innovadoras y eficaces. Nuestra misión es transformar la forma en que las empresas se conectan con sus clientes, ofreciendo estrategias de publicidad que combinan creatividad y tecnología.</p>
-     <p class="p2parte3">Para nosotros es igualmente importante ofrecer asistencia a los visitantes nuevos que desean encontrar nuevas empresas o mejores precios mediante la comparación de un extenso catálogo.</p>
+     <h1 class="h1parte3" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">OZARIS</h1>
+     <p class="p1parte3" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">La plataforma OZARIS es referencia en soluciones publicitarias innovadoras y eficaces. Nuestra misión es transformar la forma en que las empresas se conectan con sus clientes, ofreciendo estrategias de publicidad que combinan creatividad y tecnología.</p>
+     <p class="p2parte3" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">Para nosotros es igualmente importante ofrecer asistencia a los visitantes nuevos que desean encontrar nuevas empresas o mejores precios mediante la comparación de un extenso catálogo.</p>
     </div>
 </div>
 
 <div class="parte2body">
     <div class="parte2body2">
-    <div class="parte2bodydiv2" >
+    <div class="parte2bodydiv2" data-aos="fade-down" data-aos-duration="2000">
         <img class="imgparte2body" src="style/Imagenes/personas.png" alt="img">
         <p class="tituloparte2body">Servicio de marketing</p>
         <p class="parrafoparte2body">Nuestra empresa KORF se encargará de distribuir publicidad empresarial eficazmente para mejorar la visibilidad de tu empresa.</p>
     </div>
-    <div class="parte2bodydiv1" >
+    <div class="parte2bodydiv1" data-aos="fade-down" data-aos-duration="2000">
         <img class="imgparte2body" src="style/Imagenes/flecha.png" alt="img">
         <p class="tituloparte2body">Estrategia de expansión</p>
         <p class="parrafoparte2body">Nuestro equipo especializado te proporcionará la orientación necesaria para desarrollar una estrategia de alcance publicitaria efectiva para tu empresa.</p>
     </div>
-    <div class="parte2bodydiv3" >
+    <div class="parte2bodydiv3" data-aos="fade-down" data-aos-duration="2000">
         <img class="imgparte2body" src="style/Imagenes/manos.png" alt="img">
         <p class="tituloparte2body">Con el usuario</p>
         <p class="parrafoparte2body">Ayudamos a los visitantes a encontrar empresas o precios de manera más sencilla y rápida usando etiquetas y catálogos.</p>
@@ -121,7 +123,7 @@ if (isset($_SESSION['email'])) {
   </div>
 </div>
 
-<div class="parte4body swiper" id="parte4">
+<div class="parte4body swiper" id="parte4" data-aos="zoom-in-up" data-aos-duration="1500">
 
     <h1 class="h1parte4body">10 empresas destacadas de la semana:</h1>
 
@@ -130,7 +132,7 @@ if (isset($_SESSION['email'])) {
         <div class="swiper-container mySwiper">
          
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
+                <div class="swiper-slide" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500">
                     <img src="style/Imagenes/FondoInicio.png" alt="img">
                     <div class="descripcioncarta">
                         <div class="titulocarta">
@@ -144,7 +146,7 @@ if (isset($_SESSION['email'])) {
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide">
+                <div class="swiper-slide" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500">
                     <img src="style/Imagenes/FondoInicio.png" alt="img">
                     <div class="descripcioncarta">
                         <div class="titulocarta">
@@ -158,7 +160,7 @@ if (isset($_SESSION['email'])) {
                         </div>
                 </div>
             </div>
-                <div class="swiper-slide">
+                <div class="swiper-slide" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500">
                     <img src="style/Imagenes/FondoInicio.png" alt="img">
                 <div class="descripcioncarta">
                     <div class="titulocarta">
@@ -172,7 +174,7 @@ if (isset($_SESSION['email'])) {
                     </div>
                 </div>
             </div>
-                <div class="swiper-slide">
+                <div class="swiper-slide"data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500">
                     <img src="style/Imagenes/FondoInicio.png" alt="img">
                 <div class="descripcioncarta">
                     <div class="titulocarta">
@@ -186,8 +188,8 @@ if (isset($_SESSION['email'])) {
                     </div>
                 </div>
             </div>
-                <div class="swiper-slide">
-                    <img src="style/Imagenes/FondoInicio.png" alt="img">
+                <div class="swiper-slide" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500">
+                    <img src="style/Imagenes/FondoInicio.png" alt="img" >
                 <div class="descripcioncarta">
                     <div class="titulocarta">
                         <h4>Nombre de empresa</h4>
@@ -201,7 +203,7 @@ if (isset($_SESSION['email'])) {
                 </div>
             </div>
                
-                <div class="swiper-slide">
+                <div class="swiper-slide" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500">
                     <img src="style/Imagenes/FondoInicio.png" alt="img">
                 <div class="descripcioncarta">
                     <div class="titulocarta">
@@ -215,7 +217,7 @@ if (isset($_SESSION['email'])) {
                     </div>
                 </div>
             </div>
-            <div class="swiper-slide">
+            <div class="swiper-slide" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500">
                 <img src="style/Imagenes/FondoInicio.png" alt="img">
                 <div class="descripcioncarta">
                     <div class="titulocarta">
@@ -229,7 +231,7 @@ if (isset($_SESSION['email'])) {
                     </div>
             </div>
         </div>
-        <div class="swiper-slide">
+        <div class="swiper-slide" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500">
             <img src="style/Imagenes/FondoInicio.png" alt="img">
             <div class="descripcioncarta">
                 <div class="titulocarta">
@@ -243,7 +245,7 @@ if (isset($_SESSION['email'])) {
                 </div>
         </div>
     </div>
-    <div class="swiper-slide">
+    <div class="swiper-slide" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500">
         <img src="style/Imagenes/FondoInicio.png" alt="img">
         <div class="descripcioncarta">
             <div class="titulocarta">
@@ -257,7 +259,7 @@ if (isset($_SESSION['email'])) {
             </div>
     </div>
 </div>
-<div class="swiper-slide">
+<div class="swiper-slide" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500">
     <img src="style/Imagenes/FondoInicio.png" alt="img">
     <div class="descripcioncarta">
         <div class="titulocarta">
@@ -280,12 +282,12 @@ if (isset($_SESSION['email'])) {
 
     <div class="parte5body2">
 
-    <div class="preguntaparte5body">
+    <div class="preguntaparte5body" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
         <h1 class="h1parte5body">¿Tienes una empresa?</h1>
         <p class="pparte5body">Mira los planes que tenemos para ti</p>
     </div>
 
-        <div class="cartasplanes">
+        <div class="cartasplanes" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500">
             <img src="style/Imagenes/logousuario2.png" alt="img">
             <div class="descripcioncartaplanes">
                 <div class="titulocartaplanes">
@@ -303,7 +305,7 @@ if (isset($_SESSION['email'])) {
             </div>
         </div>
 
-            <div class="cartasplanes">
+            <div class="cartasplanes" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500">
                 <img src="style/Imagenes/logopremium.png" alt="img">
                 <div class="descripcioncartaplanes">
                     <div class="titulocartaplanes">
@@ -323,7 +325,7 @@ if (isset($_SESSION['email'])) {
     </div>   
 </div>
 
-<div class="parte6body" id="map">
+<div class="parte6body" id="map" data-aos="fade-down" data-aos-duration="3000">
     <div class="parte6body2">
     <div class="parte6bodytexto">
     <h1 class="h1parte6body">Nuestro local:</h1>
@@ -425,9 +427,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </script>
 
+<script>
+  AOS.init();
+</script>
 
+     <script src="app.js"></script>
 
-
-
-        <script src="app.js"></script>
-    </body>
+</body>

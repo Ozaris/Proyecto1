@@ -102,9 +102,8 @@ function truncateText($text, $maxWords) {
     <title>Empresas - Ozaris</title>
 </head>
 <body class="bodyempresas">
+<!-- +++++++++++++++++++++++++++HEADER+++++++++++++++++++++++++++ --> 
     <div class="divpadreempresas">
-        <div class="divparabotondesubir" id="headerempresas"></div>
-
         <div class="headermenuempresas">
             <a href="index.php"><img class="logo" src="style/Imagenes/logoproyecto.png" alt="Logo"></a>
             <button id="abrir" class="abrirmenuinicio"><i class="fa-solid fa-bars"></i></button>
@@ -133,11 +132,18 @@ function truncateText($text, $maxWords) {
                 </ul>
             </nav>
         </div>
+<!-- +++++++++++++++++++++++++++FIN DE HEADER+++++++++++++++++++++++++++ --> 
+
+<!-- +++++++++++++++++++++++++++BUSCADOR+++++++++++++++++++++++++++ --> 
 
         <div class="divprincipalbuscador" id="bus">
             <input type="text" name="buscador" id="buscador" placeholder="Buscar">
             <div id="resultado_busqueda"></div>
         </div>
+
+<!-- +++++++++++++++++++++++++++FIN DE BUSCADOR+++++++++++++++++++++++++++ --> 
+
+<!-- +++++++++++++++++++++++++++FILTROS+++++++++++++++++++++++++++ --> 
 
         <div class="containerempresas">
             <div class="divrecomendacionesempresas" id="filtro">
@@ -181,11 +187,10 @@ function truncateText($text, $maxWords) {
                         </div>
                 </div>
             </div>
-               <!-- +++++++++++++++++++++++++++RECOMENDACIONES+++++++++++++++++++++++++++ -->
+<!-- +++++++++++++++++++++++++++FIN DE FILTROS+++++++++++++++++++++++++++ -->
 
-                <!-- +++++++++++++++++++++++++++BOTON PUBLICAR+++++++++++++++++++++++++++ -->
+<!-- +++++++++++++++++++++++++++BOTON PUBLICAR+++++++++++++++++++++++++++ -->
                 <h3 class="h3publiem">Publicaciones</h3>
-                <!-- Button trigger modal -->
                 <?php
                 if ($rol === 'empresa') {
 
@@ -249,10 +254,12 @@ function truncateText($text, $maxWords) {
     </div>
 </div>
 
+</div>
+</div>
 
+<!-- +++++++++++++++++++++++++++FIN DE BOTON PUBLICAR+++++++++++++++++++++++++++ --> 
 
-                    </div>
-                </div>
+<!-- +++++++++++++++++++++++++++PUBLICACIONES+++++++++++++++++++++++++++ --> 
             
             <div class="divprincipalpublisem" id="publicacionesContainer">
                 <?php
@@ -288,6 +295,12 @@ function truncateText($text, $maxWords) {
             </div>
         </div>
     </div>
+
+<!-- +++++++++++++++++++++++++++FIN DE PUBLICACIONES+++++++++++++++++++++++++++ --> 
+
+<!-- +++++++++++++++++++++++++++SCRIPTS+++++++++++++++++++++++++++ --> 
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="lib/jquery.js"></script>
@@ -420,5 +433,8 @@ function redireccion() {
     </script>
 
 <script src="app.js"></script>
+
+<!-- +++++++++++++++++++++++++++FIN DE SCRIPTS+++++++++++++++++++++++++++ --> 
+
 </body>
 </html>
