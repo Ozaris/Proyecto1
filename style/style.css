@@ -2849,7 +2849,6 @@ footer{
     display: flex;
     width: 100%;
     padding-top: 1rem;
-    border-bottom: 1px solid #333;
     border-top: none;
 } 
 
@@ -2888,6 +2887,43 @@ footer{
 }
 .letraspubliD {
     font-size: 1.5rem;
+}
+.divprincipalD2 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2rem;
+
+}
+.divdescripcionpubliD {
+    box-shadow: 0 0 5px #333;
+    border: 1px solid #333;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    width: 30rem;
+    margin-left: 2rem;
+}
+.divubicacionD {
+    box-shadow: 0 0 5px #333;
+    border: 1px solid #333;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    width: 30rem;
+}
+.divpubliparte1 {
+    display: flex;
+    width: 50%;
+}
+.divpubliparte2 {
+    width: 50%;
+    display: flex;
 }
 
 .imagenprincipalcomentarios {

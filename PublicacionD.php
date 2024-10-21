@@ -71,16 +71,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_prod'])) {
         <h2 class="titulopubliD">Informacion</h2>
         <div class="divinfopubliD">
             <h3 class="letraspubliD"><?php echo $nom_pub; ?></h3>
-            <h3 class="letraspubliD"><?php echo $desc_emp; ?></h3>
             <h3 class="letraspubliD">Telefono</h3>
-        </div>
-        <div class="divinfopubliD">
-            <h3 class="letraspubliD">Ubicacion</h3>
             <h3 class="letraspubliD"><?php echo $cat_emp; ?></h3>
             <h3 class="letraspubliD">Valoracion: <?php echo $promedio_valoracion; ?> <img class="estrella2" src="style/Imagenes/estrella.png" alt="img"></h3>
         </div>
     </div>
 </div>
+
+<div class="divprincipalD2">
+<div class="divpubliparte1">
+    <div class="divdescripcionpubliD">
+    <p class="letraspubliD"><?php echo $desc_emp; ?></p>    
+</div>
+</div>
+
+<div class="divpubliDparte2">
+    <div class="divubicacionD">
+
+    </div>
+</div>
+</div>
+
 <?php
 if ($rol =="usuario") {
    
@@ -100,6 +111,7 @@ if ($rol =="usuario") {
             <input type="submit" class="botoncomentar" name="envio-com">
         </div>
     </form>
+
 <?php
 } else {
     echo "<p>Por favor, inicia sesión como usuario para enviar comentarios.</p>";
