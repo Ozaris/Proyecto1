@@ -427,10 +427,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </script>
 
+<script src="app.js"></script>
+
 <script>
   AOS.init();
 </script>
-
-     <script src="app.js"></script>
 
 </body>
