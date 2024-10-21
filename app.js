@@ -43,10 +43,3 @@ var swiper = new Swiper('.swiper-container', {
 	  },
 	} 
 });
-
-<script>
-  AOS.init();
-</script>
-
-
-
