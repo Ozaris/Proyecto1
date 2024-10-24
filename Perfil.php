@@ -233,28 +233,51 @@ function elim($con, $nombre_p, $rol) {
     // Escapar los campos para evitar inyección SQL
     $nombre_p = mysqli_real_escape_string($con, $nombre_p);
     
-    // Primero, eliminar de la tabla empresa si el rol es 'empresa'
+    // Primero, eliminar de la tabla publicacion_prod si el rol es 'empresa'
     if ($rol === 'empresa') {
+        $consulta_eliminar_publ = "DELETE FROM publicacion_prod WHERE id_per = (SELECT Id_per FROM empresa WHERE nombre_p='$nombre_p')";
+        
+        if (mysqli_query($con, $consulta_eliminar_publ)) {
+            echo "Eliminación exitosa en publicaciones.<br>";
+        } else {
+            echo "Error al eliminar en publicaciones: " . mysqli_error($con) . "<br>";
+            return; // Salimos de la función si hay un error
+        }
+
+        // Luego eliminar de la tabla empresa
         $consulta_eliminar_empresa = "DELETE FROM empresa WHERE nombre_p='$nombre_p'";
         if (mysqli_query($con, $consulta_eliminar_empresa)) {
             echo "Eliminación exitosa en empresa.<br>";
-            
         } else {
             echo "Error al eliminar en empresa: " . mysqli_error($con) . "<br>";
             return; // Salimos de la función si hay un error
         }
+
+        $sql3 = "DELETE FROM persona WHERE nombre_p='$nombre_p'";
+        if (mysqli_query($con, $sql3)) {
+            echo "Eliminación exitosa en persona.<br>";
+        } else {
+            echo "Error en la consulta de persona: " . mysqli_error($con) . "<br>";
+        }
     }
     
-      // Si el rol es 'usuario', también eliminar de la tabla usuario
-      if ($rol === 'usuario') {
+    // Si el rol es 'usuario', también eliminar de la tabla usuario
+    if ($rol === 'usuario') {
         $sql = "DELETE FROM usuario WHERE nombre_p='$nombre_p'";
         if (mysqli_query($con, $sql)) {
             echo "Eliminación exitosa en usuario.<br>";
-            
         } else {
             echo "Error en la consulta de usuario: " . mysqli_error($con) . "<br>";
         }
+
+        $sql2 = "DELETE FROM persona WHERE nombre_p='$nombre_p'";
+        if (mysqli_query($con, $sql2)) {
+            echo "Eliminación exitosa en persona.<br>";
+        } else {
+            echo "Error en la consulta de persona: " . mysqli_error($con) . "<br>";
+        }
     }
+    
     // Luego, eliminar de la tabla persona
     $consulta_eliminar_persona = "DELETE FROM persona WHERE nombre_p='$nombre_p'";
     if (mysqli_query($con, $consulta_eliminar_persona)) {
@@ -263,8 +286,6 @@ function elim($con, $nombre_p, $rol) {
     } else {
         echo "Error al eliminar en persona: " . mysqli_error($con) . "<br>";
     }
-    
-  
 }
 
 ?>
