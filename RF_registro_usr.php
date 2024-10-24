@@ -2,6 +2,7 @@
 session_start();
 require_once("conexion.php");
 require 'vendor/autoload.php';
+include_once("registerclientes.html");
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -40,14 +41,15 @@ if (isset($_POST["envio"])) {
                 header("Location: verify_code.php");
                 exit();
             } else {
-                echo "Error al insertar en usuario: " . mysqli_error($con);
+                echo "<div style='display: flex; border: 1px solid red; color: red; padding: 5px 8px; border-radius: 5px; background-color: rgb(255, 167, 167);'> <i class='fas fa-exclamation-triangle' style='margin-right: 8px;'></i> Error al insertar en usuario </div>" . mysqli_error($con);
             }
         } else {
-            echo "Error al insertar en persona: " . mysqli_error($con);
+            echo "<div style='display: flex; border: 1px solid red; color: red; padding: 5px 8px; border-radius: 5px; background-color: rgb(255, 167, 167);'> <i class='fas fa-exclamation-triangle' style='margin-right: 8px;'></i> Error al insertar en persona </div>" . mysqli_error($con);
         }
     } else {
-        echo "Usuario ya existe: " . mysqli_error($con);
+        echo "<div style='display: flex; border: 1px solid red; color: red; padding: 5px 8px; border-radius: 5px; background-color: rgb(255, 167, 167);'> <i class='fas fa-exclamation-triangle' style='margin-right: 8px;'></i> Este usuario ya existe </div>" . mysqli_error($con);
     }
+    
 }
 
 // Funciones para verificar si el usuario o el nombre existen

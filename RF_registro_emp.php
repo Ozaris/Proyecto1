@@ -83,13 +83,13 @@ function insertar_datos($con, $nombre_p, $email, $contrasenia,$rol,$existe_nom,$
                  header("Location: verify_code.php");
                  exit();
              } else {
-                 echo "Error al insertar en usuario: " . mysqli_error($con);
+                 echo "<div style='display: flex; border: 1px solid red; color: red; padding: 5px 8px; border-radius: 5px; background-color: rgb(255, 167, 167);'> <i class='fas fa-exclamation-triangle' style='margin-right: 8px;'></i> Error al insertar en usuario </div> " . mysqli_error($con);
              }
          } else {
-             echo "Error al insertar en persona: " . mysqli_error($con);
+             echo "<div style='display: flex; border: 1px solid red; color: red; padding: 5px 8px; border-radius: 5px; background-color: rgb(255, 167, 167);'> <i class='fas fa-exclamation-triangle' style='margin-right: 8px;'></i> Error al insertar en persona </div> " . mysqli_error($con);
          }
      } else {
-         echo "Usuario ya existe: " . mysqli_error($con);
+         echo "<div style='display: flex; border: 1px solid red; color: red; padding: 5px 8px; border-radius: 5px; background-color: rgb(255, 167, 167);'> <i class='fas fa-exclamation-triangle' style='margin-right: 8px;'></i> Esta empresa ya existe </div>" . mysqli_error($con);
      }
  }
 
