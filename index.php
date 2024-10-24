@@ -124,6 +124,7 @@ if (isset($_SESSION['email'])) {
   </div>
 </div>
 
+<div id="topempresas"></div>
 <div class="parte4body swiper" id="parte4" data-aos="zoom-in-up" data-aos-duration="1500">
 
     <h1 class="h1parte4body">10 empresas destacadas de la semana:</h1>
@@ -281,7 +282,7 @@ if (isset($_SESSION['email'])) {
 
 <div class="parte5body">
 
-    <div class="parte5body2">
+    <div id="planes" class="parte5body2">
 
     <div class="preguntaparte5body" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
         <h1 class="h1parte5body">¿Tienes una empresa?</h1>
@@ -347,27 +348,25 @@ if (isset($_SESSION['email'])) {
 <!-- +++++++++++++++++++++++++++FOOTER+++++++++++++++++++++++++++ --> 
     <footer>
         <div class="divfooter" id="footer_">
-            <nav class="navsfooter">
+        <nav class="navsfooter">
                 <p class="pfooter">General</p>
+                <a class="afooter aslinkcarta" href="index.php">Inicio</a>
                 <a class="afooter aslinkcarta" href="empresas.php">Empresas</a>
                 <a class="afooter aslinkcarta" href="#">Servicios</a>
-                <a class="afooter aslinkcarta" href="">Proximamente</a>
-                <a class="afooter aslinkcarta" href="">Proximamente</a>
-                <a class="afooter aslinkcarta" href="">Proximamente</a>
+                <a class="afooter aslinkcarta" href="index.php#topempresas">Top empresas</a>
             </nav>
             <nav class="navsfooter">
                 <p class="pfooter">Ayuda</p>
                 <a class="afooter aslinkcarta" href="contacto.html">Contacto</a>
                 <a class="afooter aslinkcarta" href="Informacion.html#FAQs">FAQs</a>
-                <a class="afooter aslinkcarta" href="">Proximamente</a>
-                <a class="afooter aslinkcarta" href="">Proximamente</a>
-                <a class="afooter aslinkcarta" href="">Proximamente</a>
+                <a class="afooter aslinkcarta" href="index.php#planes">Planes</a>
+                <a class="afooter aslinkcarta" href="mispublicaciones.php">Mis posts</a>
             </nav>
             <nav class="nav2footer">
                 <p class="pfooter">Nosotros</p>
                 <a class="afooter aslinkcarta" href="Informacion.html">Informacion</a>
-                <a class="afooter aslinkcarta" href="">Proximamente</a>
-                <a class="afooter aslinkcarta" href="">Proximamente</a>
+                <a class="afooter aslinkcarta" href="index.php#map">Ubicacion</a>
+                <a class="afooter aslinkcarta" href="Informacion.html#ozariskorf">Korf/Ozaris</a>
             <nav class="navredesfooter">
                 <a class="aredesfooter aslinkcarta" href=""><i class="fa-brands fa-3x fa-instagram"></i></a>
                 <a class="aredesfooter aslinkcarta" href=""><i class="fa-brands fa-3x fa-facebook"></i></a>
