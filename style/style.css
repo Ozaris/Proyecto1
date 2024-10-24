@@ -2014,6 +2014,8 @@ footer{
     box-shadow: 0 0 10px #333;
     background-color: white;
     border-radius: 5px;
+    width: 24rem;
+    height: 30rem;
 }
 
 .cardempresasbody {
@@ -3270,7 +3272,29 @@ footer{
 
 /*----------------------------Inicio de mis publicaciones--------------------------------*/
 
-
-
-
+.titulomispublicaciones {
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 2.5rem;
+}
+.divcolorfooterP {
+    width: 100%;
+    background-color: #333;
+    padding: 1rem;
+}
+.divcolorfooterPdentro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logosperfilP {
+    width: 10rem;
+}
+.botonatrasmp {
+    text-decoration: none;
+    color: #333;
+    position: absolute;
+    top: 3rem;
+    left: 2rem;
+}
 /*----------------------------Fin de mis publicaciones-----------------------------------*/
