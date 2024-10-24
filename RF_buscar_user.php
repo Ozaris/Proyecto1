@@ -4,7 +4,7 @@ $con = conectar_bd();
 
 $input = isset($_POST['input']) ? $con->real_escape_string($_POST['input']) : '';
 
-$sql = "SELECT * FROM persona WHERE nombre_p LIKE '$input%'";
+$sql = "SELECT * FROM empresa WHERE nombre_p LIKE '$input%'";
 $result = $con->query($sql);
 
 if ($result->num_rows > 0) {
