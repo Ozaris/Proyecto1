@@ -70,10 +70,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_prod'])) {
     <div class="divsec2publiD">
         <h2 class="titulopubliD">Informacion</h2>
         <div class="divinfopubliD">
-            <h3 class="letraspubliD"><?php echo $nom_pub; ?></h3>
-            <h3 class="letraspubliD">Telefono</h3>
-            <h3 class="letraspubliD"><?php echo $cat_emp; ?></h3>
-            <h3 class="letraspubliD">Valoracion: <?php echo $promedio_valoracion; ?> <img class="estrella2" src="style/Imagenes/estrella.png" alt="img"></h3>
+            <h3 class="letraspubliD2"><?php echo $nom_pub; ?></h3>
+            <h3 class="letraspubliD2">Telefono</h3>
+            <h3 class="letraspubliD2"><?php echo $cat_emp; ?></h3>
+            <h3 class="letraspubliD2">Valoracion: <?php echo $promedio_valoracion; ?> <img class="estrella2" src="style/Imagenes/estrella.png" alt="img"></h3>
         </div>
     </div>
 </div>
