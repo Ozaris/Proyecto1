@@ -233,8 +233,8 @@ function truncateText($text, $maxWords) {
                                     <option value="Propiedades">Propiedades</option>
                                     <option value="Vehículos">Vehículos</option>
                                 </select>
-                                <textarea class="form-control inputpublicacion3" placeholder="Descripción" id="descripcion" name="descripcion" maxlength="100" style="height: 100px" required></textarea>
-                                <div id="charCount">100 caracteres restantes</div> <!-- Contador de caracteres -->
+                                <textarea class="form-control inputpublicacion3" placeholder="Descripción" id="descripcion" name="descripcion" maxlength="100" style="height: 100px" required oninput="validateInput()"></textarea>
+                                <div class="caracteresletrasalerta" id="charCount">100 caracteres restantes</div> <!-- Contador de caracteres -->
                             </div>
                             <div class="divinformacionempresa">
                                 <h6>Información de la empresa</h6>
@@ -299,6 +299,21 @@ function truncateText($text, $maxWords) {
 <!-- +++++++++++++++++++++++++++FIN DE PUBLICACIONES+++++++++++++++++++++++++++ --> 
 
 <!-- +++++++++++++++++++++++++++SCRIPTS+++++++++++++++++++++++++++ --> 
+
+
+<script>
+function validateInput() {
+    const textarea = document.getElementById('descripcion');
+    const words = textarea.value.split(/\s+/); // Divide el texto en palabras
+    for (const word of words) {
+        if (word.length > 16) {
+            textarea.value = textarea.value.replace(word, ''); // Elimina la palabra larga
+            alert('Las palabras no pueden tener más de 16 letras.');
+            break; // Salimos del bucle después de la primera palabra larga
+        }
+    }
+}
+</script>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

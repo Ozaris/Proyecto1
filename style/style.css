@@ -2026,6 +2026,10 @@ footer{
     border-bottom: 1px solid #333;
 }
 
+.caracteresletrasalerta {
+    padding-left: 1rem;
+}
+
 .imgcardpubliem {
     height: 200px;
     width: 350px; 

@@ -1,18 +1,27 @@
 <?php
 require("conexion.php");
-$con= conectar_bd();
+$con = conectar_bd();
 
-$input = isset($_POST['input']) ? $con->real_escape_string($_POST['input']) : ''; //La variable input toma el valor enviado por el POST y lo pasa a string
+$input = isset($_POST['input']) ? $con->real_escape_string($_POST['input']) : '';
 
-
-$sql = "SELECT * FROM persona WHERE nombre_p LIKE '$input%' "; // Consulta a la base de datos
+$sql = "SELECT * FROM empresa WHERE nombre_p LIKE '$input%'";
 $result = $con->query($sql);
 
-
-if ($result->num_rows > 0) {  // Comprobar si hay resultados dentro de la base de datos y lo muestra
+if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-        echo "<div>" . $row['nombre_p'] . "</div>";  //Recorre las columnas y muestra el valor deseado
+        echo "<div><a href='javascript:void(0);' onclick='loadPerfil(\"" . htmlspecialchars($row['nombre_p']) . "\")'>" . htmlspecialchars($row['nombre_p']) . "</a></div>";
     }
 } else {
     echo "No se encontraron resultados.";
 }
+?>
+
+<script type="text/javascript">
+function loadPerfil(nombre) {
+    // Almacenar el nombre en una variable de sesión mediante AJAX
+    $.post('set_session.php', { nombre_empresa: nombre }, function() {
+        window.location.href = 'perfilE.php';
+    });
+}
+</script>
+
