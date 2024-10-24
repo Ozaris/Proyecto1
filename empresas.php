@@ -233,8 +233,8 @@ function truncateText($text, $maxWords) {
                                     <option value="Propiedades">Propiedades</option>
                                     <option value="Vehículos">Vehículos</option>
                                 </select>
-                                <textarea class="form-control inputpublicacion3" placeholder="Descripción" id="descripcion" name="descripcion" maxlength="100" style="height: 100px" required oninput="validateInput()"></textarea>
-                                <div class="caracteresletrasalerta" id="charCount">100 caracteres restantes</div> <!-- Contador de caracteres -->
+                                <textarea class="form-control inputpublicacion3" placeholder="Descripción" id="descripcion" name="descripcion" maxlength="300" style="height: 100px" required oninput="validateInput()"></textarea>
+                                <div class="caracteresletrasalerta" id="charCount">300 caracteres restantes</div> <!-- Contador de caracteres -->
                             </div>
                             <div class="divinformacionempresa">
                                 <h6>Información de la empresa</h6>
@@ -348,10 +348,7 @@ $(document).ready(function() {
 
     $("#categoriaSelect").change(function() {
         var categoriaSeleccionada = $(this).val();
-        // Aquí puedes hacer lo que desees con la categoría seleccionada,
-        // como agregarla a un card o actualizar el contenido en la página.
-
-        // Ejemplo de cómo actualizar un card:
+        
         $(".card-text .text-muted").each(function() {
             $(this).text("Categoría: " + categoriaSeleccionada);
         });
