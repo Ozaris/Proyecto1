@@ -2475,6 +2475,7 @@ footer{
 
 /*----------------------------Perfil--------------------------------*/
 
+
 .bodyperfil {
     min-width: 320px;
 }
@@ -2762,6 +2763,50 @@ footer{
     text-align: center;
     padding-left: 2rem;
     padding-right: 2rem;
+}
+
+.divdropdowncoloresperfil {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 15px;
+    top: 16rem;
+    z-index: 1000000;
+    background-color: transparent;
+}
+
+.btn {
+    background-color: transparent;
+    border: none;
+}
+
+.botoncoloropcion1 {
+    background-color: #ae0808;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.botoncoloropcion2 {
+    background-color: #66a6e6;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.botoncoloropcion3 {
+    background-color: #333;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.dropdown-colores {
+    padding: 1rem;
 }
 
 @media (max-width: 800px) { 

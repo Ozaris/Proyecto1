@@ -189,12 +189,14 @@ if (isset($_POST["envio-edit-desc-usr"]) && isset($_POST["edit_desc_usr"])) {
     $consulta_actualizar_descripcion = "UPDATE persona SET descripcion = '$edit_desc_usr' WHERE nombre_p = '$nombre_p'";
     
     if (mysqli_query($con, $consulta_actualizar_descripcion)) {
-        header("Location: Perfil.php");
-        exit();
+        echo "Actualización exitosa de la descripción.<br>";
     } else {
         echo "Error al actualizar la descripción: " . mysqli_error($con) . "<br>";
     }
-} 
+} else {
+    echo "Descripción no proporcionada.<br>";
+}
+
 
 function consultar_existe_nom($con, $edit_nom_usr) {
     $edit_nom_usr = mysqli_real_escape_string($con, $edit_nom_usr);
@@ -297,32 +299,41 @@ function elim($con, $nombre_p, $rol) {
     <link class="aslinkcarta" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="style/style.css">
     <link rel="icon" href="Imagenes/logoproyecto.png">
+    <link rel="stylesheet" href="style/style.css">
     <title>Tu Perfil</title>
 </head>
 <body class="bodyperfil">
     <div class="divcolorperfil">
-
         <div class="divcolorperfil2">
             <a href="index.php"><i class="fa-solid fa-2x fa-arrow-left-long iconoatrasperfil"></i></a>
             <a class="cerrarsesionperfil" href="logout.php">Cerrar sesión</a>
-            <button><i class="fa-solid fa-1x fa-pen-to-square iconoeditar1perfil"></i></button>
+            <div class="dropdown divdropdowncoloresperfil">
+  <button class="btn dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+  <i class="fa-solid fa-1x fa-pen-to-square iconoeditar1perfil"></i>
+  </button>
+  <ul class="dropdown-colores dropdown-menu">
+        <button class="botoncoloropcion1" onclick="cambiarColor('#ae0808')"><i class="fa-solid fa-droplet"></i></button>
+        <button class="botoncoloropcion2" onclick="cambiarColor('#66a6e6')"><i class="fa-solid fa-droplet"></i></button>
+        <button class="botoncoloropcion3" onclick="cambiarColor('#333')"><i class="fa-solid fa-droplet"></i></button>
+  </ul>
+</div>
 
+            
             <div class="btn-group">
                 <button type="button" class="iconoeditarfotoperfil" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                     <i class="fa-solid fa-1x fa-pen-to-square"></i>
                 </button>
                 <form action="Perfil.php" method="POST" enctype="multipart/form-data">
-                <ul class="dropdown-menu">
-                    <div class="mb-3 dropdowneditarfotoperfil">
-                        <label for="formFile" class="form-label"><i class="fa-solid fa-2x fa-plus iconomas"></i></label>
-                        <input class="form-control form-control1" type="file" id="formFile" name="foto_usr">
-                        <button class="BotonPublicarPerfil" type="submit" name="envio-edit-ft-usr">Publicar</button>
-                    </div>
-                </ul>
+                    <ul class="dropdown-menu">
+                        <div class="mb-3 dropdowneditarfotoperfil">
+                            <label for="formFile" class="form-label"><i class="fa-solid fa-2x fa-plus iconomas"></i></label>
+                            <input class="form-control form-control1" type="file" id="formFile" name="foto_usr">
+                            <button class="BotonPublicarPerfil" type="submit" name="envio-edit-ft-usr">Publicar</button>
+                        </div>
+                    </ul>
+                </form>
             </div>
-            </form>
             <div class="divfotoperfil">
                 <div class="imagenperfilcontainer">
                     <img class="imagenperfil" src="<?php echo $picture_to_show; ?>" alt="Foto de perfil">
@@ -332,7 +343,6 @@ function elim($con, $nombre_p, $rol) {
     </div>
 
     <div class="bodydelperfil">
-
         <div class="divinformacionperfil">
             <div class="divnombreperfil"><?php echo $nombre_p; ?>
                 <div class="btn-group">
@@ -340,44 +350,42 @@ function elim($con, $nombre_p, $rol) {
                         <i class="fa-solid fa-1x fa-pen-to-square"></i>
                     </button>
                     <form action="Perfil.php" method="POST">
-                    <ul class="dropdown-menu">
-                        <div class="mb-3">
-                            <div class="row g-3 align-items-center">
-                                <div class="col-auto">
-                                  <label for="inputPassword6" class="col-form-label">Editar Nombre</label>
+                        <ul class="dropdown-menu">
+                            <div class="mb-3">
+                                <div class="row g-3 align-items-center">
+                                    <div class="col-auto">
+                                        <label for="inputPassword6" class="col-form-label">Editar Nombre</label>
+                                    </div>
+                                    <div class="col-auto">
+                                        <input type="text" name="edit_nom_usr" id="inputPassword6" class="form-control form-control2" aria-describedby="passwordHelpInline">
+                                        <button class="BotonPublicarPerfil" type="submit" name="envio-edit-nom-usr">Publicar</button>
+                                    </div>
                                 </div>
-                                <div class="col-auto">
-                                  <input type="text" name="edit_nom_usr" id="inputPassword6" class="form-control form-control2" aria-describedby="passwordHelpInline">
-                                  <button class="BotonPublicarPerfil" type="submit" name="envio-edit-nom-usr">Publicar</button>
-                                </div>
-                              </div>
-                        </div>
-                    </ul>
+                            </div>
+                        </ul>
+                    </form>
                 </div>
             </div>
-            </form>
-
             <div class="divdescripperfil">
-            <p class="p1perfil"><?php echo $descripcion;?></p>
+                <p class="p1perfil"><?php echo $descripcion;?></p>
                 <div class="btn-group">
                     <button type="button" class="iconoeditar3perfil" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                         <i class="fa-solid fa-1x fa-pen-to-square"></i>
                     </button>
-                    
                     <ul class="dropdown-menu">
                         <div class="mb-3">
                             <div class="row g-3 align-items-center">
                                 <div class="col-auto">
-                                <form action="#" method="POST">
-                                  <label for="inputPassword6" class="col-form-label">Editar Descripción</label>
+                                    <form action="#" method="POST">
+                                        <label for="inputPassword6" class="col-form-label">Editar Descripción</label>
+                                    </div>
+                                    <div class="col-auto">
+                                        <textarea class="form-control" id="inputDescripcion" name="edit_desc_usr" rows="3"></textarea>
+                                        <button class="BotonPublicarPerfil" type="submit" name="envio-edit-desc-usr">Publicar</button>
+                                    </form>
+                                    </div>
                                 </div>
-                                <div class="col-auto">
-                                <textarea class="form-control" id="inputDescripcion" name="edit_desc_usr" rows="3"></textarea>
-                                  <button class="BotonPublicarPerfil" type="submit" name="envio-edit-desc-usr">Publicar</button>
-                                  </form>
-                                </div>
-                              </div>
-                        </div>
+                            </div>
                     </ul>
                 </div>
             </div>
@@ -387,21 +395,25 @@ function elim($con, $nombre_p, $rol) {
             <h2>Privado <i class="fa-solid fa-1x fa-lock"></i></h2>
             <div class="divmailperfil"><?php echo $email; ?></div>
             <div class="divcontraperfil"><p class="p2perfil">************** </p><a href="forgot_password.html"><button class="iconoeditar3perfil"><i class="fa-solid fa-pen-to-square"></i></button></a></div>
-           <form action="Perfil.php" method="post">
-            <button class="Boton2PublicarPerfil" type="submit" name="envio-elim-usr" value="envio-elim-usr">Eliminar cuenta</button>
-</form>
+            <form action="Perfil.php" method="post">
+                <button class="Boton2PublicarPerfil" type="submit" name="envio-elim-usr" value="envio-elim-usr">Eliminar cuenta</button>
+            </form>
         </div>
     </div>
 
     <div class="divcolorperfil22">
-
         <div class="divcolorperfil23">
             <img class="logosperfil" src="style/Imagenes/Logosblanco.png" alt="img">
             <a class="h3perfil" href="contacto.html">Soporte <i class="fa-solid fa-headset"></i></a>
             <p class="pfooterperfil">Recuerda que todos tus datos están protegidos.</p>
         </div>
-
     </div>
 
+    <script>
+    function cambiarColor(color) {
+        document.querySelector('.divcolorperfil2').style.backgroundColor = color;
+        document.querySelector('.divcolorperfil23').style.backgroundColor = color;
+    }
+    </script>
 </body>
 </html>
