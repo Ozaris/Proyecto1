@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 require_once("conexion.php");
 require 'vendor/autoload.php';
@@ -14,6 +15,7 @@ if (isset($_POST["envio"])) {
     $email = $_POST["email"];
     $contrasenia = $_POST["pass"];
     $rol = $_POST["usuario"];
+    $desc = $_POST["Descripcion"];
     $foto = isset($_POST["default.png"]) ? $_POST["default.png"] : 'default.png';
 
     if (!consultar_existe_usr($con, $email) && !consultar_existe_nom($con, $nombre_p)) {
@@ -24,7 +26,7 @@ if (isset($_POST["envio"])) {
         $token = strtoupper(substr(bin2hex(random_bytes(3)), 0, 6));
 
         // Insertar usuario en la base de datos
-        $consulta_insertar_persona = "INSERT INTO persona (nombre_p, email, contrasenia, token, rol, foto) VALUES ('$nombre_p', '$email', '$contrasenia', '$token', '$rol', '$foto')";
+        $consulta_insertar_persona = "INSERT INTO persona (nombre_p, email, contrasenia, token, rol, foto, descripcion) VALUES ('$nombre_p', '$email', '$contrasenia', '$token', '$rol', '$foto','$desc')";
 
         if (mysqli_query($con, $consulta_insertar_persona)) {
             // Obtén el ID de la persona recién insertada
@@ -36,8 +38,6 @@ if (isset($_POST["envio"])) {
             if (mysqli_query($con, $consulta_insertar_usuario)) {
                 // Enviar correo de verificación
                 sendVerificationEmail($email, $token);
-                
-                // Redirigir a la página de verificación
                 header("Location: verify_code.php");
                 exit();
             } else {

@@ -19,6 +19,7 @@ if ($data = $resultado->fetch_assoc()) {
     $email = $data['email'];
     $foto = $data['foto'];
     $rol = $data['rol'];
+    $descripcion = $data['descripcion'];
 
  
 } else {
@@ -176,6 +177,27 @@ if (isset($_POST["envio-edit-nom-usr"])) {
     }
 }
 
+
+if (isset($_POST["envio-edit-desc-usr"]) && isset($_POST["edit_desc_usr"])) {
+    $edit_desc_usr = $_POST["edit_desc_usr"];
+    $nombre_p = $data['nombre_p'];
+    
+    // Escape data to prevent SQL injection
+    $edit_desc_usr = mysqli_real_escape_string($con, $edit_desc_usr);
+    
+    // Update in the persona table
+    $consulta_actualizar_descripcion = "UPDATE persona SET descripcion = '$edit_desc_usr' WHERE nombre_p = '$nombre_p'";
+    
+    if (mysqli_query($con, $consulta_actualizar_descripcion)) {
+        echo "Actualización exitosa de la descripción.<br>";
+    } else {
+        echo "Error al actualizar la descripción: " . mysqli_error($con) . "<br>";
+    }
+} else {
+    echo "Descripción no proporcionada.<br>";
+}
+
+
 function consultar_existe_nom($con, $edit_nom_usr) {
     $edit_nom_usr = mysqli_real_escape_string($con, $edit_nom_usr);
     $consulta_existe_nom = "SELECT nombre_p FROM persona WHERE nombre_p = '$edit_nom_usr'";
@@ -317,7 +339,7 @@ function elim($con, $nombre_p, $rol) {
             </form>
 
             <div class="divdescripperfil">
-                <p class="p1perfil">Descripción </p>
+            <p class="p1perfil"><?php echo $descripcion;?></p>
                 <div class="btn-group">
                     <button type="button" class="iconoeditar3perfil" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                         <i class="fa-solid fa-1x fa-pen-to-square"></i>
@@ -331,8 +353,7 @@ function elim($con, $nombre_p, $rol) {
                                   <label for="inputPassword6" class="col-form-label">Editar Descripción</label>
                                 </div>
                                 <div class="col-auto">
-                                  <input type="text" name="edit_desc" id="inputPassword6" class="form-control form-control2" aria-describedby="passwordHelpInline">
-                                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <textarea class="form-control" id="inputDescripcion" name="edit_desc_usr" rows="3"></textarea>
                                   <button class="BotonPublicarPerfil" type="submit" name="envio-edit-desc-usr">Publicar</button>
                                   </form>
                                 </div>
