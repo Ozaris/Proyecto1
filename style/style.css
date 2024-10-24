@@ -36,7 +36,9 @@ body.no-scroll {
 .headerinicio:hover {
     opacity: calc(0.9);
 }
-
+.dropdown-menu {
+    z-index: 2000; 
+}
 .logoinicio {
     max-width: 5rem;
 }
@@ -59,6 +61,7 @@ body.no-scroll {
 }
 
 .navheaderinicio {
+    z-index: 80;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -700,6 +703,7 @@ body.no-scroll {
     height: 100%;
     width: 100%;
     padding: 3rem;
+    margin-top: 1rem;
 }
 
 .h1parte1 {
@@ -2015,10 +2019,11 @@ footer{
     background-color: white;
     border-radius: 5px;
     width: 24rem;
-    height: 30rem;
+    height: 32rem;
 }
 
 .cardempresasbody {
+    height: 22rem;
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -3296,5 +3301,19 @@ footer{
     position: absolute;
     top: 3rem;
     left: 2rem;
+}
+@media (max-width: 500px) { 
+    .botonatrasmp {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        left: 0;
+        bottom: 5px;
+        top: 1rem;
+    } 
+    .titulosmispublicaciones {
+        margin-top: 0;
+    }
 }
 /*----------------------------Fin de mis publicaciones-----------------------------------*/

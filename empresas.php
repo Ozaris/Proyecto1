@@ -126,7 +126,7 @@ function truncateText($text, $maxWords) {
   </button>
   <ul class="dropdown-menu">
     <li><a class="dropdown-item" href="javascript:void(0);" onclick="redireccion()">Perfil</a></li>
-    <li><a class="dropdown-item" href="#">Mis publicaciones</a></li>
+    <li><a class="dropdown-item" href="mispublicaciones.php">Mis publicaciones</a></li>
   </ul>
 </div>
                 </ul>
