@@ -115,5 +115,25 @@ if ($nombreEmpresa) {
 
     </div>
 
+    <!-- +++++++++++++++++++++++++++Localstorage+++++++++++++++++++++++++++ --> 
+
+    <script>
+    function cambiarColor(color) {
+        document.querySelector('.divcolorperfil2').style.backgroundColor = color;
+        document.querySelector('.divcolorperfil23').style.backgroundColor = color;
+        localStorage.setItem('colorPerfil', color);
+    }
+    
+
+    window.onload = function() {
+        const colorGuardado = localStorage.getItem('colorPerfil');
+        if (colorGuardado) {
+            cambiarColor(colorGuardado);
+        }
+    };
+    </script>
+
+    <!-- +++++++++++++++++++++++++++Localstorage+++++++++++++++++++++++++++ --> 
+
 </body>
 </html>
