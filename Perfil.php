@@ -263,15 +263,26 @@ function elim($con, $nombre_p, $rol) {
     
     // Si el rol es 'usuario', también eliminar de la tabla usuario
     if ($rol === 'usuario') {
-        $sql = "DELETE FROM usuario WHERE nombre_p='$nombre_p'";
-        if (mysqli_query($con, $sql)) {
-            echo "Eliminación exitosa en usuario.<br>";
+        $consulta_eliminar_com = "DELETE FROM comentario WHERE id_per2 = (SELECT Id_per FROM usuario WHERE nombre_p='$nombre_p')";
+        
+        if (mysqli_query($con, $consulta_eliminar_com)) {
+            echo "Eliminación exitosa en comentario.<br>";
         } else {
-            echo "Error en la consulta de usuario: " . mysqli_error($con) . "<br>";
+            echo "Error al eliminar en comentario: " . mysqli_error($con) . "<br>";
+            return; // Salimos de la función si hay un error
         }
 
-        $sql2 = "DELETE FROM persona WHERE nombre_p='$nombre_p'";
-        if (mysqli_query($con, $sql2)) {
+        // Luego eliminar de la tabla empresa
+        $consulta_eliminar_usuario = "DELETE FROM usuario WHERE nombre_p='$nombre_p'";
+        if (mysqli_query($con, $consulta_eliminar_usuario)) {
+            echo "Eliminación exitosa en usuario.<br>";
+        } else {
+            echo "Error al eliminar en usuario: " . mysqli_error($con) . "<br>";
+            return; // Salimos de la función si hay un error
+        }
+
+        $sql4 = "DELETE FROM persona WHERE nombre_p='$nombre_p'";
+        if (mysqli_query($con, $sql4)) {
             echo "Eliminación exitosa en persona.<br>";
         } else {
             echo "Error en la consulta de persona: " . mysqli_error($con) . "<br>";
@@ -287,6 +298,7 @@ function elim($con, $nombre_p, $rol) {
         echo "Error al eliminar en persona: " . mysqli_error($con) . "<br>";
     }
 }
+
 
 ?>
 
