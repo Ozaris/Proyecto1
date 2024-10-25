@@ -3,6 +3,8 @@ session_start();
 require("conexion.php");
 $con = conectar_bd();
 
+$nombre_p = $_COOKIE['nombre'] ?? null;
+
 $nombreEmpresa = isset($_SESSION['nombre_empresa']) ? $_SESSION['nombre_empresa'] : '';
 
 function truncateText($text, $wordLimit) {
@@ -48,7 +50,7 @@ if ($nombreEmpresa) {
     <div class="divprincipalpublisem" id="publicacionesContainer">
                 <?php
                 // Obtener las publicaciones de la base de datos
-                $consulta_publicaciones = "SELECT p.*, pe.nombre_p AS nombre_p FROM publicacion_prod p JOIN persona pe ON p.Id_per = pe.Id_per WHERE pe.nombre_p='$nombreEmpresa' ORDER BY p.created_at DESC";
+                $consulta_publicaciones = "SELECT p.*, pe.nombre_p AS nombre_p FROM publicacion_prod p JOIN persona pe ON p.Id_per = pe.Id_per WHERE pe.nombre_p='$nombre_p' ORDER BY p.created_at DESC";
                 $resultado_publicaciones = mysqli_query($con, $consulta_publicaciones);
 
                 if ($resultado_publicaciones && mysqli_num_rows($resultado_publicaciones) > 0) {
