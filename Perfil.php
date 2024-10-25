@@ -189,13 +189,12 @@ if (isset($_POST["envio-edit-desc-usr"]) && isset($_POST["edit_desc_usr"])) {
     $consulta_actualizar_descripcion = "UPDATE persona SET descripcion = '$edit_desc_usr' WHERE nombre_p = '$nombre_p'";
     
     if (mysqli_query($con, $consulta_actualizar_descripcion)) {
-        echo "Actualización exitosa de la descripción.<br>";
+        header("Location: Perfil.php");
+        exit();
     } else {
         echo "Error al actualizar la descripción: " . mysqli_error($con) . "<br>";
     }
-} else {
-    echo "Descripción no proporcionada.<br>";
-}
+} 
 
 
 function consultar_existe_nom($con, $edit_nom_usr) {

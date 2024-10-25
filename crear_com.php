@@ -3,13 +3,13 @@ require "conexion.php";
 session_start();
 $con = conectar_bd();
 
-$prod = $_COOKIE['pub'] ?? null;
-if (isset($_POST["envio-com"])) {
+if (isset($_POST["comentario"])) {
     
     $comentario = $_POST["comentario"];
-    $puntuacion = $_POST["puntuacion"]; // Obtener la puntuación del formulario
+    $puntuacion = $_POST["puntuacion"];
+    $prod = $_POST['id_prod'];
     $email = $_COOKIE['email_emp'] ?? null;
-   
+
     if (!empty($comentario) && $email) {
         crear_com($con, $comentario, $email, $prod, $puntuacion);
     } else {
@@ -24,6 +24,7 @@ function crear_com($con, $comentario, $email, $prod, $puntuacion) {
     if ($resultado_login && mysqli_num_rows($resultado_login) > 0) {
         $fila = mysqli_fetch_assoc($resultado_login);
         $id_per = $fila['Id_per'];
+        $foto_perfil = $fila['foto']; // Obtener la foto del usuario
 
         // Inserta en la base de datos
         $consulta_insertar_persona = "INSERT INTO comentario (comentario, id_prod, id_per2, valoracion) VALUES ('$comentario', '$prod', '$id_per', '$puntuacion')";
@@ -37,7 +38,8 @@ function crear_com($con, $comentario, $email, $prod, $puntuacion) {
                 "success" => true,
                 "comentario" => htmlspecialchars($comentario),
                 "valoracion" => htmlspecialchars($puntuacion),
-                "nombre" => htmlspecialchars($fila['nombre_p']) // Asegúrate de tener el campo 'nombre_p' en tu tabla
+                "nombre" => htmlspecialchars($fila['nombre_p']),
+                "foto" => $foto_perfil // Pasar la foto en la respuesta
             ]);
         } else {
             echo json_encode(["error" => "Error al insertar en la base de datos: " . mysqli_error($con)]);
@@ -47,17 +49,13 @@ function crear_com($con, $comentario, $email, $prod, $puntuacion) {
     }
 }
 
+
 function actualizar_promedio_valoracion($con, $prod) {
-    // Calcular el promedio de la valoración
     $sql_avg = "SELECT AVG(valoracion) AS promedio FROM comentario WHERE id_prod='$prod'";
     $result_avg = mysqli_query($con, $sql_avg);
     
     if ($result_avg && $row = mysqli_fetch_assoc($result_avg)) {
-        $promedio_valoracion = round($row['promedio'], 1); // Redondear a un decimal
-        
-        // Aquí puedes guardar el promedio en una tabla específica si lo deseas
-        // Si no es necesario, solo asegúrate de que el frontend lo actualice
-        // Por ejemplo, puedes guardar el promedio en otra tabla o solo mostrarlo en la interfaz.
+        $promedio_valoracion = round($row['promedio'], 1);
     }
 }
 ?>
