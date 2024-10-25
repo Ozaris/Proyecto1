@@ -20,6 +20,7 @@ if ($nombreEmpresa) {
         $empresa = $result->fetch_assoc();
         $nombre_p=$empresa['nombre_p'];
         $foto=$empresa['foto'];
+        $desc=$empresa['descripcion'];
         // Agrega más campos según sea necesario
     } else {
         echo "No se encontró información para la empresa: " . htmlspecialchars($nombreEmpresa);
@@ -62,7 +63,7 @@ if ($nombreEmpresa) {
             </form>
 
             <div class="divdescripperfil">
-                <p class="p1perfil">Descripción </p>
+                <p class="p1perfil"><?php echo $desc;?></p>
               
             </div>
         </div>
