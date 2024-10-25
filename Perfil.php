@@ -369,7 +369,7 @@ function elim($con, $nombre_p, $rol) {
                                         <label for="inputPassword6" class="col-form-label">Editar Nombre</label>
                                     </div>
                                     <div class="col-auto">
-                                    <input type="text" name="edit_nom_usr" id="inputNombre" class="form-control form-control2" aria-describedby="passwordHelpInline" oninput="validateName()">
+                                    <input type="text" name="edit_nom_usr" id="inputNombre" maxlength="30" class="form-control form-control2" aria-describedby="passwordHelpInline" oninput="validateName()">
                                         <button class="BotonPublicarPerfil" type="submit" name="envio-edit-nom-usr">Publicar</button>
                                     </div>
                                 </div>
