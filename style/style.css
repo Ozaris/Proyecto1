@@ -3347,6 +3347,19 @@ footer{
     top: 3rem;
     left: 2rem;
 }
+
+.botoneliminarpublimispublis {
+    border: none;
+    background-color: transparent;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.botoneliminarpublimispublis:hover {
+    color: red;
+}
+
+
 @media (max-width: 500px) { 
     .botonatrasmp {
         position: relative;

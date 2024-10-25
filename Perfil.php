@@ -320,17 +320,15 @@ function elim($con, $nombre_p, $rol) {
             <a href="index.php"><i class="fa-solid fa-2x fa-arrow-left-long iconoatrasperfil"></i></a>
             <a class="cerrarsesionperfil" href="logout.php">Cerrar sesión</a>
             <div class="dropdown divdropdowncoloresperfil">
-  <button class="btn dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-  <i class="fa-solid fa-1x fa-pen-to-square iconoeditar1perfil"></i>
-  </button>
-  <ul class="dropdown-colores dropdown-menu">
-        <button class="botoncoloropcion1" onclick="cambiarColor('#ae0808')"><i class="fa-solid fa-droplet"></i></button>
-        <button class="botoncoloropcion2" onclick="cambiarColor('#66a6e6')"><i class="fa-solid fa-droplet"></i></button>
-        <button class="botoncoloropcion3" onclick="cambiarColor('#333')"><i class="fa-solid fa-droplet"></i></button>
-  </ul>
-</div>
-
-            
+                <button class="btn dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-1x fa-pen-to-square iconoeditar1perfil"></i>
+                </button>
+                <ul class="dropdown-colores dropdown-menu">
+                    <button class="botoncoloropcion1" onclick="cambiarColor('#ae0808')"><i class="fa-solid fa-droplet"></i></button>
+                    <button class="botoncoloropcion2" onclick="cambiarColor('#66a6e6')"><i class="fa-solid fa-droplet"></i></button>
+                    <button class="botoncoloropcion3" onclick="cambiarColor('#333')"><i class="fa-solid fa-droplet"></i></button>
+                </ul>
+            </div>
             <div class="btn-group">
                 <button type="button" class="iconoeditarfotoperfil" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                     <i class="fa-solid fa-1x fa-pen-to-square"></i>
@@ -420,11 +418,24 @@ function elim($con, $nombre_p, $rol) {
         </div>
     </div>
 
+<!-- +++++++++++++++++++++++++++Localstorage+++++++++++++++++++++++++++ --> 
+
     <script>
     function cambiarColor(color) {
         document.querySelector('.divcolorperfil2').style.backgroundColor = color;
         document.querySelector('.divcolorperfil23').style.backgroundColor = color;
+        localStorage.setItem('colorPerfil', color);
     }
+    
+
+    window.onload = function() {
+        const colorGuardado = localStorage.getItem('colorPerfil');
+        if (colorGuardado) {
+            cambiarColor(colorGuardado);
+        }
+    };
     </script>
+
+    <!-- +++++++++++++++++++++++++++Localstorage+++++++++++++++++++++++++++ --> 
 </body>
 </html>
