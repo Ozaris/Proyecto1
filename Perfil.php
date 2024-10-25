@@ -327,6 +327,9 @@ function elim($con, $nombre_p, $rol) {
                     <button class="botoncoloropcion1" onclick="cambiarColor('#ae0808')"><i class="fa-solid fa-droplet"></i></button>
                     <button class="botoncoloropcion2" onclick="cambiarColor('#66a6e6')"><i class="fa-solid fa-droplet"></i></button>
                     <button class="botoncoloropcion3" onclick="cambiarColor('#333')"><i class="fa-solid fa-droplet"></i></button>
+                    <button class="botoncoloropcion4" onclick="cambiarColor('#ffb654')"><i class="fa-solid fa-droplet"></i></button>
+                    <button class="botoncoloropcion5" onclick="cambiarColor('#ccc')"><i class="fa-solid fa-droplet"></i></button>
+                    <button class="botoncoloropcion6" onclick="cambiarColor('#6d1d5f')"><i class="fa-solid fa-droplet"></i></button>
                 </ul>
             </div>
             <div class="btn-group">
@@ -366,7 +369,7 @@ function elim($con, $nombre_p, $rol) {
                                         <label for="inputPassword6" class="col-form-label">Editar Nombre</label>
                                     </div>
                                     <div class="col-auto">
-                                        <input type="text" name="edit_nom_usr" id="inputPassword6" class="form-control form-control2" aria-describedby="passwordHelpInline">
+                                    <input type="text" name="edit_nom_usr" id="inputNombre" class="form-control form-control2" aria-describedby="passwordHelpInline" oninput="validateName()">
                                         <button class="BotonPublicarPerfil" type="submit" name="envio-edit-nom-usr">Publicar</button>
                                     </div>
                                 </div>
@@ -389,7 +392,7 @@ function elim($con, $nombre_p, $rol) {
                                         <label for="inputPassword6" class="col-form-label">Editar Descripción</label>
                                     </div>
                                     <div class="col-auto">
-                                        <textarea class="form-control" id="inputDescripcion" name="edit_desc_usr" rows="3"></textarea>
+                                    <textarea class="form-control" maxlength="300" id="inputDescripcion" name="edit_desc_usr" rows="3" oninput="validateInput()"></textarea>
                                         <button class="BotonPublicarPerfil" type="submit" name="envio-edit-desc-usr">Publicar</button>
                                     </form>
                                     </div>
@@ -437,5 +440,33 @@ function elim($con, $nombre_p, $rol) {
     </script>
 
     <!-- +++++++++++++++++++++++++++Localstorage+++++++++++++++++++++++++++ --> 
+
+    <!-- +++++++++++++++++++++++++++Limite de letras en palabras+++++++++++++++++++++++++++ --> 
+    <script>
+function validateInput() {
+    const textarea = document.getElementById('inputDescripcion');
+    const words = textarea.value.split(/\s+/); // separa el texto en palabras
+    const filteredWords = words.filter(word => word.length <= 16); // filtro de 16 letras
+    if (filteredWords.length !== words.length) {
+        textarea.value = filteredWords.join(' '); // Une las palabras que puedes colocar
+        alert('Las palabras no pueden tener más de 16 letras.');
+    }
+}
+</script>
+
+<script>
+function validateName() {
+    const input = document.getElementById('inputNombre');
+    const words = input.value.split(/\s+/);
+    const filteredWords = words.filter(word => word.length <= 16);
+    if (filteredWords.length !== words.length) {
+        input.value = filteredWords.join(' '); 
+        alert('Las palabras no pueden tener más de 16 letras.');
+    }
+}
+</script>
+
+ <!-- +++++++++++++++++++++++++++Limite de letras en palabras+++++++++++++++++++++++++++ --> 
+
 </body>
 </html>

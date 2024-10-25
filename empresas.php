@@ -304,12 +304,12 @@ function truncateText($text, $maxWords) {
 <script>
 function validateInput() {
     const textarea = document.getElementById('descripcion');
-    const words = textarea.value.split(/\s+/); // Divide el texto en palabras
+    const words = textarea.value.split(/\s+/); // separa el texto en palabras
     for (const word of words) {
         if (word.length > 16) {
-            textarea.value = textarea.value.replace(word, ''); // Elimina la palabra larga
+            textarea.value = textarea.value.replace(word, ''); // elimina la palabra muy larga
             alert('Las palabras no pueden tener más de 16 letras.');
-            break; // Salimos del bucle después de la primera palabra larga
+            break; 
         }
     }
 }

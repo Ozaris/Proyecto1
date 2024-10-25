@@ -2805,6 +2805,34 @@ footer{
     border-radius: 5px;
 }
 
+.botoncoloropcion4 {
+    background-color: #ffb654;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.botoncoloropcion5 {
+    background-color: white;
+    border: 1px solid #333;
+    color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.botoncoloropcion6 {
+    background-color: #6d1d5f;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+
 .dropdown-colores {
     padding: 1rem;
 }
