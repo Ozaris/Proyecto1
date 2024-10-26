@@ -106,7 +106,7 @@ if ($id_prod) {
 </div>
 <div id="commentsContainer">
     <?php
-    $consulta_publicaciones = "SELECT p.*, pe.nombre_p AS nombre_p FROM comentario p JOIN persona pe ON p.id_per2 = pe.Id_per WHERE p.id_prod='$id_prod' ORDER BY p.created_at DESC";
+    $consulta_publicaciones = "SELECT p.*, pe.nombre_p, pe.foto FROM comentario p JOIN persona pe ON p.id_per2 = pe.Id_per WHERE p.id_prod='$id_prod' ORDER BY p.created_at DESC";
     $resultado_publicaciones = mysqli_query($con, $consulta_publicaciones);
 
     if ($resultado_publicaciones && mysqli_num_rows($resultado_publicaciones) > 0) {
@@ -129,6 +129,7 @@ if ($id_prod) {
     }
     ?>
 </div>
+
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
