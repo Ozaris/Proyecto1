@@ -217,7 +217,7 @@ function truncateText($text, $maxWords) {
                             <label for="formFile" class="form-label">
                                 <i class="fa-solid fa-2x fa-plus iconomaspublicacion"></i>
                             </label>
-                            <input class="form-control form-control1" type="file" id="formFile" name="imagen_prod" accept="image/*" required>
+                            <input class="form-control form-control1" type="file" id="formFile" name="imagen_prod" accept="image/jpeg,jpg,png" required>
                             <div id="imagePreview" class="image-preview"></div> <!-- Vista previa -->
                         </div>
                         <div class="divsubirinformacion">

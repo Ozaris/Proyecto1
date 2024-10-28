@@ -1,7 +1,26 @@
 <?php
+
+
+if(isset($_POST['elim-pub'])){
+include "mispublicaciones.php";
+
+$_SESSION['pub'] = $id_prod;
+$elim= "DELETE FROM publicacion_prod WHERE id_prod='$id_prod'";
+
+if (mysqli_query($con, $elim)) {
+ 
+    header("Location: mispublicaciones.php");
+    exit();
+} else {
+    echo "Error al eliminar publicación: " . mysqli_error($con) . "<br>";
+}
+
+}
+
 include "conexion.php";
-session_start();
+
 $con = conectar_bd();
+session_start();
 
 $email = $_COOKIE['email'] ?? null;
 $nombre_p = $_COOKIE['nombre'] ?? null;
