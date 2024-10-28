@@ -5,6 +5,16 @@ if(isset($_POST['elim-pub'])){
 include "mispublicaciones.php";
 
 $_SESSION['pub'] = $id_prod;
+
+$elim_pub= "DELETE FROM comentario WHERE id_prod='$id_prod'";
+
+if (mysqli_query($con, $elim_pub)) {
+   
+ 
+} else {
+    echo "Error al eliminar publicación: " . mysqli_error($con) . "<br>";
+}
+
 $elim= "DELETE FROM publicacion_prod WHERE id_prod='$id_prod'";
 
 if (mysqli_query($con, $elim)) {
