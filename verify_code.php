@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body class="bodyverificarcodigo">
     <div class="containerverificarcodigo">
         <img class="logoverificar" src="Imagenes/Logosblanco.png" alt="img">
-        <h1>Verifica tu Código</h1>
+        <h1 class="tituloverificarC">Verifica tu Código</h1>
         <form class="fromverificar" action="verify_code.php" method="POST">
             <label class="labelverificar" for="">Ingresa tu gmail por seguridad:</label>
             <input class="inputverificar" type="email" name="email" placeholder="Tu Email" required>
