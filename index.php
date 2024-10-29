@@ -375,7 +375,7 @@ if (isset($_SESSION['email'])) {
             </nav>
         </div>
         <div class="footerbottom">
-            <p class="pbottomfooter">| © 2024 Instituto Tecnologico Superior de Paysandu · Uruguay · +598 99 531 562 · ozaris08@gmail.com · Por KORF |</p>
+            <p class="pbottomfooter">| © 2024 Instituto Tecnologico Superior de Paysandu · Uruguay · +598 91 636 101 · ozaris08@gmail.com · Por KORF |</p>
         </div>
     </footer>
 <!-- +++++++++++++++++++++++++++FINAL DEL FOOTER+++++++++++++++++++++++++++ --> 
