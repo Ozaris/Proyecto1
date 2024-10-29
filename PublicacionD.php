@@ -87,27 +87,23 @@ if ($id_prod) {
 </head>
 <body class="bodypubliD">
 <div class="divprincipalD">
-    <a href="empresas.php" class="botonatrasperfil"> <i class="fa-solid fa-2x fa-arrow-left"></i> </a>
     <div class="divsec1publiD">
+        <a class="botonatrasregister" href="empresas.php"><i class="fa-solid iconoatraspubliD fa-arrow-left"></i></a>
         <img class="imagenprincipalcomentarios" src="<?php echo $foto_pub ?>" alt="img">
     </div>
 
     <div class="divsec2publiD">
-        <h2 class="titulopubliD">Informacion</h2>
+    <div class="divtitulodescripcion"><h2 class="titulopubliD">Información</h2></div>
         <div class="divinfopubliD">
             <h3 class="letraspubliD2"><?php echo $nom_pub; ?></h3>
             <h3 class="letraspubliD2">Telefono</h3>
             <h3 class="letraspubliD2"><?php echo $cat_emp; ?></h3>
             <h3 class="letraspubliD2">Valoracion: <?php echo $promedio_valoracion; ?> <img class="estrella2" src="style/Imagenes/estrella.png" alt="img"></h3>
         </div>
-    </div>
-</div>
-
-<div class="divprincipalD2">
-    <div class="divpubliparte1">
+        <div class="divtitulodescripcion2"><h2 class="titulopubliD2">Descripción</h2></div>
         <div class="divdescripcionpubliD">
             <p class="letraspubliD"><?php echo $desc_emp; ?></p>    
-        </div>
+    </div>
     </div>
 </div>
 
@@ -115,7 +111,7 @@ if ($id_prod) {
     <form id="commentForm">
         <div class="divprincipalcomentarios">
             <img class="imagenperfilcomentarios" src="<?php echo $foto ?>" alt="img">
-            <input type="text" class="inputcomentarios" placeholder="Comentario" aria-label="Comentario" name="comentario" required>
+            <input type="text" class="inputcomentarios" placeholder="Comentario" maxlength="150" aria-label="Comentario" name="comentario" required>
             <div class="estrellas">
                 <input type="radio" name="puntuacion" id="estrella5" value="5"><label for="estrella5">★</label>
                 <input type="radio" name="puntuacion" id="estrella4" value="4"><label for="estrella4">★</label>
@@ -127,7 +123,7 @@ if ($id_prod) {
         </div>
     </form>
 <?php else: ?>
-    <p style="text-align:center;">Por favor, inicia sesión como usuario para enviar comentarios.</p>
+    <p style="margin-top: 2rem; text-align:center;">Por favor, inicia sesión como usuario para enviar comentarios.</p>
 <?php endif; ?>
 
 <div class="divinfocomentarios">

@@ -69,7 +69,7 @@ if (isset($_SESSION['email'])) {
                 <li class="lismenu"><a class="asmenuinicio" href="contacto.html">Contacto</a></li>
                 <li class="lismenu"><a class="psmenuinicio">|</a></li>
                 <li class="lismenu"><div class="dropdown">
-  <button class="otondeperfil" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+  <button class="fotondeperfil" type="button" data-bs-toggle="dropdown" aria-expanded="false">
   <img src="<?php echo htmlspecialchars("img_usr/$foto") ?? htmlspecialchars("$foto2") ; ?>" alt="img" class="imgpequeñoperfil">
   </button>
   <ul class="dropdown-menu">
@@ -375,7 +375,7 @@ if (isset($_SESSION['email'])) {
             </nav>
         </div>
         <div class="footerbottom">
-            <p class="pbottomfooter">| © 2024 Instituto Tecnologico Superior de Paysandu · Uruguay · +598 91 636 101 · ozaris08@gmail.com · Por KORF |</p>
+            <p class="pbottomfooter">| © 2024 Instituto Tecnologico Superior de Paysandu · Uruguay · +598 ** *** *** · ozaris08@gmail.com · Por KORF |</p>
         </div>
     </footer>
 <!-- +++++++++++++++++++++++++++FINAL DEL FOOTER+++++++++++++++++++++++++++ --> 

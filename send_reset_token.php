@@ -52,8 +52,10 @@ function sendResetEmail($email, $token) {
         $mail->setFrom('ozaris08@gmail.com', 'Ozaris');
         $mail->addAddress($email);
         $mail->isHTML(true);
-        $mail->Subject = 'Cambio de Contrasenia';
-        $mail->Body = "Ingresa el codigo: $token";
+        $mail->Subject = 'Password Reset Request';
+        $mail->Body = "Click the link to reset your password: $token";
+        $mail->AltBody = "Click the link to reset your password:$token";
+
         $mail->send();
     } catch (Exception $e) {
         echo "Error sending email: {$mail->ErrorInfo}";

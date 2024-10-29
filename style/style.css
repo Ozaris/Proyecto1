@@ -110,9 +110,13 @@ body.no-scroll {
     border-radius: 50%;
 }
 
-.otondeperfil {
+.fotondeperfil {
     border: none;
     background-color: transparent;
+}
+
+.dropdown-menu {
+    z-index: 100000;
 }
 
 @media (min-width: 1768px) {
@@ -2077,6 +2081,12 @@ footer{
     align-items: center;
     gap: 10px;
 }
+.div2recomendaciones>a{
+    text-align: center;
+    text-decoration: none;
+    color: #1f1f1f;
+
+}
 
 .cartaderecomendados {
     background-color: white;
@@ -2923,7 +2933,6 @@ footer{
 
 .bodypubliD {
     width: 100%;
-    max-width: 1400px;
     background-image: url(Imagenes/FondoPubliD.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -2932,13 +2941,13 @@ footer{
 .divprincipalD {
     display: flex;
     width: 100%;
-    padding-top: 1rem;
+    height: 100vh;
     border-top: none;
 } 
 
 .divsec1publiD {
     display: flex;
-    width: 50%;
+    width: 70%;
     justify-content: center;
     align-items: center;
 }
@@ -2948,29 +2957,51 @@ footer{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 50%;
-    padding-top: 2rem;
+    width: 30%;
+    padding-top: 1rem;
+    background-image: url(Imagenes/FondoPubliD.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .divinfopubliD {
-    width: 60%;
+    width: 90%;
     gap: 10px;
     padding: 2rem;
-    border: 1px solid #333;
     color: #333;
-    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    box-shadow: 0 0 5px #333;
-    margin: 1rem;
+    border-bottom: 1px solid #333;
+    border-top: 1px solid #333;
 }
+
+.divtitulodescripcion {
+    width: 90%;
+    display: flex;
+    justify-content: left;
+    padding-bottom: 6px;
+}
+
+.divtitulodescripcion2 {
+    width: 90%;
+    display: flex;
+    justify-content: left;
+    padding-bottom: 6px;
+}
+
 .titulopubliD {
     color: #333;
 }
+
+.titulopubliD2 {
+    color: #333;
+    margin-top: 1rem;
+}
+
 .letraspubliD {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 .letraspubliD2 {
     font-size: 1.5rem;
@@ -2984,15 +3015,14 @@ footer{
 
 }
 .divdescripcionpubliD {
-    box-shadow: 0 0 5px #333;
-    border: 1px solid #333;
-    border-radius: 10px;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 1rem;
-    width: 30rem;
-    margin-left: 2rem;
+    width: 90%;
+    height: 23rem;
 }
 .divubicacionD {
     box-shadow: 0 0 5px #333;
@@ -3014,10 +3044,8 @@ footer{
 }
 
 .imagenprincipalcomentarios {
-    width: 30rem;
-    height: 30rem;
-    border-radius: 1rem;
-    box-shadow: 0 0 10px #333;
+    width: 100%;
+    height: 100%;
 }
 .divprincipalcomentarios {
     padding-top: 3rem;
@@ -3071,7 +3099,7 @@ footer{
 }
 .divimagenperfilcomentarios2 {
     width: 9rem;
-    height: 10%;
+    height: auto;
     background-color: #bebebe;
     border-radius: 1rem;
     display: flex;
@@ -3083,7 +3111,9 @@ footer{
 }
 .divinformacioncomentarios {
    width: 50%;
-   padding-top: 1rem;
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
 }
 .divinfocomentarios {
     margin-left: 7rem;
@@ -3094,8 +3124,14 @@ footer{
     gap: 10px;
 }
 .botonatrasregister {
-    margin-left: 1rem;
+    color: #333;
+    text-decoration: none;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 2rem;
 }
+
 .estrellas {
     direction: rtl;
     display: inline-block;
@@ -3129,6 +3165,7 @@ footer{
         align-items: center;
         flex-direction: column;
         width: 100%;
+        height: auto;
     } 
 
     .divsec1publiD {
@@ -3147,25 +3184,21 @@ footer{
     }
 
     .imagenprincipalcomentarios {
-        width: 95%;
-        height: 30rem;
-        border-radius: 1rem;
-        box-shadow: 0 0 10px #333;
+        width: 100%;
+        height: 25rem;
     }
 
     .divinfopubliD {
-        width: 70%;
+        width: 90%;
         gap: 10px;
         padding: 2rem;
-        border: 1px solid #333;
         color: #333;
-        border-radius: 10px;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        margin: 1rem;
-        box-shadow: 0 0 5px #333;
+        border-top: 1px solid #333;
+        border-bottom: 1px solid #333;
     }
 
     .divprincipalcomentarios2 {
@@ -3188,14 +3221,13 @@ footer{
      }
 
      .divimagenperfilcomentarios2 {
-        width: 9rem;
-        height: 10%;
+        width: 7rem;
+        height: auto;
         background-color: #bebebe;
         border-radius: 1rem;
         display: flex;
         justify-content: center;
         align-items: center;
-        padding-top: 10px;
         padding-bottom: 10px;
         margin-right: 1rem;
     }
@@ -3270,7 +3302,7 @@ footer{
 }
 
 .btnsubmit:hover {
-    background-color: #555; /* Cambia el color de fondo al pasar el mouse */
+    background-color: #555;
 }
 
 .atrasdecontacto {
@@ -3320,11 +3352,12 @@ footer{
 
 .inputverificar {
     padding: 6px;
-    background-color: transparent;
-    border: none;
-    border-bottom: 1px solid white;
+    background-color:white;
+    border-radius: 5px;
+    border: 1px white;
     margin-top: 10px;
     margin-bottom: 10px;
+    color: white;
 }
 .labelverificar {
     text-align: center;
