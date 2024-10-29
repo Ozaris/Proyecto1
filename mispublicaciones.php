@@ -6,7 +6,7 @@ $con = conectar_bd();
 $nombre_p = $_COOKIE['nombre'] ?? null;
 
 $nombreEmpresa = isset($_SESSION['nombre_empresa']) ? $_SESSION['nombre_empresa'] : '';
-
+//MUESTRA LOS 3 ... EN LA DESCRIPCIÓN Y EL NOMBRE
 function truncateText($text, $wordLimit) {
     $words = explode(' ', $text);
     if (count($words) > $wordLimit) {
@@ -53,10 +53,10 @@ echo "NASHEEEE";
     <h2 class="titulomispublicaciones">Mis Publicaciones</h2>
     <div class="divprincipalpublisem" id="publicacionesContainer">
                 <?php
-                // Obtener las publicaciones de la base de datos
+                // Obtiene las publicaciones creadas por un usuario en específico (WHERE pe.nombre_p='$nombre_p')
                 $consulta_publicaciones = "SELECT p.*, pe.nombre_p AS nombre_p FROM publicacion_prod p JOIN persona pe ON p.Id_per = pe.Id_per WHERE pe.nombre_p='$nombre_p' ORDER BY p.created_at DESC";
                 $resultado_publicaciones = mysqli_query($con, $consulta_publicaciones);
-
+                    //CREA UN WHILE PARA MOSTRAR TODAS LAS PUBLICACIÓN SEGÚN LA CANTIDAD DE LAS MISMAS
                 if ($resultado_publicaciones && mysqli_num_rows($resultado_publicaciones) > 0) {
                     while ($publicacion = mysqli_fetch_assoc($resultado_publicaciones)) {
                         $id_prod = $publicacion['id_prod'];

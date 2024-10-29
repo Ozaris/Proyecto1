@@ -24,7 +24,7 @@ function crear_com($con, $comentario, $email, $prod, $puntuacion) {
     if ($resultado_login && mysqli_num_rows($resultado_login) > 0) {
         $fila = mysqli_fetch_assoc($resultado_login);
         $id_per = $fila['Id_per'];
-        $foto_perfil = $fila['foto']; // Obtener la foto del usuario
+        $foto_perfil = $fila['foto'];
 
         // Inserta en la base de datos
         $consulta_insertar_persona = "INSERT INTO comentario (comentario, id_prod, id_per2, valoracion) VALUES ('$comentario', '$prod', '$id_per', '$puntuacion')";

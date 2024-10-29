@@ -19,13 +19,13 @@ if (isset($_POST["envio"])) {
     $foto = isset($_POST["default.png"]) ? $_POST["default.png"] : 'default.png';
 
     if (!consultar_existe_usr($con, $email) && !consultar_existe_nom($con, $nombre_p)) {
-        // Hash the password
+        // CIFRA LA CONTRASEÑA
         $contrasenia = password_hash($contrasenia, PASSWORD_DEFAULT);
         
         // Generar un código de verificación de 6 caracteres
         $token = strtoupper(substr(bin2hex(random_bytes(3)), 0, 6));
 
-        // Insertar usuario en la base de datos
+        // Insertar usuario en la base de datos en la tabla persona
         $consulta_insertar_persona = "INSERT INTO persona (nombre_p, email, contrasenia, token, rol, foto, descripcion) VALUES ('$nombre_p', '$email', '$contrasenia', '$token', '$rol', '$foto','$desc')";
 
         if (mysqli_query($con, $consulta_insertar_persona)) {
@@ -52,7 +52,7 @@ if (isset($_POST["envio"])) {
     
 }
 
-// Funciones para verificar si el usuario o el nombre existen
+// Funciones para verificar si el email ya existe
 function consultar_existe_usr($con, $email) {
     $email = mysqli_real_escape_string($con, $email);
     $consulta_existe_usr = "SELECT email FROM persona WHERE email = '$email'";
@@ -60,6 +60,7 @@ function consultar_existe_usr($con, $email) {
     return mysqli_num_rows($resultado_existe_usr) > 0;
 }
 
+// Funciones para verificar si el nombre ya existe
 function consultar_existe_nom($con, $nombre_p) {
     $nombre_p = mysqli_real_escape_string($con, $nombre_p);
     $consulta_existe_nom = "SELECT nombre_p FROM persona WHERE nombre_p = '$nombre_p'";

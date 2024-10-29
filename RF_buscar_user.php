@@ -6,7 +6,7 @@ $input = isset($_POST['input']) ? $con->real_escape_string($_POST['input']) : ''
 
 $sql = "SELECT * FROM empresa WHERE nombre_p LIKE '$input%'";
 $result = $con->query($sql);
-
+//MUESTRA LOS RESULTADOS DE LOS NOMBRES QUE SE BUSCAN
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         echo "<div><a href='javascript:void(0);' onclick='loadPerfil(\"" . htmlspecialchars($row['nombre_p']) . "\")'>" . htmlspecialchars($row['nombre_p']) . "</a></div>";

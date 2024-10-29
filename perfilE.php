@@ -12,6 +12,7 @@ function truncateText($text, $wordLimit) {
     }
     return $text;
 }
+// SE TOMAN VALORES DE LA TABLA EMRPESA PARA USARLOS EN EL ARCHIVO
 if ($nombreEmpresa) {
     $sql = "SELECT * FROM persona WHERE nombre_p = '$nombreEmpresa'";
     $result = $con->query($sql);

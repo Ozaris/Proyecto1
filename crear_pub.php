@@ -10,15 +10,15 @@ if (isset($_POST["envio-pub"])) {
     $descripcion = $_POST["descripcion"];
     $email_emp = $_COOKIE['email_emp'] ?? null;
 
-    // Verifica si se ha subido un archivo
+    
     if (isset($_FILES['imagen_prod']) && $_FILES['imagen_prod']['error'] == 0) {
-        // Obtiene la información del archivo
+    
         $imagen = $_FILES['imagen_prod'];
         $rutaDestino = 'uploads/' . basename($imagen['name']);
 
         // Mueve el archivo a la carpeta deseada
         if (move_uploaded_file($imagen['tmp_name'], $rutaDestino)) {
-            // Llamada a la función para crear la publicación
+          
             crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $rutaDestino);
         } else {
             echo "Error al subir la imagen.";

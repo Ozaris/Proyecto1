@@ -182,10 +182,10 @@ if (isset($_POST["envio-edit-desc-usr"]) && isset($_POST["edit_desc_usr"])) {
     $edit_desc_usr = $_POST["edit_desc_usr"];
     $nombre_p = $data['nombre_p'];
     
-    // Escape data to prevent SQL injection
+ 
     $edit_desc_usr = mysqli_real_escape_string($con, $edit_desc_usr);
     
-    // Update in the persona table
+    // Actualiza en la tabla persona
     $consulta_actualizar_descripcion = "UPDATE persona SET descripcion = '$edit_desc_usr' WHERE nombre_p = '$nombre_p'";
     
     if (mysqli_query($con, $consulta_actualizar_descripcion)) {
@@ -196,7 +196,7 @@ if (isset($_POST["envio-edit-desc-usr"]) && isset($_POST["edit_desc_usr"])) {
     }
 } 
 
-
+//VERIFICA SI YA EXISTE EL NOMBRE DE USUARIO
 function consultar_existe_nom($con, $edit_nom_usr) {
     $edit_nom_usr = mysqli_real_escape_string($con, $edit_nom_usr);
     $consulta_existe_nom = "SELECT nombre_p FROM persona WHERE nombre_p = '$edit_nom_usr'";
@@ -231,27 +231,27 @@ if (isset($_POST["envio-elim-usr"])) {
 function elim($con, $nombre_p, $rol) {
     $nombre_p = mysqli_real_escape_string($con, $nombre_p);
     
-    // Primero, eliminar de la tabla comentario si el rol es 'empresa'
+    // Si el rol es empresa, se toma la id_per y con esta se elimina los comentarios
     if ($rol === 'empresa') {
-        // Obtener el Id_per de la empresa
+        
         $id_per_result = mysqli_query($con, "SELECT Id_per FROM empresa WHERE nombre_p='$nombre_p'");
         $id_per_row = mysqli_fetch_assoc($id_per_result);
         $id_per = $id_per_row['Id_per'];
 
-        // Primero eliminar los comentarios asociados
+        // Primero elimina los comentarios
         $consulta_eliminar_com = "DELETE FROM comentario WHERE id_prod IN (SELECT Id_prod FROM publicacion_prod WHERE id_per='$id_per')";
         mysqli_query($con, $consulta_eliminar_com);
 
-        // Luego eliminar de la tabla publicacion_prod
+        // Luego elimina de la tabla publicacion_prod
         $consulta_eliminar_publ = "DELETE FROM publicacion_prod WHERE id_per = '$id_per'";
         mysqli_query($con, $consulta_eliminar_publ);
 
-        // Luego eliminar de la tabla empresa
+        // Luego elimina de la tabla empresa
         $consulta_eliminar_empresa = "DELETE FROM empresa WHERE nombre_p='$nombre_p'";
         mysqli_query($con, $consulta_eliminar_empresa);
     }
     
-    // Si el rol es 'usuario', también eliminar de la tabla usuario
+    // Si el rol es 'usuario', es el mismo procedimiento pero sin borrar la tabla publicación
     if ($rol === 'usuario') {
         $consulta_eliminar_com = "DELETE FROM comentario WHERE id_per2 = (SELECT Id_per FROM usuario WHERE nombre_p='$nombre_p')";
         mysqli_query($con, $consulta_eliminar_com);
@@ -419,7 +419,7 @@ function elim($con, $nombre_p, $rol) {
 function validateInput() {
     const textarea = document.getElementById('inputDescripcion');
     const words = textarea.value.split(/\s+/); // separa el texto en palabras
-    const filteredWords = words.filter(word => word.length <= 16); // filtro de 16 letras
+    const filteredWords = words.filter(word => word.length <= 16); // crea un filtro de 16 letras
     if (filteredWords.length !== words.length) {
         textarea.value = filteredWords.join(' '); // Une las palabras que puedes colocar
         alert('Las palabras no pueden tener más de 16 letras.');

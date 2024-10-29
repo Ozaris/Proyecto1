@@ -1,6 +1,6 @@
 <?php
 
-
+//SI EN mispublicaciones.php SE DA A ELIMINAR, ESTE IF LO VERIFICA Y ELIMINA LOS DATOS DE LA TABLA COMENTARIO Y PUBLICACIÓN
 if(isset($_POST['elim-pub'])){
 include "mispublicaciones.php";
 
@@ -18,7 +18,7 @@ if (mysqli_query($con, $elim_pub)) {
 $elim= "DELETE FROM publicacion_prod WHERE id_prod='$id_prod'";
 
 if (mysqli_query($con, $elim)) {
- 
+ //LLAMA A LA PAGINA ANTERIOR PARA EVITAR LA RECARGA DE LA PÁGINA
     header("Location: mispublicaciones.php");
     exit();
 } else {
@@ -31,13 +31,13 @@ include "conexion.php";
 
 $con = conectar_bd();
 session_start();
-
+//SE TOMAN TODOS LOS DATOS YA EXTRAIDOS DE OTROS PHP PARA USARLOS AHORA
 $email = $_COOKIE['email'] ?? null;
 $nombre_p = $_COOKIE['nombre'] ?? null;
 $foto = $_COOKIE['user_picture'] ?? null;
 $rol = $_COOKIE['rol'] ?? null;
 $id_prod = $_POST['id_prod'] ?? $_SESSION['pub'] ?? null;
-
+//ESTE IF TOMA LOS DATO DE UNA PUBLICACIÓN ESPECÍFICA USANDO LA ID QUE SE RECIBIÓ ANTERIORMENTE
 if ($id_prod) {
     $_SESSION['pub'] = $id_prod; // Almacenar en sesión
     setcookie("pub", $id_prod, time() + (86400 * 30), "/");
@@ -58,14 +58,14 @@ if ($id_prod) {
     if ($result_avg && $row = $result_avg->fetch_assoc()) {
         $promedio_valoracion = round($row['promedio'], 1);
     }
-
+//SE GUARDAN LOS DATOS EN VARIABLES PARA USARLOS DESPUÉS
     if ($data = $resultado->fetch_assoc()) {
         $titulo_emp = $data['titulo'];
         $cat_emp = $data['categoria'];
         $foto_pub = $data['imagen_prod'];
         $desc_emp = $data['descripcion'];
     }
-
+//SE GUARDAN LOS DATOS EN VARIABLES PARA USARLOS DESPUÉS
     if ($resultado2 && $data2 = $resultado2->fetch_assoc()) {
         $nom_pub = $data2['nombre_p'];
     } else {
