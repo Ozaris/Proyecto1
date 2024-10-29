@@ -149,6 +149,12 @@ function truncateText($text, $maxWords) {
             <div class="divrecomendacionesempresas" id="filtro">
                 <div class="div1recomendaciones"><h3>Filtros</h3></div>
                 <div class="div2recomendaciones">
+                    <a href="empresas.php">
+                <div class="cartaderecomendados">
+                        <img class="logorecomendados" src="style/Imagenes/Electronica.png" alt="img">
+                        <p>Mostrar Todos</p>
+                    </div>
+                    </a>
                 <div class="cartaderecomendados" onclick="filtrarPublicaciones('Electronica')">
                         <img class="logorecomendados" src="style/Imagenes/Electronica.png" alt="img">
                         <p>Electronica</p>
@@ -306,7 +312,7 @@ function validateInput() {
     const textarea = document.getElementById('descripcion');
     const words = textarea.value.split(/\s+/); // separa el texto en palabras
     for (const word of words) {
-        if (word.length > 16) {
+        if (word.length > 20) {
             textarea.value = textarea.value.replace(word, ''); // elimina la palabra muy larga
             alert('Las palabras no pueden tener más de 16 letras.');
             break; 

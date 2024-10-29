@@ -130,12 +130,9 @@ function sendVerificationEmail($email, $token) {
         $mail->setFrom('ozaris08@gmail.com', 'Ozaris');
         $mail->addAddress($email);
         $mail->isHTML(true);
-        $mail->Subject = 'Tu Código de Verificación';
-        $mail->Body = "Tu código de verificación es: <b>$token</b>";
-        $mail->AltBody = "Tu código de verificación es: $token";
-
+        $mail->Subject = 'Tu Codigo de Verificacion';
+        $mail->Body = "Tu codigo de verificacion es: <b>$token</b>";
         $mail->send();
-        echo "Correo enviado con éxito.";
     } catch (Exception $e) {
         echo "El mensaje no pudo ser enviado. Error: {$mail->ErrorInfo}";
     }
