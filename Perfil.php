@@ -34,26 +34,26 @@ if ($data = $resultado->fetch_assoc()) {
 
 if (isset($_POST["envio-edit-ft-usr"])) {
     try {
-        $archivo = $_FILES["foto_usr"]; // Toma el archivo subido
+        $archivo = $_FILES["foto_usr"]; 
         
         if ($archivo["error"] === UPLOAD_ERR_OK) {
             $nombre_temporal = $archivo["tmp_name"];
             $nombre_archivo = basename($archivo["name"]); // Usa basename para evitar problemas con rutas
 
-            // Define la ruta donde se moverá el archivo
+            // Define la ruta
             $ruta_destino = "img_usr/$nombre_archivo";
             
-            // Mueve el archivo a la carpeta específica en el servidor
+            // Mueve el archivo a la carpeta específica
             if (move_uploaded_file($nombre_temporal, $ruta_destino)) {
                 
-                // Redimensionar la imagen a 800x800 píxeles
+                // Redimensiona la imagen a 800x800 píxeles
                 list($width, $height, $type) = getimagesize($ruta_destino);
 
                 // Definie un tamaño en específico
                 $max_width = 1000;
                 $max_height = 1000;
 
-                // Calcular el nuevo tamaño manteniendo la relación de aspecto
+                // Calcula el nuevo tamaño
                 $ratio = $width / $height;
                 if ($width > $height) {
                     $new_width = $max_width;
@@ -66,7 +66,7 @@ if (isset($_POST["envio-edit-ft-usr"])) {
                 // Crear una imagen en blanco para el redimensionamiento
                 $image_p = imagecreatetruecolor($new_width, $new_height);
 
-                // Crear la imagen a partir del archivo movido
+                // Crea la imagen a partir del archivo movido
                 switch ($type) {
                     case IMAGETYPE_JPEG:
                         $image = imagecreatefromjpeg($ruta_destino);
@@ -81,7 +81,7 @@ if (isset($_POST["envio-edit-ft-usr"])) {
                         throw new Exception("Tipo de imagen no soportado.");
                 }
 
-                // Redimensionar la imagen
+                // Redimensiona la imagen
                 imagecopyresampled($image_p, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
 
                 // Guarda la imagen redimensionada en la misma ubicación
@@ -127,10 +127,9 @@ if (isset($_POST["envio-edit-ft-usr"])) {
 // Muestra la foto en la página del perfil, o una imagen por defecto si no hay foto
 $picture_to_show = "img_usr/" . ($foto ?: 'default.png');
 
-// Establecer la cookie para el path de la imagen
-setcookie("user_picture", $picture_to_show, time() + (86400 * 30), "/"); // Cookie válida por 30 días
+setcookie("user_picture", $picture_to_show, time() + (86400 * 30), "/");
 setcookie("default", $foto, time() + (86400 * 30), "/"); 
-// Puedes acceder a la cookie más tarde con $_COOKIE['user_picture']
+
 
 
 /* ACTUALIZA EL NOMBRE DE USUARIO EN LA TABLA PERSONA Y USUARIO*/
@@ -221,7 +220,7 @@ if (isset($_POST["envio-elim-usr"])) {
     $envio_elim_usr = $_POST["envio-elim-usr"];
     $nombre_p = $data['nombre_p'];
     $rol=$data['rol'];
-    if ($envio_elim_usr == 'envio-elim-usr') {
+    if ($envio_elim_usr == 'envio-elim-usr') { 
         elim($con, $nombre_p,$rol);
     } else {
         echo "No se puede eliminar el usuario";
