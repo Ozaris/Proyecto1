@@ -262,11 +262,54 @@ function truncateText($text, $maxWords) {
 
 </div>
 </div>
+<style>
+/*HOVER*/
+.cardempresas {
+    background-color: white; 
+    border: 1px solid #a9c8e7;
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.2s;
+}
 
+.cardempresas:hover {
+    transform: scale(1.02); 
+}
+
+/*HOVER*/
+
+
+body.bodyempresas {
+    background-color: #f0f4f8;
+}
+
+
+.btn-primary {
+    background-color: #66a6e6;
+    border: none; 
+    transition: background-color 0.3s, transform 0.3s; 
+}
+
+.btn-primary:hover {
+    background-color: #85bbf2; 
+    transform: translateY(-2px); 
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.containerpublis {
+    animation: fadeIn 0.5s ease-in; /* Fade-in effect */
+}
+
+    </style>
 <!-- +++++++++++++++++++++++++++FIN DE BOTON PUBLICAR+++++++++++++++++++++++++++ --> 
 
 <!-- +++++++++++++++++++++++++++PUBLICACIONES+++++++++++++++++++++++++++ --> 
-            
+            <div>
             <div class="divprincipalpublisem" id="publicacionesContainer">
                 <?php
                 // Obtener las publicaciones de la base de datos
@@ -301,7 +344,7 @@ function truncateText($text, $maxWords) {
             </div>
         </div>
     </div>
-
+            </div>
 <!-- +++++++++++++++++++++++++++FIN DE PUBLICACIONES+++++++++++++++++++++++++++ --> 
 
 <!-- +++++++++++++++++++++++++++SCRIPTS+++++++++++++++++++++++++++ --> 
