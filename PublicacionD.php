@@ -127,7 +127,7 @@ if ($id_prod) {
         </div>
     </form>
 <?php else: ?>
-    <p>Por favor, inicia sesión como usuario para enviar comentarios.</p>
+    <p style="text-align:center;">Por favor, inicia sesión como usuario para enviar comentarios.</p>
 <?php endif; ?>
 
 <div class="divinfocomentarios">

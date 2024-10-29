@@ -13,6 +13,7 @@ $con = conectar_bd();
 if (isset($_POST["envio-emp"])) {
     $nombre_p = $_POST["nombre_p"];
     $email = $_POST["email"];
+    $desc = $_POST["Descripcion"];
     $contrasenia = $_POST["pass"];
     $rol = $_POST["empresa"];
     $foto = isset($_POST["default.png"]) ? $_POST["default.png"] : 'default.png'; // Asegúrate de que el índice está definido
@@ -21,7 +22,7 @@ if (isset($_POST["envio-emp"])) {
     $existe_nom = consultar_existe_nom($con, $nombre_p);
 
     // Insertar datos si el usuario no existe
-    insertar_datos($con, $nombre_p, $email, $contrasenia, $rol, $existe_usr, $existe_nom, $foto);
+    insertar_datos($con, $nombre_p, $email, $contrasenia, $rol, $existe_usr, $existe_nom, $foto,$desc);
 }
 
 
@@ -54,7 +55,7 @@ function consultar_existe_nom($con, $nombre_p) {
 
 
 
-function insertar_datos($con, $nombre_p, $email, $contrasenia,$rol,$existe_nom,$existe_usr,$foto) {
+function insertar_datos($con, $nombre_p, $email, $contrasenia,$rol,$existe_nom,$existe_usr,$foto,$desc) {
     // Encripto la contraseña usando la función password_hash
 
     if ($existe_usr == false && $existe_nom == false){
@@ -66,7 +67,7 @@ function insertar_datos($con, $nombre_p, $email, $contrasenia,$rol,$existe_nom,$
     $token = strtoupper(substr(bin2hex(random_bytes(3)), 0, 6));
 
     // Inserta en la tabla persona
-    $consulta_insertar_persona = "INSERT INTO persona (nombre_p, email, contrasenia, token, rol, foto) VALUES ('$nombre_p', '$email', '$contrasenia', '$token', '$rol', '$foto')";
+    $consulta_insertar_persona = "INSERT INTO persona (nombre_p, email, contrasenia, token, rol, foto,descripcion) VALUES ('$nombre_p', '$email', '$contrasenia', '$token', '$rol', '$foto','$desc')";
     
     if (mysqli_query($con, $consulta_insertar_persona)) {
         // Obtén el ID de la persona recién insertada
