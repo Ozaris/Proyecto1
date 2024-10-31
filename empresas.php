@@ -11,6 +11,8 @@ if (isset($_POST["envio-pub"])) {
     $titulo = $_POST["titulo"];
     $categoria = $_POST["categoria"];
     $descripcion = $_POST["descripcion"];
+    $lat = $_POST["lat"]; // Obtener latitud
+    $lon = $_POST["lon"]; // Obtener longitud
     $email_emp = $_COOKIE['email_emp'] ?? null;
 
     // Verifica si se ha subido un archivo
@@ -22,7 +24,7 @@ if (isset($_POST["envio-pub"])) {
         // Mueve el archivo a la carpeta deseada
         if (move_uploaded_file($imagen['tmp_name'], $rutaDestino)) {
             // Llamada a la función para crear la publicación
-            crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $rutaDestino);
+            crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $rutaDestino, $lat, $lon);
         } else {
             echo "Error al subir la imagen.";
         }
@@ -58,7 +60,7 @@ if (isset($_SESSION['email'])) {
     $foto = 'default.png';
 }
 
-function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img) {
+function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img, $lat, $lon) {
     $consulta_login = "SELECT * FROM persona WHERE email = '$email_emp'";
     $resultado_login = mysqli_query($con, $consulta_login);
 
@@ -66,8 +68,8 @@ function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img) {
         $fila = mysqli_fetch_assoc($resultado_login);
         $id_per = $fila['Id_per'];
 
-        // Inserta en la base de datos
-        $consulta_insertar_persona = "INSERT INTO publicacion_prod (titulo, categoria, descripcion, imagen_prod, Id_per) VALUES ('$titulo', '$categoria', '$descripcion', '$img', '$id_per')";
+        // Inserta en la base de datos, incluyendo latitud y longitud
+        $consulta_insertar_persona = "INSERT INTO publicacion_prod (titulo, categoria, descripcion, imagen_prod, Id_per, lat, lon) VALUES ('$titulo', '$categoria', '$descripcion', '$img', '$id_per', '$lat', '$lon')";
         
         if (mysqli_query($con, $consulta_insertar_persona)) {
             echo "Publicación creada exitosamente.";
@@ -88,6 +90,7 @@ function truncateText($text, $maxWords) {
 }
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en" class="htmlempresas">
 <head>
@@ -99,6 +102,7 @@ function truncateText($text, $maxWords) {
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="lib/bootstrap.min.css">
     <link rel="icon" href="Imagenes/logoproyecto.png">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <title>Empresas - Ozaris</title>
 </head>
 <body class="bodyempresas">
@@ -149,10 +153,10 @@ function truncateText($text, $maxWords) {
             <div class="divrecomendacionesempresas" id="filtro">
                 <div class="div1recomendaciones"><h3>Filtros</h3></div>
                 <div class="div2recomendaciones">
-                <a class="atarjetaempresas" href="empresas.php">
+                <a href="empresas.php">
                 <div class="cartaderecomendados">
                         <img class="logorecomendados" src="Imagenes/todos.png" alt="img">
-                        <p>Todos</p>
+                        <p>Mostrar Todos</p>
                     </div>
                     </a>
                 <div class="cartaderecomendados" onclick="filtrarPublicaciones('Electronica')">
@@ -239,9 +243,47 @@ function truncateText($text, $maxWords) {
                                     <option value="Propiedades">Propiedades</option>
                                     <option value="Vehículos">Vehículos</option>
                                 </select>
-                                <textarea class="form-control inputpublicacion3" placeholder="Descripción" id="descripcion" name="descripcion" maxlength="300" style="height: 100px" required oninput="validateInput()"></textarea>
+                                <textarea class="form-control inputpublicacion3" placeholder="Descripción" id="descripcion" name="descripcion" maxlength="300" style="height: 100px" required></textarea>
                                 <div class="caracteresletrasalerta" id="charCount">300 caracteres restantes</div> <!-- Contador de caracteres -->
                             </div>
+                            <div style="width: 100%; height: 300px; margin-top: 20px;" id="map"></div> <!-- Mapa debajo -->
+                            <p id="coordenadas"></p>
+                            <input type="hidden" id="lat" name="lat" value="">
+                            <input type="hidden" id="lon" name="lon" value="">
+
+                            <!-- CDN de Leaflet -->
+                            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+                            <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+                            <script>
+                                // Inicializa el mapa centrado en Paysandú
+                                const map = L.map('map').setView([-32.3219, -58.0792], 13);
+
+                                // Capa de CartoDB
+                                L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                                    maxZoom: 19,
+                                    attribution: '© OpenStreetMap, © CartoDB',
+                                }).addTo(map);
+
+                                let marcador;
+
+                                // Evento de clic en el mapa
+                                map.on('click', function(e) {
+                                    const lat = e.latlng.lat;
+                                    const lon = e.latlng.lng;
+
+                                    document.getElementById('coordenadas').innerText = `Coordenadas seleccionadas: ${lat.toFixed(5)}, ${lon.toFixed(5)}`;
+                                    document.getElementById('lat').value = lat; // Establece latitud
+                                    document.getElementById('lon').value = lon; // Establece longitud
+
+                                    if (marcador) {
+                                        marcador.setLatLng(e.latlng);
+                                    } else {
+                                        marcador = L.marker(e.latlng).addTo(map);
+                                    }
+                                });
+                            </script>
+
                             <div class="divinformacionempresa">
                                 <h6>Información de la empresa</h6>
                                 <div class="divnombrempresapublicacion">
@@ -260,8 +302,53 @@ function truncateText($text, $maxWords) {
     </div>
 </div>
 
+
 </div>
 </div>
+<style>
+/*HOVER*/
+.cardempresas {
+    background-color: white; 
+    border: 1px solid #a9c8e7;
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.2s;
+}
+
+.cardempresas:hover {
+    transform: scale(1.02); 
+}
+
+/*HOVER*/
+
+
+body.bodyempresas {
+    background-color: #f0f4f8;
+}
+
+
+.btn-primary {
+    background-color: #66a6e6;
+    border: none; 
+    transition: background-color 0.3s, transform 0.3s; 
+}
+
+.btn-primary:hover {
+    background-color: #85bbf2; 
+    transform: translateY(-2px); 
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.containerpublis {
+    animation: fadeIn 0.5s ease-in; /* Fade-in effect */
+}
+
+    </style>
 <!-- +++++++++++++++++++++++++++FIN DE BOTON PUBLICAR+++++++++++++++++++++++++++ --> 
 
 <!-- +++++++++++++++++++++++++++PUBLICACIONES+++++++++++++++++++++++++++ --> 

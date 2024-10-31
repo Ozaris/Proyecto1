@@ -1,47 +1,18 @@
 <?php
-
-//SI EN mispublicaciones.php SE DA A ELIMINAR, ESTE IF LO VERIFICA Y ELIMINA LOS DATOS DE LA TABLA COMENTARIO Y PUBLICACIÓN
-if(isset($_POST['elim-pub'])){
-include "mispublicaciones.php";
-
-$_SESSION['pub'] = $id_prod;
-
-$elim_pub= "DELETE FROM comentario WHERE id_prod='$id_prod'";
-
-if (mysqli_query($con, $elim_pub)) {
-   
- 
-} else {
-    echo "Error al eliminar publicación: " . mysqli_error($con) . "<br>";
-}
-
-$elim= "DELETE FROM publicacion_prod WHERE id_prod='$id_prod'";
-
-if (mysqli_query($con, $elim)) {
- //LLAMA A LA PAGINA ANTERIOR PARA EVITAR LA RECARGA DE LA PÁGINA
-    header("Location: mispublicaciones.php");
-    exit();
-} else {
-    echo "Error al eliminar publicación: " . mysqli_error($con) . "<br>";
-}
-
-}
-
 include "conexion.php";
-
-$con = conectar_bd();
 session_start();
-//SE TOMAN TODOS LOS DATOS YA EXTRAIDOS DE OTROS PHP PARA USARLOS AHORA
+$con = conectar_bd();
+
 $email = $_COOKIE['email'] ?? null;
 $nombre_p = $_COOKIE['nombre'] ?? null;
 $foto = $_COOKIE['user_picture'] ?? null;
 $rol = $_COOKIE['rol'] ?? null;
 $id_prod = $_POST['id_prod'] ?? $_SESSION['pub'] ?? null;
-//ESTE IF TOMA LOS DATO DE UNA PUBLICACIÓN ESPECÍFICA USANDO LA ID QUE SE RECIBIÓ ANTERIORMENTE
+
 if ($id_prod) {
     $_SESSION['pub'] = $id_prod; // Almacenar en sesión
     setcookie("pub", $id_prod, time() + (86400 * 30), "/");
-    
+
     // Consulta para obtener información del producto
     $sql = "SELECT * FROM publicacion_prod WHERE id_prod='$id_prod'";
     $resultado = $con->query($sql);
@@ -58,19 +29,22 @@ if ($id_prod) {
     if ($result_avg && $row = $result_avg->fetch_assoc()) {
         $promedio_valoracion = round($row['promedio'], 1);
     }
-//SE GUARDAN LOS DATOS EN VARIABLES PARA USARLOS DESPUÉS
+
+    // SE GUARDAN LOS DATOS EN VARIABLES PARA USARLOS DESPUÉS
     if ($data = $resultado->fetch_assoc()) {
         $titulo_emp = $data['titulo'];
         $cat_emp = $data['categoria'];
         $foto_pub = $data['imagen_prod'];
         $desc_emp = $data['descripcion'];
+        $latitud = $data['lat'] ?? null;  // Obtener latitud
+        $longitud = $data['lon'] ?? null; // Obtener longitud
     }
-//SE GUARDAN LOS DATOS EN VARIABLES PARA USARLOS DESPUÉS
+
+    // SE GUARDAN LOS DATOS EN VARIABLES PARA USARLOS DESPUÉS
     if ($resultado2 && $data2 = $resultado2->fetch_assoc()) {
         $nom_pub = $data2['nombre_p'];
     } else {
-        $nombre_p = 'Nombre no disponible';
-        $foto = 'default.png';
+        $nom_pub = 'Nombre no disponible';
     }
 }
 ?>
@@ -93,19 +67,41 @@ if ($id_prod) {
     </div>
 
     <div class="divsec2publiD">
-    <div class="divtitulodescripcion"><h2 class="titulopubliD">Información</h2></div>
+        <div class="divtitulodescripcion"><h2 class="titulopubliD">Información</h2></div>
         <div class="divinfopubliD">
             <h3 class="letraspubliD2"><?php echo $nom_pub; ?></h3>
-            <h3 class="letraspubliD2">Telefono</h3>
+            <h3 class="letraspubliD2">Teléfono</h3>
             <h3 class="letraspubliD2"><?php echo $cat_emp; ?></h3>
-            <h3 class="letraspubliD2">Valoracion: <?php echo $promedio_valoracion; ?> <img class="estrella2" src="style/Imagenes/estrella.png" alt="img"></h3>
+            <h3 class="letraspubliD2">Valoración: <?php echo $promedio_valoracion; ?> <img class="estrella2" src="style/Imagenes/estrella.png" alt="img"></h3>
         </div>
         <div class="divtitulodescripcion2"><h2 class="titulopubliD2">Descripción</h2></div>
         <div class="divdescripcionpubliD">
-            <p class="letraspubliD"><?php echo $desc_emp; ?></p>    
-    </div>
+            <p class="letraspubliD"><?php echo $desc_emp; ?></p>
+        </div>
     </div>
 </div>
+
+<!-- Mapa -->
+<div style="height: 400px; width: 100%;" id="map"></div>
+
+<!-- CDN de Leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+<script>
+    // Inicializa el mapa centrado en las coordenadas de la publicación
+    const map = L.map('map').setView([<?php echo $latitud; ?>, <?php echo $longitud; ?>], 13);
+
+    // Capa de OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    // Agrega un marcador en la ubicación
+    L.marker([<?php echo $latitud; ?>, <?php echo $longitud; ?>]).addTo(map)
+        .bindPopup('<b><?php echo htmlspecialchars($titulo_emp); ?></b>').openPopup();
+</script>
 
 <?php if ($rol == "usuario"): ?>
     <form id="commentForm">
@@ -155,7 +151,6 @@ if ($id_prod) {
     ?>
 </div>
 
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 $(document).ready(function() {
@@ -172,7 +167,7 @@ $(document).ready(function() {
                     const newComment = `
     <div class="divprincipalcomentarios2">
         <div class="divimagenperfilcomentarios2">
-            <img class="imagenperfilcomentarios2" src="img_usr/${res.foto}" alt="img"> <!-- Asegúrate de que la ruta sea correcta -->
+            <img class="imagenperfilcomentarios2" src="img_usr/${res.foto}" alt="img">
         </div>
         <div class="divinformacioncomentarios">
             <h2>${res.nombre}</h2>
@@ -193,7 +188,6 @@ $(document).ready(function() {
     });
 });
 </script>
-
 
 </body>
 </html>
