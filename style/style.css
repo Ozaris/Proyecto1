@@ -1799,21 +1799,31 @@ footer{
 }
 
 .divsubirimagen {
-    width: 60%;
+    width: 40%;
+    height: 30rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-right: 1px solid #333;
     background-color: #cccccc4b;
+    border-right: 1px solid #333;
 }
 
 .divsubirinformacion {
-    width: 40%;
+    width: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     text-align: left;
+}
+
+.divubicacionempresa {
+    width: 30%;
+    border-right: 1px solid #333;
+}
+
+.mapaempresas {
+    height: 30rem;
 }
 
 .iconomaspublicacion {
@@ -1917,6 +1927,16 @@ footer{
     cursor: pointer;
 }
 
+.botoneliminarimagen {
+    font-size: 1.5rem;
+    background-color: transparent;
+    border: none;
+    color: #333;
+    position: absolute;
+    bottom: 1.5rem;
+    left: 2rem;
+}
+
 @media (max-width: 1000px) {
     .divprincipalpublicacion {
         flex-direction: column; 
@@ -1967,7 +1987,6 @@ footer{
     margin: 0;
     padding: 0;
     background-color: #F5F5DC;
-
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -2943,7 +2962,7 @@ footer{
 
 .bodypubliD {
     width: 100%;
-    background-image: url(Imagenes/FondoPubliD.jpg);
+    background-color: #F5F5DC;
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -2953,7 +2972,7 @@ footer{
     width: 100%;
     height: 100vh;
     border-top: none;
-} 
+}
 
 .divsec1publiD {
     display: flex;
@@ -2969,7 +2988,6 @@ footer{
     flex-direction: column;
     width: 30%;
     padding-top: 1rem;
-    background-image: url(Imagenes/FondoPubliD.jpg);
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -2977,11 +2995,11 @@ footer{
 .divinfopubliD {
     width: 90%;
     gap: 10px;
-    padding: 2rem;
+    padding: 1rem;
     color: #333;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: left;
     flex-direction: column;
     border-bottom: 1px solid #333;
     border-top: 1px solid #333;
@@ -3003,19 +3021,26 @@ footer{
 
 .titulopubliD {
     color: #333;
+    font-size: 1rem;
 }
 
 .titulopubliD2 {
     color: #333;
     margin-top: 1rem;
+    font-size: 1rem;
 }
 
 .letraspubliD {
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 .letraspubliD2 {
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
+
+.letraspubliDdesc {
+    font-size: 12px;
+}
+
 .divprincipalD2 {
     width: 100%;
     display: flex;
@@ -3054,8 +3079,9 @@ footer{
 }
 
 .imagenprincipalcomentarios {
-    width: 100%;
-    height: 100%;
+    width: 97%;
+    height: 97%;
+    border-radius: 10px;
 }
 .divprincipalcomentarios {
     padding-top: 3rem;
@@ -3133,13 +3159,19 @@ footer{
     align-items: center;
     gap: 10px;
 }
-.botonatrasregister {
-    color: #333;
-    text-decoration: none;
+
+.botonatraspubliD {
     position: absolute;
-    top: 1rem;
-    left: 1rem;
-    font-size: 2rem;
+    top: 1.5rem;
+    left: 2rem;
+    text-decoration: none;
+    color: #333;
+    background-color: #ccc;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    padding: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .estrellas {

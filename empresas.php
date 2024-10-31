@@ -156,7 +156,7 @@ function truncateText($text, $maxWords) {
                 <a href="empresas.php">
                 <div class="cartaderecomendados">
                         <img class="logorecomendados" src="Imagenes/todos.png" alt="img">
-                        <p>Mostrar Todos</p>
+                        <p>Todos</p>
                     </div>
                     </a>
                 <div class="cartaderecomendados" onclick="filtrarPublicaciones('Electronica')">
@@ -223,13 +223,20 @@ function truncateText($text, $maxWords) {
                 </div>
                 <div class="modal-body">
                     <div class="divprincipalpublicacion">
+
                         <div class="divsubirimagen">
                             <label for="formFile" class="form-label">
                                 <i class="fa-solid fa-2x fa-plus iconomaspublicacion"></i>
                             </label>
+                            <button class="botoneliminarimagen"><i class="fa-solid fa-trash"></i></button>
                             <input class="form-control form-control1" type="file" id="formFile" name="imagen_prod" accept="image/jpeg,jpg,png" required>
                             <div id="imagePreview" class="image-preview"></div> <!-- Vista previa -->
                         </div>
+
+                        <div class="divubicacionempresa">
+                        <div class="mapaempresas" id="map"></div> <!-- Mapa debajo -->
+                        </div>
+
                         <div class="divsubirinformacion">
                             <div class="divdatosinformacion">
                                 <input type="text" class="form-control inputpublicacion1" id="floatingInput" placeholder="Título" name="titulo" required>
@@ -246,7 +253,6 @@ function truncateText($text, $maxWords) {
                                 <textarea class="form-control inputpublicacion3" placeholder="Descripción" id="descripcion" name="descripcion" maxlength="300" style="height: 100px" required></textarea>
                                 <div class="caracteresletrasalerta" id="charCount">300 caracteres restantes</div> <!-- Contador de caracteres -->
                             </div>
-                            <div style="width: 100%; height: 300px; margin-top: 20px;" id="map"></div> <!-- Mapa debajo -->
                             <p id="coordenadas"></p>
                             <input type="hidden" id="lat" name="lat" value="">
                             <input type="hidden" id="lon" name="lon" value="">
@@ -254,35 +260,6 @@ function truncateText($text, $maxWords) {
                             <!-- CDN de Leaflet -->
                             <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
                             <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-
-                            <script>
-                                // Inicializa el mapa centrado en Paysandú
-                                const map = L.map('map').setView([-32.3219, -58.0792], 13);
-
-                                // Capa de CartoDB
-                                L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-                                    maxZoom: 19,
-                                    attribution: '© OpenStreetMap, © CartoDB',
-                                }).addTo(map);
-
-                                let marcador;
-
-                                // Evento de clic en el mapa
-                                map.on('click', function(e) {
-                                    const lat = e.latlng.lat;
-                                    const lon = e.latlng.lng;
-
-                                    document.getElementById('coordenadas').innerText = `Coordenadas seleccionadas: ${lat.toFixed(5)}, ${lon.toFixed(5)}`;
-                                    document.getElementById('lat').value = lat; // Establece latitud
-                                    document.getElementById('lon').value = lon; // Establece longitud
-
-                                    if (marcador) {
-                                        marcador.setLatLng(e.latlng);
-                                    } else {
-                                        marcador = L.marker(e.latlng).addTo(map);
-                                    }
-                                });
-                            </script>
 
                             <div class="divinformacionempresa">
                                 <h6>Información de la empresa</h6>
@@ -295,7 +272,9 @@ function truncateText($text, $maxWords) {
                                 <button class="botonsubirpublicacion" value="envio-pub" name="envio-pub">Subir publicación</button>
                             </div>
                         </div>
+
                     </div>
+
                 </div>
             </div>
         </form>
@@ -305,50 +284,7 @@ function truncateText($text, $maxWords) {
 
 </div>
 </div>
-<style>
-/*HOVER*/
-.cardempresas {
-    background-color: white; 
-    border: 1px solid #a9c8e7;
-    border-radius: 10px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    transition: transform 0.2s;
-}
 
-.cardempresas:hover {
-    transform: scale(1.02); 
-}
-
-/*HOVER*/
-
-
-body.bodyempresas {
-    background-color: #f0f4f8;
-}
-
-
-.btn-primary {
-    background-color: #66a6e6;
-    border: none; 
-    transition: background-color 0.3s, transform 0.3s; 
-}
-
-.btn-primary:hover {
-    background-color: #85bbf2; 
-    transform: translateY(-2px); 
-}
-
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-.containerpublis {
-    animation: fadeIn 0.5s ease-in; /* Fade-in effect */
-}
-
-    </style>
 <!-- +++++++++++++++++++++++++++FIN DE BOTON PUBLICAR+++++++++++++++++++++++++++ --> 
 
 <!-- +++++++++++++++++++++++++++PUBLICACIONES+++++++++++++++++++++++++++ --> 
@@ -518,7 +454,7 @@ function redireccion() {
 
     reader.onload = function(e) {
         const imagePreview = document.getElementById('imagePreview');
-        imagePreview.innerHTML = `<img src="${e.target.result}" alt="Imagen Previa" style="max-width: 100%; height: auto;">`;
+        imagePreview.innerHTML = `<img src="${e.target.result}" alt="Imagen Previa" style="max-width: 100%; height: 480px;">`;
 
         // Hide the label when an image is previewed
         document.querySelector('label[for="formFile"]').style.display = 'none';
@@ -535,6 +471,35 @@ function redireccion() {
 
 
     </script>
+
+<script>
+    // Inicializa el mapa centrado en Paysandú
+    const map = L.map('map').setView([-32.3219, -58.0792], 13);
+
+    // Capa de CartoDB
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap, © CartoDB',
+    }).addTo(map);
+
+    let marcador;
+
+    // Evento de clic en el mapa
+    map.on('click', function(e) {
+        const lat = e.latlng.lat;
+        const lon = e.latlng.lng;
+
+        document.getElementById('lat').value = lat; // Establece latitud
+        document.getElementById('lon').value = lon; // Establece longitud
+
+        if (marcador) {
+            marcador.setLatLng(e.latlng);
+        } else {
+            marcador = L.marker(e.latlng).addTo(map);
+        }
+    });
+</script>
+
 
 
 <script src="app.js"></script>

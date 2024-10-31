@@ -62,7 +62,7 @@ if ($id_prod) {
 <body class="bodypubliD">
 <div class="divprincipalD">
     <div class="divsec1publiD">
-        <a class="botonatrasregister" href="empresas.php"><i class="fa-solid iconoatraspubliD fa-arrow-left"></i></a>
+        <a class="botonatraspubliD" href="empresas.php"><i class="fa-solid iconoatraspubliD fa-arrow-left"></i></a>
         <img class="imagenprincipalcomentarios" src="<?php echo $foto_pub ?>" alt="img">
     </div>
 
@@ -76,13 +76,13 @@ if ($id_prod) {
         </div>
         <div class="divtitulodescripcion2"><h2 class="titulopubliD2">Descripción</h2></div>
         <div class="divdescripcionpubliD">
-            <p class="letraspubliD"><?php echo $desc_emp; ?></p>
+            <p class="letraspubliDdesc"><?php echo $desc_emp; ?></p>
         </div>
+        <div style="height: 350px; width: 24rem; margin-top: 10px; margin-bottom: 1rem; border-radius: 10px; border: 1px solid #333;" id="map"></div>
     </div>
 </div>
 
 <!-- Mapa -->
-<div style="height: 400px; width: 100%;" id="map"></div>
 
 <!-- CDN de Leaflet -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
@@ -119,7 +119,7 @@ if ($id_prod) {
         </div>
     </form>
 <?php else: ?>
-    <p style="margin-top: 2rem; text-align:center;">Por favor, inicia sesión como usuario para enviar comentarios.</p>
+    <p style="margin-top: 2rem; text-align:center;"></p>
 <?php endif; ?>
 
 <div class="divinfocomentarios">
