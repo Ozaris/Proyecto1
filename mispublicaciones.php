@@ -46,8 +46,8 @@ echo "NASHEEEE";
     <title>Mis Publicaciones</title>
 </head>
 
-
-        </div>
+<body class="bodymispublis">
+  </div>
     </div>
     <a href="index.php" class="botonatrasmp"> <i class="fa-solid fa-2x fa-arrow-left"></i> </a>
     <h2 class="titulomispublicaciones">Mis Publicaciones</h2>
