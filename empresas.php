@@ -102,7 +102,7 @@ function truncateText($text, $maxWords) {
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="lib/bootstrap.min.css">
     <link rel="icon" href="Imagenes/logoproyecto.png">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
     <title>Empresas - Ozaris</title>
 </head>
 <body class="bodyempresas">
