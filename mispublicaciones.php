@@ -47,8 +47,6 @@ echo "NASHEEEE";
 </head>
 
 <body class="bodymispublis">
-  </div>
-    </div>
     <a href="index.php" class="botonatrasmp"> <i class="fa-solid fa-2x fa-arrow-left"></i> </a>
     <h2 class="titulomispublicaciones">Mis Publicaciones</h2>
     <div class="divprincipalpublisem" id="publicacionesContainer">
@@ -88,12 +86,9 @@ echo "NASHEEEE";
         </div>
     </div>
     <div class="divcolorfooterP">
-
         <div class="divcolorfooterPdentro">
             <img class="logosperfilP" src="style/Imagenes/Logosblanco.png" alt="img">
         </div>
-
     </div>
-
 </body>
 </html>
