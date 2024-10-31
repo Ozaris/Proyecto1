@@ -1966,7 +1966,7 @@ footer{
     overflow-x: hidden;
     margin: 0;
     padding: 0;
-    background-color: rgb(235, 234, 234);
+    background-color: #f0f4f8;
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -2019,11 +2019,15 @@ footer{
 .cardempresas {
     display: flex;
     flex-direction: column;
-    box-shadow: 0 0 10px #333;
     background-color: white;
     border-radius: 5px;
+    border: 1px solid #a9c8e7;
     width: 24rem;
     height: 32rem;
+}
+
+.cardempresas:hover {
+    transform: scale(1.02); 
 }
 
 .cardempresasbody {
@@ -2101,6 +2105,11 @@ footer{
     width: 7rem;
     height: 9rem;
     cursor: pointer;
+}
+
+.atarjetaempresas {
+    text-decoration: none;
+    color: #333;
 }
 
 .logorecomendados {
