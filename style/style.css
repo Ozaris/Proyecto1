@@ -1966,7 +1966,8 @@ footer{
     overflow-x: hidden;
     margin: 0;
     padding: 0;
-    background-color: #f0f4f8;
+    background-color: #F5F5DC;
+
     background-size: cover;
     background-repeat: no-repeat;
 }
