@@ -141,7 +141,7 @@ function truncateText($text, $maxWords) {
 <!-- +++++++++++++++++++++++++++BUSCADOR+++++++++++++++++++++++++++ --> 
 
         <div class="divprincipalbuscador" id="bus">
-            <input type="text" name="buscador" id="buscador" placeholder="Buscar" maxlength="20">
+            <input type="text" name="buscador" id="buscador" placeholder="Buscar">
             <div id="resultado_busqueda"></div>
         </div>
 
@@ -239,7 +239,7 @@ function truncateText($text, $maxWords) {
 
                         <div class="divsubirinformacion">
                             <div class="divdatosinformacion">
-                                <input type="text" class="form-control inputpublicacion1" id="floatingInput" placeholder="Título" name="titulo" maxlength="30" required>
+                                <input type="text" class="form-control inputpublicacion1" maxlength="30" id="floatingInput" placeholder="Título" name="titulo" required>
                                 <select class="selectpublicar" id="categoriaSelect" name="categoria" required>
                                     <option value="Electrónica">Electrónica</option>
                                     <option value="Gaming">Gaming</option>
@@ -309,7 +309,7 @@ function truncateText($text, $maxWords) {
                                     <h5 class="card-title"><?php echo htmlspecialchars($tituloTruncado); ?></h5>
                                     <p class="card-text"><?php echo htmlspecialchars($descripcionTruncada); ?></p>
                                     <p class="card-text"><small class="text-muted"><i class="fa-solid fa-layer-group"></i> Categoría: <?php echo htmlspecialchars($publicacion['categoria']); ?></small></p>
-                                    <p class="card-text"><small class="text-muted">Publicado por: <?php echo htmlspecialchars($publicacion['nombre_p']); ?></small></p>
+                                    <p class="card-text"><small class="text-muted"><div class="textopublicadopor"><img class="imagenlogitopublicaciones" src="Imagenes/FONDOINICIO4.png" alt="img"><?php echo htmlspecialchars($publicacion['nombre_p']); ?></div></small></p>
                                 </div>
                                 <input class="botonverpubliem" type="submit" value="Ver más" name="pub">
                             </div>
