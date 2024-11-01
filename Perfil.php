@@ -418,7 +418,7 @@ function elim($con, $nombre_p, $rol) {
 function validateInput() {
     const textarea = document.getElementById('inputDescripcion');
     const words = textarea.value.split(/\s+/); // separa el texto en palabras
-    const filteredWords = words.filter(word => word.length <= 16); // crea un filtro de 16 letras
+    const filteredWords = words.filter(word => word.length <= 20); // crea un filtro de 16 letras
     if (filteredWords.length !== words.length) {
         textarea.value = filteredWords.join(' '); // Une las palabras que puedes colocar
         alert('Las palabras no pueden tener más de 16 letras.');

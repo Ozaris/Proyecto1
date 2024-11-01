@@ -84,7 +84,7 @@ function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img, $l
 function truncateText($text, $maxWords) {
     $words = explode(' ', $text);
     if (count($words) > $maxWords) {
-        return implode(' ', array_slice($words, 0, $maxWords)) . '...';
+        return implode(' ', array_slice($words, 3, $maxWords)) . '...';
     }
     return $text;
 }
@@ -250,7 +250,7 @@ function truncateText($text, $maxWords) {
                                     <option value="Propiedades">Propiedades</option>
                                     <option value="Vehículos">Vehículos</option>
                                 </select>
-                                <textarea class="form-control inputpublicacion3" placeholder="Descripción" id="descripcion" name="descripcion" maxlength="300" style="height: 100px" required></textarea>
+                                <textarea class="form-control inputpublicacion3" placeholder="Descripción" id="descripcion" name="descripcion" maxlength="300" style="height: 100px" oninput="validateInput()" required></textarea>
                                 <div class="caracteresletrasalerta" id="charCount">300 caracteres restantes</div> <!-- Contador de caracteres -->
                             </div>
                             <p id="coordenadas"></p>
@@ -333,12 +333,10 @@ function truncateText($text, $maxWords) {
 function validateInput() {
     const textarea = document.getElementById('descripcion');
     const words = textarea.value.split(/\s+/); // separa el texto en palabras
-    for (const word of words) {
-        if (word.length > 16) {
-            textarea.value = textarea.value.replace(word, ''); // elimina la palabra muy larga
-            alert('Las palabras no pueden tener más de 16 letras.');
-            break; 
-        }
+    const filteredWords = words.filter(word => word.length <= 20); // crea un filtro de 16 letras
+    if (filteredWords.length !== words.length) {
+        textarea.value = filteredWords.join(' '); // Une las palabras que puedes colocar
+        alert('Las palabras no pueden tener más de 20 letras.');
     }
 }
 </script>
