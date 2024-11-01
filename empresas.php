@@ -141,7 +141,7 @@ function truncateText($text, $maxWords) {
 <!-- +++++++++++++++++++++++++++BUSCADOR+++++++++++++++++++++++++++ --> 
 
         <div class="divprincipalbuscador" id="bus">
-            <input type="text" name="buscador" id="buscador" placeholder="Buscar">
+            <input type="text" name="buscador" id="buscador" placeholder="Buscar" maxlength="20">
             <div id="resultado_busqueda"></div>
         </div>
 
@@ -239,7 +239,7 @@ function truncateText($text, $maxWords) {
 
                         <div class="divsubirinformacion">
                             <div class="divdatosinformacion">
-                                <input type="text" class="form-control inputpublicacion1" id="floatingInput" placeholder="Título" name="titulo" required>
+                                <input type="text" class="form-control inputpublicacion1" id="floatingInput" placeholder="Título" name="titulo" maxlength="30" required>
                                 <select class="selectpublicar" id="categoriaSelect" name="categoria" required>
                                     <option value="Electrónica">Electrónica</option>
                                     <option value="Gaming">Gaming</option>
