@@ -292,12 +292,14 @@ function truncateText($text, $maxWords) {
             <div class="divprincipalpublisem" id="publicacionesContainer">
                 <?php
                 // Obtener las publicaciones de la base de datos
-                $consulta_publicaciones = "SELECT p.*, pe.nombre_p AS nombre_p FROM publicacion_prod p JOIN persona pe ON p.Id_per = pe.Id_per ORDER BY p.created_at DESC";
+                $consulta_publicaciones = "SELECT p.*, pe.* FROM publicacion_prod p JOIN persona pe ON p.Id_per = pe.Id_per ORDER BY p.created_at DESC";
                 $resultado_publicaciones = mysqli_query($con, $consulta_publicaciones);
 
                 if ($resultado_publicaciones && mysqli_num_rows($resultado_publicaciones) > 0) {
                     while ($publicacion = mysqli_fetch_assoc($resultado_publicaciones)) {
                         $id_prod = $publicacion['id_prod'];
+                        $nom_empp = $publicacion['foto'];
+                      
                         $tituloTruncado = truncateText($publicacion['titulo'], 3);
                         $descripcionTruncada = truncateText($publicacion['descripcion'], 3);
                         ?>
@@ -309,12 +311,13 @@ function truncateText($text, $maxWords) {
                                     <h5 class="card-title"><?php echo htmlspecialchars($tituloTruncado); ?></h5>
                                     <p class="card-text"><?php echo htmlspecialchars($descripcionTruncada); ?></p>
                                     <p class="card-text"><small class="text-muted"><i class="fa-solid fa-layer-group"></i> Categoría: <?php echo htmlspecialchars($publicacion['categoria']); ?></small></p>
-                                    <p class="card-text"><small class="text-muted"><div class="textopublicadopor"><img class="imagenlogitopublicaciones" src="Imagenes/FONDOINICIO4.png" alt="img"><?php echo htmlspecialchars($publicacion['nombre_p']); ?></div></small></p>
+                                    <p class="card-text"><small class="text-muted"><div class="textopublicadopor"><img class="imagenlogitopublicaciones" src="<?php echo 'img_usr/'.$nom_empp;?>" alt="img"><?php echo htmlspecialchars($publicacion['nombre_p']); ?></div></small></p>
                                 </div>
                                 <input class="botonverpubliem" type="submit" value="Ver más" name="pub">
                             </div>
                         </form>
                         <?php
+                        
                     }
                 } else {
                     echo "<p>No hay publicaciones disponibles.</p>";
