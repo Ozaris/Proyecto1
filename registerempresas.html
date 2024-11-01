@@ -19,12 +19,12 @@
             <form class="frominiciosesion" action="RF_registro_emp.php" method="POST">
                 <h2 class="h1register1">Crea tu cuenta</h2>
                 <h2 class="h12register1">como empresa</h2>
-                <input class="inputiniciosesion" type="nombreEmpresa" placeholder="Nombre" id="nombreEmpresa" name="nombre_p">
-                <input class="inputiniciosesion" type="email" placeholder="Email" id="email" name="email">
+                <input class="inputiniciosesion" maxlength="16"  type="nombreEmpresa" placeholder="Nombre" id="nombreEmpresa" name="nombre_p">
+                <input class="inputiniciosesion" maxlength="50" type="email" placeholder="Email" id="email" name="email">
                 <input class="inputiniciosesion" type="hidden" placeholder="Nombre" name="default.png">
                 <input class="inputiniciosesion" type="hidden" placeholder="Nombre" name="Descripcion" value="Descripcion">
                 <div class="inputcontraseñaregister">
-                  <input class="inputiniciosesion" type="password" placeholder="Password" id="pass" name="pass">
+                  <input class="inputiniciosesion"  minlength="8"  maxlength="16"   type="password" placeholder="Password" id="pass" name="pass">
                   <span class="ocultarver-contraseña" id="ocultarver-contraseña"><i class="fa-solid fa-eye"></i></span>
               </div>
                 <input type="hidden" placeholder="Password" value="empresa" id="empresa" name="empresa">

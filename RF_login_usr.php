@@ -35,7 +35,6 @@ function logear($con, $email, $contrasenia  ) {
             header("Location: index.php");
             exit();
         } else {
-
             echo "Contraseña incorrecta";
         }
     }

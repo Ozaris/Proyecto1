@@ -19,10 +19,10 @@
               <form class="frominiciosesion" action="RF_registro_usr.php" method="post">
                 <h1 class="h1register1">Crea tu cuenta</h1>
                 <h1 class="h12register1">como cliente</h1>
-                <input class="inputiniciosesion" type="text" placeholder="Nombre" id="nombre_p" name="nombre_p" required>
-                <input class="inputiniciosesion" type="email" placeholder="Email" id="email" name="email" required>
+                <input class="inputiniciosesion" maxlength="16"  type="text" placeholder="Nombre" id="nombre_p" name="nombre_p" required>
+                <input class="inputiniciosesion" maxlength="50" type="email" placeholder="Email" id="email" name="email" required>
                 <div class="inputcontraseñaregister">
-                  <input class="inputiniciosesion" minlength="8" type="password" placeholder="Password" id="pass" name="pass" required>
+                  <input class="inputiniciosesion"  minlength="8"  maxlength="16"  type="password" placeholder="Password" id="pass" name="pass" required>
                   <span class="ocultarver-contraseña" id="ocultarver-contraseña"><i class="fa-solid fa-eye"></i></span>
               </div>
                 <input class="inputiniciosesion" type="hidden" value="usuario" id="usuario" name="usuario">

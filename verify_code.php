@@ -49,10 +49,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <img class="logoverificar" src="Imagenes/Logosblanco.png" alt="img">
         <h1 class="tituloverificarC">Verifica tu Código</h1>
         <form class="fromverificar" action="verify_code.php" method="POST">
-            <label class="labelverificar" for="">Ingresa tu gmail por seguridad:</label>
-            <input class="inputverificar" type="email" name="email" placeholder="Tu Email" required>
+            <label class="labelverificar"  for="">Ingresa tu gmail por seguridad:</label>
+            <input class="inputverificar" maxlength="50" type="email" name="email" placeholder="Tu Email" required>
             <label class="labelverificar" for="">ingresa tu codigo:</label>
-            <input class="inputverificar" type="text" name="token" placeholder="Código de Verificación" required>
+            <input class="inputverificar" maxlength="6" type="text" name="token" placeholder="Código de Verificación" required>
             <button class="botonverificar" type="submit">Verificar</button>
             <p class="parrafoverificar">Se enviará un correo de email con el código de verificacion, deberas ingresarlo en el campo de verificacion</p>
         </form>
