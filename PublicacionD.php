@@ -13,6 +13,7 @@ if ($id_prod) {
     $_SESSION['pub'] = $id_prod; // Almacenar en sesión
     setcookie("pub", $id_prod, time() + (86400 * 30), "/");
 
+   
     // Consulta para obtener información del producto
     $sql = "SELECT * FROM publicacion_prod WHERE id_prod='$id_prod'";
     $resultado = $con->query($sql);
@@ -46,6 +47,14 @@ if ($id_prod) {
     } else {
         $nom_pub = 'Nombre no disponible';
     }
+
+    $sql0 = "SELECT p.*, pe.* FROM publicacion_prod p JOIN persona pe ON p.Id_per = pe.Id_per";
+    $resultado0 = $con->query($sql0);
+
+    if ($data_ft = $resultado0->fetch_assoc()) {
+        $nom_empp = $data_ft['foto'];
+    
+    }
 }
 ?>
 
@@ -69,7 +78,7 @@ if ($id_prod) {
     <div class="divsec2publiD">
         <div class="divtitulodescripcion"><h2 class="titulopubliD">Información</h2></div>
         <div class="divinfopubliD">
-            <h3 class="letraspubliD2"><div class="divlogopublisD"><img class="imagenlogitopublicaciones" src="Imagenes/FONDOINICIO4.png" alt="img"> <?php echo $nom_pub; ?></div></h3>
+            <h3 class="letraspubliD2"><div class="divlogopublisD"><img class="imagenlogitopublicaciones" src="<?php echo 'img_usr/'.$nom_empp?>" alt="img"> <?php echo $nom_pub; ?></div></h3>
             <h3 class="letraspubliD2"><i class="fa-solid fa-phone"></i> Teléfono</h3>
             <h3 class="letraspubliD2"><i class="fa-solid fa-layer-group"></i> <?php echo $cat_emp; ?></h3>
             <h3 class="letraspubliD2"> <i class="fa-solid fa-gem"></i> Valoración: <?php echo $promedio_valoracion; ?> <img class="estrella2" src="style/Imagenes/estrella.png" alt="img"></h3>
