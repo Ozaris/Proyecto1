@@ -200,7 +200,7 @@ function truncateText($text, $maxWords) {
 <!-- +++++++++++++++++++++++++++FIN DE FILTROS+++++++++++++++++++++++++++ -->
 
 <!-- +++++++++++++++++++++++++++BOTON PUBLICAR+++++++++++++++++++++++++++ -->
-                <h3 class="h3publiem">Publicaciones</h3>
+                <h3 class="h3publiem">Publicaciones <i class="fa-solid fa-icons"></i></h3>
                 <?php
                 if ($rol === 'empresa') {
 
@@ -308,7 +308,7 @@ function truncateText($text, $maxWords) {
                                     <input type="hidden" name="id_prod" value="<?php echo htmlspecialchars($id_prod); ?>">
                                     <h5 class="card-title"><?php echo htmlspecialchars($tituloTruncado); ?></h5>
                                     <p class="card-text"><?php echo htmlspecialchars($descripcionTruncada); ?></p>
-                                    <p class="card-text"><small class="text-muted">Categoría: <?php echo htmlspecialchars($publicacion['categoria']); ?></small></p>
+                                    <p class="card-text"><small class="text-muted"><i class="fa-solid fa-layer-group"></i> Categoría: <?php echo htmlspecialchars($publicacion['categoria']); ?></small></p>
                                     <p class="card-text"><small class="text-muted">Publicado por: <?php echo htmlspecialchars($publicacion['nombre_p']); ?></small></p>
                                 </div>
                                 <input class="botonverpubliem" type="submit" value="Ver más" name="pub">

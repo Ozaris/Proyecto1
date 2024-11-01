@@ -62,23 +62,23 @@ if ($id_prod) {
 <body class="bodypubliD">
 <div class="divprincipalD">
     <div class="divsec1publiD">
-        <a class="botonatraspubliD" href="empresas.php"><i class="fa-solid iconoatraspubliD fa-arrow-left"></i></a>
         <img class="imagenprincipalcomentarios" src="<?php echo $foto_pub ?>" alt="img">
+        <a class="botonatraspubliD" href="empresas.php"><i class="fa-solid iconoatraspubliD fa-arrow-left"></i></a>
     </div>
 
     <div class="divsec2publiD">
         <div class="divtitulodescripcion"><h2 class="titulopubliD">Información</h2></div>
         <div class="divinfopubliD">
-            <h3 class="letraspubliD2"><?php echo $nom_pub; ?></h3>
-            <h3 class="letraspubliD2">Teléfono</h3>
-            <h3 class="letraspubliD2"><?php echo $cat_emp; ?></h3>
-            <h3 class="letraspubliD2">Valoración: <?php echo $promedio_valoracion; ?> <img class="estrella2" src="style/Imagenes/estrella.png" alt="img"></h3>
+            <h3 class="letraspubliD2"><i class="fa-solid fa-file-signature"></i> <?php echo $nom_pub; ?></h3>
+            <h3 class="letraspubliD2"><i class="fa-solid fa-phone"></i> Teléfono</h3>
+            <h3 class="letraspubliD2"><i class="fa-solid fa-layer-group"></i> <?php echo $cat_emp; ?></h3>
+            <h3 class="letraspubliD2"> <i class="fa-solid fa-gem"></i> Valoración: <?php echo $promedio_valoracion; ?> <img class="estrella2" src="style/Imagenes/estrella.png" alt="img"></h3>
         </div>
         <div class="divtitulodescripcion2"><h2 class="titulopubliD2">Descripción</h2></div>
         <div class="divdescripcionpubliD">
             <p class="letraspubliDdesc"><?php echo $desc_emp; ?></p>
         </div>
-        <div style="height: 350px; width: 24rem; margin-top: 10px; margin-bottom: 1rem; border-radius: 10px; border: 1px solid #333;" id="map"></div>
+        <div style="height: 450px; width: 30rem; margin-top: 10px; margin-bottom: 1rem; border-radius: 10px; border: 1px solid #333;" id="map"></div>
     </div>
 </div>
 
@@ -123,7 +123,7 @@ if ($id_prod) {
 <?php endif; ?>
 
 <div class="divinfocomentarios">
-    <h2>Comentarios</h2><i class="fa-solid fa-arrow-right"></i>
+    <h2>Comentarios</h2><i class="fa-solid fa-comment"></i>
 </div>
 <div id="commentsContainer">
     <?php

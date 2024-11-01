@@ -2976,7 +2976,7 @@ footer{
 
 .divsec1publiD {
     display: flex;
-    width: 70%;
+    width: 60%;
     justify-content: center;
     align-items: center;
 }
@@ -2986,7 +2986,7 @@ footer{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 30%;
+    width: 40%;
     padding-top: 1rem;
     background-size: cover;
     background-repeat: no-repeat;
@@ -3053,11 +3053,14 @@ footer{
     border-top: 1px solid #333;
     border-bottom: 1px solid #333;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
-    padding: 1rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
     width: 90%;
-    height: 23rem;
+    height: 18rem;
+    padding-left: 1rem;
 }
 .divubicacionD {
     box-shadow: 0 0 5px #333;
@@ -3079,9 +3082,11 @@ footer{
 }
 
 .imagenprincipalcomentarios {
-    width: 97%;
-    height: 97%;
+    width: 90%;
+    height: 95%;
     border-radius: 10px;
+    border: 2px solid #333;
+    box-shadow: 0 0 8px #303030;
 }
 .divprincipalcomentarios {
     padding-top: 3rem;
@@ -3162,11 +3167,11 @@ footer{
 
 .botonatraspubliD {
     position: absolute;
-    top: 1.5rem;
-    left: 2rem;
+    top: 2rem;
+    left: 3.5rem;
     text-decoration: none;
     color: #333;
-    background-color: #ccc;
+    background-color: #F5F5DC;
     font-size: 1.5rem;
     border-radius: 50%;
     padding: 3px;
