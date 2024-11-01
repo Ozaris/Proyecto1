@@ -3227,8 +3227,32 @@ footer{
 .estrella2 {
     height: 20px;
 }
+.divmapapubliD {
+    height: 450px;
+    width: 30rem;
+    margin-top: 10px;
+    margin-bottom: 1rem; 
+    border-radius: 10px; 
+    border: 1px solid #333;
+}
 
-@media (max-width: 1080px) { 
+@media (max-width: 1300px) { 
+    .divmapapubliD {
+        width: 25rem;
+        height: 300px;
+    } 
+}
+@media (max-width: 1100px) { 
+    .divmapapubliD {
+        width: 23rem;
+        height: 250px;
+    } 
+}
+@media (max-width: 1000px) { 
+    .divmapapubliD {
+        width: 90%;
+        margin-top: 1rem;
+    }
     .divprincipalD {
         display: flex;
         justify-content: center;
@@ -3238,6 +3262,32 @@ footer{
         height: auto;
     } 
 
+    .divdescripcionpubliD {
+        border-top: 1px solid #333;
+        border-bottom: 1px solid #333;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-right: 10px;
+        width: 90%;
+        height: 12rem;
+        padding-left: 1rem;
+    }
+
+    .titulopubliD {
+        font-size: 1.4rem;
+    }
+    .titulopubliD2 {
+        font-size: 1.4rem;
+    }
+    .letraspubliD2 {
+        font-size: 1.2rem;
+    }
+    .letraspubliDdesc {
+        font-size: 1.2rem;
+    }
     .divsec1publiD {
         display: flex;
         width: 100%;
@@ -3312,7 +3362,7 @@ footer{
 }
 
 
-/*----------------------------Fin de Publicacion------------------------------------------*/
+/*----------------------------Fin de Dentro de Publicacion------------------------------------------*/
 
 /*----------------------------Inicio de Contacto--------------------------------*/
 

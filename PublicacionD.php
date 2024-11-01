@@ -76,13 +76,13 @@ if ($id_prod) {
         </div>
         <div class="divtitulodescripcion2"><h2 class="titulopubliD2">Descripción</h2></div>
         <div class="divdescripcionpubliD">
-            <p class="letraspubliDdesc"><?php echo $desc_emp; ?></p>
+            <p class="letraspubliDdesc"><?php echo $desc_emp; ?>En un rincón del bosque, la luz del sol se filtraba entre las hojas, creando un juego de sombras danzantes. Los pájaros cantaban melodías suaves, y el aire fresco llevaba consigo el aroma de la tierra húmeda. Allí, la tranquilidad envolvía todo, invitando a perderse en la belleza de la naturaleza y encontrar paz en cada susurro del viento.</p>
         </div>
-        <div style="height: 450px; width: 30rem; margin-top: 10px; margin-bottom: 1rem; border-radius: 10px; border: 1px solid #333;" id="map"></div>
+        <div class="divmapapubliD" id="map"></div>
     </div>
 </div>
 
-<!-- Mapa -->
+
 
 <!-- CDN de Leaflet -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
