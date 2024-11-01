@@ -320,7 +320,7 @@ if (isset($_SESSION['email'])) {
                         <p><i class="icono-tick fa-solid fa-check"></i>  Mayor atencion de personal especializado </p>
                     </div>
                     <div class="linkcartaplanes">
-                    <a class="boton2departe5bodyplanes aslinkcarta" href="#">Comprar</a>
+                    <a class="boton2departe5bodyplanes aslinkcarta" href="pago.html">Comprar</a>
                     </div>
                 </div>
         </div>

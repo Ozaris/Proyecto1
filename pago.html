@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Pago</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link class="aslinkcarta" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style/style.css"></head>
+<body class="bodypago">
+    <div class="containerpago">
+        <h1 class="titulopagotarjeta1">Completa tu Pago</h1>
+        
+        <form action="">
+            <div class="div1pago">
+                <i class="fa-solid fa-credit-card tarjetapago"></i>
+                <h3 class="titulopagotarjeta2">Por tarjeta</h3>
+            </div>
+            <div class="div2pago">
+                <h5 class="titulopagotarjeta">Datos de la tarjeta</h5>
+                <div class="tarjetapagoejemplos"><i class="fa-brands fa-cc-visa tarjetaejpago"></i>
+                    <i class="fa-brands fa-cc-mastercard tarjetaejpago"></i>
+                    <i class="fa-brands fa-cc-paypal tarjetaejpago"></i></div>
+            </div>
+            <div>
+                <input type="text" required class="form-control inputpago1" placeholder="Numero de la tarjeta"  aria-label="Numero de la tarjeta" aria-describedby="basic-addon1">
+                <input type="text" required class="form-control inputpago1" placeholder="Nombre de la tarjeta" aria-label="Nombre de la tarjeta" aria-describedby="basic-addon1">
+            </div>
+            <div class="divinputpago1">
+                <input type="text" required class="form-control inputpago2" placeholder="Caducidad" aria-label="Caducidad" aria-describedby="basic-addon1">
+                <input type="text" required class="form-control inputpago2" placeholder="CVV" aria-label="CVV" aria-describedby="basic-addon1">
+            </div>
+            <button class="btn btn-outline-secondary botonpago" type="button" id="button-addon1">Pagar</button>
+        </form>
+        <p class="textopago">Al guardar tu información de pago, el método elegido se seleccionará por defecto para todas las compras realizadas mediante la plataforma de pago de Ozaris. Tus datos se perderan al volver hacia atras pulsando la flecha de regreso.</p>
+</body>
+</html>

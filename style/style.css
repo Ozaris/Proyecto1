@@ -3567,3 +3567,96 @@ html, body {
     }
 }
 /*----------------------------Fin de mis publicaciones-----------------------------------*/
+
+/*----------------------------Inicio de pago-----------------------------------*/
+.bodypago {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+.titulopagotarjeta1 {
+    margin-bottom: 1.5rem;
+}
+.titulopagotarjeta2 {
+    margin: 0;
+}
+.containerpago {
+    height: 100vh;
+    max-width: 700px;
+    padding: 20px;
+    background: #ececec;
+    border-radius: 8px;
+    text-align: center;
+}
+.tarjetapago {
+    border: 1px solid #333;
+    padding: 5px;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.div1pago {
+    font-size: 1.5rem;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: left;
+}
+.tarjetaejpago {
+    font-size: 1.3rem;
+    margin: 2px;
+}
+.div2pago {
+    width: 100%;
+    font-size: 1rem;
+    align-items: center;
+    display: flex;
+    justify-content: left;
+    margin-top: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.titulopagotarjeta {
+    width: 70%;
+    text-align: left;
+}
+
+.tarjetapagoejemplos {
+    width: 30%;
+    display: flex;
+    justify-content: right;
+}
+.inputpago1 {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+}
+.divinputpago1 {
+    gap: 1rem;
+    display: flex;
+}
+.inputpago2 {
+    padding: 1rem;
+}
+.botonpago {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    color: white;
+    background-color: #66a6e6;
+    padding: 10px;
+    width: 50%;
+}
+.textopago {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #666666;
+    margin-top: 2rem;
+    text-align: left;
+    font-size: 15px;
+    
+}
+
+/*----------------------------Fin de pago--------------------------------------*/
