@@ -28,9 +28,23 @@ if ($nombreEmpresa) {
     }
 
 }
+if (isset($_POST["elim-pub"])) {
+    $id_prod = $_POST['id_prod'];
+    elim_pub($con,$id_prod);
+}
 
-function elimpub($con,$id_prod){
-echo "NASHEEEE";
+function elim_pub($con,$id_prod) {
+    $sql = "DELETE FROM comentario WHERE id_prod = '$id_prod'";
+    $result = $con->query($sql);
+
+    if ($result) {
+        $sql2 = "DELETE FROM publicacion_prod WHERE id_prod = '$id_prod'";
+        $result2 = $con->query($sql2);
+
+        // Agrega más campos según sea necesario
+    } else {
+        echo "No se encontró información para la empresa: " . htmlspecialchars($nombreEmpresa);
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -61,7 +75,7 @@ echo "NASHEEEE";
                         $tituloTruncado = truncateText($publicacion['titulo'], 3);
                         $descripcionTruncada = truncateText($publicacion['descripcion'], 3);
                         ?>
-                        <form class="containerpublis" action="PublicacionD.php" method="POST">
+                        <form class="containerpublis" action="mispublicaciones.php" method="POST">
                             <div class="cardempresas">
                                 <img src="<?php echo htmlspecialchars($publicacion['imagen_prod']); ?>" class="imgcardpubliem" alt="Imagen de publicación">
                                 <div class="cardempresasbody">
