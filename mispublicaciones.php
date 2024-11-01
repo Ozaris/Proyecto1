@@ -83,7 +83,7 @@ function elim_pub($con,$id_prod) {
                                     <h5 class="card-title"><?php echo htmlspecialchars($tituloTruncado); ?></h5>
                                     <p class="card-text"><?php echo htmlspecialchars($descripcionTruncada); ?></p>
                                     <p class="card-text"><small class="text-muted">Categoría: <?php echo htmlspecialchars($publicacion['categoria']); ?></small></p>
-                                    <p class="card-text"><small class="text-muted">Publicado por: <?php echo htmlspecialchars($publicacion['nombre_p']); ?></small></p>
+                                    <p class="card-text"><small class="text-muted">Publicado por mi</small></p>
                                 </div>
                                 <input class="botonverpubliem" type="submit" value="Ver más" name="pub">
                                 <input class="botoneliminarpublimispublis" type="submit" value="Eliminar" name="elim-pub">
