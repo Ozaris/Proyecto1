@@ -29,7 +29,28 @@ if (isset($_SESSION['email'])) {
     $email = 'Email no disponible';
     $foto = 'default.png';
 }
+
+function truncateText($text, $maxWords) {
+    $words = explode(' ', $text);
+    if (count($words) > $maxWords) {
+        return implode(' ', array_slice($words, 3, $maxWords)) . '...';
+    }
+    return $text;
+}
+$sql_top_companies = "
+    SELECT e.nombre_p, p.titulo, p.imagen_prod, p.descripcion_prod, AVG(c.valoracion) AS promedio
+    FROM empresa e
+    JOIN publicacion_prod p ON e.Id_per = p.id_per
+    LEFT JOIN comentario c ON c.id_prod = p.id_prod
+    GROUP BY e.Id_per, p.titulo, p.imagen_prod, p.descripcion_prod
+    HAVING AVG(c.valoracion) IS NOT NULL
+    ORDER BY promedio DESC
+    LIMIT 10
+";
+
+$result_top_companies = $con->query($sql_top_companies);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -126,160 +147,50 @@ if (isset($_SESSION['email'])) {
 
 <div id="topempresas"></div>
 <div class="parte4body swiper" id="parte4" data-aos="zoom-in-up" data-aos-duration="1500">
-
     <h1 class="h1parte4body">10 empresas destacadas de la semana:</h1>
+    
+    <?php
+    // Contar el número de empresas disponibles
+    $num_companies = $result_top_companies ? $result_top_companies->num_rows : 0;
 
-    <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-container mySwiper">
-         
-            <div class="swiper-wrapper">
-                <div class="swiper-slide" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500">
-                    <img src="style/Imagenes/FondoInicio.png" alt="img">
-                    <div class="descripcioncarta">
-                        <div class="titulocarta">
-                            <h4>Nombre de empresa</h4>
+    // Mostrar los botones solo si hay más de 3 empresas
+    if ($num_companies > 3) {
+        echo '<div class="swiper-button-next"></div>';
+        echo '<div class="swiper-button-prev"></div>';
+    }
+    ?>
+    
+    <div class="swiper-container mySwiper">
+        <div class="swiper-wrapper">
+            <?php
+            if ($result_top_companies && $num_companies > 0) {
+                while ($company = $result_top_companies->fetch_assoc()) {
+                    
+                    $descripcionTruncada = truncateText($company['descripcion_prod'], 3);
+                    ?>
+                    <div class="swiper-slide" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500">
+                        <img src="<?php echo htmlspecialchars($company['imagen_prod']); ?>" alt="Imagen de la empresa">
+                        <div class="descripcioncarta">
+                            <div class="titulocarta">
+                                <h4><?php echo htmlspecialchars($company['titulo']); ?></h4>
+                            </div>
+                            <div class="textocarta">
+                                <p><?php echo htmlspecialchars($descripcionTruncada); ?></p>
+                            </div>
+                            <div class="linkcarta">
+                                <a class="aslinkcarta">Ver más</a>
+                            </div>
                         </div>
-                        <div class="textocarta">
-                            <p>Descripcion o lo que sea</p>
-                        </div>
-                        <div class="linkcarta">
-                          <a class="aslinkcarta" href="#">Ver más</a>
-                        </div>
                     </div>
-                </div>
-                <div class="swiper-slide" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500">
-                    <img src="style/Imagenes/FondoInicio.png" alt="img">
-                    <div class="descripcioncarta">
-                        <div class="titulocarta">
-                            <h4>Nombre de empresa</h4>
-                        </div>
-                        <div class="textocarta">
-                            <p>Descripcion o lo que sea</p>
-                        </div>
-                        <div class="linkcarta">
-                          <a class="aslinkcarta" href="#">Ver más</a>
-                        </div>
-                </div>
-            </div>
-                <div class="swiper-slide" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500">
-                    <img src="style/Imagenes/FondoInicio.png" alt="img">
-                <div class="descripcioncarta">
-                    <div class="titulocarta">
-                        <h4>Nombre de empresa</h4>
-                    </div>
-                    <div class="textocarta">
-                        <p>Descripcion o lo que sea</p>
-                    </div>
-                    <div class="linkcarta">
-                      <a class="aslinkcarta" href="#">Ver más</a>
-                    </div>
-                </div>
-            </div>
-                <div class="swiper-slide"data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500">
-                    <img src="style/Imagenes/FondoInicio.png" alt="img">
-                <div class="descripcioncarta">
-                    <div class="titulocarta">
-                        <h4>Nombre de empresa</h4>
-                    </div>
-                    <div class="textocarta">
-                        <p>Descripcion o lo que sea</p>
-                    </div>
-                    <div class="linkcarta">
-                      <a class="aslinkcarta" href="#">Ver más</a>
-                    </div>
-                </div>
-            </div>
-                <div class="swiper-slide" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500">
-                    <img src="style/Imagenes/FondoInicio.png" alt="img" >
-                <div class="descripcioncarta">
-                    <div class="titulocarta">
-                        <h4>Nombre de empresa</h4>
-                    </div>
-                    <div class="textocarta">
-                        <p>Descripcion o lo que sea</p>
-                    </div>
-                    <div class="linkcarta">
-                      <a class="aslinkcarta" href="#">Ver más</a>
-                    </div>
-                </div>
-            </div>
-               
-                <div class="swiper-slide" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500">
-                    <img src="style/Imagenes/FondoInicio.png" alt="img">
-                <div class="descripcioncarta">
-                    <div class="titulocarta">
-                        <h4>Nombre de empresa</h4>
-                    </div>
-                    <div class="textocarta">
-                        <p>Descripcion o lo que sea</p>
-                    </div>
-                    <div class="linkcarta">
-                      <a class="aslinkcarta" href="#">Ver más</a>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500">
-                <img src="style/Imagenes/FondoInicio.png" alt="img">
-                <div class="descripcioncarta">
-                    <div class="titulocarta">
-                        <h4>Nombre de empresa</h4>
-                    </div>
-                    <div class="textocarta">
-                        <p>Descripcion o lo que sea</p>
-                    </div>
-                    <div class="linkcarta">
-                      <a class="aslinkcarta" href="#">Ver más</a>
-                    </div>
-            </div>
-        </div>
-        <div class="swiper-slide" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500">
-            <img src="style/Imagenes/FondoInicio.png" alt="img">
-            <div class="descripcioncarta">
-                <div class="titulocarta">
-                    <h4>Nombre de empresa</h4>
-                </div>
-                <div class="textocarta">
-                    <p>Descripcion o lo que sea</p>
-                </div>
-                <div class="linkcarta">
-                  <a class="aslinkcarta" href="#">Ver más</a>
-                </div>
-        </div>
-    </div>
-    <div class="swiper-slide" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500">
-        <img src="style/Imagenes/FondoInicio.png" alt="img">
-        <div class="descripcioncarta">
-            <div class="titulocarta">
-                <h4>Nombre de empresa</h4>
-            </div>
-            <div class="textocarta">
-                <p>Descripcion o lo que sea</p>
-            </div>
-            <div class="linkcarta">
-              <a class="aslinkcarta" href="#">Ver más</a>
-            </div>
-    </div>
-</div>
-<div class="swiper-slide" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500">
-    <img src="style/Imagenes/FondoInicio.png" alt="img">
-    <div class="descripcioncarta">
-        <div class="titulocarta">
-            <h4>Nombre de empresa</h4>
-        </div>
-        <div class="textocarta">
-            <p>Descripcion o lo que sea</p>
-        </div>
-        <div class="linkcarta">
-          <a class="aslinkcarta" href="#">Ver más</a>
+                    <?php
+                }
+            } else {
+                echo "<div class='swiper-slide'>No hay empresas disponibles.</div>";
+            }
+            ?>
         </div>
     </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-
 <div class="parte5body">
 
     <div id="planes" class="parte5body2">
