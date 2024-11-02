@@ -83,7 +83,7 @@ if ($nombreEmpresa) {
                     while ($publicacion = mysqli_fetch_assoc($resultado_publicaciones)) {
                         $id_prod = $publicacion['id_prod'];
                         $tituloTruncado = truncateText($publicacion['titulo'], 3);
-                        $descripcionTruncada = truncateText($publicacion['descripcion'], 3);
+                        $descripcionTruncada = truncateText($publicacion['descripcion_prod'], 3);
                         ?>
                         <form class="containerpublis" action="PublicacionD.php" method="POST">
                             <div class="cardempresas">
