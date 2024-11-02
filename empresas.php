@@ -69,7 +69,7 @@ function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img, $l
         $id_per = $fila['Id_per'];
 
         // Inserta en la base de datos, incluyendo latitud y longitud
-        $consulta_insertar_persona = "INSERT INTO publicacion_prod (titulo, categoria, descripcion, imagen_prod, Id_per, lat, lon) VALUES ('$titulo', '$categoria', '$descripcion', '$img', '$id_per', '$lat', '$lon')";
+        $consulta_insertar_persona = "INSERT INTO publicacion_prod (titulo, categoria, descripcion_prod, imagen_prod, Id_per, lat, lon) VALUES ('$titulo', '$categoria', '$descripcion', '$img', '$id_per', '$lat', '$lon')";
         
         if (mysqli_query($con, $consulta_insertar_persona)) {
             echo "Publicación creada exitosamente.";
@@ -301,7 +301,7 @@ function truncateText($text, $maxWords) {
                         $nom_empp = $publicacion['foto'];
                       
                         $tituloTruncado = truncateText($publicacion['titulo'], 3);
-                        $descripcionTruncada = truncateText($publicacion['descripcion'], 3);
+                        $descripcionTruncada = truncateText($publicacion['descripcion_prod'], 3);
                         ?>
                         <form class="containerpublis" action="PublicacionD.php" method="POST">
                             <div class="cardempresas">

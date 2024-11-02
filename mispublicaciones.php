@@ -73,7 +73,7 @@ function elim_pub($con,$id_prod) {
                     while ($publicacion = mysqli_fetch_assoc($resultado_publicaciones)) {
                         $id_prod = $publicacion['id_prod'];
                         $tituloTruncado = truncateText($publicacion['titulo'], 3);
-                        $descripcionTruncada = truncateText($publicacion['descripcion'], 3);
+                        $descripcionTruncada = truncateText($publicacion['descripcion_prod'], 3);
                         ?>
                         <form class="containerpublis" action="mispublicaciones.php" method="POST">
                             <div class="cardempresas">
@@ -85,8 +85,9 @@ function elim_pub($con,$id_prod) {
                                     <p class="card-text"><small class="text-muted">Categoría: <?php echo htmlspecialchars($publicacion['categoria']); ?></small></p>
                                     <p class="card-text"><small class="text-muted">Publicado por mi</small></p>
                                 </div>
-                                <input class="botonverpubliem" type="submit" value="Ver más" name="pub">
-                                <input class="botoneliminarpublimispublis" type="submit" value="Eliminar" name="elim-pub">
+                                <input class="botonverpubliem" type="submit" onclick = "this.form.action = 'PublicacionD.php'" value='Ver más' name='pub' >
+                                
+                                <input class='botoneliminarpublimispublis' type='submit' value='Eliminar' name='elim-pub'>
 
                             </div>
                         </form>
