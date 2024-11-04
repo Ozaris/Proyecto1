@@ -11,6 +11,8 @@ if (isset($_POST["envio-pub"])) {
     $titulo = $_POST["titulo"];
     $categoria = $_POST["categoria"];
     $descripcion = $_POST["descripcion"];
+    $lat = $_POST["lat"]; // Obtener latitud
+    $lon = $_POST["lon"]; // Obtener longitud
     $email_emp = $_COOKIE['email_emp'] ?? null;
 
     // Verifica si se ha subido un archivo
@@ -22,7 +24,7 @@ if (isset($_POST["envio-pub"])) {
         // Mueve el archivo a la carpeta deseada
         if (move_uploaded_file($imagen['tmp_name'], $rutaDestino)) {
             // Llamada a la función para crear la publicación
-            crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $rutaDestino);
+            crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $rutaDestino, $lat, $lon);
         } else {
             echo "Error al subir la imagen.";
         }
@@ -58,7 +60,7 @@ if (isset($_SESSION['email'])) {
     $foto = 'default.png';
 }
 
-function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img) {
+function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img, $lat, $lon) {
     $consulta_login = "SELECT * FROM persona WHERE email = '$email_emp'";
     $resultado_login = mysqli_query($con, $consulta_login);
 
@@ -66,8 +68,8 @@ function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img) {
         $fila = mysqli_fetch_assoc($resultado_login);
         $id_per = $fila['Id_per'];
 
-        // Inserta en la base de datos
-        $consulta_insertar_persona = "INSERT INTO publicacion_prod (titulo, categoria, descripcion, imagen_prod, Id_per) VALUES ('$titulo', '$categoria', '$descripcion', '$img', '$id_per')";
+        // Inserta en la base de datos, incluyendo latitud y longitud
+        $consulta_insertar_persona = "INSERT INTO publicacion_prod (titulo, categoria, descripcion_prod, imagen_prod, Id_per, lat, lon) VALUES ('$titulo', '$categoria', '$descripcion', '$img', '$id_per', '$lat', '$lon')";
         
         if (mysqli_query($con, $consulta_insertar_persona)) {
             echo "Publicación creada exitosamente.";
@@ -82,11 +84,12 @@ function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img) {
 function truncateText($text, $maxWords) {
     $words = explode(' ', $text);
     if (count($words) > $maxWords) {
-        return implode(' ', array_slice($words, 0, $maxWords)) . '...';
+        return implode(' ', array_slice($words, 3, $maxWords)) . '...';
     }
     return $text;
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en" class="htmlempresas">
@@ -99,6 +102,7 @@ function truncateText($text, $maxWords) {
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="lib/bootstrap.min.css">
     <link rel="icon" href="Imagenes/logoproyecto.png">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
     <title>Empresas - Ozaris</title>
 </head>
 <body class="bodyempresas">
@@ -152,7 +156,7 @@ function truncateText($text, $maxWords) {
                 <a href="empresas.php">
                 <div class="cartaderecomendados">
                         <img class="logorecomendados" src="Imagenes/todos.png" alt="img">
-                        <p>Mostrar Todos</p>
+                        <p>Todos</p>
                     </div>
                     </a>
                 <div class="cartaderecomendados" onclick="filtrarPublicaciones('Electronica')">
@@ -196,7 +200,7 @@ function truncateText($text, $maxWords) {
 <!-- +++++++++++++++++++++++++++FIN DE FILTROS+++++++++++++++++++++++++++ -->
 
 <!-- +++++++++++++++++++++++++++BOTON PUBLICAR+++++++++++++++++++++++++++ -->
-                <h3 class="h3publiem">Publicaciones</h3>
+                <h3 class="h3publiem">Publicaciones <i class="fa-solid fa-icons"></i></h3>
                 <?php
                 if ($rol === 'empresa') {
 
@@ -219,16 +223,23 @@ function truncateText($text, $maxWords) {
                 </div>
                 <div class="modal-body">
                     <div class="divprincipalpublicacion">
+
                         <div class="divsubirimagen">
                             <label for="formFile" class="form-label">
                                 <i class="fa-solid fa-2x fa-plus iconomaspublicacion"></i>
                             </label>
+                            <button class="botoneliminarimagen"><i class="fa-solid fa-trash"></i></button>
                             <input class="form-control form-control1" type="file" id="formFile" name="imagen_prod" accept="image/jpeg,jpg,png" required>
                             <div id="imagePreview" class="image-preview"></div> <!-- Vista previa -->
                         </div>
+
+                        <div class="divubicacionempresa">
+                        <div class="mapaempresas" id="map"></div> <!-- Mapa debajo -->
+                        </div>
+
                         <div class="divsubirinformacion">
                             <div class="divdatosinformacion">
-                                <input type="text" class="form-control inputpublicacion1" id="floatingInput" placeholder="Título" name="titulo" required>
+                                <input type="text" class="form-control inputpublicacion1" maxlength="30" id="floatingInput" placeholder="Título" name="titulo" required>
                                 <select class="selectpublicar" id="categoriaSelect" name="categoria" required>
                                     <option value="Electrónica">Electrónica</option>
                                     <option value="Gaming">Gaming</option>
@@ -239,9 +250,17 @@ function truncateText($text, $maxWords) {
                                     <option value="Propiedades">Propiedades</option>
                                     <option value="Vehículos">Vehículos</option>
                                 </select>
-                                <textarea class="form-control inputpublicacion3" placeholder="Descripción" id="descripcion" name="descripcion" maxlength="300" style="height: 100px" required oninput="validateInput()"></textarea>
+                                <textarea class="form-control inputpublicacion3" placeholder="Descripción" id="descripcion" name="descripcion" maxlength="300" style="height: 100px" oninput="validateInput()" required></textarea>
                                 <div class="caracteresletrasalerta" id="charCount">300 caracteres restantes</div> <!-- Contador de caracteres -->
                             </div>
+                            <p id="coordenadas"></p>
+                            <input type="hidden" id="lat" name="lat" value="">
+                            <input type="hidden" id="lon" name="lon" value="">
+
+                            <!-- CDN de Leaflet -->
+                            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+                            <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
                             <div class="divinformacionempresa">
                                 <h6>Información de la empresa</h6>
                                 <div class="divnombrempresapublicacion">
@@ -253,12 +272,15 @@ function truncateText($text, $maxWords) {
                                 <button class="botonsubirpublicacion" value="envio-pub" name="envio-pub">Subir publicación</button>
                             </div>
                         </div>
+
                     </div>
+
                 </div>
             </div>
         </form>
     </div>
 </div>
+
 
 </div>
 </div>
@@ -266,18 +288,20 @@ function truncateText($text, $maxWords) {
 <!-- +++++++++++++++++++++++++++FIN DE BOTON PUBLICAR+++++++++++++++++++++++++++ --> 
 
 <!-- +++++++++++++++++++++++++++PUBLICACIONES+++++++++++++++++++++++++++ --> 
-            
+            <div>
             <div class="divprincipalpublisem" id="publicacionesContainer">
                 <?php
                 // Obtener las publicaciones de la base de datos
-                $consulta_publicaciones = "SELECT p.*, pe.nombre_p AS nombre_p FROM publicacion_prod p JOIN persona pe ON p.Id_per = pe.Id_per ORDER BY p.created_at DESC";
+                $consulta_publicaciones = "SELECT p.*, pe.* FROM publicacion_prod p JOIN persona pe ON p.Id_per = pe.Id_per ORDER BY p.created_at DESC";
                 $resultado_publicaciones = mysqli_query($con, $consulta_publicaciones);
 
                 if ($resultado_publicaciones && mysqli_num_rows($resultado_publicaciones) > 0) {
                     while ($publicacion = mysqli_fetch_assoc($resultado_publicaciones)) {
                         $id_prod = $publicacion['id_prod'];
+                        $nom_empp = $publicacion['foto'];
+                      
                         $tituloTruncado = truncateText($publicacion['titulo'], 3);
-                        $descripcionTruncada = truncateText($publicacion['descripcion'], 3);
+                        $descripcionTruncada = truncateText($publicacion['descripcion_prod'], 3);
                         ?>
                         <form class="containerpublis" action="PublicacionD.php" method="POST">
                             <div class="cardempresas">
@@ -286,13 +310,14 @@ function truncateText($text, $maxWords) {
                                     <input type="hidden" name="id_prod" value="<?php echo htmlspecialchars($id_prod); ?>">
                                     <h5 class="card-title"><?php echo htmlspecialchars($tituloTruncado); ?></h5>
                                     <p class="card-text"><?php echo htmlspecialchars($descripcionTruncada); ?></p>
-                                    <p class="card-text"><small class="text-muted">Categoría: <?php echo htmlspecialchars($publicacion['categoria']); ?></small></p>
-                                    <p class="card-text"><small class="text-muted">Publicado por: <?php echo htmlspecialchars($publicacion['nombre_p']); ?></small></p>
+                                    <p class="card-text"><small class="text-muted"><i class="fa-solid fa-layer-group"></i> Categoría: <?php echo htmlspecialchars($publicacion['categoria']); ?></small></p>
+                                    <p class="card-text"><small class="text-muted"><div class="textopublicadopor"><img class="imagenlogitopublicaciones" src="<?php echo 'img_usr/'.$nom_empp;?>" alt="img"><?php echo htmlspecialchars($publicacion['nombre_p']); ?></div></small></p>
                                 </div>
                                 <input class="botonverpubliem" type="submit" value="Ver más" name="pub">
                             </div>
                         </form>
                         <?php
+                        
                     }
                 } else {
                     echo "<p>No hay publicaciones disponibles.</p>";
@@ -301,7 +326,7 @@ function truncateText($text, $maxWords) {
             </div>
         </div>
     </div>
-
+            </div>
 <!-- +++++++++++++++++++++++++++FIN DE PUBLICACIONES+++++++++++++++++++++++++++ --> 
 
 <!-- +++++++++++++++++++++++++++SCRIPTS+++++++++++++++++++++++++++ --> 
@@ -311,12 +336,10 @@ function truncateText($text, $maxWords) {
 function validateInput() {
     const textarea = document.getElementById('descripcion');
     const words = textarea.value.split(/\s+/); // separa el texto en palabras
-    for (const word of words) {
-        if (word.length > 16) {
-            textarea.value = textarea.value.replace(word, ''); // elimina la palabra muy larga
-            alert('Las palabras no pueden tener más de 16 letras.');
-            break; 
-        }
+    const filteredWords = words.filter(word => word.length <= 20); // crea un filtro de 16 letras
+    if (filteredWords.length !== words.length) {
+        textarea.value = filteredWords.join(' '); // Une las palabras que puedes colocar
+        alert('Las palabras no pueden tener más de 20 letras.');
     }
 }
 </script>
@@ -432,7 +455,7 @@ function redireccion() {
 
     reader.onload = function(e) {
         const imagePreview = document.getElementById('imagePreview');
-        imagePreview.innerHTML = `<img src="${e.target.result}" alt="Imagen Previa" style="max-width: 100%; height: auto;">`;
+        imagePreview.innerHTML = `<img src="${e.target.result}" alt="Imagen Previa" style="max-width: 100%; height: 480px;">`;
 
         // Hide the label when an image is previewed
         document.querySelector('label[for="formFile"]').style.display = 'none';
@@ -449,6 +472,35 @@ function redireccion() {
 
 
     </script>
+
+<script>
+    // Inicializa el mapa centrado en Paysandú
+    const map = L.map('map').setView([-32.3219, -58.0792], 13);
+
+    // Capa de CartoDB
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap, © CartoDB',
+    }).addTo(map);
+
+    let marcador;
+
+    // Evento de clic en el mapa
+    map.on('click', function(e) {
+        const lat = e.latlng.lat;
+        const lon = e.latlng.lng;
+
+        document.getElementById('lat').value = lat; // Establece latitud
+        document.getElementById('lon').value = lon; // Establece longitud
+
+        if (marcador) {
+            marcador.setLatLng(e.latlng);
+        } else {
+            marcador = L.marker(e.latlng).addTo(map);
+        }
+    });
+</script>
+
 
 
 <script src="app.js"></script>
