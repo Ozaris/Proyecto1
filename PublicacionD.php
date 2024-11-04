@@ -87,7 +87,7 @@ if ($id_prod) {
         <div class="divdescripcionpubliD">
             <p class="letraspubliDdesc"><?php echo $desc_emp; ?></p>
         </div>
-        <div style="height: 450px; width: 30rem; margin-top: 10px; margin-bottom: 1rem; border-radius: 10px; border: 1px solid #333;" id="map"></div>
+        <div class="divmapapubliD" id="map"></div>
     </div>
 </div>
 
