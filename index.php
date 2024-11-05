@@ -154,7 +154,9 @@ $result_top_companies = $con->query($sql_top_companies);
     <?php
     // Contar el número de empresas disponibles
     $num_companies = $result_top_companies ? $result_top_companies->num_rows : 0;
-
+    $consulta_publicaciones = "SELECT p.*, pe.* FROM publicacion_prod p JOIN persona pe ON p.Id_per = pe.Id_per  WHERE p.tipo = 'publicacion' ORDER BY p.created_at DESC";
+  
+      
     // Mostrar los botones solo si hay más de 3 empresas
     if ($num_companies > 3) {
         echo '<div class="swiper-button-next"></div>';
@@ -164,32 +166,39 @@ $result_top_companies = $con->query($sql_top_companies);
     
     <div class="swiper-container mySwiper">
         <div class="swiper-wrapper">
-            <?php
-            if ($result_top_companies && $num_companies > 0) {
-                while ($company = $result_top_companies->fetch_assoc()) {
-                    
-                    $descripcionTruncada = truncateText($company['descripcion_prod'], 3);
-                    ?>
-                    <div class="swiper-slide" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500">
-                        <img src="<?php echo htmlspecialchars($company['imagen_prod']); ?>" alt="Imagen de la empresa">
-                        <div class="descripcioncarta">
-                            <div class="titulocarta">
-                                <h4><?php echo htmlspecialchars($company['titulo']); ?></h4>
-                            </div>
-                            <div class="textocarta">
-                                <p><?php echo htmlspecialchars($descripcionTruncada); ?></p>
-                            </div>
-                            <div class="linkcarta">
-                                <a class="aslinkcarta">Ver más</a>
-                            </div>
-                        </div>
+        <?php
+$result_publicaciones = $con->query($consulta_publicaciones);
+
+if ($result_publicaciones && $result_publicaciones->num_rows > 0) {
+    while ($company = $result_publicaciones->fetch_assoc()) {
+       
+        $id_prod = $company['id_prod']; 
+
+        $descripcionTruncada = truncateText($company['descripcion_prod'], 3);
+        ?>
+        <form class="containerpublis" action="PublicacionD.php" method="POST">
+            <input type="hidden" name="id_prod" value="<?php echo htmlspecialchars($id_prod); ?>">
+            <div class="swiper-slide" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500">
+                <img src="<?php echo htmlspecialchars($company['imagen_prod']); ?>" alt="Imagen de la empresa">
+                <div class="descripcioncarta">
+                    <div class="titulocarta">
+                        <h4><?php echo htmlspecialchars($company['titulo']); ?></h4>
                     </div>
-                    <?php
-                }
-            } else {
-                echo "<div class='swiper-slide'>No hay empresas disponibles.</div>";
-            }
-            ?>
+                    <div class="textocarta">
+                        <p><?php echo htmlspecialchars($descripcionTruncada); ?></p>
+                    </div>
+                    <div class="linkcarta">
+                        <input class="botonverpubliem" type="submit" value="Ver más" name="pub">
+                    </div>
+                </div>
+            </div>
+        </form>
+        <?php
+    }
+} else {
+    echo "<div class='swiper-slide'>No hay publicaciones disponibles.</div>";
+}
+?>
         </div>
     </div>
 </div>
