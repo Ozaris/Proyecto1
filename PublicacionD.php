@@ -13,7 +13,6 @@ if ($id_prod) {
     $_SESSION['pub'] = $id_prod; // Almacenar en sesión
     setcookie("pub", $id_prod, time() + (86400 * 30), "/");
 
-   
     // Consulta para obtener información del producto
     $sql = "SELECT * FROM publicacion_prod WHERE id_prod='$id_prod'";
     $resultado = $con->query($sql);
@@ -39,6 +38,7 @@ if ($id_prod) {
         $desc_emp = $data['descripcion_prod'];
         $latitud = $data['lat'] ?? null;  // Obtener latitud
         $longitud = $data['lon'] ?? null; // Obtener longitud
+        $tipo_pub = $data['tipo']; // Agregar tipo de publicación
     }
 
     // SE GUARDAN LOS DATOS EN VARIABLES PARA USARLOS DESPUÉS
@@ -53,8 +53,10 @@ if ($id_prod) {
 
     if ($data_ft = $resultado0->fetch_assoc()) {
         $nom_empp = $data_ft['foto'];
-    
     }
+
+    // Determina la URL de destino según el tipo
+    $urlDestino = ($tipo_pub === 'servicio') ? 'servicios.php' : 'empresas.php';
 }
 ?>
 
@@ -72,8 +74,9 @@ if ($id_prod) {
 <div class="divprincipalD">
     <div class="divsec1publiD">
         <img class="imagenprincipalcomentarios" src="<?php echo $foto_pub ?>" alt="img">
-        <a class="botonatraspubliD" href="empresas.php"><i class="fa-solid iconoatraspubliD fa-arrow-left"></i></a>
-    </div>
+        <a class="botonatraspubliD" href="<?php echo $urlDestino; ?>">
+        <i class="fa-solid iconoatraspubliD fa-arrow-left"></i>
+    </a>    </div>
 
     <div class="divsec2publiD">
         <div class="divtitulodescripcion"><h2 class="titulopubliD">Información</h2></div>

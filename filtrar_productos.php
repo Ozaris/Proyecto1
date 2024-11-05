@@ -18,7 +18,7 @@ if ($categoria) {
     $consulta_publicaciones = "SELECT p.*, pe.nombre_p AS nombre_p 
                                FROM publicacion_prod p 
                                JOIN persona pe ON p.Id_per = pe.Id_per 
-                               WHERE p.categoria = ? AND p.tipo = 'publicacion' 
+                               WHERE p.categoria = ? AND p.tipo = 'servicio' 
                                ORDER BY p.created_at DESC";
 
     $stmt = $con->prepare($consulta_publicaciones);

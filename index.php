@@ -42,11 +42,13 @@ $sql_top_companies = "
     FROM empresa e
     JOIN publicacion_prod p ON e.Id_per = p.id_per
     LEFT JOIN comentario c ON c.id_prod = p.id_prod
+    WHERE p.tipo = 'publicacion'
     GROUP BY e.Id_per, p.titulo, p.imagen_prod, p.descripcion_prod
     HAVING AVG(c.valoracion) IS NOT NULL
     ORDER BY promedio DESC
     LIMIT 10
 ";
+
 
 $result_top_companies = $con->query($sql_top_companies);
 ?>

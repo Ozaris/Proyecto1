@@ -14,6 +14,8 @@ if (isset($_POST["envio-pub"])) {
     $lat = $_POST["lat"]; // Obtener latitud
     $lon = $_POST["lon"]; // Obtener longitud
     $email_emp = $_COOKIE['email_emp'] ?? null;
+    $tipo = $_POST["servicio"];
+
 
     // Verifica si se ha subido un archivo
     if (isset($_FILES['imagen_prod']) && $_FILES['imagen_prod']['error'] == 0) {
@@ -24,7 +26,7 @@ if (isset($_POST["envio-pub"])) {
         // Mueve el archivo a la carpeta deseada
         if (move_uploaded_file($imagen['tmp_name'], $rutaDestino)) {
             // Llamada a la función para crear la publicación
-            crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $rutaDestino, $lat, $lon);
+            crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $rutaDestino, $lat, $lon,$tipo);
         } else {
             echo "Error al subir la imagen.";
         }
@@ -60,7 +62,7 @@ if (isset($_SESSION['email'])) {
     $foto = 'default.png';
 }
 
-function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img, $lat, $lon) {
+function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img, $lat, $lon, $tipo) {
     $consulta_login = "SELECT * FROM persona WHERE email = '$email_emp'";
     $resultado_login = mysqli_query($con, $consulta_login);
 
@@ -69,7 +71,7 @@ function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img, $l
         $id_per = $fila['Id_per'];
 
         // Inserta en la base de datos, incluyendo latitud y longitud
-        $consulta_insertar_persona = "INSERT INTO publicacion_prod (titulo, categoria, descripcion_prod, imagen_prod, Id_per, lat, lon) VALUES ('$titulo', '$categoria', '$descripcion', '$img', '$id_per', '$lat', '$lon')";
+        $consulta_insertar_persona = "INSERT INTO publicacion_prod (titulo, categoria, descripcion_prod, imagen_prod, Id_per, lat, lon, tipo) VALUES ('$titulo', '$categoria', '$descripcion', '$img', '$id_per', '$lat', '$lon', '$tipo')";
         
         if (mysqli_query($con, $consulta_insertar_persona)) {
             echo "Publicación creada exitosamente.";
@@ -117,7 +119,7 @@ function truncateText($text, $maxWords) {
                 <ul class="navlistainicio">
                     <li class="lismenu"><a class="asmenuinicio" href="index.php">Inicio</a></li>
                     <li class="lismenu"><a class="psmenuinicio">|</a></li>
-                    <li class="lismenu"><a class="asmenuinicio" href="servicios.php">Servicios</a></li>
+                    <li class="lismenu"><a class="asmenuinicio" href="empresas.php">Empresas</a></li>
                     <li class="lismenu"><a class="psmenuinicio">|</a></li>
                     <li class="lismenu"><a class="asmenuinicio" href="index.php#map">Ubicación</a></li>
                     <li class="lismenu"><a class="psmenuinicio">|</a></li>
@@ -153,45 +155,45 @@ function truncateText($text, $maxWords) {
             <div class="divrecomendacionesempresas" id="filtro">
                 <div class="div1recomendaciones"><h3>Filtros</h3></div>
                 <div class="div2recomendaciones">
-                <a href="empresas.php">
+                <a href="servicios.php">
                 <div class="cartaderecomendados">
                         <img class="logorecomendados" src="Imagenes/todos.png" alt="img">
                         <p>Todos</p>
                     </div>
                     </a>
-                <div class="cartaderecomendados" onclick="filtrarPublicaciones('Electronica')">
+                <div class="cartaderecomendados" onclick="filtrarProductos('Electronica')">
                         <img class="logorecomendados" src="style/Imagenes/Electronica.png" alt="img">
                         <p>Electronica</p>
                     </div>
-                    <div class="cartaderecomendados" onclick="filtrarPublicaciones('Gaming')">
+                    <div class="cartaderecomendados" onclick="filtrarProductos('Gaming')">
                         <img class="logorecomendados" src="style/Imagenes/Entretenimiento.png" alt="img">
                         <p>Gaming</p>
                     </div>
-                    <div class="cartaderecomendados" onclick="filtrarPublicaciones('Ropa')">
+                    <div class="cartaderecomendados" onclick="filtrarProductos('Ropa')">
                         <img class="logorecomendados" src="style/Imagenes/Ropa.png" alt="img">
                         <p>Ropa</p>
                     </div>
-                        <div class="cartaderecomendados" onclick="filtrarPublicaciones('Deporte')">
+                        <div class="cartaderecomendados" onclick="filtrarProductos('Deporte')">
                             <img class="logorecomendados" src="style/Imagenes/Deporte.png" alt="img">
                             <p>Deporte</p>
                         </div>
-                        <div class="cartaderecomendados" onclick="filtrarPublicaciones('Familia')">
+                        <div class="cartaderecomendados" onclick="filtrarProductos('Familia')">
                             <img class="logorecomendados" src="style/Imagenes/familia.png" alt="img">
                             <p>Familia</p>
                         </div>
-                        <div class="cartaderecomendados" onclick="filtrarPublicaciones('Mascotas')">
+                        <div class="cartaderecomendados" onclick="filtrarProductos('Mascotas')">
                             <img class="logorecomendados" src="style/Imagenes/mascotas.png" alt="img">
                             <p>Mascotas</p>
                         </div>
-                        <div class="cartaderecomendados" onclick="filtrarPublicaciones('Musica')">
+                        <div class="cartaderecomendados" onclick="filtrarProductos('Musica')">
                             <img class="logorecomendados" src="style/Imagenes/musica.png" alt="img">
                             <p>Musica</p>
                         </div>
-                        <div class="cartaderecomendados" onclick="filtrarPublicaciones('Propiedades')">
+                        <div class="cartaderecomendados" onclick="filtrarProductos('Propiedades')">
                             <img class="logorecomendados" src="style/Imagenes/propiedad.png" alt="img">
                             <p>Propiedades</p>
                         </div>
-                        <div class="cartaderecomendados" onclick="filtrarPublicaciones('Vehiculos')">
+                        <div class="cartaderecomendados" onclick="filtrarProductos('Vehiculos')">
                             <img class="logorecomendados" src="style/Imagenes/Vehiculos.png" alt="img">
                             <p>Vehiculos</p>
                         </div>
@@ -215,7 +217,7 @@ function truncateText($text, $maxWords) {
    
   <div class="modal modal-xl fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <form action="empresas.php" method="POST" enctype="multipart/form-data">
+        <form action="servicios.php" method="POST" enctype="multipart/form-data">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Publicar</h1>
@@ -250,6 +252,7 @@ function truncateText($text, $maxWords) {
                                     <option value="Propiedades">Propiedades</option>
                                     <option value="Vehículos">Vehículos</option>
                                 </select>
+                                <input type="hidden" value="servicio" id="servicio" name="servicio">
                                 <textarea class="form-control inputpublicacion3" placeholder="Descripción" id="descripcion" name="descripcion" maxlength="300" style="height: 100px" oninput="validateInput()" required></textarea>
                                 <div class="caracteresletrasalerta" id="charCount">300 caracteres restantes</div> <!-- Contador de caracteres -->
                             </div>
@@ -289,10 +292,10 @@ function truncateText($text, $maxWords) {
 
 <!-- +++++++++++++++++++++++++++PUBLICACIONES+++++++++++++++++++++++++++ --> 
             <div>
-            <div class="divprincipalpublisem" id="publicacionesContainer">
+                <div class="divprincipalpublisem" id="publicacionesContainer">
                 <?php
                 // Obtener las publicaciones de la base de datos
-                $consulta_publicaciones = "SELECT p.*, pe.* FROM publicacion_prod p JOIN persona pe ON p.Id_per = pe.Id_per ORDER BY p.created_at DESC";
+                $consulta_publicaciones = "SELECT p.*, pe.* FROM publicacion_prod p JOIN persona pe ON p.Id_per = pe.Id_per  WHERE p.tipo = 'servicio' ORDER BY p.created_at DESC";
                 $resultado_publicaciones = mysqli_query($con, $consulta_publicaciones);
 
                 if ($resultado_publicaciones && mysqli_num_rows($resultado_publicaciones) > 0) {
@@ -400,9 +403,9 @@ document.getElementById('formFile').addEventListener('change', function(event) {
     }
 });
 
-function filtrarPublicaciones(categoria) {
+function filtrarProductos(categoria) {
             $.ajax({
-                url: 'filtrar_publicaciones.php',
+                url: 'filtrar_productos.php',
                 method: 'POST',
                 data: { categoria: categoria },
                 success: function(data) {

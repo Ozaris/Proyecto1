@@ -14,6 +14,7 @@ if (isset($_POST["envio-pub"])) {
     $lat = $_POST["lat"]; // Obtener latitud
     $lon = $_POST["lon"]; // Obtener longitud
     $email_emp = $_COOKIE['email_emp'] ?? null;
+    $tipo = $_POST["publicacion"];
 
     // Verifica si se ha subido un archivo
     if (isset($_FILES['imagen_prod']) && $_FILES['imagen_prod']['error'] == 0) {
@@ -24,7 +25,7 @@ if (isset($_POST["envio-pub"])) {
         // Mueve el archivo a la carpeta deseada
         if (move_uploaded_file($imagen['tmp_name'], $rutaDestino)) {
             // Llamada a la función para crear la publicación
-            crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $rutaDestino, $lat, $lon);
+            crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $rutaDestino, $lat, $lon,$tipo);
         } else {
             echo "Error al subir la imagen.";
         }
@@ -60,7 +61,7 @@ if (isset($_SESSION['email'])) {
     $foto = 'default.png';
 }
 
-function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img, $lat, $lon) {
+function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img, $lat, $lon, $tipo) {
     $consulta_login = "SELECT * FROM persona WHERE email = '$email_emp'";
     $resultado_login = mysqli_query($con, $consulta_login);
 
@@ -69,7 +70,7 @@ function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img, $l
         $id_per = $fila['Id_per'];
 
         // Inserta en la base de datos, incluyendo latitud y longitud
-        $consulta_insertar_persona = "INSERT INTO publicacion_prod (titulo, categoria, descripcion_prod, imagen_prod, Id_per, lat, lon) VALUES ('$titulo', '$categoria', '$descripcion', '$img', '$id_per', '$lat', '$lon')";
+        $consulta_insertar_persona = "INSERT INTO publicacion_prod (titulo, categoria, descripcion_prod, imagen_prod, Id_per, lat, lon, tipo) VALUES ('$titulo', '$categoria', '$descripcion', '$img', '$id_per', '$lat', '$lon', '$tipo')";
         
         if (mysqli_query($con, $consulta_insertar_persona)) {
             echo "Publicación creada exitosamente.";
@@ -250,6 +251,8 @@ function truncateText($text, $maxWords) {
                                     <option value="Propiedades">Propiedades</option>
                                     <option value="Vehículos">Vehículos</option>
                                 </select>
+                                <input type="hidden" value="publicacion" id="publicacion" name="publicacion">
+
                                 <textarea class="form-control inputpublicacion3" placeholder="Descripción" id="descripcion" name="descripcion" maxlength="300" style="height: 100px" oninput="validateInput()" required></textarea>
                                 <div class="caracteresletrasalerta" id="charCount">300 caracteres restantes</div> <!-- Contador de caracteres -->
                             </div>
@@ -292,7 +295,7 @@ function truncateText($text, $maxWords) {
             <div class="divprincipalpublisem" id="publicacionesContainer">
                 <?php
                 // Obtener las publicaciones de la base de datos
-                $consulta_publicaciones = "SELECT p.*, pe.* FROM publicacion_prod p JOIN persona pe ON p.Id_per = pe.Id_per ORDER BY p.created_at DESC";
+                $consulta_publicaciones = "SELECT p.*, pe.* FROM publicacion_prod p JOIN persona pe ON p.Id_per = pe.Id_per  WHERE p.tipo = 'publicacion' ORDER BY p.created_at DESC";
                 $resultado_publicaciones = mysqli_query($con, $consulta_publicaciones);
 
                 if ($resultado_publicaciones && mysqli_num_rows($resultado_publicaciones) > 0) {
