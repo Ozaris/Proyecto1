@@ -1,3 +1,7 @@
+
+<?php
+$rol = $_COOKIE['rol'] ?? null;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -188,13 +192,20 @@
                 <a class="afooter aslinkcarta" href="contacto.html">Contacto</a>
                 <a class="afooter aslinkcarta" href="Informacion.html#FAQs">FAQs</a>
                 <a class="afooter aslinkcarta" href="index.php#planes">Planes</a>
-                <a class="afooter aslinkcarta" href="mispublicaciones.php">Mis posts</a>
+                <?php if ($rol==='empresa'){
+                  echo "<a class='afooter aslinkcarta' href='mispublicaciones.php'>Mis posts</a>";
+               }else{
+                  
+               }
+               
+               
+               ?>
             </nav>
             <nav class="nav2footer">
                 <p class="pfooter">Nosotros</p>
-                <a class="afooter aslinkcarta" href="Informacion.html">Informacion</a>
+                <a class="afooter aslinkcarta" href="Informacion.php">Informacion</a>
                 <a class="afooter aslinkcarta" href="index.php#map">Ubicacion</a>
-                <a class="afooter aslinkcarta" href="Informacion.html#ozariskorf">Korf/Ozaris</a>
+                <a class="afooter aslinkcarta" href="Informacion.php#ozariskorf">Korf/Ozaris</a>
             <nav class="navredesfooter">
                 <a class="aredesfooter aslinkcarta" href=""><i class="fa-brands fa-3x fa-instagram"></i></a>
                 <a class="aredesfooter aslinkcarta" href=""><i class="fa-brands fa-3x fa-facebook"></i></a>

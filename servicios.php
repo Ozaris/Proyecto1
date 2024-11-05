@@ -132,7 +132,14 @@ function truncateText($text, $maxWords) {
   </button>
   <ul class="dropdown-menu">
     <li><a class="dropdown-item" href="javascript:void(0);" onclick="redireccion()">Perfil</a></li>
-    <li><a class="dropdown-item" href="mispublicaciones.php">Mis publicaciones</a></li>
+    <?php if ($rol==='empresa'){
+   echo "<a class='afooter aslinkcarta' href='mispublicaciones.php'>Mis posts</a>";
+}else{
+   
+}
+
+
+?>
   </ul>
 </div>
                 </ul>

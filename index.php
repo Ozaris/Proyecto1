@@ -13,7 +13,7 @@ if (isset($_SESSION['email'])) {
         $foto2="img_usr/default.png";
         $email = $data['email'];
         $foto = $data['foto'] ?? $foto2;
-        $rol = $data['rol'];
+        $rol = $data['rol'] ?? null;
 
         setcookie("nombre", $nombre_p, time() + 4200, "/");
         setcookie("foto", $foto, time() + (86400 * 30), "/");
@@ -97,7 +97,15 @@ $result_top_companies = $con->query($sql_top_companies);
   </button>
   <ul class="dropdown-menu">
     <li><a class="dropdown-item" href="javascript:void(0);" onclick="redireccion()">Perfil</a></li>
-    <li><a class="dropdown-item" href="mispublicaciones.php">Mis publicaciones</a></li>
+    <?php if ($rol==='empresa'){
+   echo " <li><a class='dropdown-item item2' href='mispublicaciones.php'>Mis publicaciones</a></li>";
+}else{
+   
+}
+
+
+?>
+    
   </ul>
 </div>
 </li>
@@ -280,15 +288,23 @@ if ($result_publicaciones && $result_publicaciones->num_rows > 0) {
             <nav class="navsfooter">
                 <p class="pfooter">Ayuda</p>
                 <a class="afooter aslinkcarta" href="contacto.html">Contacto</a>
-                <a class="afooter aslinkcarta" href="Informacion.html#FAQs">FAQs</a>
+                <a class="afooter aslinkcarta" href="Informacion.php#FAQs">FAQs</a>
                 <a class="afooter aslinkcarta" href="index.php#planes">Planes</a>
-                <a class="afooter aslinkcarta" href="mispublicaciones.php">Mis posts</a>
+                <?php if ($rol==='empresa'){
+   echo "<a class='afooter aslinkcarta' href='mispublicaciones.php'>Mis posts</a>";
+}else{
+   
+}
+
+
+?>
+                
             </nav>
             <nav class="nav2footer">
                 <p class="pfooter">Nosotros</p>
-                <a class="afooter aslinkcarta" href="Informacion.html">Informacion</a>
+                <a class="afooter aslinkcarta" href="Informacion.php">Informacion</a>
                 <a class="afooter aslinkcarta" href="index.php#map">Ubicacion</a>
-                <a class="afooter aslinkcarta" href="Informacion.html#ozariskorf">Korf/Ozaris</a>
+                <a class="afooter aslinkcarta" href="Informacion.php#ozariskorf">Korf/Ozaris</a>
             <nav class="navredesfooter">
                 <a class="aredesfooter aslinkcarta" href=""><i class="fa-brands fa-3x fa-instagram"></i></a>
                 <a class="aredesfooter aslinkcarta" href=""><i class="fa-brands fa-3x fa-facebook"></i></a>
