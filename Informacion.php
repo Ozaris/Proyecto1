@@ -1,6 +1,22 @@
 
 <?php
-$rol = $_COOKIE['rol'] ?? null;
+if (isset($_SESSION['email'])) {
+  $email = $_SESSION['email'];
+  $sql = "SELECT * FROM persona WHERE email='$email'";
+  $resultado = $con->query($sql);
+
+  if ($data = $resultado->fetch_assoc()) {
+    
+      $rol = $data['rol'];
+
+  } else {
+    
+      $rol='inv';
+  }
+} else {
+ 
+  $rol='inv';
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -194,8 +210,8 @@ $rol = $_COOKIE['rol'] ?? null;
                 <a class="afooter aslinkcarta" href="index.php#planes">Planes</a>
                 <?php if ($rol==='empresa'){
                   echo "<a class='afooter aslinkcarta' href='mispublicaciones.php'>Mis posts</a>";
-               }else{
-                  
+               }elseif($rol==='usuario' || $rol==='inv'){
+   
                }
                
                
@@ -214,7 +230,7 @@ $rol = $_COOKIE['rol'] ?? null;
             </nav>
         </div>
         <div class="footerbottom">
-            <p class="pbottomfooter">| © 2024 Instituto Tecnologico Superior de Paysandu · Uruguay · +598 99 531 562 · ozaris08@gmail.com · Por KORF |</p>
+            <p class="pbottomfooter">| © 2024 Instituto Tecnologico Superior de Paysandu · Uruguay · +598 99 *** *** · ozaris08@gmail.com · Por KORF |</p>
         </div>
     </footer>
 

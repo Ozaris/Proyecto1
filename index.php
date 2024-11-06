@@ -22,10 +22,12 @@ if (isset($_SESSION['email'])) {
     } else {
         $nombre_p = 'Nombre no disponible';
         $foto = 'img_usr/default.png';
+        $rol= 'inv';
     }
 } else {
     $nombre_p = 'Nombre no disponible';
     $foto = 'default.png';
+    $rol= 'inv';
 }
 
 // Función para truncar el texto
@@ -99,9 +101,11 @@ $result_publicaciones = $con->query($consulta_publicaciones);
     <li><a class="dropdown-item" href="javascript:void(0);" onclick="redireccion()">Perfil</a></li>
     <?php if ($rol==='empresa'){
    echo " <li><a class='dropdown-item item2' href='mispublicaciones.php'>Mis publicaciones</a></li>";
-}else{
+}elseif($rol==='usuario' || $rol==='inv'){
    
 }
+
+
 
 
 ?>
@@ -284,9 +288,11 @@ $result_publicaciones = $con->query($consulta_publicaciones);
                 <a class="afooter aslinkcarta" href="index.php#planes">Planes</a>
                 <?php if ($rol==='empresa'){
    echo "<a class='afooter aslinkcarta' href='mispublicaciones.php'>Mis posts</a>";
-}else{
+}elseif($rol==='usuario' || $rol==='inv'){
    
 }
+
+
 
 
 ?>

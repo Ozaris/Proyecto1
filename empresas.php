@@ -54,11 +54,13 @@ if (isset($_SESSION['email'])) {
         $nombre_p = 'Nombre no disponible';
         $email = 'Email no disponible';
         $foto = 'img_usr/default.png';
+        $rol ='inv';
     }
 } else {
     $nombre_p = 'Nombre no disponible';
     $email = 'Email no disponible';
     $foto = 'default.png';
+    $rol='inv';
 }
 
 function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img, $lat, $lon, $tipo) {
@@ -133,7 +135,7 @@ function truncateText($text, $maxWords) {
     <li><a class="dropdown-item" href="javascript:void(0);" onclick="redireccion()">Perfil</a></li>
     <?php if ($rol==='empresa'){
    echo " <li><a class='dropdown-item item2' href='mispublicaciones.php'>Mis publicaciones</a></li>";
-}else{
+}elseif($rol==='usuario' || $rol==='inv'){
    
 }
 
