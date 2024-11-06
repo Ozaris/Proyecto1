@@ -3,6 +3,7 @@ include "conexion.php";
 $con = conectar_bd();
 session_start();
 
+// Verifica si el usuario está logueado y obtiene su información
 if (isset($_SESSION['email'])) {
     $email = $_SESSION['email'];
     $sql = "SELECT * FROM persona WHERE email='$email'";
@@ -10,47 +11,46 @@ if (isset($_SESSION['email'])) {
 
     if ($data = $resultado->fetch_assoc()) {
         $nombre_p = $data['nombre_p'];
-        $foto2="img_usr/default.png";
-        $email = $data['email'];
+        $foto2 = "img_usr/default.png";
         $foto = $data['foto'] ?? $foto2;
         $rol = $data['rol'] ?? null;
 
         setcookie("nombre", $nombre_p, time() + 4200, "/");
         setcookie("foto", $foto, time() + (86400 * 30), "/");
-        setcookie("email_emp", $email, time() + (86400 * 30), "/");  // Cookie válida por 30 días
+        setcookie("email_emp", $email, time() + (86400 * 30), "/");
         setcookie("rol", $rol, time() + 4200, "/");
     } else {
         $nombre_p = 'Nombre no disponible';
-        $email = 'Email no disponible';
         $foto = 'img_usr/default.png';
     }
 } else {
     $nombre_p = 'Nombre no disponible';
-    $email = 'Email no disponible';
     $foto = 'default.png';
 }
 
+// Función para truncar el texto
 function truncateText($text, $maxWords) {
     $words = explode(' ', $text);
     if (count($words) > $maxWords) {
-        return implode(' ', array_slice($words, 3, $maxWords)) . '...';
+        return implode(' ', array_slice($words, 0, $maxWords)) . '...';
     }
     return $text;
 }
-$sql_top_companies = "
-    SELECT e.nombre_p, p.titulo, p.imagen_prod, p.descripcion_prod, AVG(c.valoracion) AS promedio
-    FROM empresa e
-    JOIN publicacion_prod p ON e.Id_per = p.id_per
+
+// Consulta para obtener las publicaciones mejor valoradas, limitadas a las 10 mejores
+$consulta_publicaciones = "
+    SELECT p.id_prod, p.titulo, p.imagen_prod, p.descripcion_prod, AVG(c.valoracion) AS promedio
+    FROM publicacion_prod p
     LEFT JOIN comentario c ON c.id_prod = p.id_prod
     WHERE p.tipo = 'publicacion'
-    GROUP BY e.Id_per, p.titulo, p.imagen_prod, p.descripcion_prod
+    GROUP BY p.id_prod, p.titulo, p.imagen_prod, p.descripcion_prod
     HAVING AVG(c.valoracion) IS NOT NULL
     ORDER BY promedio DESC
     LIMIT 10
 ";
 
-
-$result_top_companies = $con->query($sql_top_companies);
+// Ejecuta la consulta
+$result_publicaciones = $con->query($consulta_publicaciones);
 ?>
 
 
@@ -158,55 +158,47 @@ $result_top_companies = $con->query($sql_top_companies);
 <div id="topempresas"></div>
 <div class="parte4body swiper" id="parte4" data-aos="zoom-in-up" data-aos-duration="1500">
     <h1 class="h1parte4body">10 empresas destacadas de la semana:</h1>
-    
-    <?php
-    // Contar el número de empresas disponibles
-    $num_companies = $result_top_companies ? $result_top_companies->num_rows : 0;
-    $consulta_publicaciones = "SELECT p.*, pe.* FROM publicacion_prod p JOIN persona pe ON p.Id_per = pe.Id_per  WHERE p.tipo = 'publicacion' ORDER BY p.created_at DESC";
-  
-      
-    // Mostrar los botones solo si hay más de 3 empresas
-    if ($num_companies > 3) {
-        echo '<div class="swiper-button-next"></div>';
-        echo '<div class="swiper-button-prev"></div>';
-    }
-    ?>
-    
+
+    <!-- Si hay más de 3 empresas, mostrar botones para deslizar -->
+    <?php if ($result_publicaciones && $result_publicaciones->num_rows > 3) : ?>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    <?php endif; ?>
+
     <div class="swiper-container mySwiper">
         <div class="swiper-wrapper">
-        <?php
-$result_publicaciones = $con->query($consulta_publicaciones);
-
-if ($result_publicaciones && $result_publicaciones->num_rows > 0) {
-    while ($company = $result_publicaciones->fetch_assoc()) {
-       
-        $id_prod = $company['id_prod']; 
-
-        $descripcionTruncada = truncateText($company['descripcion_prod'], 3);
-        ?>
-         <div class="swiper-slide" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500">
-        <form class="containerpublis" action="PublicacionD.php" method="POST">
-            <input type="hidden" name="id_prod" value="<?php echo htmlspecialchars($id_prod); ?>">
-                <img src="<?php echo htmlspecialchars($company['imagen_prod']); ?>" alt="Imagen de la empresa">
-                <div class="descripcioncarta">
-                    <div class="titulocarta">
-                        <h4><?php echo htmlspecialchars($company['titulo']); ?></h4>
+            <?php
+            if ($result_publicaciones && $result_publicaciones->num_rows > 0) {
+                while ($company = $result_publicaciones->fetch_assoc()) {
+                    $id_prod = $company['id_prod'];
+                    $descripcionTruncada = truncateText($company['descripcion_prod'], 3);
+                    ?>
+                    <div class="swiper-slide" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500">
+                        <form class="containerpublis" action="PublicacionD.php" method="POST">
+                            <input type="hidden" name="id_prod" value="<?php echo htmlspecialchars($id_prod); ?>">
+                            <img src="<?php echo htmlspecialchars($company['imagen_prod']); ?>" alt="Imagen de la empresa">
+                            <div class="descripcioncarta">
+                                <div class="titulocarta">
+                                    <h4><?php echo htmlspecialchars($company['titulo']); ?></h4>
+                                </div>
+                                <div class="textocarta">
+                                    <p><?php echo htmlspecialchars($descripcionTruncada); ?></p>
+                                </div>
+                                <div class="linkcarta">
+                                    <input class="botonverpubliem" type="submit" value="Ver más" name="pub">
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div class="textocarta">
-                        <p><?php echo htmlspecialchars($descripcionTruncada); ?></p>
-                    </div>
-                    <div class="linkcarta">
-                        <input class="botonverpubliem" type="submit" value="Ver más" name="pub">
-                    </div>
-                </div>
-            </div>
-        </form>
-        <?php
-    }
-} else {
-    echo "<div class='swiper-slide'>No hay publicaciones disponibles.</div>";
-}
-?>
+                    <?php
+                }
+            } else {
+                echo "<div class='swiper-slide'>No hay publicaciones disponibles.</div>";
+            }
+            ?>
+        </div>
+    </div>
+</div>
         </div>
     </div>
 </div>

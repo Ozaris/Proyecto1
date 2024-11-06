@@ -55,8 +55,15 @@ if ($id_prod) {
         $nom_empp = $data_ft['foto'];
     }
 
-    // Determina la URL de destino según el tipo
-    $urlDestino = ($tipo_pub === 'servicio') ? 'servicios.php' : 'empresas.php';
+    // Verifica si la URL de origen está disponible
+    if (isset($_SERVER['HTTP_REFERER']) && strpos($_SERVER['HTTP_REFERER'], 'index.php') !== false) {
+        // Si el origen es index.php, almacena el origen en la variable
+        $urlDestino = $_SERVER['HTTP_REFERER'];
+    } else {
+        // Si no es desde index.php, se comporta como antes
+        $urlDestino = ($tipo_pub === 'servicio') ? 'servicios.php' : 'empresas.php';
+    }
+    
 }
 ?>
 
