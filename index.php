@@ -184,9 +184,9 @@ if ($result_publicaciones && $result_publicaciones->num_rows > 0) {
 
         $descripcionTruncada = truncateText($company['descripcion_prod'], 3);
         ?>
+         <div class="swiper-slide" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500">
         <form class="containerpublis" action="PublicacionD.php" method="POST">
             <input type="hidden" name="id_prod" value="<?php echo htmlspecialchars($id_prod); ?>">
-            <div class="swiper-slide" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500">
                 <img src="<?php echo htmlspecialchars($company['imagen_prod']); ?>" alt="Imagen de la empresa">
                 <div class="descripcioncarta">
                     <div class="titulocarta">
