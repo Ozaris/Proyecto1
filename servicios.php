@@ -135,7 +135,7 @@ function truncateText($text, $maxWords) {
   <ul class="dropdown-menu">
     <li><a class="dropdown-item" href="javascript:void(0);" onclick="redireccion()">Perfil</a></li>
     <?php if ($rol==='empresa'){
-   echo "<a class='afooter aslinkcarta' href='mispublicaciones.php'>Mis posts</a>";
+   echo " <li><a class='dropdown-item item2' href='mispublicaciones.php'>Mis publicaciones</a></li>";
 }elseif($rol==='usuario' || $rol==='inv'){
    
 }
