@@ -239,7 +239,7 @@ function truncateText($text, $maxWords) {
                             <label for="formFile" class="form-label">
                                 <i class="fa-solid fa-2x fa-plus iconomaspublicacion"></i>
                             </label>
-                            <button class="botoneliminarimagen"><i class="fa-solid fa-trash"></i></button>
+                            <button type="button" class="botoneliminarimagen" id="botonEliminarImagen" style="display: none;"><i class="fa-solid fa-trash"></i></button>
                             <input class="form-control form-control1" type="file" id="formFile" name="imagen_prod" accept="image/jpeg,jpg,png" required>
                             <div id="imagePreview" class="image-preview"></div> <!-- Vista previa -->
                         </div>
@@ -461,27 +461,36 @@ function redireccion() {
     });
 </script>
 <script>
-        document.getElementById('formFile').addEventListener('change', function(event) {
-    const file = event.target.files[0];
-    const reader = new FileReader();
+    document.getElementById('formFile').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
 
-    reader.onload = function(e) {
-        const imagePreview = document.getElementById('imagePreview');
-        imagePreview.innerHTML = `<img src="${e.target.result}" alt="Imagen Previa" style="max-width: 100%; height: 480px;">`;
+        reader.onload = function(e) {
+            const imagePreview = document.getElementById('imagePreview');
+            imagePreview.innerHTML = `<img src="${e.target.result}" alt="Imagen Previa" style="max-width: 100%; height: 480px;">`;
 
-        // Hide the label when an image is previewed
-        document.querySelector('label[for="formFile"]').style.display = 'none';
-    };
+            // Hide the label and show the delete button when an image is previewed
+            document.querySelector('label[for="formFile"]').style.display = 'none';
+            document.getElementById('botonEliminarImagen').style.display = 'block'; // Show the delete button
+        };
 
-    if (file) {
-        reader.readAsDataURL(file);
-    } else {
-        // Clear the preview and show the label if no file is selected
-        document.getElementById('imagePreview').innerHTML = '';
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            // Clear the preview and show the label if no file is selected
+            document.getElementById('imagePreview').innerHTML = '';
+            document.querySelector('label[for="formFile"]').style.display = 'block'; // Show the label again
+            document.getElementById('botonEliminarImagen').style.display = 'none'; // Hide the delete button
+        }
+    });
+
+    document.getElementById('botonEliminarImagen').addEventListener('click', function() {
+        const fileInput = document.getElementById('formFile');
+        fileInput.value = ''; // Clear the file input
+        document.getElementById('imagePreview').innerHTML = ''; // Clear the preview
         document.querySelector('label[for="formFile"]').style.display = 'block'; // Show the label again
-    }
-});
-
+        document.getElementById('botonEliminarImagen').style.display = 'none'; // Hide the delete button
+    });
 
     </script>
 
