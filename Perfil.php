@@ -1,15 +1,14 @@
 <?php
-/* INICIA LA SESIÓN Y TOMA LOS DATOS*/
+/* INICIA LA SESIÓN Y TOMA LOS DATOS */
 include "conexion.php";
 $con = conectar_bd();
 session_start();
 if (!isset($_SESSION['email'])) {
     header("Location: Perfil.php");
-    exit(); 
+    exit();
 }
 
 //Convierte los datos en variables para posteriormente usarlos
-
 $email = $_SESSION['email'];
 $sql = "SELECT * FROM persona WHERE email='$email'";
 $resultado = $con->query($sql);
@@ -20,36 +19,31 @@ if ($data = $resultado->fetch_assoc()) {
     $foto = $data['foto'];
     $rol = $data['rol'];
     $descripcion = $data['descripcion'];
-
- 
 } else {
     $nombre_p = 'Nombre no disponible';
     $email = 'Email no disponible';
     $foto = 'default.png'; // Imagen predeterminada
 }
 
-
-
 // Actualizar foto de perfil
-
 if (isset($_POST["envio-edit-ft-usr"])) {
     try {
-        $archivo = $_FILES["foto_usr"]; 
-        
+        $archivo = $_FILES["foto_usr"];
+
         if ($archivo["error"] === UPLOAD_ERR_OK) {
             $nombre_temporal = $archivo["tmp_name"];
             $nombre_archivo = basename($archivo["name"]); // Usa basename para evitar problemas con rutas
 
             // Define la ruta
             $ruta_destino = "img_usr/$nombre_archivo";
-            
+
             // Mueve el archivo a la carpeta específica
             if (move_uploaded_file($nombre_temporal, $ruta_destino)) {
-                
+
                 // Redimensiona la imagen a 800x800 píxeles
                 list($width, $height, $type) = getimagesize($ruta_destino);
 
-                // Definie un tamaño en específico
+                // Define un tamaño específico
                 $max_width = 1000;
                 $max_height = 1000;
 
@@ -106,94 +100,86 @@ if (isset($_POST["envio-edit-ft-usr"])) {
                 $stmt = $con->prepare($sql);
                 $stmt->bind_param('ss', $nombre_archivo, $email);
                 $stmt->execute();
-                
+
                 // Actualiza la variable de foto en el script
                 $foto = $nombre_archivo;
-                
+
                 // Redirige a la misma página para reflejar el cambio
+                echo "<script>alert('Foto de perfil actualizada exitosamente.');</script>";
                 header("Location: Perfil.php");
                 exit();
             } else {
-                echo "Error al mover el archivo al servidor.";
+                echo "<script>alert('Error al mover el archivo al servidor.');</script>";
             }
         } else {
-            echo "Error al subir el archivo.";
+            echo "<script>alert('Error al subir el archivo.');</script>";
         }
     } catch (Exception $e) {
-        echo "Error: " . $e->getMessage();
+        echo "<script>alert('Error: " . $e->getMessage() . "');</script>";
     }
 }
 
 // Muestra la foto en la página del perfil, o una imagen por defecto si no hay foto
 $picture_to_show = "img_usr/" . ($foto ?: 'default.png');
-
 setcookie("user_picture", $picture_to_show, time() + (86400 * 30), "/");
-setcookie("default", $foto, time() + (86400 * 30), "/"); 
+setcookie("default", $foto, time() + (86400 * 30), "/");
 
+/* ACTUALIZA EL NOMBRE DE USUARIO EN LA TABLA PERSONA Y USUARIO */
 
-
-/* ACTUALIZA EL NOMBRE DE USUARIO EN LA TABLA PERSONA Y USUARIO*/
-
-// Actualiza el nombre de usuario en la tabla persona y usuario
 if (isset($_POST["envio-edit-nom-usr"])) {
     $edit_nom_usr = $_POST["edit_nom_usr"];
     $nombre_p = $data['nombre_p'];
     $existe_nom = consultar_existe_nom($con, $edit_nom_usr);
     $rol = $data['rol'];
-    if (!$existe_nom) {
-       
 
+    if (!$existe_nom) {
         // Actualiza en persona
         $consulta_actualizar_persona = "UPDATE persona SET nombre_p = '$edit_nom_usr' WHERE nombre_p = '$nombre_p'";
-        
-        if (mysqli_query($con, $consulta_actualizar_persona)) {
-            echo "Actualización exitosa en persona.<br>";
 
+        if (mysqli_query($con, $consulta_actualizar_persona)) {
             // Actualiza en usuario
             if ($rol === 'usuario') {
                 $sql = "UPDATE usuario SET nombre_p = '$edit_nom_usr' WHERE nombre_p = '$nombre_p'";
-                echo "Consulta de actualización en usuario: " . $sql . "<br>"; // Para depuración
-                
+
                 if (mysqli_query($con, $sql)) {
-                    echo "Actualización exitosa en usuario.<br>";
+                    echo "<script>alert('Nombre de usuario actualizado exitosamente en usuario.');</script>";
                 } else {
-                    echo "Error en la consulta de usuario: " . mysqli_error($con) . "<br>";
+                    echo "<script>alert('Error al actualizar nombre en la tabla usuario: " . mysqli_error($con) . "');</script>";
                 }
             } elseif ($rol === 'empresa') {
                 $consulta_actualizar_empresa = "UPDATE empresa SET nombre_p = '$edit_nom_usr' WHERE nombre_p = '$nombre_p'";
-                
+
                 if (mysqli_query($con, $consulta_actualizar_empresa)) {
-                    echo "Actualización exitosa en empresa.<br>";
+                    echo "<script>alert('Nombre de usuario actualizado exitosamente en empresa.');</script>";
                 } else {
-                    echo "Error al actualizar en empresa: " . mysqli_error($con) . "<br>";
+                    echo "<script>alert('Error al actualizar nombre en la tabla empresa.');</script>";
                 }
             }
         } else {
-            echo "Error al actualizar en persona: " . mysqli_error($con) . "<br>";
+            echo "<script>alert('Error al actualizar nombre de usuario en persona: " . mysqli_error($con) . "');</script>";
         }
     } else {
-        echo "El usuario ya existe.<br>";
+        echo "<script>alert('El nombre de usuario ya existe.');</script>";
     }
 }
-
 
 if (isset($_POST["envio-edit-desc-usr"]) && isset($_POST["edit_desc_usr"])) {
     $edit_desc_usr = $_POST["edit_desc_usr"];
     $nombre_p = $data['nombre_p'];
-    
- 
+
     $edit_desc_usr = mysqli_real_escape_string($con, $edit_desc_usr);
-    
+
     // Actualiza en la tabla persona
     $consulta_actualizar_descripcion = "UPDATE persona SET descripcion = '$edit_desc_usr' WHERE nombre_p = '$nombre_p'";
-    
+
     if (mysqli_query($con, $consulta_actualizar_descripcion)) {
+        echo "<script>alert('Descripción actualizada exitosamente.');</script>";
         header("Location: Perfil.php");
         exit();
     } else {
-        echo "Error al actualizar la descripción: " . mysqli_error($con) . "<br>";
+        echo "<script>alert('Error al actualizar la descripción: " . mysqli_error($con) . "');</script>";
     }
-} 
+}
 
 //VERIFICA SI YA EXISTE EL NOMBRE DE USUARIO
 function consultar_existe_nom($con, $edit_nom_usr) {
@@ -204,35 +190,28 @@ function consultar_existe_nom($con, $edit_nom_usr) {
     if ($resultado_existe_nom) {
         return mysqli_num_rows($resultado_existe_nom) > 0;
     } else {
-        echo "Error en la consulta de existencia de nombre: " . mysqli_error($con) . "<br>";
+        echo "<script>alert('Error al buscar nombres que coincidan: " . mysqli_error($con) . "');</script>";
         return false; // Para evitar problemas si hay un error
     }
 }
 
-
-
-
 //ELIMINAR CUENTA
-
 if (isset($_POST["envio-elim-usr"])) {
-
-  
     $envio_elim_usr = $_POST["envio-elim-usr"];
     $nombre_p = $data['nombre_p'];
-    $rol=$data['rol'];
-    if ($envio_elim_usr == 'envio-elim-usr') { 
-        elim($con, $nombre_p,$rol);
+    $rol = $data['rol'];
+    if ($envio_elim_usr == 'envio-elim-usr') {
+        elim($con, $nombre_p, $rol);
     } else {
-        echo "No se puede eliminar el usuario";
+        echo "<script>alert('No se puede eliminar usuario.');</script>";
     }
 }
 
 function elim($con, $nombre_p, $rol) {
     $nombre_p = mysqli_real_escape_string($con, $nombre_p);
-    
+
     // Si el rol es empresa, se toma la id_per y con esta se elimina los comentarios
     if ($rol === 'empresa') {
-        
         $id_per_result = mysqli_query($con, "SELECT Id_per FROM empresa WHERE nombre_p='$nombre_p'");
         $id_per_row = mysqli_fetch_assoc($id_per_result);
         $id_per = $id_per_row['Id_per'];
@@ -249,7 +228,7 @@ function elim($con, $nombre_p, $rol) {
         $consulta_eliminar_empresa = "DELETE FROM empresa WHERE nombre_p='$nombre_p'";
         mysqli_query($con, $consulta_eliminar_empresa);
     }
-    
+
     // Si el rol es 'usuario', es el mismo procedimiento pero sin borrar la tabla publicación
     if ($rol === 'usuario') {
         $consulta_eliminar_com = "DELETE FROM comentario WHERE id_per2 = (SELECT Id_per FROM usuario WHERE nombre_p='$nombre_p')";
@@ -259,19 +238,17 @@ function elim($con, $nombre_p, $rol) {
         $consulta_eliminar_usuario = "DELETE FROM usuario WHERE nombre_p='$nombre_p'";
         mysqli_query($con, $consulta_eliminar_usuario);
     }
-    
+
     // Finalmente, eliminar de la tabla persona
     $consulta_eliminar_persona = "DELETE FROM persona WHERE nombre_p='$nombre_p'";
     if (mysqli_query($con, $consulta_eliminar_persona)) {
         header("Location: logout.php");
     } else {
-        echo "Error al eliminar en persona: " . mysqli_error($con) . "<br>";
+        echo "<script>alert('No se pudo eliminar usuario.');</script>";
     }
 }
-
-
-
 ?>
+
 
 
 <!DOCTYPE html>
