@@ -56,13 +56,7 @@ if ($id_prod) {
     }
 
     // Verifica si la URL de origen está disponible
-    if (isset($_SERVER['HTTP_REFERER']) && strpos($_SERVER['HTTP_REFERER'], 'index.php') !== false) {
-        // Si el origen es index.php, almacena el origen en la variable
-        $urlDestino = $_SERVER['HTTP_REFERER'];
-    } else {
-        // Si no es desde index.php, se comporta como antes
-        $urlDestino = ($tipo_pub === 'servicio') ? 'servicios.php' : 'empresas.php';
-    }
+  
     
 }
 ?>
@@ -81,9 +75,10 @@ if ($id_prod) {
 <div class="divprincipalD">
     <div class="divsec1publiD">
         <img class="imagenprincipalcomentarios" src="<?php echo $foto_pub ?>" alt="img">
-        <a class="botonatraspubliD" href="<?php echo $urlDestino; ?>">
-        <i class="fa-solid iconoatraspubliD fa-arrow-left"></i>
-    </a>    </div>
+       
+        <a class="botonatraspubliD" href="<?php echo getenv('HTTP_REFERER'); ?>"><i class="fa-solid iconoatraspubliD fa-arrow-left"></i></a>
+     
+       </div>
 
     <div class="divsec2publiD">
         <div class="divtitulodescripcion"><h2 class="titulopubliD">Información</h2></div>

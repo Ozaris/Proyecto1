@@ -141,6 +141,12 @@ function truncateText($text, $maxWords) {
 
 
 ?>
+ <?php if ($rol==='admin'){
+   echo " <li><a class='dropdown-item item2' href='admin.php'>Control</a></li>";
+}elseif($rol==='usuario' || $rol==='inv'){
+   
+}
+?>
   </ul>
 </div>
                 </ul>
