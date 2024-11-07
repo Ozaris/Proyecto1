@@ -87,7 +87,7 @@ function crear_pub($con, $titulo, $categoria, $descripcion, $email_emp, $img, $l
 function truncateText($text, $maxWords) {
     $words = explode(' ', $text);
     if (count($words) > $maxWords) {
-        return implode(' ', array_slice($words, 3, $maxWords)) . '...';
+        return implode(' ', array_slice($words, 0, $maxWords)) . '...';
     }
     return $text;
 }
@@ -548,7 +548,7 @@ function redireccion() {
     });
 </script>
 
-<script src="app.js"></script>
+
 
 <!-- +++++++++++++++++++++++++++FIN DE SCRIPTS+++++++++++++++++++++++++++ --> 
 
