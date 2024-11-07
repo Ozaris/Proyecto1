@@ -31,10 +31,8 @@ function logear($con, $email, $contrasenia  ) {
       
             //si todo es correcto inicio la sesion y redirijo a la pagina del usuario logueado
             $_SESSION["email"] = $email;
-            $rol = $fila["rol"];
-     if($rol='admin'){
-        header("Location: admin.php");
-     }else{
+         
+    
             header("Location: index.php");
             exit();
      }
@@ -42,4 +40,3 @@ function logear($con, $email, $contrasenia  ) {
             echo "Contraseña incorrecta";
         }
     }
-}
