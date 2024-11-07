@@ -16,7 +16,7 @@
 
         <div class="div1register">
             <div class="div1register2">
-            <form class="frominiciosesion" action="RF_registro_emp.php" method="POST">
+              <form id="loginFormEmp" class="frominiciosesion" action="RF_registro_emp.php" method="POST">
                 <h2 class="h1register1">Crea tu cuenta</h2>
                 <h2 class="h12register1">como empresa</h2>
                 <input class="inputiniciosesion" maxlength="16"  type="nombreEmpresa" placeholder="Nombre" id="nombreEmpresa" name="nombre_p">
@@ -76,6 +76,28 @@
          </script>
 
 <script>
+  // Validación para el formulario de registro de empresa
+  document.getElementById('loginFormEmp').addEventListener('submit', function(event) {
+      const password = document.getElementById('pass').value;
+
+      // Verifica si la contraseña tiene al menos 8 caracteres
+      if (password.length < 8) {
+          event.preventDefault(); // Evita que el formulario se envíe
+          alert('La contraseña debe tener al menos 8 caracteres.');
+          return;
+      }
+
+      // Expresión regular para buscar al menos un carácter especial
+      const specialCharRegex = /[!@#$%^&*()_+<>?]/;
+
+      // Verificamos si la contraseña tiene al menos un carácter especial
+      if (!specialCharRegex.test(password)) {
+          event.preventDefault(); // Evita que el formulario se envíe
+          alert('La contraseña debe contener al menos un carácter especial.');
+      }
+  });
+</script>
+<script>
   const ocultarvercontraseña = document.getElementById('ocultarver-contraseña');
   const passwordInput = document.getElementById('pass');
 
@@ -85,6 +107,5 @@
       ocultarvercontraseña.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
   });
 </script>
-
 </body>
 </html>

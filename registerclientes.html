@@ -14,28 +14,27 @@
 <body class="bodyregister">
     <div class="divprinregister">
 
-        <div class="div1register">
-            <div class="div1register2">
-              <form class="frominiciosesion" action="RF_registro_usr.php" method="post">
+      <div class="div1register">
+        <div class="div1register2">
+            <form id="loginForm" class="frominiciosesion" action="RF_registro_usr.php" method="post">
                 <h1 class="h1register1">Crea tu cuenta</h1>
                 <h1 class="h12register1">como cliente</h1>
-                <input class="inputiniciosesion" maxlength="16"  type="text" placeholder="Nombre" id="nombre_p" name="nombre_p" required>
+                <input class="inputiniciosesion" maxlength="16" type="text" placeholder="Nombre" id="nombre_p" name="nombre_p" required>
                 <input class="inputiniciosesion" maxlength="50" type="email" placeholder="Email" id="email" name="email" required>
                 <div class="inputcontraseñaregister">
-                  <input class="inputiniciosesion"  minlength="8"  maxlength="16"  type="password" placeholder="Password" id="pass" name="pass" required>
-                  <span class="ocultarver-contraseña" id="ocultarver-contraseña"><i class="fa-solid fa-eye"></i></span>
-              </div>
+                    <input class="inputiniciosesion" minlength="8" maxlength="16" type="password" placeholder="Password" id="pass" name="pass" required>
+                    <span class="ocultarver-contraseña" id="ocultarver-contraseña"><i class="fa-solid fa-eye"></i></span>
+                </div>
                 <input class="inputiniciosesion" type="hidden" value="usuario" id="usuario" name="usuario">
                 <input class="inputiniciosesion" type="hidden" value="Descripcion" id="Descripcion" name="Descripcion">
                 <input class="inputiniciosesion" type="hidden" value="default.png" id="default.png" name="default.png">
-                <a href="registerempresas.html" class="aRecuperarcontraseña">Crear cuenta como empresa   <i class="fa-solid fa-suitcase"></i></a>
+                <a href="registerempresas.html" class="aRecuperarcontraseña">Crear cuenta como empresa <i class="fa-solid fa-suitcase"></i></a>
                 <button class="botoniniciosesion" value="envio" name="envio">Registrarme</button>
             </form>
-            
-           
             <a href="iniciodesesion.html" class="botonatrasiniciosesion"><i class="fa-solid fa-1x fa-arrow-left"></i></a>
         </div>
     </div>
+    
 
         <div class="div2register">
             <div class="div2register2">
@@ -73,15 +72,26 @@
       </script>
 
 <script>
-  document.getElementById('loginForm').addEventListener('submit', function(event) {
-      const password = document.getElementById('pass').value;
-      const regex = /^[\w!@#$%^&*()_+<>?]*$/; // Acepta letras, números y caracteres especiales
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    const password = document.getElementById('pass').value;
 
-      if (!regex.test(password)) {
-          event.preventDefault(); // Evita que el formulario se envíe
-          alert('Por favor, usa solo caracteres válidos en la contraseña.');
-      }
-  });
+    // Verifica si la contraseña tiene al menos 8 caracteres
+    if (password.length < 8) {
+        event.preventDefault(); // Evita que el formulario se envíe
+        alert('La contraseña debe tener al menos 8 caracteres.');
+        return;
+    }
+
+    // Expresión regular para buscar al menos un carácter especial
+    const specialCharRegex = /[!@#$%^&*()_+<>?]/;
+
+    // Verificamos si la contraseña tiene al menos un carácter especial
+    if (!specialCharRegex.test(password)) {
+        event.preventDefault(); // Evita que el formulario se envíe
+        alert('La contraseña debe contener al menos un carácter especial.');
+    }
+});
+
 </script>
 
 <script>
