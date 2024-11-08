@@ -127,7 +127,7 @@ $result_publicaciones = $con->query($consulta_publicaciones);
     <h3 class="h3parte1">Te damos la bienvenida a una página con un sinfín de empresas esperándote. De la mano de KORF Company, esperamos ayudarte.</h3>
 
   <div class="divbotondeparte1body">
-    <a class="botondeparte1body" class="aslinkcarta" href="Informacion.html">Saber más</a>
+    <a class="botondeparte1body" class="aslinkcarta" href="Informacion.php">Saber más</a>
   </div>
 </div>
 
@@ -230,7 +230,7 @@ $result_publicaciones = $con->query($consulta_publicaciones);
                     <p class="pcartasplanes"><i class="icono-tick fa-solid fa-check"></i>  Hora de atencion limitada </p>
                 </div>
                 <div class="linkcartaplanes">
-                    <a class="botondeparte5bodyplanes aslinkcarta" href="#">Empezar</a>
+                    <a class="botondeparte5bodyplanes aslinkcarta" href="empresas.php">Empezar</a>
                 </div>
             </div>
         </div>
