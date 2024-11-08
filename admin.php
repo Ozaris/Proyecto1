@@ -65,7 +65,7 @@ function elim_pub($con,$id_prod) {
     <h2 class="titulomispublicaciones">Centro de control de publicaciones</h2>
     <div class="divprincipalpublisem" id="publicacionesContainer">
                 <?php
-                // Obtiene las publicaciones creadas por un usuario en específico (WHERE pe.nombre_p='$nombre_p')
+                // Obtiene todas las publicaciones qu se crearon
                 $consulta_publicaciones = "SELECT p.* FROM publicacion_prod p";
                 $resultado_publicaciones = mysqli_query($con, $consulta_publicaciones);
                     //CREA UN WHILE PARA MOSTRAR TODAS LAS PUBLICACIÓN SEGÚN LA CANTIDAD DE LAS MISMAS
@@ -83,7 +83,7 @@ function elim_pub($con,$id_prod) {
                                     <h5 class="card-title"><?php echo htmlspecialchars($tituloTruncado); ?></h5>
                                     <p class="card-text"><?php echo htmlspecialchars($descripcionTruncada); ?></p>
                                     <p class="card-text"><small class="text-muted">Categoría: <?php echo htmlspecialchars($publicacion['categoria']); ?></small></p>
-                                    <p class="card-text"><small class="text-muted">Publicado por mi</small></p>
+                                    
                                 </div>
                                 <input class="botonverpubliem" type="submit" onclick = "this.form.action = 'PublicacionD.php'" value='Ver más' name='pub' >
                                 

@@ -8,7 +8,7 @@ function consultar_en_tiempo_real(evento) {
     // Evita que se recargue la página
     evento.preventDefault();
 
-    // Obtener el ultimo valor del input
+    // Obtener el valor del input
     const nombre_usuario = document.getElementById("busca").value;
 
     //se crea un objeto para tomar los valores del formulario

@@ -12,7 +12,7 @@ if (isset($_POST["envio-pub"])) {
 
     
     if (isset($_FILES['imagen_prod']) && $_FILES['imagen_prod']['error'] == 0) {
-    
+    //se guarda la imagen en la ruta deseada
         $imagen = $_FILES['imagen_prod'];
         $rutaDestino = 'uploads/' . basename($imagen['name']);
 
