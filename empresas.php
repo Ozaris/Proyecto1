@@ -407,7 +407,7 @@ document.getElementById('formFile').addEventListener('change', function(event) {
 
     reader.onload = function(e) {
         const imagePreview = document.getElementById('imagePreview');
-        imagePreview.innerHTML = `<img src="${e.target.result}" alt="Imagen Previa" style="max-width: 100%; height: auto;">`;
+        imagePreview.innerHTML = `<img class="osiosi" src="${e.target.result}" alt="Imagen Previa">`;
     };
 
     if (file) {
@@ -473,7 +473,7 @@ function redireccion() {
 
         reader.onload = function(e) {
             const imagePreview = document.getElementById('imagePreview');
-            imagePreview.innerHTML = `<img src="${e.target.result}" alt="Imagen Previa" style="max-width: 100%; height: 480px;">`;
+            imagePreview.innerHTML = `<img class="osiosi" src="${e.target.result}" alt="Imagen Previa">`;
 
             // Hide the label and show the delete button when an image is previewed
             document.querySelector('label[for="formFile"]').style.display = 'none';

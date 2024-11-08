@@ -1886,8 +1886,13 @@ footer{
     border: none;
     color: #333;
     position: absolute;
-    bottom: 1.5rem;
+    top: 1.5rem;
     left: 2rem;
+}
+
+.osiosi {
+    height: 450px;
+    width: 100%;
 }
 
 @media (max-width: 1000px) {
@@ -1895,6 +1900,15 @@ footer{
         flex-direction: column; 
     }
 
+    .divubicacionempresa {
+        width: 100%;
+        border-right: 1px solid #333;
+    }
+
+    .mapaempresas {
+        height: 20rem;
+    }
+    
     .divsubirimagen, .divsubirinformacion {
         width: 100%; 
         border-right: none; 
@@ -1930,6 +1944,12 @@ footer{
         align-items: center;
         flex-direction: column;
     }
+
+    .osiosi {
+        height: 150px;
+        width: 100%;
+    }
+
 }
 
 /*----------------------------Fin de + Publicacion--------------------------------*/
@@ -1996,7 +2016,7 @@ footer{
     border-radius: 5px;
     border: 1px solid #a9c8e7;
     width: 24rem;
-    height: 32rem;
+    height: 35rem;
 }
 
 .cardempresas:hover {
