@@ -165,49 +165,49 @@ function truncateText($text, $maxWords) {
                 <div class="div1recomendaciones"><h3>Filtros</h3></div>
                 <div class="div2recomendaciones">
                 <a href="servicios.php">
-                <div class="cartaderecomendados">
-                        <img class="logorecomendados" src="Imagenes/todos.png" alt="img">
-                        <p>Todos</p>
-                    </div>
-                    </a>
-                <div class="cartaderecomendados" onclick="filtrarProductos('Electronica')">
-                        <img class="logorecomendados" src="style/Imagenes/Electronica.png" alt="img">
-                        <p>Electronica</p>
-                    </div>
-                    <div class="cartaderecomendados" onclick="filtrarProductos('Gaming')">
-                        <img class="logorecomendados" src="style/Imagenes/Entretenimiento.png" alt="img">
-                        <p>Gaming</p>
-                    </div>
-                    <div class="cartaderecomendados" onclick="filtrarProductos('Ropa')">
-                        <img class="logorecomendados" src="style/Imagenes/Ropa.png" alt="img">
-                        <p>Ropa</p>
-                    </div>
-                        <div class="cartaderecomendados" onclick="filtrarProductos('Deporte')">
-                            <img class="logorecomendados" src="style/Imagenes/Deporte.png" alt="img">
-                            <p>Deporte</p>
-                        </div>
-                        <div class="cartaderecomendados" onclick="filtrarProductos('Familia')">
-                            <img class="logorecomendados" src="style/Imagenes/familia.png" alt="img">
-                            <p>Familia</p>
-                        </div>
-                        <div class="cartaderecomendados" onclick="filtrarProductos('Mascotas')">
-                            <img class="logorecomendados" src="style/Imagenes/mascotas.png" alt="img">
-                            <p>Mascotas</p>
-                        </div>
-                        <div class="cartaderecomendados" onclick="filtrarProductos('Musica')">
-                            <img class="logorecomendados" src="style/Imagenes/musica.png" alt="img">
-                            <p>Musica</p>
-                        </div>
-                        <div class="cartaderecomendados" onclick="filtrarProductos('Propiedades')">
-                            <img class="logorecomendados" src="style/Imagenes/propiedad.png" alt="img">
-                            <p>Propiedades</p>
-                        </div>
-                        <div class="cartaderecomendados" onclick="filtrarProductos('Vehiculos')">
-                            <img class="logorecomendados" src="style/Imagenes/Vehiculos.png" alt="img">
-                            <p>Vehiculos</p>
-                        </div>
-                </div>
-            </div>
+                <a href="servicios.php">
+    <div class="cartaderecomendados" data-categoria="Todos">
+        <img class="logorecomendados" src="Imagenes/todos.png" alt="img">
+        <p>Todos</p>
+    </div>
+</a>
+<div class="cartaderecomendados" data-categoria="Electronica">
+    <img class="logorecomendados" src="style/Imagenes/Electronica.png" alt="img">
+    <p>Electronica</p>
+</div>
+<div class="cartaderecomendados" data-categoria="Gaming">
+    <img class="logorecomendados" src="style/Imagenes/Entretenimiento.png" alt="img">
+    <p>Gaming</p>
+</div>
+<div class="cartaderecomendados" data-categoria="Ropa">
+    <img class="logorecomendados" src="style/Imagenes/Ropa.png" alt="img">
+    <p>Ropa</p>
+</div>
+<div class="cartaderecomendados" data-categoria="Deporte">
+    <img class="logorecomendados" src="style/Imagenes/Deporte.png" alt="img">
+    <p>Deporte</p>
+</div>
+<div class="cartaderecomendados" data-categoria="Familia">
+    <img class="logorecomendados" src="style/Imagenes/familia.png" alt="img">
+    <p>Familia</p>
+</div>
+<div class="cartaderecomendados" data-categoria="Mascotas">
+    <img class="logorecomendados" src="style/Imagenes/mascotas.png" alt="img">
+    <p>Mascotas</p>
+</div>
+<div class="cartaderecomendados" data-categoria="Musica">
+    <img class="logorecomendados" src="style/Imagenes/musica.png" alt="img">
+    <p>Musica</p>
+</div>
+<div class="cartaderecomendados" data-categoria="Propiedades">
+    <img class="logorecomendados" src="style/Imagenes/propiedad.png" alt="img">
+    <p>Propiedades</p>
+</div>
+<div class="cartaderecomendados" data-categoria="Vehiculos">
+    <img class="logorecomendados" src="style/Imagenes/Vehiculos.png" alt="img">
+    <p>Vehiculos</p>
+</div>
+
 <!-- +++++++++++++++++++++++++++FIN DE FILTROS+++++++++++++++++++++++++++ -->
 
 <!-- +++++++++++++++++++++++++++BOTON PUBLICAR+++++++++++++++++++++++++++ -->
@@ -412,19 +412,38 @@ document.getElementById('formFile').addEventListener('change', function(event) {
     }
 });
 
+$(document).ready(function() {
+    // Añadir evento de clic a las tarjetas
+    $('.cartaderecomendados').click(function() {
+        // Eliminar la clase 'selected' de todas las tarjetas
+        $('.cartaderecomendados').removeClass('selected');
+        
+        // Añadir la clase 'selected' solo a la tarjeta clickeada
+        $(this).addClass('selected');
+        
+        // Obtener el valor de la categoría desde el atributo data-categoria
+        var categoria = $(this).data('categoria');
+        
+        // Llamar a la función para filtrar productos por categoría
+        filtrarProductos(categoria);
+    });
+});
+
+// Función para filtrar productos
 function filtrarProductos(categoria) {
-            $.ajax({
-                url: 'filtrar_productos.php',
-                method: 'POST',
-                data: { categoria: categoria },
-                success: function(data) {
-                    $('#publicacionesContainer').html(data);
-                },
-                error: function() {
-                    alert("Error al filtrar las publicaciones.");
-                }
-            });
+    $.ajax({
+        url: 'filtrar_productos.php',
+        method: 'POST',
+        data: { categoria: categoria },
+        success: function(data) {
+            $('#publicacionesContainer').html(data);
+        },
+        error: function() {
+            alert("Error al filtrar las publicaciones.");
         }
+    });
+}
+
 
 function redireccion() {
         <?php if (isset($_SESSION['email'])): ?>
