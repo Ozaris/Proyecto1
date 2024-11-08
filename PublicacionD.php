@@ -72,12 +72,11 @@ if ($id_prod) {
     <title>Publicacion</title>
 </head>
 <body class="bodypubliD">
+<a class="botonatraspubliD" href="<?php echo getenv('HTTP_REFERER'); ?>"><i class="fa-solid iconoatraspubliD fa-arrow-left"></i></a>
 <div class="divprincipalD">
+
     <div class="divsec1publiD">
         <img class="imagenprincipalcomentarios" src="<?php echo $foto_pub ?>" alt="img">
-       
-        <a class="botonatraspubliD" href="<?php echo getenv('HTTP_REFERER'); ?>"><i class="fa-solid iconoatraspubliD fa-arrow-left"></i></a>
-     
        </div>
 
     <div class="divsec2publiD">

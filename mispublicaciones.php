@@ -76,7 +76,7 @@ function elim_pub($con,$id_prod) {
                         $descripcionTruncada = truncateText($publicacion['descripcion_prod'], 3);
                         ?>
                         <form class="containerpublis" action="mispublicaciones.php" method="POST">
-                            <div class="cardempresas">
+                            <div class="cardempresas2">
                                 <img src="<?php echo htmlspecialchars($publicacion['imagen_prod']); ?>" class="imgcardpubliem" alt="Imagen de publicación">
                                 <div class="cardempresasbody">
                                     <input type="hidden" name="id_prod" value="<?php echo htmlspecialchars($id_prod); ?>">
