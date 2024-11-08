@@ -117,17 +117,17 @@ if ($id_prod) {
 </script>
 
 <?php if ($rol == "usuario"): ?>
-    <form id="commentForm">
-        <div class="divprincipalcomentarios">
-            <img class="imagenperfilcomentarios" src="<?php echo $foto ?>" alt="img">
-            <input type="text" class="inputcomentarios" placeholder="Comentario" maxlength="150" aria-label="Comentario" name="comentario" required>
-            <div class="estrellas">
+    <form class="fromestrellas" id="commentForm">
+    <div class="estrellas">
                 <input type="radio" name="puntuacion" id="estrella5" value="5"><label for="estrella5">★</label>
                 <input type="radio" name="puntuacion" id="estrella4" value="4"><label for="estrella4">★</label>
                 <input type="radio" name="puntuacion" id="estrella3" value="3"><label for="estrella3">★</label>
                 <input type="radio" name="puntuacion" id="estrella2" value="2"><label for="estrella2">★</label>
                 <input type="radio" name="puntuacion" id="estrella1" value="1" required><label for="estrella1">★</label>
             </div>
+        <div class="divprincipalcomentarios">
+            <img class="imagenperfilcomentarios" src="<?php echo $foto ?>" alt="img">
+            <input type="text" class="inputcomentarios" placeholder="Comentario" maxlength="150" aria-label="Comentario" name="comentario" required>
             <button type="submit" class="botoncomentar">Publicar</button>
         </div>
     </form>
