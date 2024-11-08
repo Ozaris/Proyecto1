@@ -173,42 +173,43 @@ function truncateText($text, $maxWords) {
         <p>Todos</p>
     </div>
 </a>
-<div class="cartaderecomendados" data-categoria="Electronica">
+<div class="cartaderecomendados" data-categoria="Electronica" onclick="filtrarPublicaciones('Electronica')">
     <img class="logorecomendados" src="style/Imagenes/Electronica.png" alt="img">
     <p>Electronica</p>
 </div>
-<div class="cartaderecomendados" data-categoria="Gaming">
+<div class="cartaderecomendados" data-categoria="Gaming" onclick="filtrarPublicaciones('Gaming')">
     <img class="logorecomendados" src="style/Imagenes/Entretenimiento.png" alt="img">
     <p>Gaming</p>
 </div>
-<div class="cartaderecomendados" data-categoria="Ropa">
+<div class="cartaderecomendados" data-categoria="Ropa" onclick="filtrarPublicaciones('Ropa')">
     <img class="logorecomendados" src="style/Imagenes/Ropa.png" alt="img">
     <p>Ropa</p>
 </div>
-<div class="cartaderecomendados" data-categoria="Deporte">
+<div class="cartaderecomendados" data-categoria="Deporte" onclick="filtrarPublicaciones('Deporte')">
     <img class="logorecomendados" src="style/Imagenes/Deporte.png" alt="img">
     <p>Deporte</p>
 </div>
-<div class="cartaderecomendados" data-categoria="Familia">
+<div class="cartaderecomendados" data-categoria="Familia" onclick="filtrarPublicaciones('Familia')">
     <img class="logorecomendados" src="style/Imagenes/familia.png" alt="img">
     <p>Familia</p>
 </div>
-<div class="cartaderecomendados" data-categoria="Mascotas">
+<div class="cartaderecomendados" data-categoria="Mascotas" onclick="filtrarPublicaciones('Mascotas')">
     <img class="logorecomendados" src="style/Imagenes/mascotas.png" alt="img">
     <p>Mascotas</p>
 </div>
-<div class="cartaderecomendados" data-categoria="Musica">
+<div class="cartaderecomendados" data-categoria="Musica" onclick="filtrarPublicaciones('Musica')">
     <img class="logorecomendados" src="style/Imagenes/musica.png" alt="img">
     <p>Musica</p>
 </div>
-<div class="cartaderecomendados" data-categoria="Propiedades">
+<div class="cartaderecomendados" data-categoria="Propiedades" onclick="filtrarPublicaciones('Propiedades')">
     <img class="logorecomendados" src="style/Imagenes/propiedad.png" alt="img">
     <p>Propiedades</p>
 </div>
-<div class="cartaderecomendados" data-categoria="Vehiculos">
+<div class="cartaderecomendados" data-categoria="Vehiculos" onclick="filtrarPublicaciones('Vehiculos')">
     <img class="logorecomendados" src="style/Imagenes/Vehiculos.png" alt="img">
     <p>Vehiculos</p>
 </div>
+
 <!-- +++++++++++++++++++++++++++FIN DE FILTROS+++++++++++++++++++++++++++ -->
 
 <!-- +++++++++++++++++++++++++++BOTON PUBLICAR+++++++++++++++++++++++++++ -->
