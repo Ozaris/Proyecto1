@@ -921,6 +921,11 @@ body.no-scroll {
     box-shadow: 1px 2px 3px rgb(34, 34, 34);
 }
 
+.pcartasplanes {
+    font-size: 1rem;
+    color: #333;
+}
+
 .cartasplanes img{
     display: block;
     margin-top: 1rem;

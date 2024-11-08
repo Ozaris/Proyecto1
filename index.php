@@ -224,10 +224,10 @@ $result_publicaciones = $con->query($consulta_publicaciones);
                     <h4>BASICO</h4>
                 </div>
                 <div class="textocartaplanes">
-                    <p><i class="icono-tick fa-solid fa-check"></i>  Maximo de caracteres 200 </p>
-                    <p><i class="icono-tick fa-solid fa-check"></i>  Cantidad maxima de fotos subidas 3 </p>
-                    <p><i class="icono-tick fa-solid fa-check"></i>  Sin acceso a la opcion de fijado de publicacion </p>
-                    <p><i class="icono-tick fa-solid fa-check"></i>  Hora de atencion limitada </p>
+                    <p class="pcartasplanes"><i class="icono-tick fa-solid fa-check"></i>  Maximo de caracteres 300 </p>
+                    <p class="pcartasplanes"><i class="icono-tick fa-solid fa-check"></i>  Cantidad maxima de publicaciones 3 </p>
+                    <p class="pcartasplanes"><i class="icono-tick fa-solid fa-check"></i>  Sin acceso a la opcion de fijado de publicacion </p>
+                    <p class="pcartasplanes"><i class="icono-tick fa-solid fa-check"></i>  Hora de atencion limitada </p>
                 </div>
                 <div class="linkcartaplanes">
                     <a class="botondeparte5bodyplanes aslinkcarta" href="#">Empezar</a>
@@ -242,10 +242,10 @@ $result_publicaciones = $con->query($consulta_publicaciones);
                         <h4>PREMIUM</h4>
                     </div>
                     <div class="textocartaplanes">
-                        <p><i class="icono-tick fa-solid fa-check"></i>  Maximo de caracteres 1000 </p>
-                        <p><i class="icono-tick fa-solid fa-check"></i>  Cantidad maxima de fotos subidas 10 </p>
-                        <p><i class="icono-tick fa-solid fa-check"></i>  Mejor difamacion mediante un fijado </p>
-                        <p><i class="icono-tick fa-solid fa-check"></i>  Mayor atencion de personal especializado </p>
+                        <p class="pcartasplanes"><i class="icono-tick fa-solid fa-check"></i>  Maximo de caracteres 600 </p>
+                        <p class="pcartasplanes"><i class="icono-tick fa-solid fa-check"></i>  Cantidad maxima de publicaciones 6 </p>
+                        <p class="pcartasplanes"><i class="icono-tick fa-solid fa-check"></i>  Mejor difamacion mediante un fijado </p>
+                        <p class="pcartasplanes"><i class="icono-tick fa-solid fa-check"></i>  Mayor atencion de personal especializado </p>
                     </div>
                     <div class="linkcartaplanes">
                     <a class="boton2departe5bodyplanes aslinkcarta" href="pago.html">Comprar</a>
