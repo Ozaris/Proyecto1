@@ -212,7 +212,6 @@ function truncateText($text, $maxWords) {
 <!-- +++++++++++++++++++++++++++FIN DE FILTROS+++++++++++++++++++++++++++ -->
 
 <!-- +++++++++++++++++++++++++++BOTON PUBLICAR+++++++++++++++++++++++++++ -->
-                <h3 class="h3publiem">Publicaciones <i class="fa-solid fa-icons"></i></h3>
                 <?php
                 if ($rol === 'empresa') {
 
@@ -223,6 +222,7 @@ function truncateText($text, $maxWords) {
     // Si es 'usuario' o no está definido, no mostramos el botón
 }
                 ?>
+                <h3 class="h3publiem">Publicaciones <i class="fa-solid fa-icons"></i></h3>
   <!-- Modal -->
    
   <div class="modal modal-xl fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
