@@ -38,14 +38,11 @@ if (isset($_SESSION['email'])) {
         <a href="index.php"> <img class="logoinformacion" src="style/Imagenes/logoproyecto.png" alt="Logo"></a>
         <button id="abrir" class="abrirmenuinformacion"><i class="fa-solid fa-bars"></i></button>
         <nav class="navheaderinformacion" id="nav">
-            <img class="logosheaderinformacion" src="style/Imagenes/Logos.png" alt="img">
             <button class="cerrarmenuinformacion" id="cerrar"><i class="fa-solid fa-x"></i></button>
             <ul class="navlistainformacion">
                 <li class="lismenuinformacion"><a class="asmenuinformacion" href="index.php">Inicio</a></li>
                 <li class="lismenuinformacion"><a class="psmenuinformacion">|</a></li>
                 <li class="lismenuinformacion"><a class="asmenuinformacion" href="empresas.php">Empresas</a></li>
-                <li class="lismenuinformacion"><a class="psmenuinformacion">|</a></li>
-                <li class="lismenuinformacion"><a class="asmenuinformacion" href="#">Servicios</a></li>
                 <li class="lismenuinformacion"><a class="psmenuinformacion">|</a></li>
                 <li class="lismenuinformacion"><a class="asmenuinformacion" href="index.php#map">Ubicacion</a></li>
                 <li class="lismenuinformacion"><a class="psmenuinformacion">|</a></li>
@@ -200,7 +197,7 @@ if (isset($_SESSION['email'])) {
                 <p class="pfooter">General</p>
                 <a class="afooter aslinkcarta" href="index.php">Inicio</a>
                 <a class="afooter aslinkcarta" href="empresas.php">Empresas</a>
-                <a class="afooter aslinkcarta" href="#">Servicios</a>
+                <a class="afooter aslinkcarta" href="index.php#Serviciosindex">Servicios</a>
                 <a class="afooter aslinkcarta" href="index.php#topempresas">Top empresas</a>
             </nav>
             <nav class="navsfooter">
@@ -209,13 +206,15 @@ if (isset($_SESSION['email'])) {
                 <a class="afooter aslinkcarta" href="Informacion.html#FAQs">FAQs</a>
                 <a class="afooter aslinkcarta" href="index.php#planes">Planes</a>
                 <?php if ($rol==='empresa'){
-                  echo "<a class='afooter aslinkcarta' href='mispublicaciones.php'>Mis posts</a>";
-               }elseif($rol==='usuario' || $rol==='inv'){
+   echo "<a class='afooter aslinkcarta' href='mispublicaciones.php'>Mis posts</a>";
+}elseif($rol==='usuario' || $rol==='inv'){
    
-               }
-               
-               
-               ?>
+}
+
+
+
+
+?>
             </nav>
             <nav class="nav2footer">
                 <p class="pfooter">Nosotros</p>
@@ -223,9 +222,9 @@ if (isset($_SESSION['email'])) {
                 <a class="afooter aslinkcarta" href="index.php#map">Ubicacion</a>
                 <a class="afooter aslinkcarta" href="Informacion.php#ozariskorf">Korf/Ozaris</a>
             <nav class="navredesfooter">
-                <a class="aredesfooter aslinkcarta" href=""><i class="fa-brands fa-3x fa-instagram"></i></a>
-                <a class="aredesfooter aslinkcarta" href=""><i class="fa-brands fa-3x fa-facebook"></i></a>
-                <a class="aredesfooter aslinkcarta" href=""><i class="fa-brands fa-3x fa-twitter"></i></a>
+                <a class="aredesfooter aslinkcarta" href=""><i class="fa-brands fa-2x fa-instagram"></i></a>
+                <a class="aredesfooter aslinkcarta" href=""><i class="fa-brands fa-2x fa-facebook"></i></a>
+                <a class="aredesfooter aslinkcarta" href=""><i class="fa-brands fa-2x fa-twitter"></i></a>
             </nav>
             </nav>
         </div>

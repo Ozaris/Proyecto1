@@ -277,7 +277,7 @@ function elim($con, $nombre_p, $rol) {
                     <button class="botoncoloropcion2" onclick="cambiarColor('#66a6e6')"><i class="fa-solid fa-droplet"></i></button>
                     <button class="botoncoloropcion3" onclick="cambiarColor('#333')"><i class="fa-solid fa-droplet"></i></button>
                     <button class="botoncoloropcion4" onclick="cambiarColor('#ffb654')"><i class="fa-solid fa-droplet"></i></button>
-                    <button class="botoncoloropcion5" onclick="cambiarColor('#ccc')"><i class="fa-solid fa-droplet"></i></button>
+                    <button class="botoncoloropcion5" onclick="cambiarColor('#8a8a8a')"><i class="fa-solid fa-droplet"></i></button>
                     <button class="botoncoloropcion6" onclick="cambiarColor('#6d1d5f')"><i class="fa-solid fa-droplet"></i></button>
                 </ul>
             </div>
@@ -305,7 +305,7 @@ function elim($con, $nombre_p, $rol) {
 
     <div class="bodydelperfil">
         <div class="divinformacionperfil">
-            <div class="divnombreperfil"><?php echo $nombre_p; ?>
+            <div class="divnombreperfil">
                 <div class="btn-group">
                     <button type="button" class="iconoeditar2perfil" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                         <i class="fa-solid fa-1x fa-pen-to-square"></i>
@@ -326,9 +326,9 @@ function elim($con, $nombre_p, $rol) {
                         </ul>
                     </form>
                 </div>
+                <?php echo $nombre_p; ?>
             </div>
             <div class="divdescripperfil">
-                <p class="p1perfil"><?php echo $descripcion;?></p>
                 <div class="btn-group">
                     <button type="button" class="iconoeditar3perfil" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                         <i class="fa-solid fa-1x fa-pen-to-square"></i>
@@ -349,6 +349,7 @@ function elim($con, $nombre_p, $rol) {
                             </div>
                     </ul>
                 </div>
+                <p class="p1perfil"><?php echo $descripcion;?></p>
             </div>
         </div>
         

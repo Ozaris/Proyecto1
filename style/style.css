@@ -3424,6 +3424,11 @@ footer{
     padding-bottom: 1rem;
     padding-top: 1rem;
 }
+
+.tituloforgotpass {
+    text-align: center;
+}
+
 .logoverificar {
     width: 9rem;
     margin-bottom: 1rem;

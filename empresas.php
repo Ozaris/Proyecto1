@@ -120,8 +120,6 @@ function truncateText($text, $maxWords) {
                 <ul class="navlistainicio">
                     <li class="lismenu"><a class="asmenuinicio" href="index.php">Inicio</a></li>
                     <li class="lismenu"><a class="psmenuinicio">|</a></li>
-                    <li class="lismenu"><a class="asmenuinicio" href="servicios.php">Servicios</a></li>
-                    <li class="lismenu"><a class="psmenuinicio">|</a></li>
                     <li class="lismenu"><a class="asmenuinicio" href="index.php#map">Ubicación</a></li>
                     <li class="lismenu"><a class="psmenuinicio">|</a></li>
                     <li class="lismenu"><a class="asmenuinicio" href="contacto.html">Contacto</a></li>
@@ -547,6 +545,8 @@ function redireccion() {
         document.getElementById('imagePreview').style.display = 'none'; // Oculta la vista previa
     });
 </script>
+
+<script src="app.js"></script>
 
 
 
