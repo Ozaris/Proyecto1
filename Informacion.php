@@ -1,21 +1,28 @@
 
 <?php
+include "conexion.php";
+$con = conectar_bd();
+session_start();
+
+// Verifica si el usuario está logueado y obtiene su información
 if (isset($_SESSION['email'])) {
-  $email = $_SESSION['email'];
-  $sql = "SELECT * FROM persona WHERE email='$email'";
-  $resultado = $con->query($sql);
+    $email = $_SESSION['email'];
+    $sql = "SELECT * FROM persona WHERE email='$email'";
+    $resultado = $con->query($sql);
 
-  if ($data = $resultado->fetch_assoc()) {
-    
-      $rol = $data['rol'];
+    if ($data = $resultado->fetch_assoc()) {
+       
+        $rol = $data['rol'] ?? null;
 
-  } else {
-    
-      $rol='inv';
-  }
+       
+     
+    } else {
+       
+        $rol= 'inv';
+    }
 } else {
- 
-  $rol='inv';
+
+    $rol= 'inv';
 }
 ?>
 <!DOCTYPE html>

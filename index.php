@@ -87,6 +87,8 @@ $result_publicaciones = $con->query($consulta_publicaciones);
             <ul class="navlistainicio">
                 <li class="lismenu"><a class="asmenuinicio" href="empresas.php">Empresas</a></li>
                 <li class="lismenu"><a class="psmenuinicio">|</a></li>
+                <li class="lismenu"><a class="asmenuinicio" href="servicios.php">Servicios</a></li>
+                <li class="lismenu"><a class="psmenuinicio">|</a></li>
                 <li class="lismenu"><a class="asmenuinicio" href="#map">Ubicación</a></li>
                 <li class="lismenu"><a class="psmenuinicio">|</a></li>
                 <li class="lismenu"><a class="asmenuinicio" href="contacto.html">Contacto</a></li>
@@ -139,7 +141,7 @@ $result_publicaciones = $con->query($consulta_publicaciones);
     </div>
 </div>
 
-<div class="parte2body" id="Serviciosindex">
+<div class="parte2body">
     <div class="parte2body2">
     <div class="parte2bodydiv2" data-aos="fade-down" data-aos-duration="2000">
         <img class="imgparte2body" src="style/Imagenes/personas.png" alt="img">
@@ -278,7 +280,7 @@ $result_publicaciones = $con->query($consulta_publicaciones);
                 <p class="pfooter">General</p>
                 <a class="afooter aslinkcarta" href="index.php">Inicio</a>
                 <a class="afooter aslinkcarta" href="empresas.php">Empresas</a>
-                <a class="afooter aslinkcarta" href="#Serviciosindex">Servicios</a>
+                <a class="afooter aslinkcarta" href="#">Servicios</a>
                 <a class="afooter aslinkcarta" href="index.php#topempresas">Top empresas</a>
             </nav>
             <nav class="navsfooter">
@@ -304,9 +306,9 @@ $result_publicaciones = $con->query($consulta_publicaciones);
                 <a class="afooter aslinkcarta" href="index.php#map">Ubicacion</a>
                 <a class="afooter aslinkcarta" href="Informacion.php#ozariskorf">Korf/Ozaris</a>
             <nav class="navredesfooter">
-                <a class="aredesfooter aslinkcarta" href=""><i class="fa-brands fa-2x fa-instagram"></i></a>
-                <a class="aredesfooter aslinkcarta" href=""><i class="fa-brands fa-2x fa-facebook"></i></a>
-                <a class="aredesfooter aslinkcarta" href=""><i class="fa-brands fa-2x fa-twitter"></i></a>
+                <a class="aredesfooter aslinkcarta" href=""><i class="fa-brands fa-3x fa-instagram"></i></a>
+                <a class="aredesfooter aslinkcarta" href=""><i class="fa-brands fa-3x fa-facebook"></i></a>
+                <a class="aredesfooter aslinkcarta" href=""><i class="fa-brands fa-3x fa-twitter"></i></a>
             </nav>
             </nav>
         </div>
