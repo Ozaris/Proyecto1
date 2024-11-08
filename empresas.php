@@ -222,7 +222,6 @@ function truncateText($text, $maxWords) {
     // Si es 'usuario' o no está definido, no mostramos el botón
 }
                 ?>
-                <h3 class="h3publiem">Publicaciones <i class="fa-solid fa-icons"></i></h3>
   <!-- Modal -->
    
   <div class="modal modal-xl fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -303,6 +302,7 @@ function truncateText($text, $maxWords) {
 
 <!-- +++++++++++++++++++++++++++PUBLICACIONES+++++++++++++++++++++++++++ --> 
             <div>
+            <h3 class="h3publiem">Publicaciones <i class="fa-solid fa-icons"></i></h3>
             <div class="divprincipalpublisem" id="publicacionesContainer">
                 <?php
                 // Obtener las publicaciones de la base de datos
