@@ -28,7 +28,6 @@ body.no-scroll {
     background-color: white; 
     border-radius: 3.5rem;
     margin: 1.5rem;
-    max-width: 1768px;
     opacity: calc(0.7);
     box-shadow: 1px 2px 3px rgb(34, 34, 34);
 }
@@ -119,14 +118,6 @@ body.no-scroll {
     z-index: 100000;
 }
 
-@media (min-width: 1768px) {
-    .headerinicio {
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 1768px;
-    }
-}
-
 @media (max-width: 788px) {
 
     .headerinicio {
@@ -138,7 +129,6 @@ body.no-scroll {
         box-shadow: 2px 2px 2px black;
         border-radius: 3.5rem;
         margin: 1.5rem;
-        max-width: 1768px;
         opacity: calc(1);
     }
 
