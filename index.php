@@ -87,8 +87,6 @@ $result_publicaciones = $con->query($consulta_publicaciones);
             <ul class="navlistainicio">
                 <li class="lismenu"><a class="asmenuinicio" href="empresas.php">Empresas</a></li>
                 <li class="lismenu"><a class="psmenuinicio">|</a></li>
-                <li class="lismenu"><a class="asmenuinicio" href="servicios.php">Servicios</a></li>
-                <li class="lismenu"><a class="psmenuinicio">|</a></li>
                 <li class="lismenu"><a class="asmenuinicio" href="#map">Ubicación</a></li>
                 <li class="lismenu"><a class="psmenuinicio">|</a></li>
                 <li class="lismenu"><a class="asmenuinicio" href="contacto.html">Contacto</a></li>
