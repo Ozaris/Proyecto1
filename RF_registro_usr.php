@@ -38,7 +38,7 @@ if (isset($_POST["envio"])) {
             if (mysqli_query($con, $consulta_insertar_usuario)) {
                 // Enviar correo de verificación
                 sendVerificationEmail($email, $token);
-                header("Location: verify_code.php");
+                header("Location: codigo_verificacion.php");
                 exit();
             } else {
                 echo "<div style='display: flex; border: 1px solid red; color: red; padding: 5px 8px; border-radius: 5px; background-color: rgb(255, 167, 167);'> <i class='fas fa-exclamation-triangle' style='margin-right: 8px;'></i> Error al insertar en usuario </div>" . mysqli_error($con);

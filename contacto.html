@@ -9,25 +9,35 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body class="bodycontacto">
-        <div class="container">
-            <a class="atrasdecontacto" href="index.php"><i class="fa-solid fa-2x fa-arrow-left"></i></a>
-            <h1>Contacto</h1>
-            <form action="#" method="post" class="formcontact">
-                <div class="form-group">
-                    <label for="nombre">Nombre:</label>
-                    <input class="inputcontacto" type="text" id="nombre" name="nombre" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Correo Electrónico:</label>
-                    <input class="inputcontacto" type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="mensaje">Mensaje:</label>
-                    <textarea class="inputcontacto" id="mensaje" name="mensaje" rows="4" required></textarea>
-                </div>
-                <button type="submit" class="btnsubmit">Enviar</button>
-            </form>
-        </div>
+    <div class="container">
+        <a class="atrasdecontacto" href="index.php"><i class="fa-solid fa-2x fa-arrow-left"></i></a>
+        <h1>Contactanos</h1>
+        <form action="contacto.php" method="post" class="formcontact">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input class="inputcontacto" maxlength="20" type="text" id="nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Correo Electrónico:</label>
+                <input class="inputcontacto" maxlength="50" type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="mensaje">Mensaje:</label>
+                <textarea class="inputcontacto" maxlength="200" id="mensaje" name="mensaje" oninput="validateInput()" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btnsubmit">Enviar</button>
+        </form>
     </div>
+    <script>
+        function validateInput() {
+            const textarea = document.getElementById('mensaje');
+            const words = textarea.value.split(/\s+/); // separa el texto en palabras
+            const filteredWords = words.filter(word => word.length <= 20); // crea un filtro de 16 letras
+            if (filteredWords.length !== words.length) {
+                textarea.value = filteredWords.join(' '); // Une las palabras que puedes colocar
+                alert('Las palabras no pueden tener más de 20 letras.');
+            }
+        }
+        </script>
 </body>
 </html>

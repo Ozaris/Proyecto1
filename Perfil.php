@@ -143,6 +143,7 @@ if (isset($_POST["envio-edit-nom-usr"])) {
 
                 if (mysqli_query($con, $sql)) {
                     echo "<script>alert('Nombre de usuario actualizado exitosamente en usuario.');</script>";
+                    header("Location: Perfil.php");
                 } else {
                     echo "<script>alert('Error al actualizar nombre en la tabla usuario: " . mysqli_error($con) . "');</script>";
                 }
@@ -151,6 +152,7 @@ if (isset($_POST["envio-edit-nom-usr"])) {
 
                 if (mysqli_query($con, $consulta_actualizar_empresa)) {
                     echo "<script>alert('Nombre de usuario actualizado exitosamente en empresa.');</script>";
+                                        header("Location: Perfil.php");
                 } else {
                     echo "<script>alert('Error al actualizar nombre en la tabla empresa.');</script>";
                 }
@@ -356,7 +358,7 @@ function elim($con, $nombre_p, $rol) {
         <div class="divinformacion2perfil">
             <h2>Privado <i class="fa-solid fa-1x fa-lock"></i></h2>
             <div class="divmailperfil"><?php echo $email; ?></div>
-            <div class="divcontraperfil"><a href="forgot_password.html"><button class="iconoeditar3perfil"><i class="fa-solid fa-pen-to-square"></i></button></a><p class="p2perfil">************** </p></div>
+            <div class="divcontraperfil"><a href="contrasenia.html"><button class="iconoeditar3perfil"><i class="fa-solid fa-pen-to-square"></i></button></a><p class="p2perfil">************** </p></div>
             <form action="Perfil.php" method="post">
                 <button class="Boton2PublicarPerfil" type="submit" name="envio-elim-usr" value="envio-elim-usr">Eliminar cuenta</button>
             </form>

@@ -155,7 +155,7 @@ function truncateText($text, $maxWords) {
 <!-- +++++++++++++++++++++++++++BUSCADOR+++++++++++++++++++++++++++ --> 
 
         <div class="divprincipalbuscador" id="bus">
-            <input type="text" name="buscador" id="buscador" placeholder="Buscar">
+            <input type="text" name="buscador" id="buscador" maxlength="20" placeholder="Buscar">
             <div id="resultado_busqueda"></div>
         </div>
 
@@ -167,12 +167,10 @@ function truncateText($text, $maxWords) {
             <div class="divrecomendacionesempresas" id="filtro">
                 <div class="div1recomendaciones"><h3>Filtros</h3></div>
                 <div class="div2recomendaciones">
-                <a href="empresas.php">
-                <div class="cartaderecomendados" data-categoria="Todos">
-        <img class="logorecomendados" src="style/Imagenes/todos.png" alt="img">
-        <p>Todos</p>
-    </div>
-</a>
+                <div class="cartaderecomendados" data-categoria="Todos" onclick="filtrarPublicaciones('Todos')">
+    <img class="logorecomendados" src="style/Imagenes/todo.png" alt="img">
+    <p>Todos</p>
+</div>
 <div class="cartaderecomendados" data-categoria="Electronica" onclick="filtrarPublicaciones('Electronica')">
     <img class="logorecomendados" src="style/Imagenes/Electronica.png" alt="img">
     <p>Electronica</p>
@@ -259,6 +257,7 @@ function truncateText($text, $maxWords) {
                                     <option value="Deporte">Deporte</option>
                                     <option value="Familia">Familia</option>
                                     <option value="Mascotas">Mascotas</option>
+                                    <option value="Musica">Musica</option>
                                     <option value="Propiedades">Propiedades</option>
                                     <option value="Vehículos">Vehículos</option>
                                 </select>
@@ -427,23 +426,40 @@ $(document).ready(function() {
         var categoria = $(this).data('categoria');
         
         // Llamar a la función para filtrar productos por categoría
-        filtrarProductos(categoria);
+        filtrarPublicaciones(categoria);
     });
 });
 
 function filtrarPublicaciones(categoria) {
-            $.ajax({
-                url: 'filtrar_publicaciones.php',
-                method: 'POST',
-                data: { categoria: categoria },
-                success: function(data) {
-                    $('#publicacionesContainer').html(data);
-                },
-                error: function() {
-                    alert("Error al filtrar las publicaciones.");
-                }
-            });
-        }
+    // Verificamos si la categoría es 'Todos'
+    if (categoria === 'Todos') {
+        // Si es 'Todos', no filtramos por categoría, simplemente mostramos todas las publicaciones
+        $.ajax({
+            url: 'filtrar_publicaciones.php',
+            method: 'POST',
+            data: { categoria: 'Todos' },  // 'Todos' puede ser un valor que indique mostrar todo
+            success: function(data) {
+                $('#publicacionesContainer').html(data); // Mostramos todas las publicaciones
+            },
+            error: function() {
+                alert("Error al filtrar las publicaciones.");
+            }
+        });
+    } else {
+        // Si no es 'Todos', filtramos por la categoría específica
+        $.ajax({
+            url: 'filtrar_publicaciones.php',
+            method: 'POST',
+            data: { categoria: categoria },
+            success: function(data) {
+                $('#publicacionesContainer').html(data); // Mostramos las publicaciones filtradas
+            },
+            error: function() {
+                alert("Error al filtrar las publicaciones.");
+            }
+        });
+    }
+}
 
 function redireccion() {
         <?php if (isset($_SESSION['email'])): ?>

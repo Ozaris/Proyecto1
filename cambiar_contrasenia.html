@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <title>Cambio de contraseña</title>
+</head>
+<body class="bodyverificarcodigo">
+    <div class="containerverificarcodigo">
+    <img class="logoverificar" src="Imagenes/Logosblanco.png" alt="img">
+    <h1>Cambia tu contraseña</h1>
+    <form class="fromverificar" action="actualizar_contrasenia.php" method="POST">
+        <input class="inputverificar" type="hidden" name="token">
+        <label class="labelverificar" type="hidden" name="token" for="">Ingresa tu codigo:</label>
+        <input class="inputverificar" maxlength="6" type="text" name="token" placeholder="Código de Verificación" required>
+        <label class="labelverificar" type="hidden" name="password" for="">Ingresa nueva contraseña:</label>
+        <input class="inputverificar"  minlength="8" type="password" placeholder="Nueva Contraseña" name="password" required>
+        <button class="botonverificar" type="submit">Cambiar contraseña</button>
+        <p class="parrafoverificar">Luego de comprobar el cambio de contraseña seras redirigido a inicio de sesion.</p>
+    </form>
+</body>
+</html>
